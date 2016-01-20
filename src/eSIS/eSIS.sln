@@ -5,9 +5,9 @@ VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common.Core", "Core\Common.Core.csproj", "{D22B4C57-ADF8-4CBB-9B6E-D4AE91E7153B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Database.Core", "DB.Database\Database.Core.csproj", "{F785EEA0-27AD-4A29-ACD4-AE02E7CC8585}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Database.Core", "Database.Core\Database.Core.csproj", "{F785EEA0-27AD-4A29-ACD4-AE02E7CC8585}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Database.Access", "DB.DatabaseAccess\Database.Access.csproj", "{3318493B-EB9A-49D6-9EF3-AEBC43DFC945}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Database.Access", "Database.Access\Database.Access.csproj", "{3318493B-EB9A-49D6-9EF3-AEBC43DFC945}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Web.UI", "Web.UI\Web.UI.csproj", "{8CC49735-AB93-4FA9-BD15-0BDC28C63A02}"
 EndProject
