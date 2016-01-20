@@ -50,7 +50,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CustomDbContext.cs" />
     <Compile Include="Entities\SchoolYear.cs" />
+    <Compile Include="RepoCrud.cs" />
     <Compile Include="SisContext.cs" />
     <Compile Include="Entities\Address.cs" />
     <Compile Include="Entities\BaseEntity.cs" />

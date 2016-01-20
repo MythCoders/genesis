@@ -50,15 +50,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DistrictRepository.cs" />
-    <Compile Include="RepoCrud.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SchoolRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\DB.Database\Database.Core.csproj">
+    <ProjectReference Include="..\Database.Core\Database.Core.csproj">
       <Project>{F785EEA0-27AD-4A29-ACD4-AE02E7CC8585}</Project>
       <Name>Database.Core</Name>
     </ProjectReference>

@@ -6,7 +6,7 @@ namespace eSIS.DB.DatabaseAccess
     public class DistrictRepository : RepoCrud<District, SisContext>
     {
         public DistrictRepository() 
-            : base(new SisContext(false))
+            : base(new SisContext())
         {
 
         }
