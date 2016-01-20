@@ -7,10 +7,10 @@ using System.Data.Entity.Validation;
 using System.Diagnostics;
 using System.Linq;
 using System.Transactions;
-using JA.eSIS.DB.Database.Entities;
-using JA.eSIS.DB.Database.Entities.Core;
+using eSIS.Database.Core.Entities;
+using eSIS.Database.Core.Entities.Core;
 
-namespace JA.eSIS.DB.Database
+namespace eSIS.Database.Core
 {
     public class SisContext : DbContext
     {
@@ -20,8 +20,8 @@ namespace JA.eSIS.DB.Database
 
         public bool AuditChanges { get; set; }
 
-        public SisContext(bool debugMode, string dbName)
-            : base($"name={dbName}")
+        public SisContext(bool debugMode)
+            : base($"name=SIS")
         {
             if (debugMode)
             {

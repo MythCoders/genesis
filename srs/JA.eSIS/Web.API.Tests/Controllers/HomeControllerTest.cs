@@ -1,8 +1,8 @@
 ﻿using System.Web.Mvc;
-using JA.eSIS.Web.API.Controllers;
+using eSIS.Web.API.Controllers;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace JA.eSIS.Web.API.Tests.Controllers
+namespace eSIS.Web.API.Tests.Controllers
 {
     [TestClass]
     public class HomeControllerTest

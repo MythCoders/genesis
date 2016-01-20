@@ -1,8 +1,8 @@
 using System.Web.Http;
 using System.Web.Mvc;
-using JA.eSIS.Web.API.Areas.HelpPage.App_Start;
+using eSIS.Web.API.Areas.HelpPage.App_Start;
 
-namespace JA.eSIS.Web.API.Areas.HelpPage
+namespace eSIS.Web.API.Areas.HelpPage
 {
     public class HelpPageAreaRegistration : AreaRegistration
     {

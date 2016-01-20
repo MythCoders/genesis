@@ -1,7 +1,7 @@
 using System;
 using System.Reflection;
 
-namespace JA.eSIS.Web.API.Areas.HelpPage.ModelDescriptions
+namespace eSIS.Web.API.Areas.HelpPage.ModelDescriptions
 {
     public interface IModelDocumentationProvider
     {

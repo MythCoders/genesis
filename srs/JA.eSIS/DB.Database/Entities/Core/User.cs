@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace JA.eSIS.DB.Database.Entities.Core
+namespace eSIS.Database.Core.Entities.Core
 {
     public partial class User : BaseEntity
     {

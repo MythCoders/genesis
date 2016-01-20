@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace JA.eSIS.DB.Database.Entities
+namespace eSIS.Database.Core.Entities
 {
     /// <summary>
     /// A School District is a grouping of schools. With schools being grouped into districts, this allows for an entire state to adopt eSIS! 

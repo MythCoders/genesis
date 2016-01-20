@@ -1,6 +1,6 @@
 ﻿using System.Web.Mvc;
 
-namespace JA.eSIS.Web.API.Controllers
+namespace eSIS.Web.API.Controllers
 {
     public class HomeController : Controller
     {

@@ -1,10 +1,10 @@
 using System;
 using System.Web.Http;
 using System.Web.Mvc;
-using JA.eSIS.Web.API.Areas.HelpPage.ModelDescriptions;
-using JA.eSIS.Web.API.Areas.HelpPage.Models;
+using eSIS.Web.API.Areas.HelpPage.ModelDescriptions;
+using eSIS.Web.API.Areas.HelpPage.Models;
 
-namespace JA.eSIS.Web.API.Areas.HelpPage.Controllers
+namespace eSIS.Web.API.Areas.HelpPage.Controllers
 {
     /// <summary>
     /// The controller that will handle requests for the help page.

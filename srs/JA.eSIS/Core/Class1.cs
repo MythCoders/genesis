@@ -1,4 +1,4 @@
-﻿namespace JA.eSIS.Core
+﻿namespace eSIS.Core
 {
     public class Class1
     {

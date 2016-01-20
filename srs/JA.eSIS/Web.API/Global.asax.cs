@@ -3,7 +3,7 @@ using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
 
-namespace JA.eSIS.Web.API
+namespace eSIS.Web.API
 {
     public class WebApiApplication : System.Web.HttpApplication
     {
@@ -14,6 +14,9 @@ namespace JA.eSIS.Web.API
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+
+            //Disable XML Formatting -- API should ALWAYS return Json
+            GlobalConfiguration.Configuration.Formatters.XmlFormatter.SupportedMediaTypes.Clear();
         }
     }
 }

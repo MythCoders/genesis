@@ -1,4 +1,4 @@
-﻿namespace JA.eSIS.Core.ThirdPartyUtilities
+﻿namespace eSIS.Core.ThirdPartyUtilities
 {
     public class Class1
     {

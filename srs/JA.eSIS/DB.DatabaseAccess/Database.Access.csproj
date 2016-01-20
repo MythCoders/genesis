@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{F785EEA0-27AD-4A29-ACD4-AE02E7CC8585}</ProjectGuid>
+    <ProjectGuid>{3318493B-EB9A-49D6-9EF3-AEBC43DFC945}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>JA.eSIS.DB.Database</RootNamespace>
-    <AssemblyName>JA.eSIS.DB.Database</AssemblyName>
+    <RootNamespace>eSIS.DB.DatabaseAccess</RootNamespace>
+    <AssemblyName>eSIS.DB.DatabaseAccess</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -41,7 +41,6 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Transactions" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -50,28 +49,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Entities\SchoolYear.cs" />
-    <Compile Include="SisContext.cs" />
-    <Compile Include="Entities\Address.cs" />
-    <Compile Include="Entities\BaseEntity.cs" />
-    <Compile Include="Entities\Core\Announcement.cs" />
-    <Compile Include="Entities\Core\DataHistory.cs" />
-    <Compile Include="Entities\Core\DataHistoryDetail.cs" />
-    <Compile Include="Entities\District.cs" />
-    <Compile Include="Entities\Core\Log.cs" />
-    <Compile Include="Entities\Core\LookUp.cs" />
-    <Compile Include="Entities\Core\ResetQuestion.cs" />
-    <Compile Include="Entities\Grade.cs" />
-    <Compile Include="Entities\School.cs" />
-    <Compile Include="Entities\Core\SystemSetting.cs" />
-    <Compile Include="Entities\Core\User.cs" />
-    <Compile Include="Entities\Core\UserPassword.cs" />
-    <Compile Include="Entities\Core\UserSalt.cs" />
+    <Compile Include="DistrictRepository.cs" />
+    <Compile Include="RepoCrud.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DB.Database\Database.Core.csproj">
+      <Project>{F785EEA0-27AD-4A29-ACD4-AE02E7CC8585}</Project>
+      <Name>Database.Core</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

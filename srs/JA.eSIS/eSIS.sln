@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core", "Core\Core.csproj", "{D22B4C57-ADF8-4CBB-9B6E-D4AE91E7153B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common.Core", "Core\Common.Core.csproj", "{D22B4C57-ADF8-4CBB-9B6E-D4AE91E7153B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DB.Database", "DB.Database\DB.Database.csproj", "{F785EEA0-27AD-4A29-ACD4-AE02E7CC8585}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Database.Core", "DB.Database\Database.Core.csproj", "{F785EEA0-27AD-4A29-ACD4-AE02E7CC8585}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DB.DatabaseAccess", "DB.DatabaseAccess\DB.DatabaseAccess.csproj", "{3318493B-EB9A-49D6-9EF3-AEBC43DFC945}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Database.Access", "DB.DatabaseAccess\Database.Access.csproj", "{3318493B-EB9A-49D6-9EF3-AEBC43DFC945}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Web.UI", "Web.UI\Web.UI.csproj", "{8CC49735-AB93-4FA9-BD15-0BDC28C63A02}"
 EndProject
@@ -15,7 +15,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Web.API", "Web.API\Web.API.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Web.API.Tests", "Web.API.Tests\Web.API.Tests.csproj", "{7A8AC1C8-884B-4555-8DB0-905509C3A5D7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core.ThirdPartyUtilities", "Core.ThirdPartyUtilities\Core.ThirdPartyUtilities.csproj", "{48E53F0E-543F-4BB1-A7A1-40B5F51245D9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common.Core.ThirdPartyUtilities", "Core.ThirdPartyUtilities\Common.Core.ThirdPartyUtilities.csproj", "{48E53F0E-543F-4BB1-A7A1-40B5F51245D9}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SolutionItems", "SolutionItems", "{69E1405E-DF98-447F-AAD3-5EACD81958E4}"
 EndProject

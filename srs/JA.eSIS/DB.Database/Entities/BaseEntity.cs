@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 //using System.Web.Mvc;
 
-namespace JA.eSIS.DB.Database.Entities
+namespace eSIS.Database.Core.Entities
 {
     /// <summary>
     /// All database entites, MUST inherit from this class.

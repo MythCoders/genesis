@@ -1,6 +1,6 @@
 ﻿using System.Web.Mvc;
 
-namespace JA.eSIS.Web.UI
+namespace eSIS.Web.UI
 {
     public class FilterConfig
     {

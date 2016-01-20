@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace JA.eSIS.DB.Database.Entities.Core
+namespace eSIS.Database.Core.Entities.Core
 {
     [Table("Log", Schema = "core")]
     public partial class Log : BaseEntity
