@@ -1,4 +1,5 @@
 ﻿using System.Web.Mvc;
+using eSIS.Core.API;
 
 namespace eSIS.Web.API
 {
@@ -6,7 +7,7 @@ namespace eSIS.Web.API
     {
         public static void RegisterGlobalFilters(GlobalFilterCollection filters)
         {
-            filters.Add(new HandleErrorAttribute());
+            filters.Add(new ErrorHandlerAttribute());
         }
     }
 }

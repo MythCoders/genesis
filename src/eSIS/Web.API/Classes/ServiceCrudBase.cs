@@ -1,60 +1,132 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Data.Entity;
+using System.Data.Entity.Infrastructure;
 using System.Linq;
+using System.Net;
+using System.Web.Http;
 using eSIS.Database;
 using eSIS.Database.Entities;
 
 namespace eSIS.Web.API.Classes
 {
-    public abstract class ServiceCrudBase<T>
+    public class ServiceCrudBase<T> : ApiController
         where T : BaseEntity
     {
-        public SisContext Database;
+        public readonly SisContext Database;
 
-        public ServiceCrudBase(string userName, string ipAddress)
+        public ServiceCrudBase()
         {
-            Database = new SisContext(userName, ipAddress);
+            Database = new SisContext();
         }
 
-        public ServiceCrudBase(SisContext context)
+        public IQueryable<T> GetAll()
         {
-            Database = context;
+            return Database.Set<T>();
         }
 
-        public virtual int Create(T item)
+        public IHttpActionResult Get(int id)
         {
+            var item = Database.Set<T>().Find(id);
+
+            if (item == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(item);
+        }
+
+        public IHttpActionResult GetBySystemCode(string code)
+        {
+            var item = Database.Set<T>().SingleOrDefault(p => p.SystemCode == code);
+
+            if (item == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(item);
+        }
+
+        // [ResponseType(typeof(void))]
+        public IHttpActionResult Put(int id, T item)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            if (id != item.Id)
+            {
+                return BadRequest();
+            }
+
+            Database.Entry(item).State = EntityState.Modified;
+
+            try
+            {
+                Database.SaveChanges();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!Exists(id))
+                {
+                    return NotFound();
+                }
+
+                throw;
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+
+            return StatusCode(HttpStatusCode.NoContent);
+        }
+
+        // [ResponseType(typeof(District))]
+        public IHttpActionResult Post(T item)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+            
             Database.Set<T>().Add(item);
             Database.SaveChanges();
-            return item.Id;
+
+            return CreatedAtRoute("DefaultApi", new { id = item.Id }, item);
         }
 
-        public virtual void Delete(int id)
+        // [ResponseType(typeof(District))]
+        public IHttpActionResult Delete(int id)
         {
-            var item = Get(id);
+            var item = Database.Set<T>().Find(id);
+
+            if (item == null)
+            {
+                return NotFound();
+            }
+
             Database.Set<T>().Remove(item);
             Database.SaveChanges();
+
+            return Ok(item);
         }
 
-        public virtual void Update(T item)
+        protected override void Dispose(bool disposing)
         {
-            //Mapper.CreateMap<T, T>();
-            //var currentItem = Get(item.Id);
-            //Mapper.Map(item, currentItem);
-            Database.SaveChanges();
+            if (disposing)
+            {
+                Database.Dispose();
+            }
+
+            base.Dispose(disposing);
         }
 
-        public virtual T Get(int id)
+        private bool Exists(int id)
         {
-            return Database.Set<T>().Find(id);
-        }
-
-        public virtual List<T> GetAll()
-        {
-            return Database.Set<T>().ToList();
-        }
-
-        public void Dispose()
-        {
-            Database.Dispose();
+            return Database.Set<T>().Count(e => e.Id == id) > 0;
         }
     }
 }
