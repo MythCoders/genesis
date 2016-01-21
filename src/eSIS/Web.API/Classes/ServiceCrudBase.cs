@@ -3,6 +3,7 @@ using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
+using System.Web;
 using System.Web.Http;
 using eSIS.Database;
 using eSIS.Database.Entities;
@@ -16,14 +17,29 @@ namespace eSIS.Web.API.Classes
 
         public ServiceCrudBase()
         {
-            Database = new SisContext();
+            var userName = string.Empty;
+            var ipAddress = string.Empty;
+
+            if (Request.Properties.ContainsKey("MS_HttpContext"))
+            {
+                var ctx = Request.Properties["MS_HttpContext"] as HttpContextWrapper;
+                if (ctx != null)
+                {
+                    ipAddress = ctx.Request.UserHostAddress;
+                    userName = ctx.Request.UserHostName;
+                }
+            }
+
+            Database = new SisContext(userName, ipAddress);
         }
 
+        [HttpGet]
         public IQueryable<T> GetAll()
         {
             return Database.Set<T>();
         }
 
+        [HttpGet]
         public IHttpActionResult Get(int id)
         {
             var item = Database.Set<T>().Find(id);
@@ -36,6 +52,7 @@ namespace eSIS.Web.API.Classes
             return Ok(item);
         }
 
+        [HttpGet]
         public IHttpActionResult GetBySystemCode(string code)
         {
             var item = Database.Set<T>().SingleOrDefault(p => p.SystemCode == code);
@@ -48,7 +65,7 @@ namespace eSIS.Web.API.Classes
             return Ok(item);
         }
 
-        // [ResponseType(typeof(void))]
+        [HttpPut]
         public IHttpActionResult Put(int id, T item)
         {
             if (!ModelState.IsValid)
@@ -84,7 +101,7 @@ namespace eSIS.Web.API.Classes
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // [ResponseType(typeof(District))]
+        [HttpPost]
         public IHttpActionResult Post(T item)
         {
             if (!ModelState.IsValid)
@@ -98,7 +115,7 @@ namespace eSIS.Web.API.Classes
             return CreatedAtRoute("DefaultApi", new { id = item.Id }, item);
         }
 
-        // [ResponseType(typeof(District))]
+        [HttpDelete]
         public IHttpActionResult Delete(int id)
         {
             var item = Database.Set<T>().Find(id);

@@ -6,7 +6,16 @@ namespace eSIS.Database.Entities.Core
     [Table("Log", Schema = "core")]
     public partial class Log : BaseEntity
     {
-        [Display(Name = "Message")]
+        [StringLength(60)]
+        public string UserIdentifer { get; set; }
+
+        [StringLength(250)]
+        public string UserAgentString { get; set; }
+
+        [StringLength(20)]
+        public string IpAddress { get; set; }
+
+        [StringLength(250)]
         public string Message { get; set; }
 
         [StringLength(int.MaxValue)]
@@ -16,12 +25,6 @@ namespace eSIS.Database.Entities.Core
         [StringLength(int.MaxValue)]
         [Display(Name = "Source")]
         public string Source { get; set; }
-
-        [Display(Name = "User name")]
-        public string UserName { get; set; }
-
-        [Display(Name = "IP Address")]
-        public string IpAddress { get; set; }
 
         [Required]
         [Display(Name = "Is Error?")]
