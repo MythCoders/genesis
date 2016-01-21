@@ -1,7 +1,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace eSIS.Database.Core.Entities
+namespace eSIS.Database.Entities
 {
     [Table("School", Schema = "sis")]
     public class School : BaseEntity

@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 
-namespace eSIS.Database.Core.Entities
+namespace eSIS.Database.Entities
 {
     /// <summary>
     /// All configurations are based on a single year. This allows for historical recording keeping

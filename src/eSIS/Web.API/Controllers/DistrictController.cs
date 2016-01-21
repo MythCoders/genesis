@@ -1,29 +1,115 @@
-﻿using System.Web.Http;
-using eSIS.Database.Core.Entities;
-using eSIS.DB.DatabaseAccess;
+﻿using System.Data.Entity;
+using System.Data.Entity.Infrastructure;
+using System.Linq;
+using System.Net;
+using System.Web.Http;
+using System.Web.Http.Description;
+using eSIS.Database;
+using eSIS.Database.Entities;
 
 namespace eSIS.Web.API.Controllers
 {
     public class DistrictController : ApiController
     {
-        private readonly DistrictRepository _repo;
+        private SisContext db = new SisContext();
 
-        public DistrictController()
+        // GET: api/District
+        public IQueryable<District> GetDistricts()
         {
-            //_repo = new DistrictRepository();
+            return db.Districts;
         }
 
-        public District Get(int id)
+        // GET: api/District/5
+        [ResponseType(typeof(District))]
+        public IHttpActionResult GetDistrict(int id)
         {
-            return new District
+            District district = db.Districts.Find(id);
+            if (district == null)
             {
-                SystemCode = "CCS",
-                Address = new Address
+                return NotFound();
+            }
+
+            return Ok(district);
+        }
+
+        // PUT: api/District/5
+        [ResponseType(typeof(void))]
+        public IHttpActionResult PutDistrict(int id, District district)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            if (id != district.Id)
+            {
+                return BadRequest();
+            }
+
+            db.Entry(district).State = EntityState.Modified;
+
+            try
+            {
+                db.SaveChanges();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!DistrictExists(id))
                 {
-                    
-                },
-                LongName = "Columbus City Schools"
-            };
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+
+            return StatusCode(HttpStatusCode.NoContent);
+        }
+
+        // POST: api/District
+        [ResponseType(typeof(District))]
+        public IHttpActionResult PostDistrict(District district)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            db.Districts.Add(district);
+            db.SaveChanges();
+
+            return CreatedAtRoute("DefaultApi", new { id = district.Id }, district);
+        }
+
+        // DELETE: api/District/5
+        [ResponseType(typeof(District))]
+        public IHttpActionResult DeleteDistrict(int id)
+        {
+            District district = db.Districts.Find(id);
+            if (district == null)
+            {
+                return NotFound();
+            }
+
+            db.Districts.Remove(district);
+            db.SaveChanges();
+
+            return Ok(district);
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                db.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        private bool DistrictExists(int id)
+        {
+            return db.Districts.Count(e => e.Id == id) > 0;
         }
     }
 }

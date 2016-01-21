@@ -7,8 +7,8 @@
     <ProjectGuid>{F785EEA0-27AD-4A29-ACD4-AE02E7CC8585}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>eSIS.Database.Core</RootNamespace>
-    <AssemblyName>eSIS.Database.Core</AssemblyName>
+    <RootNamespace>eSIS.Database</RootNamespace>
+    <AssemblyName>eSIS.Database</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -50,21 +50,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CustomDbContext.cs" />
     <Compile Include="Entities\SchoolType.cs" />
     <Compile Include="Entities\SchoolYear.cs" />
-    <Compile Include="Migrations\201601210225027_FirstUpdate.cs" />
-    <Compile Include="Migrations\201601210225027_FirstUpdate.Designer.cs">
-      <DependentUpon>201601210225027_FirstUpdate.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="RepoCrud.cs" />
     <Compile Include="SisContext.cs" />
     <Compile Include="Entities\Address.cs" />
     <Compile Include="Entities\BaseEntity.cs" />
     <Compile Include="Entities\Core\Announcement.cs" />
-    <Compile Include="Entities\Core\DataHistory.cs" />
-    <Compile Include="Entities\Core\DataHistoryDetail.cs" />
+    <Compile Include="Entities\Core\DataAudit.cs" />
+    <Compile Include="Entities\Core\DataAuditDetail.cs" />
     <Compile Include="Entities\District.cs" />
     <Compile Include="Entities\Core\Log.cs" />
     <Compile Include="Entities\Core\LookUp.cs" />
@@ -80,11 +74,6 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201601210225027_FirstUpdate.resx">
-      <DependentUpon>201601210225027_FirstUpdate.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

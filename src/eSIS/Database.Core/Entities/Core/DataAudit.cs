@@ -3,19 +3,19 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace eSIS.Database.Core.Entities.Core
+namespace eSIS.Database.Entities.Core
 {
-    [Table("DataHistory", Schema = "core")]
-    public partial class DataHistory : BaseEntity
+    [Table("DataAudit", Schema = "core")]
+    public partial class DataAudit : BaseEntity
     {
         [Required]
         public string Action { get; set; }
 
         [Required]
-        public string LoggedTable { get; set; }
+        public string Table { get; set; }
 
         [Required]
-        public int Key { get; set; }
+        public int RecordId { get; set; }
 
         [Required]
         public string UserName { get; set; }
@@ -37,6 +37,6 @@ namespace eSIS.Database.Core.Entities.Core
         /// This will allow for smaller, more frequent trips to the database rather than large, less frequent trips
         /// where we might not need all of the information that was returned
         /// </remarks>
-        public virtual ICollection<DataHistoryDetail> Details { get; set; }
+        public virtual ICollection<DataAuditDetail> Details { get; set; }
     }
 }
