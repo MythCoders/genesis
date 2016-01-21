@@ -16,13 +16,13 @@ namespace eSIS.Web.API.Controllers
         public District Get(int id)
         {
             return new District
-            { 
-                ShortCode = "CCS",
+            {
+                SystemCode = "CCS",
                 Address = new Address
                 {
                     
                 },
-                Name = "Columbus City Schools"
+                LongName = "Columbus City Schools"
             };
         }
     }

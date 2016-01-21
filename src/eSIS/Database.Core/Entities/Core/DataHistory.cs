@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace eSIS.Database.Core.Entities.Core
 {
-    [Table("DataHistory", Schema = "cor")]
+    [Table("DataHistory", Schema = "core")]
     public partial class DataHistory : BaseEntity
     {
         [Required]

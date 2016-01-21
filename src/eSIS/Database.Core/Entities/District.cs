@@ -10,14 +10,15 @@ namespace eSIS.Database.Core.Entities
     [Table("District", Schema = "sis")]
     public class District : BaseEntity
     {
+        [MaxLength(5)]
+        [Index("IX_DistrictSystemCode", IsUnique = true)]
+        public string SystemCode { get; set; }
+
         [MaxLength(45)]
         public string Name { get; set; }
 
-        [MaxLength(3)]
-        [Index(IsUnique = true)]
-        public string ShortCode { get; set; }
+        public int AddressId { get; set; }
 
-        //[InverseProperty("")]
         public virtual Address Address { get; set; }
 
         public virtual List<School> Schools { get; set; } 

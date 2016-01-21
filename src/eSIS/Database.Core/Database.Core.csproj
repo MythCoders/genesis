@@ -51,7 +51,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CustomDbContext.cs" />
+    <Compile Include="Entities\SchoolType.cs" />
     <Compile Include="Entities\SchoolYear.cs" />
+    <Compile Include="Migrations\201601210225027_FirstUpdate.cs" />
+    <Compile Include="Migrations\201601210225027_FirstUpdate.Designer.cs">
+      <DependentUpon>201601210225027_FirstUpdate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="RepoCrud.cs" />
     <Compile Include="SisContext.cs" />
     <Compile Include="Entities\Address.cs" />
@@ -74,6 +80,11 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201601210225027_FirstUpdate.resx">
+      <DependentUpon>201601210225027_FirstUpdate.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

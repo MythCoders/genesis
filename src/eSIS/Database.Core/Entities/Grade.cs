@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace eSIS.Database.Core.Entities
 {
@@ -9,11 +10,19 @@ namespace eSIS.Database.Core.Entities
     [Table("Grade", Schema = "sis")]
     public class Grade : BaseEntity
     {
-        public string LongName { get; set; }
-        public string ShortName { get; set; }
-        public int PreviousGradeId { get; set; }
-        public int NextGradeId { get; set; }
+        [MaxLength(5)]
+        [Index("IX_GradeSystemCode", IsUnique = true)]
+        public string SystemCode { get; set; }
+
+        [MaxLength(45)]
+        public string Name { get; set; }
+
+        public int? PreviousGradeId { get; set; }
+        
+        public int? NextGradeId { get; set; }
+
         public virtual Grade PreviousGrade { get; set; }
+
         public virtual Grade NextGrade { get; set; }
     }
 }
