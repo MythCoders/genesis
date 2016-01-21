@@ -2,12 +2,9 @@
 
 namespace eSIS.Database.Entities
 {
-    public class Student
+    public class Student : BaseEntity
     {
         public int AddressId { get; set; }
-
-        [MaxLength(12)]
-        public string StudentId { get; set; }
 
         [MaxLength(45)]
         public string FirstName { get; set; }

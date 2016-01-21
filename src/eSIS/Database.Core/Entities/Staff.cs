@@ -2,12 +2,9 @@ using System.ComponentModel.DataAnnotations;
 
 namespace eSIS.Database.Entities
 {
-    public class Staff
+    public class Staff : BaseEntity
     {
         public int AddressId { get; set; }
-
-        [MaxLength(12)]
-        public string EmployeeId { get; set; }
 
         [MaxLength(45)]
         public string FirstName { get; set; }

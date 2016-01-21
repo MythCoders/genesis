@@ -6,10 +6,6 @@ namespace eSIS.Database.Entities
     [Table("School", Schema = "sis")]
     public class School : BaseEntity
     {
-        [MaxLength(5)]
-        [Index("IX_SchoolSystemCode", IsUnique = true)]
-        public string SystemCode { get; set; }
-
         [MaxLength(45)]
         public string Name { get; set; }
 

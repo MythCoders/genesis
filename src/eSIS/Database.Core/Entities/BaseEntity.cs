@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 //using System.Web.Mvc;
 
@@ -18,6 +19,10 @@ namespace eSIS.Database.Entities
         [Key]
         //[HiddenInput(DisplayValue = false)]
         public int Id { get; set; }
+
+        [MaxLength(10)]
+        [Index]
+        public string SystemCode { get; set; }
 
         /// <summary>
         /// User who created the record

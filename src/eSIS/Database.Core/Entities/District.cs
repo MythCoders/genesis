@@ -10,10 +10,6 @@ namespace eSIS.Database.Entities
     [Table("District", Schema = "sis")]
     public class District : BaseEntity
     {
-        [MaxLength(5)]
-        [Index("IX_DistrictSystemCode", IsUnique = true)]
-        public string SystemCode { get; set; }
-
         [MaxLength(45)]
         public string Name { get; set; }
 
