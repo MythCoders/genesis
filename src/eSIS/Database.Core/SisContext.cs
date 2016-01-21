@@ -67,10 +67,14 @@ namespace eSIS.Database
         #endregion
 
         public DbSet<Address> Addresses { get; set; }
+        public DbSet<Course> Courses { get; set; }
         public DbSet<District> Districts { get; set; }
+        public DbSet<EnrollmentCode> EnrollmentCodes { get; set; }
         public DbSet<School> Schools { get; set; }
         public DbSet<SchoolType> SchoolTypes { get; set; }
         public DbSet<Grade> Grades { get; set; }
+        public DbSet<Student> Students { get; set; }
+        public DbSet<Staff> Staff { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
