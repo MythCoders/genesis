@@ -1,9 +1,9 @@
-﻿using eSIS.Database.Entities;
+﻿using eSIS.Core.Entities;
 using eSIS.Web.API.Classes;
 
 namespace eSIS.Web.API.Controllers
 {
-    public class DistrictController : ServiceCrudBase<District>
+    public class DistrictController : ServiceCrudBaseWithPaging<District>
     {
         
     }

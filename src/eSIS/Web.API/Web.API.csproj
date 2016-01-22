@@ -44,13 +44,11 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+    <Reference Include="EntityFramework">
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
-      <Private>True</Private>
     </Reference>
-    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="Kendo.Mvc">
+      <HintPath>..\Core.ThirdPartyUtilities\Kendo.Mvc.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
@@ -165,7 +163,9 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
+    <Compile Include="Classes\LoggingHandler.cs" />
     <Compile Include="Classes\ServiceCrudBase.cs" />
+    <Compile Include="Classes\ServiceCrudBaseWithPaging.cs" />
     <Compile Include="Controllers\DistrictController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
@@ -225,12 +225,12 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Core\Common.Core.csproj">
-      <Project>{d22b4c57-adf8-4cbb-9b6e-d4ae91e7153b}</Project>
+      <Project>{D22B4C57-ADF8-4CBB-9B6E-D4AE91E7153B}</Project>
       <Name>Common.Core</Name>
     </ProjectReference>
     <ProjectReference Include="..\Database.Core\Database.csproj">
       <Project>{f785eea0-27ad-4a29-acd4-ae02e7cc8585}</Project>
-      <Name>Database</Name>
+      <Name>Database.Core</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
@@ -255,11 +255,11 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>False</UseIIS>
+          <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>13145</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:13145/</IISUrl>
+          <IISUrl>http://localhost:13001/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

@@ -1,4 +1,6 @@
 ﻿using System.Web.Mvc;
+using eSIS.Core.Classes;
+using eSIS.Core.Entities;
 
 namespace eSIS.Web.UI.Controllers
 {
@@ -6,6 +8,9 @@ namespace eSIS.Web.UI.Controllers
     {
         public ActionResult Index()
         {
+            var client = new WebApiClient();
+            var data = client.MakeGetRequest("");
+            var foo = client.DeseralizeObject<District>(data.Result);
             return View();
         }
 
