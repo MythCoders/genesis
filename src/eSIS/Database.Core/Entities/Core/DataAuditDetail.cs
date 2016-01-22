@@ -1,10 +1,10 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace eSIS.Database.Core.Entities.Core
+namespace eSIS.Database.Entities.Core
 {
-    [Table("DataHistoryDetail", Schema = "core")]
-    public partial class DataHistoryDetail : BaseEntity
+    [Table("DataAuditDetail", Schema = "core")]
+    public partial class DataAuditDetail : BaseEntity
     {
         /// <summary>
         /// When foreign keys are named properly, it allows
@@ -16,7 +16,7 @@ namespace eSIS.Database.Core.Entities.Core
         /// of the child table declared.
         /// </warning>
         [Required]
-        public int DataHistoryId { get; set; }
+        public int DataAuditId { get; set; }
 
         [Required]
         [StringLength(50)]

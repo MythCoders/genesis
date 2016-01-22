@@ -1,7 +1,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace eSIS.Database.Core.Entities.Core
+namespace eSIS.Database.Entities.Core
 {
     [Table("LookUp", Schema = "core")]
     public partial class LookUp : BaseEntity

@@ -1,9 +1,10 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 //using System.Web.Mvc;
 
-namespace eSIS.Database.Core.Entities
+namespace eSIS.Database.Entities
 {
     /// <summary>
     /// All database entites, MUST inherit from this class.
@@ -18,6 +19,10 @@ namespace eSIS.Database.Core.Entities
         [Key]
         //[HiddenInput(DisplayValue = false)]
         public int Id { get; set; }
+
+        [MaxLength(10)]
+        [Index]
+        public string SystemCode { get; set; }
 
         /// <summary>
         /// User who created the record

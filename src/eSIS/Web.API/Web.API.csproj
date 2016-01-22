@@ -222,7 +222,7 @@
       <Project>{3318493b-eb9a-49d6-9ef3-aebc43dfc945}</Project>
       <Name>Database.Access</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Database.Core\Database.Core.csproj">
+    <ProjectReference Include="..\Database.Core\Database.csproj">
       <Project>{f785eea0-27ad-4a29-acd4-ae02e7cc8585}</Project>
       <Name>Database.Core</Name>
     </ProjectReference>

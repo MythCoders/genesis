@@ -5,7 +5,7 @@ using eSIS.Database.Core.Entities;
 
 namespace eSIS.DB.DatabaseAccess
 {
-    public class SchoolRepository : RepoCrud<School, SisContext>
+    public class SchoolRepository : RepositoryCrudBase<School, SisContext>
     {
         public SchoolRepository()
             : base(new SisContext())

@@ -3,12 +3,11 @@ using eSIS.Database.Core.Entities;
 
 namespace eSIS.DB.DatabaseAccess
 {
-    public class DistrictRepository : RepoCrud<District, SisContext>
+    public class DistrictRepository : RepositoryCrudBase<District, SisContext>
     {
-        public DistrictRepository() 
-            : base(new SisContext())
+        public DistrictRepository()
         {
-
+            
         }
     }
 }
