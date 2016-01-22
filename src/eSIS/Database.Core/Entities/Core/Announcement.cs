@@ -2,10 +2,10 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace eSIS.Core.Entities.Infrastructure
+namespace eSIS.Database.Entities.Core
 {
-    [Table("Announcement", Schema = "inf")]
-    public class Announcement : BaseEntity
+    [Table("Announcement", Schema = "core")]
+    public partial class Announcement : BaseEntity
     {
         [Required]
         [StringLength(50)]

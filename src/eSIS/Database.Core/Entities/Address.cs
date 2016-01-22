@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace eSIS.Core.Entities.SIS
+namespace eSIS.Database.Entities
 {
     /// <summary>
     /// Represents a physical mailing address and some 

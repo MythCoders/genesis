@@ -1,7 +1,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace eSIS.Core.Entities.SIS
+namespace eSIS.Database.Entities
 {
     /// <summary>
     /// A type of school. Ex: Elementary, Middle School, High School

@@ -50,22 +50,34 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Entities\Course.cs" />
+    <Compile Include="Entities\EnrollmentCode.cs" />
+    <Compile Include="Entities\SchoolType.cs" />
+    <Compile Include="Entities\SchoolYear.cs" />
+    <Compile Include="Entities\Staff.cs" />
+    <Compile Include="Entities\Student.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="SisContext.cs" />
+    <Compile Include="Entities\Address.cs" />
+    <Compile Include="Entities\BaseEntity.cs" />
+    <Compile Include="Entities\Core\Announcement.cs" />
+    <Compile Include="Entities\Core\DataAudit.cs" />
+    <Compile Include="Entities\Core\DataAuditDetail.cs" />
+    <Compile Include="Entities\District.cs" />
+    <Compile Include="Entities\Core\Log.cs" />
+    <Compile Include="Entities\Core\LookUp.cs" />
+    <Compile Include="Entities\Core\ResetQuestion.cs" />
+    <Compile Include="Entities\Grade.cs" />
+    <Compile Include="Entities\School.cs" />
+    <Compile Include="Entities\Core\SystemSetting.cs" />
+    <Compile Include="Entities\Core\User.cs" />
+    <Compile Include="Entities\Core\UserPassword.cs" />
+    <Compile Include="Entities\Core\UserSalt.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Entities\Core\" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Core\Common.Core.csproj">
-      <Project>{d22b4c57-adf8-4cbb-9b6e-d4ae91e7153b}</Project>
-      <Name>Common.Core</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

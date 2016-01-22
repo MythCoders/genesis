@@ -1,8 +1,8 @@
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
-namespace eSIS.Core.Entities.SIS
+namespace eSIS.Database.Entities
 {
-    public class Staff : BaseEntity
+    public class Student : BaseEntity
     {
         public int AddressId { get; set; }
 
@@ -19,5 +19,15 @@ namespace eSIS.Core.Entities.SIS
         public char Sex { get; set; }
 
         public virtual Address Address { get; set; }
+
+        public bool IsFemale()
+        {
+            return !IsMale();
+        }
+
+        public bool IsMale()
+        {
+            return Sex == 'M';
+        }
     }
 }

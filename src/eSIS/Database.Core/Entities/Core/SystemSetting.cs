@@ -1,10 +1,10 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace eSIS.Core.Entities.Infrastructure
+namespace eSIS.Database.Entities.Core
 {
-    [Table("SystemSetting", Schema = "inf")]
-    public class SystemSetting : BaseEntity
+    [Table("SystemSetting", Schema = "core")]
+    public partial class SystemSetting : BaseEntity
     {
         [Required]
         [StringLength(100)]

@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace eSIS.Core.Entities.SIS
+namespace eSIS.Database.Entities
 {
     public class EnrollmentCode : BaseEntity
     {

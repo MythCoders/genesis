@@ -7,8 +7,8 @@ using System.Data.Entity.Validation;
 using System.Diagnostics;
 using System.Linq;
 using System.Transactions;
-using eSIS.Core.Entities.Infrastructure;
-using eSIS.Core.Entities.SIS;
+using eSIS.Database.Entities;
+using eSIS.Database.Entities.Core;
 
 namespace eSIS.Database
 {
@@ -62,7 +62,7 @@ namespace eSIS.Database
 
         public DbSet<Announcement> Announcements { get; set; }
 
-        public DbSet<SystemLookUp> LookUps { get; set; }
+        public DbSet<LookUp> LookUps { get; set; }
 
         #endregion
 

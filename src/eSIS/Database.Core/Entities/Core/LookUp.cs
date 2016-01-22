@@ -1,14 +1,14 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace eSIS.Core.Entities.Infrastructure
+namespace eSIS.Database.Entities.Core
 {
-    [Table("SystemLookUp", Schema = "inf")]
-    public class SystemLookUp : BaseEntity
+    [Table("LookUp", Schema = "core")]
+    public partial class LookUp : BaseEntity
     {
         [Required]
         [StringLength(100)]
-        public string LookUpKey { get; set; }
+        public string Group { get; set; }
 
         [Required]
         [StringLength(1000)]

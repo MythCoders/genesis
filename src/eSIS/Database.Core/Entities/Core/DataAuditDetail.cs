@@ -1,10 +1,10 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace eSIS.Core.Entities.Infrastructure
+namespace eSIS.Database.Entities.Core
 {
-    [Table("DataAuditDetail", Schema = "inf")]
-    public class DataAuditDetail : BaseEntity
+    [Table("DataAuditDetail", Schema = "core")]
+    public partial class DataAuditDetail : BaseEntity
     {
         /// <summary>
         /// When foreign keys are named properly, it allows

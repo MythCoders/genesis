@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace eSIS.Core.Entities.Infrastructure
+namespace eSIS.Database.Entities.Core
 {
-    [Table("User", Schema = "inf")]
-    public class User : BaseEntity
+    [Table("User", Schema = "core")]
+    public partial class User : BaseEntity
     {
         [Required]
         public string EmailAddress { get; set; }

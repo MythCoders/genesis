@@ -4,8 +4,8 @@ using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
 using System.Web.Http;
-using eSIS.Core.Entities;
 using eSIS.Database;
+using eSIS.Database.Entities;
 
 namespace eSIS.Web.API.Classes
 {

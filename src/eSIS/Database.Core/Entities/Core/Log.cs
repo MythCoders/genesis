@@ -1,10 +1,10 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace eSIS.Core.Entities.Infrastructure
+namespace eSIS.Database.Entities.Core
 {
-    [Table("Log", Schema = "inf")]
-    public class Log : BaseEntity
+    [Table("Log", Schema = "core")]
+    public partial class Log : BaseEntity
     {
         [Display(Name = "Message")]
         public string Message { get; set; }

@@ -1,10 +1,10 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace eSIS.Core.Entities.Infrastructure
+namespace eSIS.Database.Entities.Core
 {
-    [Table("ResetQuestion", Schema = "inf")]
-    public class ResetQuestion : BaseEntity
+    [Table("ResetQuestion", Schema = "core")]
+    public partial class ResetQuestion : BaseEntity
     {
         [Required]
         [Display(Name = "Question Text")]

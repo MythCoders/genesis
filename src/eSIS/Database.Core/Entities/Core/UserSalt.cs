@@ -2,9 +2,9 @@ using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace eSIS.Core.Entities.Infrastructure
+namespace eSIS.Database.Entities.Core
 {
-    [Table("UserSalt", Schema = "inf")]
+    [Table("UserSalt", Schema = "core")]
     public class UserSalt : BaseEntity
     {
         [Required]
