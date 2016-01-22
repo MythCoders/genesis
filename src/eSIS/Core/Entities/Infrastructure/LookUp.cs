@@ -1,10 +1,10 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace eSIS.Database.Entities.Core
+namespace eSIS.Core.Entities.Infrastructure
 {
-    [Table("LookUp", Schema = "core")]
-    public partial class LookUp : BaseEntity
+    [Table("LookUp", Schema = "inf")]
+    public class LookUp : BaseEntity
     {
         [Required]
         [StringLength(100)]

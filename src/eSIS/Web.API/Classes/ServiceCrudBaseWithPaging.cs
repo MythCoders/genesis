@@ -1,4 +1,4 @@
-﻿using eSIS.Database.Entities;
+﻿using eSIS.Core.Entities;
 using Kendo.Mvc.Extensions;
 using Kendo.Mvc.UI;
 

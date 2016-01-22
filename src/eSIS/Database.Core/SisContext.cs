@@ -7,8 +7,8 @@ using System.Data.Entity.Validation;
 using System.Diagnostics;
 using System.Linq;
 using System.Transactions;
-using eSIS.Database.Entities;
-using eSIS.Database.Entities.Core;
+using eSIS.Core.Entities;
+using eSIS.Core.Entities.Infrastructure;
 
 namespace eSIS.Database
 {

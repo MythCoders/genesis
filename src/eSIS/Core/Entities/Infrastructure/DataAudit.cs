@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace eSIS.Core.Entities.Core
+namespace eSIS.Core.Entities.Infrastructure
 {
-    [Table("DataAudit", Schema = "core")]
-    public partial class DataAudit : BaseEntity
+    [Table("DataAudit", Schema = "inf")]
+    public class DataAudit : BaseEntity
     {
         [Required]
         public string Action { get; set; }
