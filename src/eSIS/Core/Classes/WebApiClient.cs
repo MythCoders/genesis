@@ -10,7 +10,7 @@ namespace eSIS.Core.Classes
 {
     public class WebApiClient
     {
-        public static async Task<HttpContent> MakeGetRequest(string url)
+        public async Task<HttpContent> MakeGetRequest(string url)
         {
             if (string.IsNullOrWhiteSpace(url))
             {
@@ -31,7 +31,7 @@ namespace eSIS.Core.Classes
             return response.Content;
         }
 
-        public static async Task<HttpContent> MakePostRequest(string url, IEnumerable<KeyValuePair<string, string>> postData)
+        public async Task<HttpContent> MakePostRequest(string url, IEnumerable<KeyValuePair<string, string>> postData)
         {
             if (string.IsNullOrWhiteSpace(url))
             {
@@ -53,7 +53,7 @@ namespace eSIS.Core.Classes
 
         }
 
-        public static async Task<T> DeseralizeObject<T>(HttpContent content)
+        public async Task<T> DeseralizeObject<T>(HttpContent content)
         {
             // NOTE!! We are really careful not to use a string here so we don't have to allocate a huge string.
             var inputStream = await content.ReadAsStreamAsync();

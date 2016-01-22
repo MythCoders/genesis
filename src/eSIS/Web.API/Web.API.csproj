@@ -47,6 +47,9 @@
     <Reference Include="EntityFramework">
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
+    <Reference Include="Kendo.Mvc">
+      <HintPath>..\Core.ThirdPartyUtilities\Kendo.Mvc.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
       <Private>True</Private>
@@ -160,6 +163,9 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
+    <Compile Include="Classes\LoggingHandler.cs" />
+    <Compile Include="Classes\ServiceCrudBase.cs" />
+    <Compile Include="Classes\ServiceCrudBaseWithPaging.cs" />
     <Compile Include="Controllers\DistrictController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
@@ -218,9 +224,9 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Database.Access\Database.Access.csproj">
-      <Project>{3318493b-eb9a-49d6-9ef3-aebc43dfc945}</Project>
-      <Name>Database.Access</Name>
+    <ProjectReference Include="..\Core\Common.Core.csproj">
+      <Project>{D22B4C57-ADF8-4CBB-9B6E-D4AE91E7153B}</Project>
+      <Name>Common.Core</Name>
     </ProjectReference>
     <ProjectReference Include="..\Database.Core\Database.csproj">
       <Project>{f785eea0-27ad-4a29-acd4-ae02e7cc8585}</Project>
