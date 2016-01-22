@@ -4,13 +4,13 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 //using System.Web.Mvc;
 
-namespace eSIS.Database.Entities
+namespace eSIS.Core.Entities
 {
     /// <summary>
-    /// All database entites, MUST inherit from this class.
+    /// All database entities, MUST inherit from this class.
     /// This will ensure every record can be tracked the same
     /// </summary>
-    public abstract partial class BaseEntity
+    public abstract class BaseEntity
     {
         /// <summary>
         /// Primary key for record

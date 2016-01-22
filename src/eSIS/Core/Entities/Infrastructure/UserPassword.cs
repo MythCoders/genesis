@@ -2,9 +2,9 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace eSIS.Database.Entities.Core
+namespace eSIS.Core.Entities.Infrastructure
 {
-    [Table("UserPassword", Schema = "core")]
+    [Table("UserPassword", Schema = "inf")]
     public class UserPassword : BaseEntity
     {
         [Required]
