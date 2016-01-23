@@ -2,7 +2,7 @@
 using Kendo.Mvc.Extensions;
 using Kendo.Mvc.UI;
 
-namespace eSIS.Web.API.Classes
+namespace eSIS.Core.API
 {
     public class ServiceCrudBaseWithPaging<T> : ServiceCrudBase<T>
         where T : BaseEntity

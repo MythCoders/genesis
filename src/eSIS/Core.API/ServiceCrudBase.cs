@@ -8,7 +8,7 @@ using System.Web.Http;
 using eSIS.Core.Entities;
 using eSIS.Database;
 
-namespace eSIS.Web.API.Classes
+namespace eSIS.Core.API
 {
     public class ServiceCrudBase<T> : ApiController
         where T : BaseEntity
@@ -33,13 +33,13 @@ namespace eSIS.Web.API.Classes
             Database = new SisContext(userName, ipAddress);
         }
 
-        [HttpGet]
+        [System.Web.Mvc.HttpGet]
         public IQueryable<T> GetAll()
         {
             return Database.Set<T>();
         }
 
-        [HttpGet]
+        [System.Web.Mvc.HttpGet]
         public IHttpActionResult Get(int id)
         {
             var item = Database.Set<T>().Find(id);
@@ -52,7 +52,7 @@ namespace eSIS.Web.API.Classes
             return Ok(item);
         }
 
-        [HttpGet]
+        [System.Web.Mvc.HttpGet]
         public IHttpActionResult GetBySystemCode(string code)
         {
             var item = Database.Set<T>().SingleOrDefault(p => p.SystemCode == code);
@@ -65,7 +65,7 @@ namespace eSIS.Web.API.Classes
             return Ok(item);
         }
 
-        [HttpPut]
+        [System.Web.Mvc.HttpPut]
         public IHttpActionResult Put(int id, T item)
         {
             if (!ModelState.IsValid)
@@ -101,7 +101,7 @@ namespace eSIS.Web.API.Classes
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        [HttpPost]
+        [System.Web.Mvc.HttpPost]
         public IHttpActionResult Post(T item)
         {
             if (!ModelState.IsValid)
@@ -115,7 +115,7 @@ namespace eSIS.Web.API.Classes
             return CreatedAtRoute("DefaultApi", new { id = item.Id }, item);
         }
 
-        [HttpDelete]
+        [System.Web.Mvc.HttpDelete]
         public IHttpActionResult Delete(int id)
         {
             var item = Database.Set<T>().Find(id);

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Configuration;
 using System.Collections.Generic;
 using System.IO;
 using System.Net;
@@ -10,23 +11,30 @@ namespace eSIS.Core.UI
 {
     public class WebApiClient
     {
-        public async Task<HttpContent> MakeGetRequest(string url)
+        private readonly HttpClient _client;
+
+        public WebApiClient()
+        {
+            _client = new HttpClient();
+            
+            _client.DefaultRequestHeaders.Add("ClientAuthKey", ConfigurationManager.AppSettings["ApiAuthKey"]);
+            _client.DefaultRequestHeaders.Add("RequestId", GetRequestId());
+            _client.DefaultRequestHeaders.Add("User-Agent", "eSIS");
+        }
+
+        public async Task<HttpContent> MakeGetRequest(string url, IEnumerable<KeyValuePair<string, string>> getData)
         {
             if (string.IsNullOrWhiteSpace(url))
             {
-                throw new Exception("The URL is null!");
+                throw new ArgumentException(nameof(url));
             }
 
-            var request = new HttpClient();
-            var response = await request.GetAsync(new Uri(url, UriKind.Absolute));
+            //TODO: Finish this
+            var callUri = new Uri(url, UriKind.Absolute);
+            var content = new FormUrlEncodedContent(getData);
+            var response = await _client.GetAsync(callUri, HttpCompletionOption.ResponseHeadersRead);
 
-            if (response.StatusCode == HttpStatusCode.ServiceUnavailable ||
-                response.StatusCode == HttpStatusCode.BadGateway ||
-                response.StatusCode == HttpStatusCode.GatewayTimeout ||
-                response.StatusCode == HttpStatusCode.InternalServerError)
-            {
-                throw new Exception("Bad response!");
-            }
+            ProcessRequest(response);
 
             return response.Content;
         }
@@ -35,23 +43,16 @@ namespace eSIS.Core.UI
         {
             if (string.IsNullOrWhiteSpace(url))
             {
-                throw new Exception("The URL is null!");
+                throw new ArgumentException(nameof(url));
             }
-
-            var request = new HttpClient();
-
-            var response = await request.PostAsJsonAsync(new Uri(url, UriKind.Absolute), postData);
             
-            if (response.StatusCode == HttpStatusCode.ServiceUnavailable ||
-              response.StatusCode == HttpStatusCode.BadGateway ||
-              response.StatusCode == HttpStatusCode.GatewayTimeout ||
-              response.StatusCode == HttpStatusCode.InternalServerError)
-            {
-                throw new Exception("Bad response!");
-            }
+            var callUri = new Uri(url, UriKind.Absolute);
+            var content = new FormUrlEncodedContent(postData);
+            var response = await _client.PostAsync(callUri, content);
+
+            ProcessRequest(response);
 
             return response.Content;
-
         }
 
         public async Task<T> DeseralizeObject<T>(HttpContent content)
@@ -66,6 +67,24 @@ namespace eSIS.Core.UI
                 var serializer = new JsonSerializer();
                 var jsonObject = await Task.Run(() => serializer.Deserialize<T>(jsonReader));
                 return jsonObject;
+            }
+        }
+
+        /// <summary>
+        /// Generates a unique id for a request to the Api. This can then be tracked
+        /// in the Api
+        /// </summary>
+        /// <returns></returns>
+        private static string GetRequestId()
+        {
+            return $"{Guid.NewGuid()}_{"machine_information"}_{DateTime.Now.ToString("G")}";
+        }
+
+        private static void ProcessRequest(HttpResponseMessage response)
+        {
+            if (response.StatusCode.IsIn(HttpStatusCode.ServiceUnavailable, HttpStatusCode.BadGateway, HttpStatusCode.GatewayTimeout, HttpStatusCode.InternalServerError))
+            {
+                throw new Exception("Bad data");
             }
         }
     }

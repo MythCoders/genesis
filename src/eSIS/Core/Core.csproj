@@ -116,6 +116,7 @@
     <Compile Include="Entities\SchoolYear.cs" />
     <Compile Include="Entities\Staff.cs" />
     <Compile Include="Entities\Student.cs" />
+    <Compile Include="ExtensionMethods.cs" />
     <Compile Include="NLogger.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -1,6 +1,8 @@
-﻿using System.Web.Mvc;
+﻿using System.Collections.Generic;
+using System.Web.Mvc;
 using eSIS.Core.Classes;
 using eSIS.Core.Entities;
+using eSIS.Core.UI;
 
 namespace eSIS.Web.UI.Controllers
 {
@@ -9,7 +11,7 @@ namespace eSIS.Web.UI.Controllers
         public ActionResult Index()
         {
             var client = new WebApiClient();
-            var data = client.MakeGetRequest("");
+            var data = client.MakeGetRequest("", new KeyValuePair<string, string>[] {});
             var foo = client.DeseralizeObject<District>(data.Result);
             return View();
         }

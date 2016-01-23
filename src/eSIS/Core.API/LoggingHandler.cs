@@ -3,7 +3,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace eSIS.Web.API.Classes
+namespace eSIS.Core.API
 {
     public class LoggingHandler : DelegatingHandler
     {
