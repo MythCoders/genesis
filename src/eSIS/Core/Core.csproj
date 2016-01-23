@@ -93,11 +93,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="API\ErrorHandlerAttribute.cs" />
-    <Compile Include="API\ApiError.cs" />
     <Compile Include="Classes\Url.cs" />
     <Compile Include="Classes\UrlBuilder.cs" />
-    <Compile Include="Classes\WebApiClient.cs" />
     <Compile Include="Entities\Address.cs" />
     <Compile Include="Entities\BaseEntity.cs" />
     <Compile Include="Entities\Infrastructure\Announcement.cs" />

@@ -59,9 +59,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Core\Common.Core.csproj">
+    <ProjectReference Include="..\Core\Core.csproj">
       <Project>{d22b4c57-adf8-4cbb-9b6e-d4ae91e7153b}</Project>
-      <Name>Common.Core</Name>
+      <Name>Core</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

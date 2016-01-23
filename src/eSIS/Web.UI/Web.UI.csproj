@@ -185,9 +185,9 @@
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Core\Common.Core.csproj">
+    <ProjectReference Include="..\Core\Core.csproj">
       <Project>{D22B4C57-ADF8-4CBB-9B6E-D4AE91E7153B}</Project>
-      <Name>Common.Core</Name>
+      <Name>Core</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

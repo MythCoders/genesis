@@ -6,7 +6,7 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 
-namespace eSIS.Core.Classes
+namespace eSIS.Core.UI
 {
     public class WebApiClient
     {
@@ -39,6 +39,7 @@ namespace eSIS.Core.Classes
             }
 
             var request = new HttpClient();
+
             var response = await request.PostAsJsonAsync(new Uri(url, UriKind.Absolute), postData);
             
             if (response.StatusCode == HttpStatusCode.ServiceUnavailable ||
@@ -69,3 +70,4 @@ namespace eSIS.Core.Classes
         }
     }
 }
+

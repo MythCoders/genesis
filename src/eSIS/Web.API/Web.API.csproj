@@ -224,13 +224,13 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Core\Common.Core.csproj">
+    <ProjectReference Include="..\Core\Core.csproj">
       <Project>{D22B4C57-ADF8-4CBB-9B6E-D4AE91E7153B}</Project>
-      <Name>Common.Core</Name>
+      <Name>Core</Name>
     </ProjectReference>
     <ProjectReference Include="..\Database.Core\Database.csproj">
       <Project>{f785eea0-27ad-4a29-acd4-ae02e7cc8585}</Project>
-      <Name>Database.Core</Name>
+      <Name>Database</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
