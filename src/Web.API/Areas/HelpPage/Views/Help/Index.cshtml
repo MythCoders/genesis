@@ -1,21 +1,18 @@
-@using System.Web.Http
-@using System.Web.Http.Controllers
 @using System.Web.Http.Description
 @using System.Collections.ObjectModel
 @model Collection<ApiDescription>
 
 @{
-    ViewBag.Title = "ASP.NET Web API Help Page";
+    ViewBag.Title = "API Overview";
 
-    // Group APIs by controller
-    ILookup<HttpControllerDescriptor, ApiDescription> apiGroups = Model.ToLookup(api => api.ActionDescriptor.ControllerDescriptor);
+    var apiGroups = Model.ToLookup(api => api.ActionDescriptor.ControllerDescriptor);
 }
 
-<link type="text/css" href="~/Areas/HelpPage/HelpPage.css" rel="stylesheet" />
+<link type="text/css" href="@Url.Content("~/Areas/HelpPage/HelpPage.css")" rel="stylesheet" />
 <header class="help-page">
     <div class="content-wrapper">
         <div class="float-left">
-            <h1>@ViewBag.Title</h1>
+            <h3>@ViewBag.Title</h3>
         </div>
     </div>
 </header>
@@ -24,7 +21,7 @@
         <div class="content-wrapper">
             <h2>Introduction</h2>
             <p>
-                Provide a general description of your APIs here.
+                Documentation for the main eSIS API.
             </p>
         </div>
     </section>

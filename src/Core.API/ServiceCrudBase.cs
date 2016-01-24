@@ -34,13 +34,13 @@ namespace eSIS.Core.API
             Database = new SisContext(userName, ipAddress);
         }
 
-        [System.Web.Mvc.HttpGet]
+        [HttpGet]
         public IQueryable<T> GetAll()
         {
             return Database.Set<T>();
         }
 
-        [System.Web.Mvc.HttpGet]
+        [HttpGet]
         public IHttpActionResult Get(int id)
         {
             var item = Database.Set<T>().Find(id);
@@ -53,7 +53,7 @@ namespace eSIS.Core.API
             return Ok(item);
         }
 
-        [System.Web.Mvc.HttpGet]
+        [HttpGet]
         public IHttpActionResult GetBySystemCode(string code)
         {
             var item = Database.Set<T>().SingleOrDefault(p => p.SystemCode == code);
@@ -66,7 +66,7 @@ namespace eSIS.Core.API
             return Ok(item);
         }
 
-        [System.Web.Mvc.HttpPut]
+        [HttpPut]
         public IHttpActionResult Put(int id, T item)
         {
             if (!ModelState.IsValid)
@@ -94,15 +94,11 @@ namespace eSIS.Core.API
 
                 throw;
             }
-            catch (Exception ex)
-            {
-                throw;
-            }
 
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        [System.Web.Mvc.HttpPost]
+        [HttpPost]
         public IHttpActionResult Post(T item)
         {
             if (!ModelState.IsValid)
@@ -116,7 +112,7 @@ namespace eSIS.Core.API
             return CreatedAtRoute("DefaultApi", new { id = item.Id }, item);
         }
 
-        [System.Web.Mvc.HttpDelete]
+        [HttpDelete]
         public IHttpActionResult Delete(int id)
         {
             var item = Database.Set<T>().Find(id);
