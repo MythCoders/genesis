@@ -7,8 +7,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core", "Core\Core.csproj", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Database", "Database.Core\Database.csproj", "{F785EEA0-27AD-4A29-ACD4-AE02E7CC8585}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core.ThirdPartyUtilities", "Core.ThirdPartyUtilities\Core.ThirdPartyUtilities.csproj", "{48E53F0E-543F-4BB1-A7A1-40B5F51245D9}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Task.Playground", "Task.Playground\Task.Playground.csproj", "{01798BAA-73AA-47A3-90E5-1355E2768B8A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core.API", "Core.API\Core.API.csproj", "{662283CA-B7C7-4BEF-A1FE-478A99F8C4AC}"
@@ -38,10 +36,6 @@ Global
 		{F785EEA0-27AD-4A29-ACD4-AE02E7CC8585}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F785EEA0-27AD-4A29-ACD4-AE02E7CC8585}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F785EEA0-27AD-4A29-ACD4-AE02E7CC8585}.Release|Any CPU.Build.0 = Release|Any CPU
-		{48E53F0E-543F-4BB1-A7A1-40B5F51245D9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{48E53F0E-543F-4BB1-A7A1-40B5F51245D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{48E53F0E-543F-4BB1-A7A1-40B5F51245D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{48E53F0E-543F-4BB1-A7A1-40B5F51245D9}.Release|Any CPU.Build.0 = Release|Any CPU
 		{01798BAA-73AA-47A3-90E5-1355E2768B8A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{01798BAA-73AA-47A3-90E5-1355E2768B8A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{01798BAA-73AA-47A3-90E5-1355E2768B8A}.Release|Any CPU.ActiveCfg = Release|Any CPU

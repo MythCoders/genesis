@@ -231,7 +231,20 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\Core.API\Core.API.csproj">
+      <Project>{662283ca-b7c7-4bef-a1fe-478a99f8c4ac}</Project>
+      <Name>Core.API</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Core\Core.csproj">
+      <Project>{d22b4c57-adf8-4cbb-9b6e-d4ae91e7153b}</Project>
+      <Name>Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Database.Core\Database.csproj">
+      <Project>{f785eea0-27ad-4a29-acd4-ae02e7cc8585}</Project>
+      <Name>Database</Name>
+    </ProjectReference>
+  </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
