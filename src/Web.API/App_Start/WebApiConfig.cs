@@ -1,4 +1,5 @@
 ﻿using System.Web.Http;
+using eSIS.Core.API;
 
 namespace eSIS.Web.API
 {
@@ -7,6 +8,7 @@ namespace eSIS.Web.API
         public static void Register(HttpConfiguration config)
         {
             // Web API configuration and services
+            config.Formatters.Add(new BrowserJsonFormatter());
 
             // Web API routes
             config.MapHttpAttributeRoutes();
