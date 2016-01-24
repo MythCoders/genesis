@@ -17,7 +17,7 @@ namespace eSIS.Core.UI
         {
             _client = new HttpClient();
             
-            _client.DefaultRequestHeaders.Add("ClientAuthKey", ConfigurationManager.AppSettings["ApiAuthKey"]);
+            _client.DefaultRequestHeaders.Add("ClientAuthKey", ConfigurationHelper.GetByKey("ApiAuthKey"));
             _client.DefaultRequestHeaders.Add("RequestId", GetRequestId());
             _client.DefaultRequestHeaders.Add("User-Agent", "eSIS");
         }

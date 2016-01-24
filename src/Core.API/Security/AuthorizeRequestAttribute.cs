@@ -10,13 +10,13 @@ using System.Security.Principal;
 
 namespace eSIS.Core.API.Security
 {
-    public class AuthorizeRequestAttribute : AuthorizeAttribute
-    {
-        protected override bool IsAuthorized(HttpActionContext actionContext)
-        {
-            return base.IsAuthorized(actionContext);
-        }
-    }
+    //public class AuthorizeRequestAttribute : AuthorizeAttribute
+    //{
+    //    protected override bool IsAuthorized(HttpActionContext actionContext)
+    //    {
+    //        return base.IsAuthorized(actionContext);
+    //    }
+    //}
 
     public interface ISecurityService
     {
