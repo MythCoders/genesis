@@ -77,7 +77,7 @@ namespace eSIS.Core.UI
         /// <returns></returns>
         private static string GetRequestId()
         {
-            return $"{Guid.NewGuid()}_{"machine_information"}_{DateTime.Now.ToString("G")}";
+            return $"{Guid.NewGuid()}_{"justin.adkins@outlook.com"}_{DateTime.Now.ToString("G")}";
         }
 
         private static void ProcessRequest(HttpResponseMessage response)
