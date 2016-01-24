@@ -11,10 +11,11 @@ using System.Net.Http.Headers;
 using System.Web.Http;
 using System.Web.Http.Controllers;
 using System.Web.Http.Description;
-using Web.API.Areas.HelpPage.ModelDescriptions;
-using Web.API.Areas.HelpPage.Models;
+using eSIS.Web.API.Areas.HelpPage.ModelDescriptions;
+using eSIS.Web.API.Areas.HelpPage.Models;
+using eSIS.Web.API.Areas.HelpPage.SampleGeneration;
 
-namespace Web.API.Areas.HelpPage
+namespace eSIS.Web.API.Areas.HelpPage
 {
     public static class HelpPageConfigurationExtensions
     {

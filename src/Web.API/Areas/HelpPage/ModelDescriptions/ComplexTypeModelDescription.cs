@@ -1,6 +1,6 @@
 using System.Collections.ObjectModel;
 
-namespace Web.API.Areas.HelpPage.ModelDescriptions
+namespace eSIS.Web.API.Areas.HelpPage.ModelDescriptions
 {
     public class ComplexTypeModelDescription : ModelDescription
     {

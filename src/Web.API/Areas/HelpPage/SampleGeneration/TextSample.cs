@@ -1,6 +1,6 @@
 using System;
 
-namespace Web.API.Areas.HelpPage
+namespace eSIS.Web.API.Areas.HelpPage.SampleGeneration
 {
     /// <summary>
     /// This represents a preformatted text sample on the help page. There's a display template named TextSample associated with this class.

@@ -1,6 +1,6 @@
 using System;
 
-namespace Web.API.Areas.HelpPage.ModelDescriptions
+namespace eSIS.Web.API.Areas.HelpPage.ModelDescriptions
 {
     /// <summary>
     /// Describes a type model.
