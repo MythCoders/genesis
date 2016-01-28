@@ -40,9 +40,9 @@ namespace eSIS.Core.Classes
             return this;
         }
 
-        public Url Generate()
+        public string Generate()
         {
-            return _url;
+            return _url.GeneratePath();
         }
     }
 }

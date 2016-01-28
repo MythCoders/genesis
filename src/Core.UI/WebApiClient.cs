@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Configuration;
 using System.Collections.Generic;
 using System.IO;
 using System.Net;
@@ -22,7 +21,7 @@ namespace eSIS.Core.UI
             _client.DefaultRequestHeaders.Add("User-Agent", "eSIS");
         }
 
-        public async Task<HttpContent> MakeGetRequest(string url)
+        public async Task<T> MakeGetRequest<T>(string url)
         {
             if (string.IsNullOrWhiteSpace(url))
             {
@@ -34,10 +33,10 @@ namespace eSIS.Core.UI
 
             ProcessRequest(response);
 
-            return response.Content;
+            return await DeseralizeObject<T>(response.Content);
         }
 
-        public async Task<HttpContent> MakePostRequest(string url, IEnumerable<KeyValuePair<string, string>> postData)
+        public async Task<T> MakePostRequest<T>(string url, IEnumerable<KeyValuePair<string, string>> data)
         {
             if (string.IsNullOrWhiteSpace(url))
             {
@@ -45,15 +44,46 @@ namespace eSIS.Core.UI
             }
             
             var callUri = new Uri(url, UriKind.Absolute);
-            var content = new FormUrlEncodedContent(postData);
+            var content = new FormUrlEncodedContent(data);
             var response = await _client.PostAsync(callUri, content);
 
             ProcessRequest(response);
 
-            return response.Content;
+            return await DeseralizeObject<T>(response.Content);
         }
 
-        public async Task<T> DeseralizeObject<T>(HttpContent content)
+        public async Task<T> MakeDeleteRequest<T>(string url)
+        {
+            if (string.IsNullOrWhiteSpace(url))
+            {
+                throw new ArgumentException(nameof(url));
+            }
+
+            var callUri = new Uri(url, UriKind.Absolute);
+            var response = await _client.DeleteAsync(callUri);
+
+            ProcessRequest(response);
+
+            return await DeseralizeObject<T>(response.Content);
+        }
+
+        public async Task<T> MakePutRequest<T>(string url, IEnumerable<KeyValuePair<string, string>> data)
+        {
+            if (string.IsNullOrWhiteSpace(url))
+            {
+                throw new ArgumentException(nameof(url));
+            }
+
+            var callUri = new Uri(url, UriKind.Absolute);
+            var content = new FormUrlEncodedContent(data);
+            var response = await _client.PutAsync(callUri, content);
+
+            ProcessRequest(response);
+
+            return await DeseralizeObject<T>(response.Content);
+        }
+
+        public static async Task<T> DeseralizeObject<T>(HttpContent content)
         {
             // NOTE!! We are really careful not to use a string here so we don't have to allocate a huge string.
             var inputStream = await content.ReadAsStreamAsync();

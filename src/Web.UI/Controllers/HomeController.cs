@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using System.Web.Mvc;
 using eSIS.Core.Classes;
 using eSIS.Core.Entities;
@@ -13,20 +14,11 @@ namespace eSIS.Web.UI.Controllers
             return View();
         }
 
-        public ActionResult About()
+        public async Task<ActionResult> About()
         {
-            var url = new UrlBuilder()
-                .SubDirectory("District")
-                .Method("GetAll")
-                .Generate();
-
-            var completeUrl = url.GeneratePath();
-
+            var url = new UrlBuilder().SubDirectory("District").Generate();
             var client = new WebApiClient();
-            var data = client.MakeGetRequest(completeUrl);
-            var allDistricts = client.DeseralizeObject<List<District>>(data.Result).Result;
-
-            return View(allDistricts);
+            return View(await client.MakeGetRequest<List<District>>(url));
         }
 
         public ActionResult Contact()

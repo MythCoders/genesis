@@ -1,0 +1,12 @@
+﻿@model List<District>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Districts</h2>
+
+@foreach (var item in Model)
+{
+    @item.Name
+}

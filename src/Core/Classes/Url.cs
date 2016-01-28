@@ -3,7 +3,7 @@ using System.Text;
 
 namespace eSIS.Core.Classes
 {
-    public class Url
+    internal class Url
     {
         public Url(string baseUrl)
         {

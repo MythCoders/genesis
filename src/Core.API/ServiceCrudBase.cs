@@ -1,11 +1,9 @@
-﻿using System;
-using System.Data.Entity;
+﻿using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Http;
-using System.Web.ModelBinding;
 using eSIS.Core.Entities;
 using eSIS.Database;
 
@@ -21,27 +19,27 @@ namespace eSIS.Core.API
             var userName = string.Empty;
             var ipAddress = string.Empty;
 
-            if (Request.Properties.ContainsKey("MS_HttpContext"))
-            {
-                var ctx = Request.Properties["MS_HttpContext"] as HttpContextWrapper;
-                if (ctx != null)
-                {
-                    ipAddress = ctx.Request.UserHostAddress;
-                    userName = ctx.Request.UserHostName;
-                }
-            }
+            //if (Request.Properties.ContainsKey("MS_HttpContext"))
+            //{
+            //    var ctx = Request.Properties["MS_HttpContext"] as HttpContextWrapper;
+            //    if (ctx != null)
+            //    {
+            //        ipAddress = ctx.Request.UserHostAddress;
+            //        userName = ctx.Request.UserHostName;
+            //    }
+            //}
 
             Database = new SisContext(userName, ipAddress);
         }
 
         [HttpGet]
-        public IQueryable<T> GetAll()
+        public virtual IQueryable<T> GetAll()
         {
             return Database.Set<T>();
         }
 
         [HttpGet]
-        public IHttpActionResult Get(int id)
+        public virtual IHttpActionResult Get(int id)
         {
             var item = Database.Set<T>().Find(id);
 
@@ -54,7 +52,7 @@ namespace eSIS.Core.API
         }
 
         [HttpGet]
-        public IHttpActionResult GetBySystemCode(string code)
+        public virtual IHttpActionResult GetBySystemCode(string code)
         {
             var item = Database.Set<T>().SingleOrDefault(p => p.SystemCode == code);
 
@@ -67,7 +65,7 @@ namespace eSIS.Core.API
         }
 
         [HttpPut]
-        public IHttpActionResult Put(int id, T item)
+        public virtual IHttpActionResult Put(int id, T item)
         {
             if (!ModelState.IsValid)
             {
@@ -99,7 +97,7 @@ namespace eSIS.Core.API
         }
 
         [HttpPost]
-        public IHttpActionResult Post(T item)
+        public virtual IHttpActionResult Post(T item)
         {
             if (!ModelState.IsValid)
             {
@@ -113,7 +111,7 @@ namespace eSIS.Core.API
         }
 
         [HttpDelete]
-        public IHttpActionResult Delete(int id)
+        public virtual IHttpActionResult Delete(int id)
         {
             var item = Database.Set<T>().Find(id);
 
