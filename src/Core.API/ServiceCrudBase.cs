@@ -1,8 +1,9 @@
-﻿using System.Data.Entity;
+﻿using System.Collections.Generic;
+using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
-using System.Web;
+using System.Threading.Tasks;
 using System.Web.Http;
 using eSIS.Core.Entities;
 using eSIS.Database;
@@ -33,15 +34,15 @@ namespace eSIS.Core.API
         }
 
         [HttpGet]
-        public virtual IQueryable<T> GetAll()
+        public virtual async Task<List<T>> GetAll()
         {
-            return Database.Set<T>();
+            return await Database.Set<T>().ToListAsync();
         }
 
         [HttpGet]
-        public virtual IHttpActionResult Get(int id)
+        public virtual async Task<IHttpActionResult> Get(int id)
         {
-            var item = Database.Set<T>().Find(id);
+            var item = await Database.Set<T>().FindAsync(id);
 
             if (item == null)
             {
@@ -52,9 +53,9 @@ namespace eSIS.Core.API
         }
 
         [HttpGet]
-        public virtual IHttpActionResult GetBySystemCode(string code)
+        public virtual async Task<IHttpActionResult> GetBySystemCode(string code)
         {
-            var item = Database.Set<T>().SingleOrDefault(p => p.SystemCode == code);
+            var item = await Database.Set<T>().SingleOrDefaultAsync(p => p.SystemCode == code);
 
             if (item == null)
             {
@@ -65,7 +66,7 @@ namespace eSIS.Core.API
         }
 
         [HttpPut]
-        public virtual IHttpActionResult Put(int id, T item)
+        public virtual async Task<IHttpActionResult> Put(int id, T item)
         {
             if (!ModelState.IsValid)
             {
@@ -81,7 +82,7 @@ namespace eSIS.Core.API
 
             try
             {
-                Database.SaveChanges();
+                await Database.SaveChangesAsync();
             }
             catch (DbUpdateConcurrencyException)
             {
@@ -97,7 +98,7 @@ namespace eSIS.Core.API
         }
 
         [HttpPost]
-        public virtual IHttpActionResult Post(T item)
+        public virtual async Task<IHttpActionResult> Post(T item)
         {
             if (!ModelState.IsValid)
             {
@@ -105,13 +106,13 @@ namespace eSIS.Core.API
             }
             
             Database.Set<T>().Add(item);
-            Database.SaveChanges();
+            await Database.SaveChangesAsync();
 
             return CreatedAtRoute("DefaultApi", new { id = item.Id }, item);
         }
 
         [HttpDelete]
-        public virtual IHttpActionResult Delete(int id)
+        public virtual async Task<IHttpActionResult> Delete(int id)
         {
             var item = Database.Set<T>().Find(id);
 
@@ -121,7 +122,7 @@ namespace eSIS.Core.API
             }
 
             Database.Set<T>().Remove(item);
-            Database.SaveChanges();
+            await Database.SaveChangesAsync();
 
             return Ok(item);
         }

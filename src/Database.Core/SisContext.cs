@@ -6,6 +6,7 @@ using System.Data.Entity.ModelConfiguration.Conventions;
 using System.Data.Entity.Validation;
 using System.Diagnostics;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Transactions;
 using eSIS.Core.Entities;
 using eSIS.Core.Entities.Infrastructure;
@@ -86,7 +87,7 @@ namespace eSIS.Database
             base.OnModelCreating(modelBuilder);
         }
 
-        public override int SaveChanges()
+        public override async Task<int> SaveChangesAsync()
         {
             if (string.IsNullOrWhiteSpace(_userName))
             {
@@ -121,7 +122,9 @@ namespace eSIS.Database
                     modDateProperty.CurrentValue = DateTime.Now;
                 }
 
-                return AuditChanges ? SaveChangesWithAudit() : base.SaveChanges();
+                return AuditChanges 
+                    ? await SaveChangesWithAudit() 
+                    : await base.SaveChangesAsync();
             }
             catch (DbEntityValidationException ex)
             {
@@ -137,7 +140,7 @@ namespace eSIS.Database
             }
         }
 
-        private int SaveChangesWithAudit()
+        private async Task<int> SaveChangesWithAudit()
         {
             using (var scope = new TransactionScope())
             {
@@ -161,7 +164,7 @@ namespace eSIS.Database
                     AuditCreate(entry);
                 }
 
-                base.SaveChanges();
+                await base.SaveChangesAsync();
                 scope.Complete();
                 return changes;
             }
