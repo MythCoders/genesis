@@ -59,7 +59,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Classes\Url.cs" />
-    <Compile Include="Classes\UrlBuilder.cs" />
     <Compile Include="ConfigurationHelper.cs" />
     <Compile Include="Entities\Address.cs" />
     <Compile Include="Entities\BaseEntity.cs" />

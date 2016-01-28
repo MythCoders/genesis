@@ -16,7 +16,7 @@ namespace eSIS.Web.UI.Controllers
 
         public async Task<ActionResult> About()
         {
-            var url = new UrlBuilder().SubDirectory("District").Generate();
+            var url = new Url().SubDirectory("District").Generate();
             var client = new WebApiClient();
             return View(await client.MakeGetRequest<List<District>>(url));
         }

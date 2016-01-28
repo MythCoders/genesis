@@ -21,13 +21,13 @@ namespace eSIS.Core.UI
 
         public virtual async Task<ActionResult> Index()
         {
-            var url = new UrlBuilder().SubDirectory(_directoryPath).Generate();
+            var url = new Url().SubDirectory(_directoryPath).Generate();
             return View(await _apiClient.MakeGetRequest<List<T>>(url));
         }
 
         public virtual async Task<ActionResult> Detail(int id)
         {
-            var url = new UrlBuilder().SubDirectory(_directoryPath).Method(id.ToString()).Generate();
+            var url = new Url().SubDirectory(_directoryPath).Method(id.ToString()).Generate();
             return View(await _apiClient.MakeGetRequest<T>(url));
         }
     }

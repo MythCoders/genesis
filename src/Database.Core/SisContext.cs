@@ -5,6 +5,7 @@ using System.Data.Entity.Infrastructure;
 using System.Data.Entity.ModelConfiguration.Conventions;
 using System.Data.Entity.Validation;
 using System.Diagnostics;
+using System.Configuration;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Transactions;
@@ -21,11 +22,11 @@ namespace eSIS.Database
 
         //This is required by EF migrations
         public SisContext()
-            : base("SIS")
+            : base(ConfigurationManager.AppSettings["DatabaseConnectionStringName"])
         { }
 
         public SisContext(string userName, string iPAddress)
-            : base("SIS")
+            : this()
         {
             _userName = userName;
             _ipAddress = iPAddress;
