@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Configuration;
 
 namespace eSIS.Core.Classes
 {
@@ -8,12 +9,13 @@ namespace eSIS.Core.Classes
 
         public UrlBuilder()
         {
-            _url = new Url();
+            var baseUrl = ConfigurationManager.AppSettings["ApiBaseUrl"];
+            _url = new Url(baseUrl);
         }
 
-        public UrlBuilder(string authoirzationToken)
+        public UrlBuilder(string baseUrl)
         {
-            _url = new Url(authoirzationToken);
+            _url = new Url(baseUrl);
         }
 
         public UrlBuilder SubDirectory(string directoryName)
@@ -35,12 +37,6 @@ namespace eSIS.Core.Classes
             }
 
             _url.Method = methodName;
-            return this;
-        }
-
-        public UrlBuilder Parameter(string name, string value)
-        {
-            _url.Parameters.Add(name, value);
             return this;
         }
 

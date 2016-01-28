@@ -22,16 +22,14 @@ namespace eSIS.Core.UI
             _client.DefaultRequestHeaders.Add("User-Agent", "eSIS");
         }
 
-        public async Task<HttpContent> MakeGetRequest(string url, IEnumerable<KeyValuePair<string, string>> getData)
+        public async Task<HttpContent> MakeGetRequest(string url)
         {
             if (string.IsNullOrWhiteSpace(url))
             {
                 throw new ArgumentException(nameof(url));
             }
 
-            //TODO: Finish this
             var callUri = new Uri(url, UriKind.Absolute);
-            var content = new FormUrlEncodedContent(getData);
             var response = await _client.GetAsync(callUri, HttpCompletionOption.ResponseHeadersRead);
 
             ProcessRequest(response);
