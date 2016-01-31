@@ -1,15 +1,20 @@
-﻿using System.Collections.Generic;
-using System.Data.Entity;
+﻿using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
+using System.Web;
 using System.Web.Http;
+using eSIS.Core.API.Security;
 using eSIS.Core.Entities;
 using eSIS.Database;
+using Kendo.Mvc.Extensions;
+using Kendo.Mvc.UI;
 
 namespace eSIS.Core.API
 {
+    [ApiAuthentication]
+    [Authorize]
     public class ServiceCrudBase<T> : ApiController
         where T : BaseEntity
     {
@@ -17,29 +22,24 @@ namespace eSIS.Core.API
 
         public ServiceCrudBase()
         {
-            var userName = string.Empty;
-            var ipAddress = string.Empty;
-
-            //if (Request.Properties.ContainsKey("MS_HttpContext"))
-            //{
-            //    var ctx = Request.Properties["MS_HttpContext"] as HttpContextWrapper;
-            //    if (ctx != null)
-            //    {
-            //        ipAddress = ctx.Request.UserHostAddress;
-            //        userName = ctx.Request.UserHostName;
-            //    }
-            //}
+            var userName = User.Identity.Name;
+            var ipAddress = HttpContext.Current.Request.UserHostAddress;
 
             Database = new SisContext(userName, ipAddress);
         }
 
-        [HttpGet]
-        public virtual async Task<List<T>> GetAll()
+        [Route("Page")]
+        public IHttpActionResult GetPage(DataSourceRequest request)
         {
-            return await Database.Set<T>().ToListAsync();
+            if (request == null)
+            {
+                return BadRequest();
+            }
+
+            var data = Database.Set<T>().ToDataSourceResult(request);
+            return Ok(data);
         }
 
-        [HttpGet]
         public virtual async Task<IHttpActionResult> Get(int id)
         {
             var item = await Database.Set<T>().FindAsync(id);
@@ -51,8 +51,7 @@ namespace eSIS.Core.API
 
             return Ok(item);
         }
-
-        [HttpGet]
+        
         public virtual async Task<IHttpActionResult> GetBySystemCode(string code)
         {
             var item = await Database.Set<T>().SingleOrDefaultAsync(p => p.SystemCode == code);
@@ -65,7 +64,6 @@ namespace eSIS.Core.API
             return Ok(item);
         }
 
-        [HttpPut]
         public virtual async Task<IHttpActionResult> Put(int id, T item)
         {
             if (!ModelState.IsValid)
@@ -97,7 +95,6 @@ namespace eSIS.Core.API
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        [HttpPost]
         public virtual async Task<IHttpActionResult> Post(T item)
         {
             if (!ModelState.IsValid)
@@ -111,7 +108,6 @@ namespace eSIS.Core.API
             return CreatedAtRoute("DefaultApi", new { id = item.Id }, item);
         }
 
-        [HttpDelete]
         public virtual async Task<IHttpActionResult> Delete(int id)
         {
             var item = Database.Set<T>().Find(id);

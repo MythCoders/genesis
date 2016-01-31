@@ -117,7 +117,6 @@
     <Compile Include="PropertyError.cs" />
     <Compile Include="Security\ApiAuthentication.cs" />
     <Compile Include="ServiceCrudBase.cs" />
-    <Compile Include="ServiceCrudBaseWithPaging.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

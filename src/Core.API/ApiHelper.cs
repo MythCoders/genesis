@@ -26,13 +26,13 @@ namespace eSIS.Core.API
 
         public static ApiClientConfig GetByClientToken(string token)
         {
-            var clientSection = ConfigurationManager.GetSection("") as ApiClientSection;
+            var clientSection = ConfigurationManager.GetSection("ApiClientsSection") as ApiClientSection;
             return clientSection.Clients.FirstOrDefault(p => p.Token == token);
         }
 
         public static List<ApiClientConfig> GetAllClients()
         {
-            var clientSection = ConfigurationManager.GetSection("") as ApiClientSection;
+            var clientSection = ConfigurationManager.GetSection("ApiClientsSection") as ApiClientSection;
             return clientSection.Clients.ToList();
         }
     }

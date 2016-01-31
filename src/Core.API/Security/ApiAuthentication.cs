@@ -8,6 +8,7 @@ using System.Web.Http.Filters;
 
 namespace eSIS.Core.API.Security
 {
+    [AttributeUsage(AttributeTargets.Class)]
     public class ApiAuthentication : Attribute, IAuthenticationFilter
     {
         public bool AllowMultiple { get { return true; } }
