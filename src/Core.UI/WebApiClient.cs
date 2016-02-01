@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
-using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
@@ -104,14 +104,17 @@ namespace eSIS.Core.UI
         /// <returns></returns>
         private static string GetRequestId()
         {
-            return $"{Guid.NewGuid()}_{"justin.adkins@outlook.com"}_{DateTime.Now.ToString("G")}";
+            //todo replace with users real identifier 
+            return $"{Guid.NewGuid()}_{"test@email.com"}_{DateTime.Now.ToString("mmddyyyyHHmmss")}";
         }
 
         private static void ProcessRequest(HttpResponseMessage response)
         {
-            if (response.StatusCode.IsIn(HttpStatusCode.ServiceUnavailable, HttpStatusCode.BadGateway, HttpStatusCode.GatewayTimeout, HttpStatusCode.InternalServerError))
+            if (!response.IsSuccessStatusCode)
             {
-                throw new Exception("Bad data");
+                //todo provide more information in exceptions details
+                Debugger.Break();
+                throw new Exception($"Error! Currently Unknown.");
             }
         }
     }
