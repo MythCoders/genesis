@@ -17,8 +17,8 @@ namespace eSIS.Database
     public class SisContext : DbContext
     {
         private bool _debugMode;
-        private string _userName;
-        private string _ipAddress;
+        private readonly string _userName;
+        private readonly string _ipAddress;
 
         //This is required by EF migrations
         public SisContext()

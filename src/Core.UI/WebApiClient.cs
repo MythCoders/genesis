@@ -18,7 +18,6 @@ namespace eSIS.Core.UI
             
             _client.DefaultRequestHeaders.Add("ClientAuthKey", ConfigurationHelper.GetByKey("ApiAuthKey"));
             _client.DefaultRequestHeaders.Add("RequestId", GetRequestId());
-            _client.DefaultRequestHeaders.Add("User-Agent", "eSIS");
         }
 
         public async Task<T> MakeGetRequest<T>(string url)
