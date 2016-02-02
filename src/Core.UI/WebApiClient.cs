@@ -15,9 +15,9 @@ namespace eSIS.Core.UI
         public WebApiClient()
         {
             _client = new HttpClient();
-            
-            _client.DefaultRequestHeaders.Add("ClientAuthKey", ConfigurationHelper.GetByKey("ApiAuthKey"));
-            _client.DefaultRequestHeaders.Add("RequestId", GetRequestId());
+
+            _client.DefaultRequestHeaders.Add(Constants.ApiRequestHeaderName, ConfigurationHelper.InstanceApiAuthKey);
+            //_client.DefaultRequestHeaders.Add("X-Transaction-Identifier", GetRequestId());
         }
 
         public async Task<T> MakeGetRequest<T>(string url)
@@ -102,11 +102,11 @@ namespace eSIS.Core.UI
         /// in the Api
         /// </summary>
         /// <returns></returns>
-        private static string GetRequestId()
-        {
-            //todo replace with users real identifier 
-            return $"{Guid.NewGuid()}_{"test@email.com"}_{DateTime.Now.ToString("mmddyyyyHHmmss")}";
-        }
+        //private static string GetRequestId()
+        //{
+        //    //todo replace with users real identifier 
+        //    return $"{Guid.NewGuid()}_{"test@email.com"}_{DateTime.Now.ToString("mmddyyyyHHmmss")}";
+        //}
 
         private static void ProcessRequest(HttpResponseMessage response)
         {

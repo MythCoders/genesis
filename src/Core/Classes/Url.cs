@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Configuration;
 using System.Text;
 
 // ReSharper disable UnusedMember.Global
@@ -15,7 +14,7 @@ namespace eSIS.Core.Classes
 
         public Url()
         {
-            _baseUrl = ConfigurationManager.AppSettings["ApiBaseUrl"];
+            _baseUrl = ConfigurationHelper.InstanceApiAuthKey;
             _subDirectories = new List<string>();
         }
 

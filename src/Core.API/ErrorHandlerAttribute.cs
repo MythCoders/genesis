@@ -14,7 +14,6 @@ namespace eSIS.Core.API
             //TODO: log the exception!
 
             ApiError apiError;
-            var isProduction = string.Compare(ConfigurationHelper.GetByKey("IsProduction"), "false", StringComparison.CurrentCultureIgnoreCase) == 0;
 
             if (context.Exception is RequiredHeaderException)
             {
@@ -30,7 +29,7 @@ namespace eSIS.Core.API
             else
             {
                 var genericMessage = "An unexpected error has occurred and been logged. If this problem persists, please contact your system administrator.";
-                apiError = isProduction ? new ApiError(genericMessage, context.Exception.Message) : new ApiError(genericMessage);
+                apiError = ConfigurationHelper.InstanceIsProduction ? new ApiError(genericMessage, context.Exception.Message) : new ApiError(genericMessage);
                 context.Result = new ResponseMessageResult(context.Request.CreateResponse(HttpStatusCode.InternalServerError, apiError));
             }
         }

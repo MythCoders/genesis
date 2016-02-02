@@ -2,6 +2,7 @@
 using System.Data.Entity;
 using System.Data.Entity.Core.Metadata.Edm;
 using System.Data.Entity.Infrastructure;
+using System.Data.Entity.Infrastructure.Interception;
 using System.Data.Entity.ModelConfiguration.Conventions;
 using System.Data.Entity.Validation;
 using System.Diagnostics;
@@ -22,7 +23,7 @@ namespace eSIS.Database
 
         //This is required by EF migrations
         public SisContext()
-            : base(ConfigurationHelper.GetByKey("DatabaseConnectionStringName"))
+            : base(ConfigurationHelper.InstanceDbConnectionName)
         { }
 
         public SisContext(string userName, string iPAddress)
@@ -30,17 +31,31 @@ namespace eSIS.Database
         {
             _userName = userName;
             _ipAddress = iPAddress;
+
+
+            if (ConfigurationHelper.InstanceDbIsLogging)
+            {
+                var dbLogger = new DatabaseLogger();
+                dbLogger.StartLogging();
+            }
         }
 
+#if DEBUG
+
+        /// <summary>
+        /// Outputs Database calls to Debugging console
+        /// </summary>
         public bool DebugMode
         {
             get { return _debugMode; }
             set
             {
                 _debugMode = value;
-                Database.Log = _debugMode ? (Action<string>) (s => Debug.WriteLine(s)) : null;
+                Database.Log = _debugMode ? (Action<string>)(s => Debug.WriteLine(s)) : null;
             }
         }
+
+#endif
 
         public bool AuditChanges { get; set; } = true;
 
@@ -80,6 +95,7 @@ namespace eSIS.Database
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<Log>().MapToStoredProcedures(sp => sp.Insert(i => i.HasName("usp_LogInsert"))); //this is so that create can be called by our logging framework
             modelBuilder.Entity<Grade>().HasOptional(p => p.NextGrade).WithMany().HasForeignKey(p => p.NextGradeId);
             modelBuilder.Entity<Grade>().HasOptional(p => p.PreviousGrade).WithMany().HasForeignKey(p => p.PreviousGradeId);
             modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();

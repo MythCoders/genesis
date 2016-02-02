@@ -17,12 +17,12 @@ namespace eSIS.Core.API.Security
         {
             IEnumerable<string> apiKeyHeaderValues = null;
 
-            if (context.Request.Headers.TryGetValues("X-API-Key", out apiKeyHeaderValues))
+            if (context.Request.Headers.TryGetValues(Constants.ApiRequestHeaderName, out apiKeyHeaderValues))
             {
                 var apiToken = apiKeyHeaderValues.First();
                 var client = ApiHelper.GetByClientToken(apiToken);
                 var claim = new Claim(ClaimTypes.Name, client.ClientName);
-                var identity = new ClaimsIdentity(new[] { claim }, "X-API-Key");
+                var identity = new ClaimsIdentity(new[] { claim }, Constants.ApiRequestHeaderName);
                 var principal = new ClaimsPrincipal(identity);
                 context.Principal = principal;
             }

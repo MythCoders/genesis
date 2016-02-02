@@ -10,6 +10,7 @@ using eSIS.Core.Entities;
 using eSIS.Database;
 using Kendo.Mvc.Extensions;
 using Kendo.Mvc.UI;
+using NLog;
 
 namespace eSIS.Core.API
 {
@@ -19,6 +20,7 @@ namespace eSIS.Core.API
         where T : BaseEntity
     {
         public readonly SisContext Database;
+        private static Logger logger = LogManager.GetCurrentClassLogger();
 
         public ServiceCrudBase()
         {
@@ -51,7 +53,7 @@ namespace eSIS.Core.API
 
             return Ok(item);
         }
-        
+
         public virtual async Task<IHttpActionResult> GetBySystemCode(string code)
         {
             var item = await Database.Set<T>().SingleOrDefaultAsync(p => p.SystemCode == code);
@@ -66,14 +68,16 @@ namespace eSIS.Core.API
 
         public virtual async Task<IHttpActionResult> Put(int id, T item)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
             if (id != item.Id)
             {
                 return BadRequest();
+            }
+
+            PrePutValidation();
+
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
             }
 
             Database.Entry(item).State = EntityState.Modified;
@@ -97,12 +101,15 @@ namespace eSIS.Core.API
 
         public virtual async Task<IHttpActionResult> Post(T item)
         {
+            PrePostValidation();
+
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
-            
+
             Database.Set<T>().Add(item);
+
             await Database.SaveChangesAsync();
 
             return CreatedAtRoute("DefaultApi", new { id = item.Id }, item);
@@ -114,6 +121,7 @@ namespace eSIS.Core.API
 
             if (item == null)
             {
+                logger.Debug("Not found id={0}", id);
                 return NotFound();
             }
 
@@ -127,6 +135,7 @@ namespace eSIS.Core.API
         {
             if (disposing)
             {
+                logger.Trace("Disposting context");
                 Database.Dispose();
             }
 
@@ -136,6 +145,16 @@ namespace eSIS.Core.API
         private bool Exists(int id)
         {
             return Database.Set<T>().Count(e => e.Id == id) > 0;
+        }
+
+        public virtual void PrePostValidation()
+        {
+            logger.Trace("No pre-post validation found");
+        }
+
+        public virtual void PrePutValidation()
+        {
+            logger.Trace("No pre-put validation found");
         }
     }
 }
