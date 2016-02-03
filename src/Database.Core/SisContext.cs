@@ -12,6 +12,7 @@ using System.Transactions;
 using eSIS.Core;
 using eSIS.Core.Entities;
 using eSIS.Core.Entities.Infrastructure;
+using eSIS.Core.Exceptions;
 
 namespace eSIS.Database
 {
@@ -153,7 +154,7 @@ namespace eSIS.Database
 
                 var exceptionMessage = string.Concat(ex.Message, " - ", fullErrorMessage);
 
-                throw new Exception(exceptionMessage);
+                throw new ValidationException(exceptionMessage);
             }
         }
 

@@ -3,13 +3,6 @@ using System.Configuration;
 
 namespace eSIS.Core
 {
-    public enum SystemLoggingLevelEnum
-    {
-        None,
-        Low,
-        High
-    }
-
     public static class ConfigurationHelper
     {
         public static readonly string SystemName = GetByKey<string>("System.Name");

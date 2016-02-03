@@ -1,6 +1,7 @@
 ﻿using System.Web.Http;
 using System.Web.Http.ExceptionHandling;
 using eSIS.Core.API;
+using eSIS.Core.API.Exceptions;
 
 namespace eSIS.Web.API
 {
@@ -10,7 +11,7 @@ namespace eSIS.Web.API
         {
             // Web API configuration and services
             config.Formatters.Add(new BrowserJsonFormatter());
-            config.Services.Replace(typeof(IExceptionHandler), new ErrorHandlerAttribute());
+            config.Services.Replace(typeof(IExceptionHandler), new ApiExceptionHandler());
 
             // Web API routes
             config.MapHttpAttributeRoutes();
