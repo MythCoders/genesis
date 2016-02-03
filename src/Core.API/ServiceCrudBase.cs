@@ -33,7 +33,6 @@ namespace eSIS.Core.API
             Database = new SisContext(userName, ipAddress);
         }
 
-        [Route("Page")]
         public IHttpActionResult GetPage(DataSourceRequest request)
         {
             if (request == null)

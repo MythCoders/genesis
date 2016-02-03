@@ -256,6 +256,10 @@
       <Project>{662283ca-b7c7-4bef-a1fe-478a99f8c4ac}</Project>
       <Name>Core.API</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Core.UI\Core.UI.csproj">
+      <Project>{B1063886-A73A-4362-9942-242250D29CB8}</Project>
+      <Name>Core.UI</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Core\Core.csproj">
       <Project>{d22b4c57-adf8-4cbb-9b6e-d4ae91e7153b}</Project>
       <Name>Core</Name>

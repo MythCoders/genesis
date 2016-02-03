@@ -4,6 +4,7 @@ using System.Net.Http.Formatting;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Web.Http;
+using eSIS.Core.Exceptions;
 
 namespace eSIS.Core.API.Exceptions
 {

@@ -85,7 +85,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ErrorHandlerAttribute.cs" />
+    <Compile Include="UiHandleErrorAttribute.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UiControllerCrudBase.cs" />
     <Compile Include="UiControllerCrudBaseWithPaging.cs" />

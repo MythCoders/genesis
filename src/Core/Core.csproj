@@ -86,6 +86,7 @@
     <Compile Include="Entities\SchoolYear.cs" />
     <Compile Include="Entities\Staff.cs" />
     <Compile Include="Entities\Student.cs" />
+    <Compile Include="Exceptions\ApiErrorExcpetion.cs" />
     <Compile Include="Exceptions\ValidationException.cs" />
     <Compile Include="ExtensionMethods.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -2,6 +2,7 @@
 using System.IO;
 using System.Net;
 using System.Web.Http.ExceptionHandling;
+using eSIS.Core.Exceptions;
 using NLog;
 
 namespace eSIS.Core.API.Exceptions
@@ -14,6 +15,10 @@ namespace eSIS.Core.API.Exceptions
             {
                 var exception = (ApiErrorExcpetion)context.Exception;
                 HandleError(context, LogLevel.Fatal, exception.OverridenHttpStatusCode ?? HttpStatusCode.ServiceUnavailable);
+            }
+            else if (context.Exception is ValidationException)
+            {
+                
             }
             else if (context.Exception is RequiredHeaderException)
             {
