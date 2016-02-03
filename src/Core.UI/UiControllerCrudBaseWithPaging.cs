@@ -13,8 +13,8 @@ namespace eSIS.Core.UI
 
         public async Task<ActionResult> Index_Query([DataSourceRequest] DataSourceRequest request)
         {
-            var url = new Url().SubDirectory(_directoryPath).Method("").Generate();
-            return Json(await _apiClient.MakeGetRequest<DataSourceResult>(url));
+            var url = new Url().SubDirectory(DirectoryPath).Method("").Generate();
+            return Json(await ApiClient.MakeGetRequest<DataSourceResult>(url));
         }
     }
 }

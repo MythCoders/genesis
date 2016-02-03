@@ -19,14 +19,17 @@ namespace eSIS.Core.API
     public class ServiceCrudBase<T> : ApiController
         where T : BaseEntity
     {
+        // ReSharper disable MemberCanBePrivate.Global
         public readonly SisContext Database;
-        private static Logger logger = LogManager.GetCurrentClassLogger();
+        public readonly Logger Logger;
+        // ReSharper restore MemberCanBePrivate.Global
 
         public ServiceCrudBase()
         {
             var userName = User.Identity.Name;
             var ipAddress = HttpContext.Current.Request.UserHostAddress;
 
+            Logger = LogManager.GetCurrentClassLogger();
             Database = new SisContext(userName, ipAddress);
         }
 
@@ -35,6 +38,7 @@ namespace eSIS.Core.API
         {
             if (request == null)
             {
+                Logger.Debug("Request was null");
                 return BadRequest();
             }
 
@@ -42,35 +46,40 @@ namespace eSIS.Core.API
             return Ok(data);
         }
 
+        // ReSharper disable once VirtualMemberNeverOverriden.Global
         public virtual async Task<IHttpActionResult> Get(int id)
         {
             var item = await Database.Set<T>().FindAsync(id);
 
             if (item == null)
             {
+                Logger.Debug("Item with id {0} was not found", id);
                 return NotFound();
             }
 
             return Ok(item);
         }
 
+        // ReSharper disable once VirtualMemberNeverOverriden.Global
         public virtual async Task<IHttpActionResult> GetBySystemCode(string code)
         {
             var item = await Database.Set<T>().SingleOrDefaultAsync(p => p.SystemCode == code);
 
             if (item == null)
             {
+                Logger.Debug("Item with code {0} was not found", code);
                 return NotFound();
             }
 
             return Ok(item);
         }
 
+        // ReSharper disable once VirtualMemberNeverOverriden.Global
         public virtual async Task<IHttpActionResult> Put(int id, T item)
         {
             if (id != item.Id)
             {
-                logger.Debug("Ids mismatched Bad Request");
+                Logger.Debug("Ids mismatched Bad Request");
                 return BadRequest();
             }
 
@@ -78,7 +87,7 @@ namespace eSIS.Core.API
 
             if (!ModelState.IsValid)
             {
-                logger.Debug("ModelState not valid. Bad Request");
+                Logger.Debug("ModelState not valid. Bad Request");
                 return BadRequest(ModelState);
             }
 
@@ -101,13 +110,14 @@ namespace eSIS.Core.API
             return StatusCode(HttpStatusCode.NoContent);
         }
 
+        // ReSharper disable once VirtualMemberNeverOverriden.Global
         public virtual async Task<IHttpActionResult> Post(T item)
         {
             PrePostValidation();
 
             if (!ModelState.IsValid)
             {
-                logger.Debug("ModelState not valid. Bad Request");
+                Logger.Debug("ModelState not valid. Bad Request");
                 return BadRequest(ModelState);
             }
 
@@ -118,13 +128,14 @@ namespace eSIS.Core.API
             return CreatedAtRoute("DefaultApi", new { id = item.Id }, item);
         }
 
+        // ReSharper disable once VirtualMemberNeverOverriden.Global
         public virtual async Task<IHttpActionResult> Delete(int id)
         {
             var item = Database.Set<T>().Find(id);
 
             if (item == null)
             {
-                logger.Debug("Not found id={0}", id);
+                Logger.Debug("Not found id={0}", id);
                 return NotFound();
             }
 
@@ -138,7 +149,7 @@ namespace eSIS.Core.API
         {
             if (disposing)
             {
-                logger.Trace("Disposting context");
+                Logger.Trace("Disposting context");
                 Database.Dispose();
             }
 
@@ -150,14 +161,16 @@ namespace eSIS.Core.API
             return Database.Set<T>().Count(e => e.Id == id) > 0;
         }
 
+        // ReSharper disable once VirtualMemberNeverOverriden.Global
         public virtual void PrePostValidation()
         {
-            logger.Trace("No pre-post validation found");
+            Logger.Trace("No pre-post validation found");
         }
 
+        // ReSharper disable once VirtualMemberNeverOverriden.Global
         public virtual void PrePutValidation()
         {
-            logger.Trace("No pre-put validation found");
+            Logger.Trace("No pre-put validation found");
         }
     }
 }

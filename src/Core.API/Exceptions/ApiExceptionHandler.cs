@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System.Data.Entity.Infrastructure;
+using System.IO;
 using System.Net;
 using System.Web.Http.ExceptionHandling;
 using NLog;
@@ -11,57 +12,34 @@ namespace eSIS.Core.API.Exceptions
         {
             if (context.Exception is ApiErrorExcpetion)
             {
-                HandleApiException(context);
+                var exception = (ApiErrorExcpetion)context.Exception;
+                HandleError(context, LogLevel.Fatal, exception.OverridenHttpStatusCode ?? HttpStatusCode.ServiceUnavailable);
             }
             else if (context.Exception is RequiredHeaderException)
             {
-                HandleRequiredHeaderException(context);
+                HandleError(context, LogLevel.Info, HttpStatusCode.NotAcceptable);
             }
             else if (context.Exception is IOException)
             {
-                HandleIoException(context);
+                HandleError(context, LogLevel.Fatal, HttpStatusCode.ServiceUnavailable);
+            }
+            else if (context.Exception is DbUpdateConcurrencyException)
+            {
+                HandleError(context, LogLevel.Debug, HttpStatusCode.Conflict);
             }
             else
             {
-                HandleGenericError(context);
+                HandleError(context, LogLevel.Error, HttpStatusCode.InternalServerError);
             }
 
             base.Handle(context);
         }
 
-        private static void HandleApiException(ExceptionHandlerContext context)
-        {
-            var exception = (ApiErrorExcpetion) context.Exception;
-            var statusCode = HttpStatusCode.ServiceUnavailable;
-
-            if (exception.OverridenHttpStatusCode.HasValue)
-            {
-                statusCode = exception.OverridenHttpStatusCode.Value;
-            }
-
-            Log(LogLevel.Fatal, context);
-            context.Result = new ApiErrorResult(exception, statusCode);
-        }
-
-        private static void HandleRequiredHeaderException(ExceptionHandlerContext context)
+        private static void HandleError(ExceptionHandlerContext context, LogLevel logLevel, HttpStatusCode httpStatusCode)
         {
             var returnValueException = new ApiErrorExcpetion(GenericApiErrorMessage(), context.Exception.Message);
-            Log(LogLevel.Info, context);
-            context.Result = new ApiErrorResult(returnValueException, HttpStatusCode.NotAcceptable);
-        }
-
-        private static void HandleIoException(ExceptionHandlerContext context)
-        {
-            var returnValueException = new ApiErrorExcpetion(GenericApiErrorMessage(), context.Exception.Message);
-            Log(LogLevel.Fatal, context);
-            context.Result = new ApiErrorResult(returnValueException, HttpStatusCode.ServiceUnavailable);
-        }
-
-        private static void HandleGenericError(ExceptionHandlerContext context)
-        {
-            var returnValueException = new ApiErrorExcpetion(GenericApiErrorMessage(), context.Exception.Message);
-            Log(LogLevel.Error, context);
-            context.Result = new ApiErrorResult(returnValueException, HttpStatusCode.InternalServerError);
+            Log(logLevel, context);
+            context.Result = new ApiErrorResult(returnValueException, httpStatusCode);
         }
 
         private static string GenericApiErrorMessage()

@@ -19,7 +19,7 @@ namespace eSIS.Database
 {
     public class SisContext : DbContext
     {
-        private static readonly Logger _logger = LogManager.GetCurrentClassLogger();
+        private readonly Logger _logger;
         private bool _debugMode;
         private readonly string _userName;
         private readonly string _ipAddress;
@@ -32,6 +32,7 @@ namespace eSIS.Database
         public SisContext(string userName, string iPAddress)
             : this()
         {
+            _logger = LogManager.GetCurrentClassLogger();
             _userName = userName;
             _ipAddress = iPAddress;
 

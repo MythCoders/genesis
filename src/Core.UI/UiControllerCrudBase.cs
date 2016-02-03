@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using System.Web.Mvc;
 using eSIS.Core.Classes;
+using NLog;
 
 // ReSharper disable Mvc.ViewNotResolved
 // ReSharper disable VirtualMemberNeverOverriden.Global
@@ -10,25 +11,29 @@ namespace eSIS.Core.UI
 {
     public class UiControllerCrudBase<T> : Controller
     {
-        internal readonly WebApiClient _apiClient;
-        internal readonly string _directoryPath;
+        // ReSharper disable once MemberCanBeProtected.Global
+        public readonly WebApiClient ApiClient;
+        public readonly string DirectoryPath;
+        // ReSharper disable once MemberCanBePrivate.Global
+        public readonly Logger Logger;
 
         public UiControllerCrudBase(string directoryPath)
         {
-            _apiClient = new WebApiClient();
-            _directoryPath = directoryPath;
+            Logger = LogManager.GetCurrentClassLogger();
+            ApiClient = new WebApiClient();
+            DirectoryPath = directoryPath;
         }
 
         public virtual async Task<ActionResult> Index()
         {
-            var url = new Url().SubDirectory(_directoryPath).Generate();
-            return View(await _apiClient.MakeGetRequest<List<T>>(url));
+            var url = new Url().SubDirectory(DirectoryPath).Generate();
+            return View(await ApiClient.MakeGetRequest<List<T>>(url));
         }
 
         public virtual async Task<ActionResult> Detail(int id)
         {
-            var url = new Url().SubDirectory(_directoryPath).Method(id.ToString()).Generate();
-            return View(await _apiClient.MakeGetRequest<T>(url));
+            var url = new Url().SubDirectory(DirectoryPath).Method(id.ToString()).Generate();
+            return View(await ApiClient.MakeGetRequest<T>(url));
         }
     }
 }

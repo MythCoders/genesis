@@ -11,13 +11,14 @@ namespace eSIS.Core.UI
 {
     public class WebApiClient
     {
-        private static readonly Logger _logger = LogManager.GetCurrentClassLogger();
+        private readonly Logger _logger;
         private readonly HttpClient _client;
 
         public WebApiClient()
         {
             _client = new HttpClient();
             _client.DefaultRequestHeaders.Add(Constants.ApiRequestHeaderName, ConfigurationHelper.InstanceApiAuthKey);
+            _logger = LogManager.GetCurrentClassLogger();
         }
 
         public async Task<T> MakeGetRequest<T>(string url)
@@ -86,7 +87,7 @@ namespace eSIS.Core.UI
             return await DeseralizeObject<T>(response.Content);
         }
 
-        public static async Task<T> DeseralizeObject<T>(HttpContent content)
+        public async Task<T> DeseralizeObject<T>(HttpContent content)
         {
             // NOTE!! We are really careful not to use a string here so we don't have to allocate a huge string.
             var inputStream = await content.ReadAsStreamAsync();
