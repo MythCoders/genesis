@@ -13,11 +13,13 @@ using eSIS.Core;
 using eSIS.Core.Entities;
 using eSIS.Core.Entities.Infrastructure;
 using eSIS.Core.Exceptions;
+using NLog;
 
 namespace eSIS.Database
 {
     public class SisContext : DbContext
     {
+        private static readonly Logger _logger = LogManager.GetCurrentClassLogger();
         private bool _debugMode;
         private readonly string _userName;
         private readonly string _ipAddress;
@@ -32,7 +34,6 @@ namespace eSIS.Database
         {
             _userName = userName;
             _ipAddress = iPAddress;
-
 
             if (ConfigurationHelper.InstanceDbIsLogging)
             {
@@ -107,13 +108,17 @@ namespace eSIS.Database
 
         public override async Task<int> SaveChangesAsync()
         {
+            _logger.Trace("Starting custom SaveChanges");
+
             if (string.IsNullOrWhiteSpace(_userName))
             {
+                _logger.Warn("No value for _userName");
                 throw new Exception("Username MUST have a value!");
             }
 
             if (string.IsNullOrWhiteSpace(_ipAddress))
             {
+                _logger.Warn("No value for _ipAddress");
                 throw new Exception("User Ip Address MUST have a value!");
             }
 
@@ -140,12 +145,16 @@ namespace eSIS.Database
                     modDateProperty.CurrentValue = DateTime.Now;
                 }
 
+                _logger.Trace("Starting base save changes");
+
                 return AuditChanges 
                     ? await SaveChangesWithAudit() 
                     : await base.SaveChangesAsync();
             }
             catch (DbEntityValidationException ex)
             {
+                _logger.Trace("DbEntityValidationException caught");
+
                 var errorMessages = ex.EntityValidationErrors
                         .SelectMany(x => x.ValidationErrors)
                         .Select(x => x.ErrorMessage);
@@ -160,6 +169,8 @@ namespace eSIS.Database
 
         private async Task<int> SaveChangesWithAudit()
         {
+            _logger.Trace("Starting audit save changes");
+
             using (var scope = new TransactionScope())
             {
                 var addedEntries = ChangeTracker.Entries().Where(e => e.State == EntityState.Added).ToList();
@@ -182,7 +193,11 @@ namespace eSIS.Database
                     AuditCreate(entry);
                 }
 
+                _logger.Trace("Starting base save changes");
+
                 await base.SaveChangesAsync();
+
+                _logger.Trace("Completing audit transaction");
                 scope.Complete();
                 return changes;
             }

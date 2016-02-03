@@ -5,25 +5,26 @@ using System.IO;
 using System.Net.Http;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
+using NLog;
 
 namespace eSIS.Core.UI
 {
     public class WebApiClient
     {
+        private static readonly Logger _logger = LogManager.GetCurrentClassLogger();
         private readonly HttpClient _client;
 
         public WebApiClient()
         {
             _client = new HttpClient();
-
             _client.DefaultRequestHeaders.Add(Constants.ApiRequestHeaderName, ConfigurationHelper.InstanceApiAuthKey);
-            //_client.DefaultRequestHeaders.Add("X-Transaction-Identifier", GetRequestId());
         }
 
         public async Task<T> MakeGetRequest<T>(string url)
         {
             if (string.IsNullOrWhiteSpace(url))
             {
+                _logger.Warn("Get Request did not have url");
                 throw new ArgumentException(nameof(url));
             }
 
@@ -39,6 +40,7 @@ namespace eSIS.Core.UI
         {
             if (string.IsNullOrWhiteSpace(url))
             {
+                _logger.Warn("Post Request did not have url");
                 throw new ArgumentException(nameof(url));
             }
             
@@ -55,6 +57,7 @@ namespace eSIS.Core.UI
         {
             if (string.IsNullOrWhiteSpace(url))
             {
+                _logger.Warn("Delete Request did not have url");
                 throw new ArgumentException(nameof(url));
             }
 
@@ -70,6 +73,7 @@ namespace eSIS.Core.UI
         {
             if (string.IsNullOrWhiteSpace(url))
             {
+                _logger.Warn("Put Request did not have url");
                 throw new ArgumentException(nameof(url));
             }
 
@@ -92,7 +96,11 @@ namespace eSIS.Core.UI
             {
                 // Parse the Json as an object
                 var serializer = new JsonSerializer();
+
+                _logger.Trace("Starting object serialization");
                 var jsonObject = await Task.Run(() => serializer.Deserialize<T>(jsonReader));
+                _logger.Trace("Finished");
+
                 return jsonObject;
             }
         }

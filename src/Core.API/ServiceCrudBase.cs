@@ -70,6 +70,7 @@ namespace eSIS.Core.API
         {
             if (id != item.Id)
             {
+                logger.Debug("Ids mismatched Bad Request");
                 return BadRequest();
             }
 
@@ -77,6 +78,7 @@ namespace eSIS.Core.API
 
             if (!ModelState.IsValid)
             {
+                logger.Debug("ModelState not valid. Bad Request");
                 return BadRequest(ModelState);
             }
 
@@ -105,6 +107,7 @@ namespace eSIS.Core.API
 
             if (!ModelState.IsValid)
             {
+                logger.Debug("ModelState not valid. Bad Request");
                 return BadRequest(ModelState);
             }
 
