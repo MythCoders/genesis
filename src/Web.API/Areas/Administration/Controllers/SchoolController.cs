@@ -5,6 +5,10 @@ namespace eSIS.Web.API.Areas.Administration.Controllers
 {
     public class SchoolController : ServiceCrudBase<School>
     {
-
+        public SchoolController()
+            : base("SchoolService")
+        {
+            
+        }
     }
 }

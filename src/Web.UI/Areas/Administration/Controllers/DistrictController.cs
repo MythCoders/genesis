@@ -6,7 +6,7 @@ namespace eSIS.Web.UI.Areas.Administration.Controllers
     public class DistrictController : UiControllerCrudBase<District>
     {
         public DistrictController() 
-            : base("District")
+            : base("District", "DistrictController")
         { }
     }
 }

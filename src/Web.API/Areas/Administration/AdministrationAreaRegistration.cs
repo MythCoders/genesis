@@ -16,7 +16,7 @@ namespace eSIS.Web.API.Areas.Administration
         {
             context.MapRoute(
                 "Administration_default",
-                "Administration/{controller}/{action}/{id}",
+                "api/Administration/{controller}/{action}/{id}",
                 new { action = "Index", id = UrlParameter.Optional }
             );
         }

@@ -1,4 +1,5 @@
-﻿using System.Data.Entity;
+﻿using System;
+using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
@@ -21,15 +22,15 @@ namespace eSIS.Core.API
     {
         // ReSharper disable MemberCanBePrivate.Global
         public readonly SisContext Database;
-        public readonly Logger Logger;
+        public Logger Logger;
         // ReSharper restore MemberCanBePrivate.Global
 
-        public ServiceCrudBase()
+        public ServiceCrudBase(string serviceName)
         {
             var userName = User.Identity.Name;
             var ipAddress = HttpContext.Current.Request.UserHostAddress;
 
-            Logger = LogManager.GetCurrentClassLogger();
+            Logger = LogManager.GetLogger(serviceName);
             Database = new SisContext(userName, ipAddress);
         }
 

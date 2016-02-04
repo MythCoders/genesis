@@ -5,6 +5,9 @@ namespace eSIS.Web.API.Areas.Administration.Controllers
 {
     public class DistrictController : ServiceCrudBase<District>
     {
-        
+        public DistrictController() 
+            : base("DistrictService")
+        {
+        }
     }
 }

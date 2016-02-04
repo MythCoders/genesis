@@ -6,6 +6,10 @@ namespace eSIS.Web.API.Areas.Infrastructure.Controllers
 {
     public class AnnouncementController : ServiceCrudBase<Announcement>
     {
-
+        public AnnouncementController()
+            : base("AnnouncementService")
+        {
+            
+        }
     }
 }

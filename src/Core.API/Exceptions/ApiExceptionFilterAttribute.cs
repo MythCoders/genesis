@@ -1,15 +1,15 @@
 ﻿using System.Data.Entity.Infrastructure;
 using System.IO;
 using System.Net;
-using System.Web.Http.ExceptionHandling;
+using System.Web.Http.Filters;
 using eSIS.Core.Exceptions;
 using NLog;
 
 namespace eSIS.Core.API.Exceptions
 {
-    public class ApiExceptionHandler : ExceptionHandler
+    public class ApiExceptionFilterAttribute : ExceptionFilterAttribute
     {
-        public override void Handle(ExceptionHandlerContext context)
+        public override void OnException(HttpActionExecutedContext context)
         {
             if (context.Exception is ApiErrorExcpetion)
             {
@@ -18,7 +18,7 @@ namespace eSIS.Core.API.Exceptions
             }
             else if (context.Exception is ValidationException)
             {
-                
+
             }
             else if (context.Exception is RequiredHeaderException)
             {
@@ -37,14 +37,14 @@ namespace eSIS.Core.API.Exceptions
                 HandleError(context, LogLevel.Error, HttpStatusCode.InternalServerError);
             }
 
-            base.Handle(context);
+            base.OnException(context);
         }
 
-        private static void HandleError(ExceptionHandlerContext context, LogLevel logLevel, HttpStatusCode httpStatusCode)
+        private static void HandleError(HttpActionExecutedContext context, LogLevel logLevel, HttpStatusCode httpStatusCode)
         {
             var returnValueException = new ApiErrorExcpetion(GenericApiErrorMessage(), context.Exception.Message);
             Log(logLevel, context);
-            context.Result = new ApiErrorResult(returnValueException, httpStatusCode);
+            context.Response = new ApiErrorResult(returnValueException, httpStatusCode);
         }
 
         private static string GenericApiErrorMessage()
@@ -54,7 +54,7 @@ namespace eSIS.Core.API.Exceptions
                                     : $"{Constants.ApiGenericErrorMessage} Please see System Logs for more details.";
         }
 
-        private static void Log(LogLevel logLevel, ExceptionHandlerContext context)
+        private static void Log(LogLevel logLevel, HttpActionExecutedContext context)
         {
             var logger = LogManager.GetLogger(context.Exception.Source);
             logger.Log(logLevel, context.Exception);

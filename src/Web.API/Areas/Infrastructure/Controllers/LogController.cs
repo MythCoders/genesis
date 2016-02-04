@@ -5,6 +5,10 @@ namespace eSIS.Web.API.Areas.Infrastructure.Controllers
 {
     public class LogController : ServiceCrudBase<Log>
     {
-
+        public LogController()
+            : base("LogService")
+        {
+            
+        }
     }
 }

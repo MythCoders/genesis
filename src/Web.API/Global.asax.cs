@@ -11,9 +11,9 @@ namespace eSIS.Web.API
     {
         protected void Application_Start()
         {
-            var logger = LogManager.GetCurrentClassLogger();
+            var logger = LogManager.GetLogger("eSISApi");
 
-            logger.Trace($"Launching {ConfigurationHelper.SystemName} v{ConfigurationHelper.SystemVersion}");
+            logger.Info($"Launching {ConfigurationHelper.SystemName} v{ConfigurationHelper.SystemVersion}");
             logger.Trace("Registering all areas");
             AreaRegistration.RegisterAllAreas();
 
@@ -28,6 +28,7 @@ namespace eSIS.Web.API
 
             logger.Trace("Configuring bundles");
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+            logger.Info($"Configuration complete");
         }
     }
 }

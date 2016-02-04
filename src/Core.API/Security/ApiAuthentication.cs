@@ -12,7 +12,7 @@ namespace eSIS.Core.API.Security
     [AttributeUsage(AttributeTargets.Class)]
     public class ApiAuthentication : Attribute, IAuthenticationFilter
     {
-        private readonly Logger _logger = LogManager.GetCurrentClassLogger();
+        private readonly Logger _logger = LogManager.GetLogger("ApiAuthentication");
         public bool AllowMultiple { get { return true; } }
 
         public Task AuthenticateAsync(HttpAuthenticationContext context, CancellationToken cancellationToken)

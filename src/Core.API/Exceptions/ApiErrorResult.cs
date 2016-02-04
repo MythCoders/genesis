@@ -3,12 +3,11 @@ using System.Net.Http;
 using System.Net.Http.Formatting;
 using System.Threading;
 using System.Threading.Tasks;
-using System.Web.Http;
 using eSIS.Core.Exceptions;
 
 namespace eSIS.Core.API.Exceptions
 {
-    public class ApiErrorResult : IHttpActionResult
+    public class ApiErrorResult : HttpResponseMessage
     {
         private readonly HttpStatusCode _code;
         private readonly ApiErrorExcpetion _excpetion;

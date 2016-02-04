@@ -17,9 +17,9 @@ namespace eSIS.Core.UI
         // ReSharper disable once MemberCanBePrivate.Global
         public readonly Logger Logger;
 
-        public UiControllerCrudBase(string directoryPath)
+        public UiControllerCrudBase(string directoryPath, string controllerName)
         {
-            Logger = LogManager.GetCurrentClassLogger();
+            Logger = LogManager.GetLogger(controllerName);
             ApiClient = new WebApiClient();
             DirectoryPath = directoryPath;
         }

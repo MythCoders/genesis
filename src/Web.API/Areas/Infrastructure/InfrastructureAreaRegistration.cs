@@ -16,7 +16,7 @@ namespace eSIS.Web.API.Areas.Infrastructure
         {
             context.MapRoute(
                 "Infrastructure_default",
-                "Infrastructure/{controller}/{action}/{id}",
+                "api/Infrastructure/{controller}/{action}/{id}",
                 new { action = "Index", id = UrlParameter.Optional }
             );
         }

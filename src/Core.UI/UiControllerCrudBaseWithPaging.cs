@@ -8,7 +8,7 @@ namespace eSIS.Core.UI
     public class UiControllerCrudBaseWithPaging<T> : UiControllerCrudBase<T>
     {
         public UiControllerCrudBaseWithPaging(string directoryPath)
-            : base(directoryPath)
+            : base(directoryPath, "DistrictController")
         { }
 
         public async Task<ActionResult> Index_Query([DataSourceRequest] DataSourceRequest request)
