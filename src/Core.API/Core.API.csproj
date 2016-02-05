@@ -118,6 +118,7 @@
     <Compile Include="Configuration\ApiClientSection.cs" />
     <Compile Include="Exceptions\ApiExceptionFilterAttribute.cs" />
     <Compile Include="Exceptions\RequiredHeaderException.cs" />
+    <Compile Include="JsonContentNegotiator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Security\ApiAuthentication.cs" />
     <Compile Include="ServiceCrudBase.cs" />

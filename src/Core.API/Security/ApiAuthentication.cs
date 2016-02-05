@@ -19,7 +19,7 @@ namespace eSIS.Core.API.Security
         {
             _logger.Trace("Starting authentication");
 
-            IEnumerable<string> apiKeyHeaderValues = null;
+            IEnumerable<string> apiKeyHeaderValues;
 
             if (context.Request.Headers.TryGetValues(Constants.ApiRequestHeaderName, out apiKeyHeaderValues))
             {

@@ -27,10 +27,12 @@ namespace eSIS.Core.API
 
         public ServiceCrudBase(string serviceName)
         {
+            Logger = LogManager.GetLogger(serviceName);
+            Logger.Trace("Service starting");
+
+            
             var userName = User.Identity.Name;
             var ipAddress = HttpContext.Current.Request.UserHostAddress;
-
-            Logger = LogManager.GetLogger(serviceName);
             Database = new SisContext(userName, ipAddress);
         }
 

@@ -33,6 +33,7 @@ namespace eSIS.Database
             : this()
         {
             _logger = LogManager.GetLogger("SisContext");
+            _logger.Trace("Context starting");
             _userName = userName;
             _ipAddress = iPAddress;
 
