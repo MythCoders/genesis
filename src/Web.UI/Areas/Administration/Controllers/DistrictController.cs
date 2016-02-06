@@ -3,10 +3,10 @@ using eSIS.Core.UI;
 
 namespace eSIS.Web.UI.Areas.Administration.Controllers
 {
-    public class DistrictController : UiControllerCrudBase<District>
+    public class DistrictController : UiControllerCrudBaseWithPaging<District>
     {
         public DistrictController() 
-            : base("District", "DistrictController")
+            : base("adm/district", "DistrictController")
         { }
     }
 }

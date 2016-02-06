@@ -35,6 +35,13 @@ namespace eSIS.Core.API
             Database = new SisContext(userName, ipAddress);
         }
 
+        [Route("")]
+        public IHttpActionResult Get()
+        {
+            var data = Database.Set<T>().ToList();
+            return Ok(data);
+        }
+
         /// <summary>
         /// Is this my documentation?
         /// </summary>

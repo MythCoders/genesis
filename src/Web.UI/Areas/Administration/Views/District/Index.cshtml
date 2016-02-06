@@ -1,12 +1,23 @@
-﻿@model List<District>
+﻿@using eSIS.Core.UI.MVC
+@using Kendo.Mvc.UI
+@model List<District>
 
 @{
     ViewBag.Title = "Index";
 }
 
-<h2>Districts</h2>
+@(Html.Kendo().Grid<District>()
+      .Name("pagingGrid")
+      .Columns(cols =>
+      {
+          cols.NavigationButton(p => p.Id, "Select", Url.Action("Edit"));
+          cols.Bound(p => p.SystemCode);
+          cols.Bound(p => p.Name);
+          cols.Bound(p => p.Address.StreetAddress);
+      })
+      .StandardPagingGrid("District", "Administration")
+)
 
-@foreach (var item in Model)
-{
-    @item.Name
-}
+<br /><br />
+
+@Html.ActionLink("Create", "Create", null, new { @class = "btn btn-primary" })

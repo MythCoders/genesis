@@ -1,7 +1,7 @@
 ﻿@{
-    var systemName = ConfigurationHelper.SystemName;
-    var instanceName = ConfigurationHelper.InstanceName;
-    var systemVersion = ConfigurationHelper.SystemVersion;
+    var systemName = ConfigurationHelper.SystemName();
+    var instanceName = ConfigurationHelper.InstanceName();
+    var systemVersion = ConfigurationHelper.SystemVersion();
 }
 <!DOCTYPE html>
 <html>
@@ -21,7 +21,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @(ConfigurationHelper.InstanceIsProduction
+                @(ConfigurationHelper.InstanceIsProduction()
                         ? Html.ActionLink(systemName, "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
                         : Html.ActionLink($"{systemName} ({instanceName})", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" }))
             </div>

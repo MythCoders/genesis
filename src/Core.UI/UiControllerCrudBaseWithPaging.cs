@@ -7,14 +7,14 @@ namespace eSIS.Core.UI
 {
     public class UiControllerCrudBaseWithPaging<T> : UiControllerCrudBase<T>
     {
-        public UiControllerCrudBaseWithPaging(string directoryPath)
-            : base(directoryPath, "DistrictController")
+        public UiControllerCrudBaseWithPaging(string directoryPath, string controllerName)
+            : base(directoryPath, controllerName)
         { }
 
         public async Task<ActionResult> Index_Query([DataSourceRequest] DataSourceRequest request)
         {
-            var url = new Url().SubDirectory(DirectoryPath).Method("").Generate();
-            return Json(await ApiClient.MakeGetRequest<DataSourceResult>(url));
+            var url = new Url().SubDirectory(DirectoryPath).Method("GetPage").Generate();
+            return Json(await ApiClient.MakeGetRequest<DataSourceResult, DataSourceRequest>(url, request));
         }
     }
 }

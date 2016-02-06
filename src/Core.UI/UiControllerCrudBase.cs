@@ -35,5 +35,11 @@ namespace eSIS.Core.UI
             var url = new Url().SubDirectory(DirectoryPath).Method(id.ToString()).Generate();
             return View(await ApiClient.MakeGetRequest<T>(url));
         }
+
+        public virtual async Task<ActionResult> Edit(int id)
+        {
+            var url = new Url().SubDirectory(DirectoryPath).Generate();
+            return View(await ApiClient.MakeGetRequest<T>($"{url}/{id}"));
+        }
     }
 }

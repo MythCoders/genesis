@@ -14,7 +14,7 @@ namespace eSIS.Core.Classes
 
         public Url()
         {
-            _baseUrl = ConfigurationHelper.InstanceApiAuthKey();
+            _baseUrl = ConfigurationHelper.InstanceApiBaseUrl();
             _subDirectories = new List<string>();
         }
 

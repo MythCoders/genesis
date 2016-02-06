@@ -1,8 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Net.Http;
+using System.Net.Http.Headers;
+using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 using NLog;
@@ -18,6 +19,7 @@ namespace eSIS.Core.UI
         {
             _client = new HttpClient();
             _client.DefaultRequestHeaders.Add(Constants.ApiRequestHeaderName, ConfigurationHelper.InstanceApiAuthKey());
+            _client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
             _logger = LogManager.GetCurrentClassLogger();
         }
 
@@ -37,24 +39,66 @@ namespace eSIS.Core.UI
             return await DeseralizeObject<T>(response.Content);
         }
 
-        public async Task<T> MakePostRequest<T>(string url, IEnumerable<KeyValuePair<string, string>> data)
+        public async Task<TResult> MakeGetRequest<TResult, TRequest>(string url, TRequest data)
         {
             if (string.IsNullOrWhiteSpace(url))
             {
-                _logger.Warn("Post Request did not have url");
+                _logger.Warn("Get Request did not have url");
                 throw new ArgumentException(nameof(url));
             }
-            
+
             var callUri = new Uri(url, UriKind.Absolute);
-            var content = new FormUrlEncodedContent(data);
+            var message = new HttpRequestMessage(HttpMethod.Get, callUri);
+
+            var jsonData = JsonConvert.SerializeObject(data);
+            message.Content = new StringContent(jsonData, Encoding.UTF8, "application/json");
+
+            var response = await _client.SendAsync(message);
+
+            ProcessRequest(response);
+
+            return await DeseralizeObject<TResult>(response.Content);
+        }
+
+        public async Task<TResult> MakePostRequest<TResult, TRequest>(string url, TRequest data)
+        {
+            if (string.IsNullOrWhiteSpace(url))
+            {
+                _logger.Warn("Put Request did not have url");
+                throw new ArgumentException(nameof(url));
+            }
+
+            var callUri = new Uri(url, UriKind.Absolute);
+
+            var jsonData = JsonConvert.SerializeObject(data);
+            var content = new StringContent(jsonData, Encoding.UTF8, "application/json");
             var response = await _client.PostAsync(callUri, content);
 
             ProcessRequest(response);
 
-            return await DeseralizeObject<T>(response.Content);
+            return await DeseralizeObject<TResult>(response.Content);
         }
 
-        public async Task<T> MakeDeleteRequest<T>(string url)
+        public async Task<TResult> MakePutRequest<TResult, TRequest>(string url, TRequest data)
+        {
+            if (string.IsNullOrWhiteSpace(url))
+            {
+                _logger.Warn("Put Request did not have url");
+                throw new ArgumentException(nameof(url));
+            }
+
+            var callUri = new Uri(url, UriKind.Absolute);
+
+            var jsonData = JsonConvert.SerializeObject(data);
+            var content = new StringContent(jsonData, Encoding.UTF8, "application/json");
+            var response = await _client.PutAsync(callUri, content);
+
+            ProcessRequest(response);
+
+            return await DeseralizeObject<TResult>(response.Content);
+        }
+
+        public async Task<TResult> MakeDeleteRequest<TResult>(string url)
         {
             if (string.IsNullOrWhiteSpace(url))
             {
@@ -67,24 +111,7 @@ namespace eSIS.Core.UI
 
             ProcessRequest(response);
 
-            return await DeseralizeObject<T>(response.Content);
-        }
-
-        public async Task<T> MakePutRequest<T>(string url, IEnumerable<KeyValuePair<string, string>> data)
-        {
-            if (string.IsNullOrWhiteSpace(url))
-            {
-                _logger.Warn("Put Request did not have url");
-                throw new ArgumentException(nameof(url));
-            }
-
-            var callUri = new Uri(url, UriKind.Absolute);
-            var content = new FormUrlEncodedContent(data);
-            var response = await _client.PutAsync(callUri, content);
-
-            ProcessRequest(response);
-
-            return await DeseralizeObject<T>(response.Content);
+            return await DeseralizeObject<TResult>(response.Content);
         }
 
         public async Task<T> DeseralizeObject<T>(HttpContent content)
