@@ -10,7 +10,6 @@ namespace eSIS.Database
         public SisContextConfiguration()
         {
             SetTransactionHandler(SqlProviderServices.ProviderInvariantName, () => new CommitFailureHandler());
-            SetExecutionStrategy(SqlProviderServices.ProviderInvariantName, () => new SqlAzureExecutionStrategy());
         }
     }
 }

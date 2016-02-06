@@ -10,7 +10,7 @@ namespace eSIS.Core.Entities
     /// All database entites, MUST inherit from this class.
     /// This will ensure every record can be tracked the same
     /// </summary>
-    public abstract partial class BaseEntity
+    public abstract class BaseEntity
     {
         /// <summary>
         /// Primary key for record

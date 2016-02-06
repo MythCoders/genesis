@@ -8,6 +8,11 @@ namespace eSIS.Core.Entities.Infrastructure
     [Table("DataAudit", Schema = "inf")]
     public class DataAudit : BaseEntity
     {
+        //public DataAudit()
+        //{
+        //    Details = new List<DataAuditDetail>();
+        //}
+
         [Required]
         public string Action { get; set; }
 

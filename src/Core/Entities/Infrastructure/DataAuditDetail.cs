@@ -22,7 +22,6 @@ namespace eSIS.Core.Entities.Infrastructure
         [StringLength(50)]
         public string FieldName { get; set; }
 
-        [Required(AllowEmptyStrings = true)]
         [StringLength(100)]
         public string BeforeValue { get; set; }
 

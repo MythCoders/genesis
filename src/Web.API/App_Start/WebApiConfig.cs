@@ -14,6 +14,7 @@ namespace eSIS.Web.API
         {
             config.Filters.Add(new ApiExceptionFilterAttribute());
             config.Formatters.Remove(config.Formatters.XmlFormatter);
+            config.Formatters.Remove(config.Formatters.FormUrlEncodedFormatter);
             config.MapHttpAttributeRoutes(new CustomDirectRouteProvider());
 
             ConfigureJson(config);
@@ -38,6 +39,8 @@ namespace eSIS.Web.API
             json.SerializerSettings.DateFormatHandling = DateFormatHandling.MicrosoftDateFormat;
             json.SerializerSettings.DateTimeZoneHandling = DateTimeZoneHandling.Utc;
             json.SerializerSettings.Culture = new CultureInfo("en-US");
+            json.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Serialize;
+            json.SerializerSettings.PreserveReferencesHandling = PreserveReferencesHandling.Objects;
 
             var formatter = new JsonMediaTypeFormatter();
             formatter.Indent = true;

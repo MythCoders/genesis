@@ -63,6 +63,10 @@
     <Compile Include="Migrations\201602060309009_FirstRun.Designer.cs">
       <DependentUpon>201602060309009_FirstRun.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201602060434326_RemoveRequiredField.cs" />
+    <Compile Include="Migrations\201602060434326_RemoveRequiredField.Designer.cs">
+      <DependentUpon>201602060434326_RemoveRequiredField.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="SisContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -82,6 +86,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201602060309009_FirstRun.resx">
       <DependentUpon>201602060309009_FirstRun.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201602060434326_RemoveRequiredField.resx">
+      <DependentUpon>201602060434326_RemoveRequiredField.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

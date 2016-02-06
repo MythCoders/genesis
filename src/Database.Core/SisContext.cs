@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data.Entity;
 using System.Data.Entity.Core.Metadata.Edm;
 using System.Data.Entity.Infrastructure;
@@ -172,7 +173,7 @@ namespace eSIS.Database
         {
             _logger.Trace("Starting audit save changes");
 
-            using (var scope = new TransactionScope())
+            using (var scope = new TransactionScope(TransactionScopeAsyncFlowOption.Enabled))
             {
                 var addedEntries = ChangeTracker.Entries().Where(e => e.State == EntityState.Added).ToList();
                 var modifiedEntries = ChangeTracker.Entries().Where(e => e.State == EntityState.Modified).ToList();
@@ -200,6 +201,7 @@ namespace eSIS.Database
 
                 _logger.Trace("Completing audit transaction");
                 scope.Complete();
+                scope.Dispose();
                 return changes;
             }
         }
@@ -228,11 +230,17 @@ namespace eSIS.Database
                     var detail = new DataAuditDetail
                     {
                         FieldName = prop,
-                        BeforeValue = null,
+                        BeforeValue = string.Empty,
                         AfterValue = value.ToString(),
                         AddUser = _userName,
                         AddDate = DateTime.Now
                     };
+
+                    if (history.Details == null)
+                    {
+                        history.Details = new List<DataAuditDetail>();
+                    }
+
                     history.Details.Add(detail);
                 }
             }
@@ -272,6 +280,12 @@ namespace eSIS.Database
                         AddUser = _userName,
                         AddDate = DateTime.Now
                     };
+
+                    if (history.Details == null)
+                    {
+                        history.Details = new List<DataAuditDetail>();
+                    }
+
                     history.Details.Add(detail);
                 }
             }
@@ -306,6 +320,12 @@ namespace eSIS.Database
                         AddUser = _userName,
                         AddDate = DateTime.Now
                     };
+
+                    if (history.Details == null)
+                    {
+                        history.Details = new List<DataAuditDetail>();
+                    }
+
                     history.Details.Add(detail);
                 }
             }

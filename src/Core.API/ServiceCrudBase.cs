@@ -29,8 +29,8 @@ namespace eSIS.Core.API
             Logger = LogManager.GetLogger(serviceName);
             Logger.Trace("Service starting");
 
-            
-            var userName = User.Identity.Name;
+
+            var userName = "TestUser"; //User.Identity.Name;
             var ipAddress = HttpContext.Current.Request.UserHostAddress;
             Database = new SisContext(userName, ipAddress);
         }
@@ -93,7 +93,7 @@ namespace eSIS.Core.API
                 return BadRequest("Id mis-match");
             }
 
-            PreUpdateValidation();
+            //PreUpdateValidation();
 
             if (!ModelState.IsValid)
             {
@@ -124,7 +124,7 @@ namespace eSIS.Core.API
         // ReSharper disable once VirtualMemberNeverOverriden.Global
         public virtual async Task<IHttpActionResult> Post(T item)
         {
-            PreCreateValidation();
+            //PreCreateValidation();
 
             if (!ModelState.IsValid)
             {
@@ -174,15 +174,15 @@ namespace eSIS.Core.API
         }
 
         // ReSharper disable once VirtualMemberNeverOverriden.Global
-        public virtual void PreCreateValidation()
-        {
-            Logger.Trace("No pre-create validation found");
-        }
+        //public virtual void PreCreateValidation()
+        //{
+        //    Logger.Trace("No pre-create validation found");
+        //}
 
         // ReSharper disable once VirtualMemberNeverOverriden.Global
-        public virtual void PreUpdateValidation()
-        {
-            Logger.Trace("No pre-update validation found");
-        }
+        //public virtual void PreUpdateValidation()
+        //{
+        //    Logger.Trace("No pre-update validation found");
+        //}
     }
 }
