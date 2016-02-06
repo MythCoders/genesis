@@ -99,15 +99,6 @@ namespace eSIS.Database
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            //this is so that create can be called by our logging framework
-            modelBuilder.Entity<Log>()
-                .MapToStoredProcedures(sp =>
-                {
-                    sp.Insert(i => i.HasName("usp_LogInsert", "inf"));
-                    sp.Update(i => i.HasName("usp_LogUpdate", "inf"));
-                    sp.Delete(i => i.HasName("usp_LogDelete", "inf"));
-                });
-
             modelBuilder.Entity<Grade>().HasOptional(p => p.NextGrade).WithMany().HasForeignKey(p => p.NextGradeId);
             modelBuilder.Entity<Grade>().HasOptional(p => p.PreviousGrade).WithMany().HasForeignKey(p => p.PreviousGradeId);
             modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();

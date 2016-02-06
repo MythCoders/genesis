@@ -63,6 +63,10 @@
     <Compile Include="Migrations\201602060005584_FirstRun.Designer.cs">
       <DependentUpon>201602060005584_FirstRun.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201602060058189_RemoveStProcs.cs" />
+    <Compile Include="Migrations\201602060058189_RemoveStProcs.Designer.cs">
+      <DependentUpon>201602060058189_RemoveStProcs.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="SisContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -70,6 +74,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <Content Include="DbScripts\inf.LogInsert.sql" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
@@ -81,6 +86,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201602060005584_FirstRun.resx">
       <DependentUpon>201602060005584_FirstRun.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201602060058189_RemoveStProcs.resx">
+      <DependentUpon>201602060058189_RemoveStProcs.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
