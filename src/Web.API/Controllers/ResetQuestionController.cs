@@ -1,10 +1,10 @@
-using System;
+using System.Web.Http;
 using eSIS.Core.API;
 using eSIS.Core.Entities.Infrastructure;
-using NLog;
 
-namespace eSIS.Web.API.Areas.Infrastructure.Controllers
+namespace eSIS.Web.API.Controllers
 {
+    [RoutePrefix("api/inf/resetquestion")]
     public class ResetQuestionController : ServiceCrudBase<ResetQuestion>
     {
         public ResetQuestionController() 

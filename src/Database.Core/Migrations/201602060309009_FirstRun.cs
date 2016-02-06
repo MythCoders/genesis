@@ -330,103 +330,10 @@ namespace eSIS.Database.Migrations
                 .Index(t => t.UserId)
                 .Index(t => t.SystemCode);
             
-            CreateStoredProcedure(
-                "inf.usp_LogInsert",
-                p => new
-                    {
-                        MachineName = p.String(maxLength: 200),
-                        SiteName = p.String(maxLength: 200),
-                        Logged = p.DateTime(),
-                        Level = p.String(maxLength: 5),
-                        UserName = p.String(maxLength: 200),
-                        Message = p.String(),
-                        Logger = p.String(maxLength: 300),
-                        Properties = p.String(),
-                        ServerName = p.String(maxLength: 200),
-                        Port = p.String(maxLength: 100),
-                        Url = p.String(maxLength: 2000),
-                        Https = p.Boolean(),
-                        ServerAddress = p.String(maxLength: 100),
-                        RemoteAddress = p.String(maxLength: 100),
-                        Callstie = p.String(maxLength: 300),
-                        Exception = p.String(),
-                        SystemCode = p.String(maxLength: 10),
-                        AddUser = p.String(maxLength: 60),
-                        AddDate = p.DateTime(),
-                        ModUser = p.String(maxLength: 60),
-                        ModDate = p.DateTime(),
-                    },
-                body:
-                    @"INSERT [inf].[Log]([MachineName], [SiteName], [Logged], [Level], [UserName], [Message], [Logger], [Properties], [ServerName], [Port], [Url], [Https], [ServerAddress], [RemoteAddress], [Callstie], [Exception], [SystemCode], [AddUser], [AddDate], [ModUser], [ModDate])
-                      VALUES (@MachineName, @SiteName, @Logged, @Level, @UserName, @Message, @Logger, @Properties, @ServerName, @Port, @Url, @Https, @ServerAddress, @RemoteAddress, @Callstie, @Exception, @SystemCode, @AddUser, @AddDate, @ModUser, @ModDate)
-                      
-                      DECLARE @Id int
-                      SELECT @Id = [Id]
-                      FROM [inf].[Log]
-                      WHERE @@ROWCOUNT > 0 AND [Id] = scope_identity()
-                      
-                      SELECT t0.[Id], t0.[Version]
-                      FROM [inf].[Log] AS t0
-                      WHERE @@ROWCOUNT > 0 AND t0.[Id] = @Id"
-            );
-            
-            CreateStoredProcedure(
-                "inf.usp_LogUpdate",
-                p => new
-                    {
-                        Id = p.Int(),
-                        MachineName = p.String(maxLength: 200),
-                        SiteName = p.String(maxLength: 200),
-                        Logged = p.DateTime(),
-                        Level = p.String(maxLength: 5),
-                        UserName = p.String(maxLength: 200),
-                        Message = p.String(),
-                        Logger = p.String(maxLength: 300),
-                        Properties = p.String(),
-                        ServerName = p.String(maxLength: 200),
-                        Port = p.String(maxLength: 100),
-                        Url = p.String(maxLength: 2000),
-                        Https = p.Boolean(),
-                        ServerAddress = p.String(maxLength: 100),
-                        RemoteAddress = p.String(maxLength: 100),
-                        Callstie = p.String(maxLength: 300),
-                        Exception = p.String(),
-                        SystemCode = p.String(maxLength: 10),
-                        AddUser = p.String(maxLength: 60),
-                        AddDate = p.DateTime(),
-                        ModUser = p.String(maxLength: 60),
-                        ModDate = p.DateTime(),
-                        Version_Original = p.Binary(maxLength: 8, fixedLength: true, storeType: "rowversion"),
-                    },
-                body:
-                    @"UPDATE [inf].[Log]
-                      SET [MachineName] = @MachineName, [SiteName] = @SiteName, [Logged] = @Logged, [Level] = @Level, [UserName] = @UserName, [Message] = @Message, [Logger] = @Logger, [Properties] = @Properties, [ServerName] = @ServerName, [Port] = @Port, [Url] = @Url, [Https] = @Https, [ServerAddress] = @ServerAddress, [RemoteAddress] = @RemoteAddress, [Callstie] = @Callstie, [Exception] = @Exception, [SystemCode] = @SystemCode, [AddUser] = @AddUser, [AddDate] = @AddDate, [ModUser] = @ModUser, [ModDate] = @ModDate
-                      WHERE (([Id] = @Id) AND (([Version] = @Version_Original) OR ([Version] IS NULL AND @Version_Original IS NULL)))
-                      
-                      SELECT t0.[Version]
-                      FROM [inf].[Log] AS t0
-                      WHERE @@ROWCOUNT > 0 AND t0.[Id] = @Id"
-            );
-            
-            CreateStoredProcedure(
-                "inf.usp_LogDelete",
-                p => new
-                    {
-                        Id = p.Int(),
-                        Version_Original = p.Binary(maxLength: 8, fixedLength: true, storeType: "rowversion"),
-                    },
-                body:
-                    @"DELETE [inf].[Log]
-                      WHERE (([Id] = @Id) AND (([Version] = @Version_Original) OR ([Version] IS NULL AND @Version_Original IS NULL)))"
-            );
-            
         }
         
         public override void Down()
         {
-            DropStoredProcedure("inf.usp_LogDelete");
-            DropStoredProcedure("inf.usp_LogUpdate");
-            DropStoredProcedure("inf.usp_LogInsert");
             DropForeignKey("inf.UserSalt", "UserId", "inf.User");
             DropForeignKey("inf.UserPassword", "UserId", "inf.User");
             DropForeignKey("inf.User", "ResetQuestion2Id", "inf.ResetQuestion");

@@ -7,13 +7,13 @@ namespace eSIS.Database.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class RemoveStProcs : IMigrationMetadata
+    public sealed partial class FirstRun : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(RemoveStProcs));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(FirstRun));
         
         string IMigrationMetadata.Id
         {
-            get { return "201602060058189_RemoveStProcs"; }
+            get { return "201602060309009_FirstRun"; }
         }
         
         string IMigrationMetadata.Source

@@ -1,5 +1,4 @@
-﻿using System;
-using System.Data.Entity;
+﻿using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
@@ -36,18 +35,25 @@ namespace eSIS.Core.API
             Database = new SisContext(userName, ipAddress);
         }
 
+        /// <summary>
+        /// Is this my documentation?
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
+        [Route("GetPage")]
         public IHttpActionResult GetPage(DataSourceRequest request)
         {
             if (request == null)
             {
                 Logger.Debug("Request was null");
-                return BadRequest();
+                return BadRequest("Request was null");
             }
 
             var data = Database.Set<T>().ToDataSourceResult(request);
             return Ok(data);
         }
 
+        [Route("{id:int}")]
         // ReSharper disable once VirtualMemberNeverOverriden.Global
         public virtual async Task<IHttpActionResult> Get(int id)
         {
@@ -62,6 +68,7 @@ namespace eSIS.Core.API
             return Ok(item);
         }
 
+        [Route("{code}")]
         // ReSharper disable once VirtualMemberNeverOverriden.Global
         public virtual async Task<IHttpActionResult> GetBySystemCode(string code)
         {
@@ -76,16 +83,17 @@ namespace eSIS.Core.API
             return Ok(item);
         }
 
+        [Route("{id:int}")]
         // ReSharper disable once VirtualMemberNeverOverriden.Global
         public virtual async Task<IHttpActionResult> Put(int id, T item)
         {
             if (id != item.Id)
             {
                 Logger.Debug("Ids mismatched Bad Request");
-                return BadRequest();
+                return BadRequest("Id mis-match");
             }
 
-            PrePutValidation();
+            PreUpdateValidation();
 
             if (!ModelState.IsValid)
             {
@@ -112,10 +120,11 @@ namespace eSIS.Core.API
             return StatusCode(HttpStatusCode.NoContent);
         }
 
+        [Route("")]
         // ReSharper disable once VirtualMemberNeverOverriden.Global
         public virtual async Task<IHttpActionResult> Post(T item)
         {
-            PrePostValidation();
+            PreCreateValidation();
 
             if (!ModelState.IsValid)
             {
@@ -130,6 +139,7 @@ namespace eSIS.Core.API
             return CreatedAtRoute("DefaultApi", new { id = item.Id }, item);
         }
 
+        [Route("{id:int}")]
         // ReSharper disable once VirtualMemberNeverOverriden.Global
         public virtual async Task<IHttpActionResult> Delete(int id)
         {
@@ -164,15 +174,15 @@ namespace eSIS.Core.API
         }
 
         // ReSharper disable once VirtualMemberNeverOverriden.Global
-        public virtual void PrePostValidation()
+        public virtual void PreCreateValidation()
         {
-            Logger.Trace("No pre-post validation found");
+            Logger.Trace("No pre-create validation found");
         }
 
         // ReSharper disable once VirtualMemberNeverOverriden.Global
-        public virtual void PrePutValidation()
+        public virtual void PreUpdateValidation()
         {
-            Logger.Trace("No pre-put validation found");
+            Logger.Trace("No pre-update validation found");
         }
     }
 }

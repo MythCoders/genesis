@@ -1,8 +1,10 @@
-﻿using eSIS.Core;
+﻿using System.Globalization;
+using System.Net.Http.Formatting;
 using eSIS.Core.API;
 using System.Web.Http;
 using eSIS.Core.API.Exceptions;
-using System.Net.Http.Formatting;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
 
 namespace eSIS.Web.API
 {
@@ -10,26 +12,37 @@ namespace eSIS.Web.API
     {
         public static void Register(HttpConfiguration config)
         {
-            // Web API configuration and services
-            //config.Formatters.Add(new BrowserJsonFormatter());
             config.Filters.Add(new ApiExceptionFilterAttribute());
+            config.Formatters.Remove(config.Formatters.XmlFormatter);
+            config.MapHttpAttributeRoutes(new CustomDirectRouteProvider());
 
-            var formatter = new JsonMediaTypeFormatter
-            {
-                Indent = !ConfigurationHelper.InstanceIsProduction(),
-                MaxDepth = ConfigurationHelper.InstanceIsProduction() ? int.MaxValue : 100
-            };
+            ConfigureJson(config);
+            ConfigureRoutes(config);
+        }
 
-            config.Services.Replace(typeof (IContentNegotiator), new JsonContentNegotiator(formatter));
-
-            // Web API routes
-            config.MapHttpAttributeRoutes();
-
+        private static void ConfigureRoutes(HttpConfiguration config)
+        {
             config.Routes.MapHttpRoute(
-                name: "DefaultApi",
-                routeTemplate: "api/{controller}/{id}",
-                defaults: new { id = RouteParameter.Optional }
-            );
+                "DefaultApi",
+                "api/{controller}/{id}",
+                new {id = RouteParameter.Optional}
+                );
+        }
+
+        private static void ConfigureJson(HttpConfiguration config)
+        {
+            var json = GlobalConfiguration.Configuration.Formatters.JsonFormatter;
+            json.SerializerSettings.Formatting = Formatting.Indented;
+            json.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
+            json.SerializerSettings.NullValueHandling = NullValueHandling.Ignore;
+            json.SerializerSettings.DateFormatHandling = DateFormatHandling.MicrosoftDateFormat;
+            json.SerializerSettings.DateTimeZoneHandling = DateTimeZoneHandling.Utc;
+            json.SerializerSettings.Culture = new CultureInfo("en-US");
+
+            var formatter = new JsonMediaTypeFormatter();
+            formatter.Indent = true;
+            formatter.MaxDepth = 100;
+            config.Services.Replace(typeof (IContentNegotiator), new JsonContentNegotiator(formatter));
         }
     }
 }

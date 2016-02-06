@@ -59,13 +59,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Migrations\201602060005584_FirstRun.cs" />
-    <Compile Include="Migrations\201602060005584_FirstRun.Designer.cs">
-      <DependentUpon>201602060005584_FirstRun.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201602060058189_RemoveStProcs.cs" />
-    <Compile Include="Migrations\201602060058189_RemoveStProcs.Designer.cs">
-      <DependentUpon>201602060058189_RemoveStProcs.cs</DependentUpon>
+    <Compile Include="Migrations\201602060309009_FirstRun.cs" />
+    <Compile Include="Migrations\201602060309009_FirstRun.Designer.cs">
+      <DependentUpon>201602060309009_FirstRun.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="SisContext.cs" />
@@ -84,11 +80,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201602060005584_FirstRun.resx">
-      <DependentUpon>201602060005584_FirstRun.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201602060058189_RemoveStProcs.resx">
-      <DependentUpon>201602060058189_RemoveStProcs.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201602060309009_FirstRun.resx">
+      <DependentUpon>201602060309009_FirstRun.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
