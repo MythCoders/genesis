@@ -1,4 +1,5 @@
-﻿@{
+﻿@using Kendo.Mvc.UI
+@{
     var systemName = ConfigurationHelper.SystemName();
     var instanceName = ConfigurationHelper.InstanceName();
     var systemVersion = ConfigurationHelper.SystemVersion();
@@ -9,6 +10,9 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@systemName - @instanceName - @ViewBag.Title</title>
+    @Styles.Render("~/Content/css")
+    @Styles.Render("~/Content/kendo/css")
+    @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
@@ -38,7 +42,11 @@
         </footer>
     </div>
 
-    @RenderSection("scripts", required: false)
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/kendo")
+    @RenderSection("scripts", false)
+    @Html.Kendo().DeferredScripts()
 </body>
 
 </html>
