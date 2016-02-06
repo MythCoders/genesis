@@ -6,7 +6,7 @@ namespace eSIS.Task.Playground
     {
         static void Main(string[] args)
         {
-            var foo = "";
+            var foo = ConfigurationHelper.InstanceDbConnectionName();
         }
     }
 }

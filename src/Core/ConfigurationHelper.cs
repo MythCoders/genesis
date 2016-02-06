@@ -5,19 +5,60 @@ namespace eSIS.Core
 {
     public static class ConfigurationHelper
     {
-        public static readonly string SystemName = GetByKey<string>("System.Name");
-        public static readonly string SystemVersion = GetByKey<string>("System.Version");
-        public static readonly string InstanceName = GetByKey<string>("Instance.Name");
-        public static readonly bool InstanceIsProduction = GetByKey<bool>("Instance.IsProduction");
-        public static readonly string InstanceDbConnectionName = GetByKey<string>("Instance.DbConnectionName");
-        public static readonly bool InstanceDbIsLogging = GetByKey<bool>("Instance.DbIsLogging");
-        public static readonly string InstanceDbLogFilePath = GetByKey<string>("Instance.DbLogFilePath");
-        public static readonly string InstanceApiAuthKey = GetByKey<string>("Instance.ApiAuthorizationKey");
-        public static readonly string InstanceApiBaseUrl = GetByKey<string>("Instance.ApiBaseUrl");
+        public static string SystemName()
+        {
+            return GetByKey<string>("System.Name");
+        }
+
+        public static string SystemVersion()
+        {
+            return GetByKey<string>("System.Version");
+        }
+
+        public static string InstanceName()
+        {
+            return GetByKey<string>("Instance.Name");
+        }
+
+        public static bool InstanceIsProduction()
+        {
+            return GetByKey<bool>("Instance.IsProduction");
+        }
+
+        public static string InstanceDbConnectionName()
+        {
+             return GetByKey<string>("Instance.DbConnectionName");
+        }
+
+        public static bool InstanceDbIsLogging()
+        {
+            return GetByKey<bool>("Instance.DbIsLogging");
+        }
+
+        public static string InstanceDbLogFilePath()
+        {
+            return GetByKey<string>("Instance.DbLogFilePath");
+        }
+
+        public static string InstanceApiAuthKey()
+        {
+            return GetByKey<string>("Instance.ApiAuthorizationKey");
+        }
+
+        public static string InstanceApiBaseUrl()
+        {
+            return GetByKey<string>("Instance.ApiBaseUrl");
+        }
 
         private static T GetByKey<T>(string key)
         {
             var value = ConfigurationManager.AppSettings[key];
+
+            if (value == null)
+            {
+                
+            }
+
             return (T) Convert.ChangeType(value, typeof (T));
         }
     }

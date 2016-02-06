@@ -16,8 +16,8 @@ namespace eSIS.Web.API
 
             var formatter = new JsonMediaTypeFormatter
             {
-                Indent = !ConfigurationHelper.InstanceIsProduction,
-                MaxDepth = ConfigurationHelper.InstanceIsProduction ? int.MaxValue : 100
+                Indent = !ConfigurationHelper.InstanceIsProduction(),
+                MaxDepth = ConfigurationHelper.InstanceIsProduction() ? int.MaxValue : 100
             };
 
             config.Services.Replace(typeof (IContentNegotiator), new JsonContentNegotiator(formatter));

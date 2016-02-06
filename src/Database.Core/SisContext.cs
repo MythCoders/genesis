@@ -26,7 +26,7 @@ namespace eSIS.Database
 
         //This is required by EF migrations
         public SisContext()
-            : base(ConfigurationHelper.InstanceDbConnectionName)
+            : base(ConfigurationHelper.InstanceDbConnectionName())
         { }
 
         public SisContext(string userName, string iPAddress)
@@ -37,7 +37,7 @@ namespace eSIS.Database
             _userName = userName;
             _ipAddress = iPAddress;
 
-            if (ConfigurationHelper.InstanceDbIsLogging)
+            if (ConfigurationHelper.InstanceDbIsLogging())
             {
                 var dbLogger = new DatabaseLogger();
                 dbLogger.StartLogging();
@@ -88,18 +88,26 @@ namespace eSIS.Database
         #endregion
 
         public DbSet<Address> Addresses { get; set; }
-        public DbSet<Course> Courses { get; set; }
+        //public DbSet<Course> Courses { get; set; }
         public DbSet<District> Districts { get; set; }
-        public DbSet<EnrollmentCode> EnrollmentCodes { get; set; }
+        //public DbSet<EnrollmentCode> EnrollmentCodes { get; set; }
         public DbSet<School> Schools { get; set; }
         public DbSet<SchoolType> SchoolTypes { get; set; }
         public DbSet<Grade> Grades { get; set; }
-        public DbSet<Student> Students { get; set; }
-        public DbSet<Staff> Staff { get; set; }
+        //public DbSet<Student> Students { get; set; }
+        //public DbSet<Staff> Staff { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Log>().MapToStoredProcedures(sp => sp.Insert(i => i.HasName("usp_LogInsert"))); //this is so that create can be called by our logging framework
+            //this is so that create can be called by our logging framework
+            modelBuilder.Entity<Log>()
+                .MapToStoredProcedures(sp =>
+                {
+                    sp.Insert(i => i.HasName("usp_LogInsert", "inf"));
+                    sp.Update(i => i.HasName("usp_LogUpdate", "inf"));
+                    sp.Delete(i => i.HasName("usp_LogDelete", "inf"));
+                });
+
             modelBuilder.Entity<Grade>().HasOptional(p => p.NextGrade).WithMany().HasForeignKey(p => p.NextGradeId);
             modelBuilder.Entity<Grade>().HasOptional(p => p.PreviousGrade).WithMany().HasForeignKey(p => p.PreviousGradeId);
             modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
@@ -149,8 +157,8 @@ namespace eSIS.Database
 
                 _logger.Trace("Starting base save changes");
 
-                return AuditChanges 
-                    ? await SaveChangesWithAudit() 
+                return AuditChanges
+                    ? await SaveChangesWithAudit()
                     : await base.SaveChangesAsync();
             }
             catch (DbEntityValidationException ex)

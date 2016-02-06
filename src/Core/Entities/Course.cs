@@ -1,7 +1,9 @@
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace eSIS.Core.Entities
 {
+    [Table("Course", Schema = "sis")]
     public class Course : BaseEntity
     {
         [MaxLength(45)]

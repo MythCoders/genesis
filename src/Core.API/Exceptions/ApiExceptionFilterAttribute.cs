@@ -59,7 +59,7 @@ namespace eSIS.Core.API.Exceptions
 
         private static string GenericApiErrorMessage()
         {
-            return ConfigurationHelper.InstanceIsProduction
+            return ConfigurationHelper.InstanceIsProduction()
                                     ? Constants.ApiGenericErrorMessage
                                     : $"{Constants.ApiGenericErrorMessage} Please see System Logs for more details.";
         }

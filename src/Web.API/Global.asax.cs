@@ -13,7 +13,7 @@ namespace eSIS.Web.API
         {
             var logger = LogManager.GetLogger("eSISApi");
 
-            logger.Info($"Launching {ConfigurationHelper.SystemName} v{ConfigurationHelper.SystemVersion}");
+            logger.Info($"Launching {ConfigurationHelper.SystemName()} v{ConfigurationHelper.SystemVersion()}");
             logger.Trace("Registering all areas");
             AreaRegistration.RegisterAllAreas();
 

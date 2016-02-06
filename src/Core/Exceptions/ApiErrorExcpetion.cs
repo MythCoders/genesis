@@ -14,7 +14,7 @@ namespace eSIS.Core.Exceptions
         /// <summary>
         /// An general summary of the error. The end user will most likely see this message
         /// </summary>
-        public string Message { get; set; }
+        public new string Message { get; set; }
 
         /// <summary>
         /// An optional, detailed, error message that might provide more information on what the problem is. 
