@@ -114,9 +114,9 @@
     <Compile Include="Exceptions\ApiErrorResult.cs" />
     <Compile Include="ApiHelper.cs" />
     <Compile Include="BrowserJsonFormatter.cs" />
-    <Compile Include="Configuration\ApiClientConfig.cs" />
-    <Compile Include="Configuration\ApiClientCollection.cs" />
-    <Compile Include="Configuration\ApiClientSection.cs" />
+    <Compile Include="ApiClient\ApiClientConfig.cs" />
+    <Compile Include="ApiClient\ApiClientCollection.cs" />
+    <Compile Include="ApiClient\ApiClientSection.cs" />
     <Compile Include="Exceptions\ApiExceptionFilterAttribute.cs" />
     <Compile Include="Exceptions\RequiredHeaderException.cs" />
     <Compile Include="JsonContentNegotiator.cs" />

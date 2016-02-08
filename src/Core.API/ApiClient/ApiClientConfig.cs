@@ -1,6 +1,6 @@
 ﻿using System.Configuration;
 
-namespace eSIS.Core.API.Configuration
+namespace eSIS.Core.API.ApiClient
 {
     public class ApiClientConfig : ConfigurationElement
     {
@@ -8,8 +8,8 @@ namespace eSIS.Core.API.Configuration
 
         public ApiClientConfig(string token, string clientName)
         {
-            this.Token = token;
-            this.ClientName = clientName;
+            Token = token;
+            ClientName = clientName;
         }
 
         [ConfigurationProperty("token", IsRequired = true, IsKey = true)]

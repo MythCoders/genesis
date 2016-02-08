@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
 using System.Web;
-using eSIS.Core.API.Configuration;
+using eSIS.Core.API.ApiClient;
 using eSIS.Core.API.Exceptions;
 
 namespace eSIS.Core.API

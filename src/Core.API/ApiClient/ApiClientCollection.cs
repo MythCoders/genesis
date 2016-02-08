@@ -2,7 +2,7 @@
 using System.Configuration;
 using System.Linq;
 
-namespace eSIS.Core.API.Configuration
+namespace eSIS.Core.API.ApiClient
 {
     public class ApiClientCollection : ConfigurationElementCollection, IEnumerable<ApiClientConfig>
     {
