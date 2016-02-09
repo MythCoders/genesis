@@ -30,7 +30,10 @@ namespace eSIS.Core.UI.MVC
                 .Scrollable(s => s.Virtual(true))
                 .Filterable(ftb => ftb.Mode(GridFilterMode.Row))
                 .Reorderable(r => r.Columns(true))
-                .DataSource(ds => { ds.Ajax().Read(read => read.Action(actionName, controllerName, new { area = areaName })); })
+                .DataSource(ds =>
+                {
+                    ds.Ajax().Read(read => read.Action(actionName, controllerName, new { area = areaName }));
+                })
                 .Deferred();
         }
 

@@ -23,62 +23,6 @@ namespace eSIS.Core.UI
             _logger = LogManager.GetCurrentClassLogger();
         }
 
-        public async Task<T> MakeGetRequest<T>(string url)
-        {
-            if (string.IsNullOrWhiteSpace(url))
-            {
-                _logger.Warn("Get Request did not have url");
-                throw new ArgumentException(nameof(url));
-            }
-
-            var callUri = new Uri(url, UriKind.Absolute);
-            var response = await _client.GetAsync(callUri, HttpCompletionOption.ResponseHeadersRead);
-
-            ProcessRequest(response);
-
-            return await DeseralizeObject<T>(response.Content);
-        }
-
-        public async Task<TResult> MakeGetRequest<TResult, TRequest>(string url, TRequest data)
-        {
-            if (string.IsNullOrWhiteSpace(url))
-            {
-                _logger.Warn("Get Request did not have url");
-                throw new ArgumentException(nameof(url));
-            }
-
-            var callUri = new Uri(url, UriKind.Absolute);
-            var message = new HttpRequestMessage(HttpMethod.Get, callUri);
-
-            var jsonData = JsonConvert.SerializeObject(data);
-            message.Content = new StringContent(jsonData, Encoding.UTF8, "application/json");
-
-            var response = await _client.SendAsync(message);
-
-            ProcessRequest(response);
-
-            return await DeseralizeObject<TResult>(response.Content);
-        }
-
-        public async Task<TResult> MakePostRequest<TResult, TRequest>(string url, TRequest data)
-        {
-            if (string.IsNullOrWhiteSpace(url))
-            {
-                _logger.Warn("Put Request did not have url");
-                throw new ArgumentException(nameof(url));
-            }
-
-            var callUri = new Uri(url, UriKind.Absolute);
-
-            var jsonData = JsonConvert.SerializeObject(data);
-            var content = new StringContent(jsonData, Encoding.UTF8, "application/json");
-            var response = await _client.PostAsync(callUri, content);
-
-            ProcessRequest(response);
-
-            return await DeseralizeObject<TResult>(response.Content);
-        }
-
         public async Task<TResult> MakePutRequest<TResult, TRequest>(string url, TRequest data)
         {
             if (string.IsNullOrWhiteSpace(url))
@@ -114,6 +58,80 @@ namespace eSIS.Core.UI
             return await DeseralizeObject<TResult>(response.Content);
         }
 
+        #region Get
+
+        public async Task<byte[]> MakeRawGetRequest(string url)
+        {
+            if (string.IsNullOrWhiteSpace(url))
+            {
+                _logger.Warn("Get Request did not have url");
+                throw new ArgumentException(nameof(url));
+            }
+
+            var callUri = new Uri(url, UriKind.Absolute);
+            var response = await _client.GetAsync(callUri);
+
+            ProcessRequest(response);
+            return await response.Content.ReadAsByteArrayAsync();
+        }
+
+        public async Task<T> MakeGetRequest<T>(string url)
+        {
+            if (string.IsNullOrWhiteSpace(url))
+            {
+                _logger.Warn("Get Request did not have url");
+                throw new ArgumentException(nameof(url));
+            }
+
+            var callUri = new Uri(url, UriKind.Absolute);
+            var response = await _client.GetAsync(callUri);
+
+            ProcessRequest(response);
+            return await DeseralizeObject<T>(response.Content);
+        }
+
+        #endregion
+
+        #region Post
+
+        public async Task<byte[]> MakeRawPostRequest<TRequest>(string url, TRequest data)
+        {
+            if (string.IsNullOrWhiteSpace(url))
+            {
+                _logger.Warn("RawPut Request did not have url");
+                throw new ArgumentException(nameof(url));
+            }
+
+            var callUri = new Uri(url, UriKind.Absolute);
+
+            var jsonData = JsonConvert.SerializeObject(data);
+            var content = new StringContent(jsonData, Encoding.UTF8, "application/json");
+            var response = await _client.PostAsync(callUri, content);
+
+            ProcessRequest(response);
+            return await response.Content.ReadAsByteArrayAsync();
+        }
+
+        public async Task<TResult> MakePostRequest<TResult, TRequest>(string url, TRequest data)
+        {
+            if (string.IsNullOrWhiteSpace(url))
+            {
+                _logger.Warn("RawPut Request did not have url");
+                throw new ArgumentException(nameof(url));
+            }
+
+            var callUri = new Uri(url, UriKind.Absolute);
+
+            var jsonData = JsonConvert.SerializeObject(data);
+            var content = new StringContent(jsonData, Encoding.UTF8, "application/json");
+            var response = await _client.PostAsync(callUri, content);
+
+            ProcessRequest(response);
+            return await DeseralizeObject<TResult>(response.Content);
+        }
+
+        #endregion
+
         public async Task<T> DeseralizeObject<T>(HttpContent content)
         {
             // NOTE!! We are really careful not to use a string here so we don't have to allocate a huge string.
@@ -133,24 +151,12 @@ namespace eSIS.Core.UI
             }
         }
 
-        /// <summary>
-        /// Generates a unique id for a request to the Api. This can then be tracked
-        /// in the Api
-        /// </summary>
-        /// <returns></returns>
-        //private static string GetRequestId()
-        //{
-        //    //todo replace with users real identifier 
-        //    return $"{Guid.NewGuid()}_{"test@email.com"}_{DateTime.Now.ToString("mmddyyyyHHmmss")}";
-        //}
-
         private static void ProcessRequest(HttpResponseMessage response)
         {
             if (!response.IsSuccessStatusCode)
             {
-                //todo provide more information in exceptions details
                 Debugger.Break();
-                throw new Exception($"Error! Currently Unknown.");
+                throw new Exception($"Error! {response.Content}");
             }
         }
     }

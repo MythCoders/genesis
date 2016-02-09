@@ -4,6 +4,26 @@
         <name>NLog.Web</name>
     </assembly>
     <members>
+        <member name="T:NLog.Web.DefaultHttpContextAccessor">
+            <summary>
+            Provides the HttpContext associated with the current request.
+            </summary>
+        </member>
+        <member name="T:NLog.Web.IHttpContextAccessor">
+            <summary>
+            Provides access to the HttpContext
+            </summary>
+        </member>
+        <member name="P:NLog.Web.IHttpContextAccessor.HttpContext">
+            <summary>
+            HttpContext associated with the current request
+            </summary>
+        </member>
+        <member name="P:NLog.Web.DefaultHttpContextAccessor.HttpContext">
+            <summary>
+            HttpContext of the current request.
+            </summary>
+        </member>
         <member name="T:NLog.Web.LayoutRenderers.AspNetApplicationValueLayoutRenderer">
             <summary>
             ASP.NET Application variable.
@@ -32,7 +52,36 @@
             </code>
             </example>
         </member>
-        <member name="M:NLog.Web.LayoutRenderers.AspNetApplicationValueLayoutRenderer.Append(System.Text.StringBuilder,NLog.LogEventInfo)">
+        <member name="T:NLog.Web.LayoutRenderers.AspNetLayoutRendererBase">
+            <summary>
+            Base class for ASP.NET layout renderers.
+            </summary>
+        </member>
+        <member name="M:NLog.Web.LayoutRenderers.AspNetLayoutRendererBase.#ctor">
+            <summary>
+            Initializes the <see cref="T:NLog.Web.LayoutRenderers.AspNetLayoutRendererBase"/> with the <see cref="T:NLog.Web.DefaultHttpContextAccessor"/>.
+            </summary>
+        </member>
+        <member name="M:NLog.Web.LayoutRenderers.AspNetLayoutRendererBase.Append(System.Text.StringBuilder,NLog.LogEventInfo)">
+            <summary>
+            Validates that the HttpContext is available and delegates append to subclasses.<see cref="T:System.Text.StringBuilder"/>.
+            </summary>
+            <param name="builder">The <see cref="T:System.Text.StringBuilder"/> to append the rendered data to.</param>
+            <param name="logEvent">Logging event.</param>
+        </member>
+        <member name="M:NLog.Web.LayoutRenderers.AspNetLayoutRendererBase.DoAppend(System.Text.StringBuilder,NLog.LogEventInfo)">
+            <summary>
+            Implemented by subclasses to render request information and append it to the specified <see cref="T:System.Text.StringBuilder"/>.
+            </summary>
+            <param name="builder">The <see cref="T:System.Text.StringBuilder"/> to append the rendered data to.</param>
+            <param name="logEvent">Logging event.</param>
+        </member>
+        <member name="P:NLog.Web.LayoutRenderers.AspNetLayoutRendererBase.HttpContextAccessor">
+            <summary>
+            Provides access to the current request HttpContext.
+            </summary>
+        </member>
+        <member name="M:NLog.Web.LayoutRenderers.AspNetApplicationValueLayoutRenderer.DoAppend(System.Text.StringBuilder,NLog.LogEventInfo)">
             <summary>
             Renders the specified ASP.NET Application variable and appends it to the specified <see cref="T:System.Text.StringBuilder"/>.
             </summary>
@@ -73,7 +122,7 @@
             </code>
             </example>
         </member>
-        <member name="M:NLog.Web.LayoutRenderers.AspNetItemValueLayoutRenderer.Append(System.Text.StringBuilder,NLog.LogEventInfo)">
+        <member name="M:NLog.Web.LayoutRenderers.AspNetItemValueLayoutRenderer.DoAppend(System.Text.StringBuilder,NLog.LogEventInfo)">
             <summary>
             Renders the specified ASP.NET Item value and appends it to the specified <see cref="T:System.Text.StringBuilder"/>.
             </summary>
@@ -107,11 +156,12 @@
             ${aspnet-request:querystring=v}
             ${aspnet-request:form=v}
             ${aspnet-request:cookie=v}
+            ${aspnet-request:header=h}
             ${aspnet-request:serverVariable=v}
             </code>
             </example>
         </member>
-        <member name="M:NLog.Web.LayoutRenderers.AspNetRequestValueLayoutRenderer.Append(System.Text.StringBuilder,NLog.LogEventInfo)">
+        <member name="M:NLog.Web.LayoutRenderers.AspNetRequestValueLayoutRenderer.DoAppend(System.Text.StringBuilder,NLog.LogEventInfo)">
             <summary>
             Renders the specified ASP.NET Request variable and appends it to the specified <see cref="T:System.Text.StringBuilder"/>.
             </summary>
@@ -148,12 +198,18 @@
             </summary>
             <docgen category='Rendering Options' order='10' />
         </member>
+        <member name="P:NLog.Web.LayoutRenderers.AspNetRequestValueLayoutRenderer.Header">
+            <summary>
+            Gets or sets the Headers item to be rendered.
+            </summary>
+            <docgen category='Rendering Options' order='10' />
+        </member>
         <member name="T:NLog.Web.LayoutRenderers.AspNetSessionIDLayoutRenderer">
             <summary>
             ASP.NET Session ID.
             </summary>
         </member>
-        <member name="M:NLog.Web.LayoutRenderers.AspNetSessionIDLayoutRenderer.Append(System.Text.StringBuilder,NLog.LogEventInfo)">
+        <member name="M:NLog.Web.LayoutRenderers.AspNetSessionIDLayoutRenderer.DoAppend(System.Text.StringBuilder,NLog.LogEventInfo)">
             <summary>
             Renders the ASP.NET Session ID appends it to the specified <see cref="T:System.Text.StringBuilder"/>.
             </summary>
@@ -188,7 +244,7 @@
             </code>
             </example>
         </member>
-        <member name="M:NLog.Web.LayoutRenderers.AspNetSessionValueLayoutRenderer.Append(System.Text.StringBuilder,NLog.LogEventInfo)">
+        <member name="M:NLog.Web.LayoutRenderers.AspNetSessionValueLayoutRenderer.DoAppend(System.Text.StringBuilder,NLog.LogEventInfo)">
             <summary>
             Renders the specified ASP.NET Session value and appends it to the specified <see cref="T:System.Text.StringBuilder"/>.
             </summary>
@@ -212,7 +268,7 @@
             ASP.NET User variable.
             </summary>
         </member>
-        <member name="M:NLog.Web.LayoutRenderers.AspNetUserAuthTypeLayoutRenderer.Append(System.Text.StringBuilder,NLog.LogEventInfo)">
+        <member name="M:NLog.Web.LayoutRenderers.AspNetUserAuthTypeLayoutRenderer.DoAppend(System.Text.StringBuilder,NLog.LogEventInfo)">
             <summary>
             Renders the specified ASP.NET User.Identity.AuthenticationType variable and appends it to the specified <see cref="T:System.Text.StringBuilder"/>.
             </summary>
@@ -224,7 +280,7 @@
             ASP.NET User variable.
             </summary>
         </member>
-        <member name="M:NLog.Web.LayoutRenderers.AspNetUserIdentityLayoutRenderer.Append(System.Text.StringBuilder,NLog.LogEventInfo)">
+        <member name="M:NLog.Web.LayoutRenderers.AspNetUserIdentityLayoutRenderer.DoAppend(System.Text.StringBuilder,NLog.LogEventInfo)">
             <summary>
             Renders the specified ASP.NET User.Identity.Name variable and appends it to the specified <see cref="T:System.Text.StringBuilder"/>.
             </summary>

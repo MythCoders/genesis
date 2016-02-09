@@ -47,8 +47,8 @@ namespace eSIS.Core.API
         /// </summary>
         /// <param name="request"></param>
         /// <returns></returns>
-        [Route("GetPage")]
-        public IHttpActionResult GetPage(DataSourceRequest request)
+        [Route("Page")]
+        public IHttpActionResult Page(DataSourceRequest request)
         {
             if (request == null)
             {
