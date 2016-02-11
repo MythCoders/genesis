@@ -18,7 +18,9 @@ namespace eSIS.Core.UI
         public WebApiClient()
         {
             _client = new HttpClient();
-            _client.DefaultRequestHeaders.Add(Constants.ApiRequestHeaderName, ConfigurationHelper.InstanceApiAuthKey());
+            _client.DefaultRequestHeaders.Add(Constants.ApiRequestKeyHeaderName, ConfigurationHelper.InstanceApiAuthKey());
+            _client.DefaultRequestHeaders.Add(Constants.ApiRequestClientNameHeaderName, ConfigurationHelper.InstanceName());
+            _client.DefaultRequestHeaders.Add(Constants.ApiRequestClientInProductionHeaderName, ConfigurationHelper.InstanceIsProduction().ToString());
             _client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
             _logger = LogManager.GetCurrentClassLogger();
         }

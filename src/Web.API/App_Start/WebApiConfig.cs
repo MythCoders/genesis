@@ -2,6 +2,7 @@
 using System.Net.Http.Formatting;
 using eSIS.Core.API;
 using System.Web.Http;
+using eSIS.Core;
 using eSIS.Core.API.Exceptions;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
@@ -17,7 +18,9 @@ namespace eSIS.Web.API
             config.Formatters.Remove(config.Formatters.FormUrlEncodedFormatter);
             config.MapHttpAttributeRoutes(new CustomDirectRouteProvider());
 
-            ConfigureJson(config);
+            GlobalConfiguration.Configuration.Formatters.JsonFormatter.SerializerSettings = ConfigurationHelper.GetJsonSerializerSettings();
+            config.Services.Replace(typeof (IContentNegotiator), new JsonContentNegotiator(ConfigurationHelper.GetJsonMediaTypeFormatter()));
+
             ConfigureRoutes(config);
         }
 
@@ -28,24 +31,6 @@ namespace eSIS.Web.API
                 "api/{controller}/{id}",
                 new {id = RouteParameter.Optional}
                 );
-        }
-
-        private static void ConfigureJson(HttpConfiguration config)
-        {
-            var json = GlobalConfiguration.Configuration.Formatters.JsonFormatter;
-            json.SerializerSettings.Formatting = Formatting.Indented;
-            json.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
-            json.SerializerSettings.NullValueHandling = NullValueHandling.Ignore;
-            json.SerializerSettings.DateFormatHandling = DateFormatHandling.MicrosoftDateFormat;
-            json.SerializerSettings.DateTimeZoneHandling = DateTimeZoneHandling.Utc;
-            json.SerializerSettings.Culture = new CultureInfo("en-US");
-            json.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Serialize;
-            json.SerializerSettings.PreserveReferencesHandling = PreserveReferencesHandling.Objects;
-
-            var formatter = new JsonMediaTypeFormatter();
-            formatter.Indent = true;
-            formatter.MaxDepth = 100;
-            config.Services.Replace(typeof (IContentNegotiator), new JsonContentNegotiator(formatter));
         }
     }
 }

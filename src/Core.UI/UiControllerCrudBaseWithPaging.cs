@@ -1,4 +1,7 @@
-﻿using System.Web.Mvc;
+﻿using System.Text;
+using System.Threading.Tasks;
+using System.Web.Mvc;
+using eSIS.Core.Classes;
 using Kendo.Mvc.UI;
 
 namespace eSIS.Core.UI
@@ -9,13 +12,12 @@ namespace eSIS.Core.UI
             : base(directoryPath, controllerName)
         { }
 
-        public ActionResult Index_Query([DataSourceRequest] DataSourceRequest request)
+        public async Task<ActionResult> Index_Query([DataSourceRequest] DataSourceRequest request)
         {
-            //var url = new Url().SubDirectory(DirectoryPath).Method("Page").Generate();
-            //var data = await ApiClient.MakeRawPostRequest(url, request);
-            //var jsonStr = Encoding.UTF8.GetString(data);
-            //return Json(Task.Factory.StartNew(() => JsonConvert.DeserializeObject<DataSourceResult>(jsonStr)));
-            return Json(null);
+            var url = new Url().SubDirectory(DirectoryPath).Method("Page").Generate();
+            var data = await ApiClient.MakeRawPostRequest(url, request);
+            var jsonStr = Encoding.UTF8.GetString(data);
+            return Content(jsonStr, "application/json", Encoding.Default);
         }
     }
 }

@@ -21,14 +21,14 @@ namespace eSIS.Core.API.Security
 
             IEnumerable<string> apiKeyHeaderValues;
 
-            if (context.Request.Headers.TryGetValues(Constants.ApiRequestHeaderName, out apiKeyHeaderValues))
+            if (context.Request.Headers.TryGetValues(Constants.ApiRequestKeyHeaderName, out apiKeyHeaderValues))
             {
                 _logger.Trace("Header found");
 
                 var apiToken = apiKeyHeaderValues.First();
                 var client = ApiHelper.GetByClientToken(apiToken);
                 var claim = new Claim(ClaimTypes.Name, client.ClientName);
-                var identity = new ClaimsIdentity(new[] { claim }, Constants.ApiRequestHeaderName);
+                var identity = new ClaimsIdentity(new[] { claim }, Constants.ApiRequestKeyHeaderName);
                 var principal = new ClaimsPrincipal(identity);
                 context.Principal = principal;
             }
