@@ -1,0 +1,35 @@
+﻿@if (TempData["Status"] != null)
+{
+    <div class="alert alert-success alert-dismissable">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+        @Html.Raw(TempData["Status"])
+    </div>
+}
+@if (TempData["Success"] != null)
+{
+    <div class="alert alert-success alert-dismissable">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+        @Html.Raw(TempData["Success"])
+    </div>
+}
+@if (TempData["Info"] != null)
+{
+    <div class="alert alert-info alert-dismissable">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+        @Html.Raw(TempData["Info"])
+    </div>
+}
+@if (TempData["Warning"] != null)
+{
+    <div class="alert alert-warning alert-dismissable">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+        @Html.Raw(TempData["Warning"])
+    </div>
+}
+@if (TempData["Error"] != null)
+{
+    <div class="alert alert-danger alert-dismissable">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+        @Html.Raw(TempData["Error"])
+    </div>
+}

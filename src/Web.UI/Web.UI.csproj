@@ -310,15 +310,23 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Shared\Lockout.cshtml" />
+    <Content Include="Views\Shared\Maintenance.cshtml" />
+    <Content Include="Views\Shared\_AlertsFromTempData.cshtml" />
+    <Content Include="Views\Shared\_BareLayout.cshtml" />
+    <Content Include="Views\Shared\_Create.cshtml" />
+    <Content Include="Views\Shared\_Edit.cshtml" />
+    <Content Include="Views\Shared\_EditDelete.cshtml" />
+    <Content Include="Views\Shared\_Loading.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Administration\Models\" />
     <Folder Include="Content\images\" />
     <Folder Include="Models\" />
+    <Folder Include="Views\Shared\DisplayTemplates\" />
+    <Folder Include="Views\Shared\EditorTemplates\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

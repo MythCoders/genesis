@@ -1,0 +1,20 @@
+﻿@using (Html.BeginForm())
+{
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <div class="panel-title">
+                Edit
+            </div>
+        </div>
+        <div class="panel-body">
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true)
+            @Html.EditorFor(m => Model)
+        </div>
+        <div class="panel-footer">
+            @Html.ActionLink("Back", "Index", null, new { @class = "btn btn-default" })
+            <input name="action" type="submit" value="Save Changes" class="btn btn-success" />
+            <input name="action" type="submit" value="Delete" class="btn btn-danger pull-right" onclick="return confirm('Are you sure you want to delete this record?');" />
+        </div>
+    </div>
+}
