@@ -42,6 +42,7 @@ namespace eSIS.Core.UI
         public virtual ActionResult Create()
         {
             ViewBag.Action = "Create";
+
             var model = new T();
             return View(model);
         }
@@ -65,8 +66,25 @@ namespace eSIS.Core.UI
         public virtual async Task<ActionResult> Edit(int id)
         {
             ViewBag.Action = "Edit";
-            var url = new Url().SubDirectory(DirectoryPath).Generate();
-            return View(await ApiClient.MakeGetRequest<T>($"{url}/{id}"));
+
+            var url = new Url().SubDirectory(DirectoryPath).Method(id.ToString()).Generate();
+            return View(await ApiClient.MakeGetRequest<T>(url));
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public virtual async Task<ActionResult> Edit(T data)
+        {
+            ViewBag.Action = "Edit";
+
+            if (ModelState.IsValid)
+            {
+                var url = new Url().SubDirectory(DirectoryPath).Method(data.Id.ToString()).Generate();
+                await ApiClient.MakePutRequest<T, T>(url, data);
+                return await Detail(data.Id);
+            }
+
+            return View(data);
         }
     }
 }

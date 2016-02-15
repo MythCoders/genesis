@@ -1,20 +1,17 @@
-﻿@using (Html.BeginForm())
+﻿@{
+    var action = (string)ViewBag.ActionName;
+    var controller = (string)ViewBag.ControllerName;
+}
+
+@using (Html.BeginForm(action, controller, FormMethod.Post, new { @class = "aui" }))
 {
-    <div class="panel panel-primary">
-        <div class="panel-heading">
-            <div class="panel-title">
-                Edit
-            </div>
-        </div>
-        <div class="panel-body">
-            @Html.AntiForgeryToken()
-            @Html.ValidationSummary(true)
-            @Html.EditorFor(m => Model)
-        </div>
-        <div class="buttons-container">
-            @Html.ActionLink("Back", "Index", null, new { @class = "aui-button" })
-            <input name="action" type="submit" value="Save Changes" class="aui-button aui-button-success" />
-            <input name="action" type="submit" value="Delete" class="aui-button aui-button-danger pull-right" onclick="return confirm('Are you sure you want to delete this record?');" />
-        </div>
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+    @Html.EditorFor(m => Model)
+
+    <div class="buttons-container">
+        @Html.ActionLink("Back", "Index", null, new { @class = "aui-button" })
+        <input name="action" type="submit" value="Save Changes" class="aui-button aui-button-success" />
+        <input name="action" type="submit" value="Delete" class="aui-button aui-button-danger pull-right" onclick="return confirm('Are you sure you want to delete this record?');" />
     </div>
 }

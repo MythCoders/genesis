@@ -1,20 +1,17 @@
-﻿@using System.Web.Mvc.Html
-@using (Html.BeginForm())
+﻿
+@{
+    var action = (string)ViewBag.ActionName;
+    var controller = (string)ViewBag.ControllerName;
+}
+
+@using (Html.BeginForm(action, controller, FormMethod.Post, new { @class = "aui" }))
 {
-    <div class="panel panel-primary">
-        <div class="panel-heading">
-            <div class="panel-title">
-                Edit
-            </div>
-        </div>
-        <div class="panel-body">
-            @Html.AntiForgeryToken()
-            @Html.ValidationSummary(true)
-            @Html.EditorFor(m => Model)
-        </div>
-        <div class="panel-footer">
-            @Html.ActionLink("Back", "Index", null, new { @class = "btn btn-default" })
-            <input name="action" type="submit" value="Save Changes" class="btn btn-success" />
-        </div>
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+    @Html.EditorFor(m => Model)
+
+    <div class="buttons-container">
+        <input name="action" type="submit" value="Save Changes" class="aui-button aui-button-primary" />
+        @Html.ActionLink("Back", "Index", null, new {@class = "aui-button"})
     </div>
 }

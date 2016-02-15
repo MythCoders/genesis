@@ -1,5 +1,13 @@
 ﻿@model District
 
+@Html.HiddenFor(m => Model.Id)
+@Html.HiddenFor(m => Model.AddressId)
+@Html.HiddenFor(m => Model.ModDate)
+@Html.HiddenFor(m => Model.ModUser)
+@Html.HiddenFor(m => Model.AddDate)
+@Html.HiddenFor(m => Model.AddUser)
+@Html.HiddenFor(m => Model.Version)
+
 <div class="field-group">
     @Html.LabelFor(m => Model.SystemCode)
     @Html.TextBoxFor(m => Model.SystemCode, new { @class = "text short-field" })

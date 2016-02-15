@@ -1,0 +1,24 @@
+﻿@using eSIS.Core.Entities.Infrastructure
+@model List<ApiClient>
+
+@{
+    ViewBag.Module = "Api Clients";
+    ViewBag.Title = "All Api Clients";
+}
+
+@(Html.Kendo().Grid<ApiClient>()
+      .Name("pagingGrid")
+      .Columns(cols =>
+      {
+          cols.NavigationButton(p => p.Id, "Select", Url.Action("Detail")).Title("");
+          cols.Bound(p => p.SystemCode).Width(125);
+          cols.Bound(p => p.Name);
+      })
+      .StandardPagingGrid("ApiClient", "Administration")
+)
+
+@section headerActions {
+    <div class="aui-buttons">
+        @Html.ActionLink("Create", "Create", null, new { @class = "aui-button" })
+    </div>
+}

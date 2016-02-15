@@ -131,6 +131,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Administration\AdministrationAreaRegistration.cs" />
+    <Compile Include="Areas\Administration\Controllers\ApiClientController.cs" />
     <Compile Include="Areas\Administration\Controllers\DistrictController.cs" />
     <Compile Include="Areas\Administration\Controllers\DashboardController.cs" />
     <Compile Include="Areas\Administration\Controllers\SchoolController.cs" />
@@ -201,6 +202,10 @@
     <Content Include="Areas\Administration\Views\Shared\_ConfigLayout.cshtml" />
     <Content Include="Areas\Administration\Views\District\Detail.cshtml" />
     <Content Include="Areas\Administration\Views\Shared\DisplayTemplates\District.cshtml" />
+    <Content Include="Areas\Administration\Views\ApiClient\Index.cshtml" />
+    <Content Include="Areas\Administration\Views\ApiClient\Create.cshtml" />
+    <Content Include="Areas\Administration\Views\ApiClient\Edit.cshtml" />
+    <Content Include="Areas\Administration\Views\District\Edit.cshtml" />
     <None Include="Scripts\jquery-2.2.0.intellisense.js" />
     <Content Include="Scripts\jquery-2.2.0.js" />
     <Content Include="Scripts\jquery-2.2.0.min.js" />

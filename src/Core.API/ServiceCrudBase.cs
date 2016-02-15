@@ -92,7 +92,7 @@ namespace eSIS.Core.API
 
         [Route("{id:int}")]
         // ReSharper disable once VirtualMemberNeverOverriden.Global
-        public virtual async Task<IHttpActionResult> Put(int id, T item)
+        public virtual async Task<IHttpActionResult> Put([FromUri] int id, [FromBody] T item)
         {
             if (id != item.Id)
             {
@@ -108,7 +108,9 @@ namespace eSIS.Core.API
                 return BadRequest(ModelState);
             }
 
-            Database.Entry(item).State = EntityState.Modified;
+            var existing = await Database.Set<T>().FindAsync(item.Id);
+            
+            UpdateMapping(existing, item);
 
             try
             {
@@ -178,6 +180,11 @@ namespace eSIS.Core.API
         private bool Exists(int id)
         {
             return Database.Set<T>().Count(e => e.Id == id) > 0;
+        }
+
+        public virtual void UpdateMapping(T existingItem, T updatedItem)
+        {
+            Database.Entry(existingItem).CurrentValues.SetValues(updatedItem);
         }
 
         // ReSharper disable once VirtualMemberNeverOverriden.Global
