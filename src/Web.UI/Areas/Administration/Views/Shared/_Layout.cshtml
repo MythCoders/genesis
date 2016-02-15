@@ -58,8 +58,10 @@
     </div>
 
     @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/kendo")
     @Scripts.Render("~/bundles/admin")
     @Scripts.Render("~/bundles/modernizr")
+    
     @RenderSection("scripts", false)
     @Html.Kendo().DeferredScripts()
 </body>

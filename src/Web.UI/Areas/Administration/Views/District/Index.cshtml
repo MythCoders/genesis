@@ -9,17 +9,13 @@
       .Name("pagingGrid")
       .Columns(cols =>
       {
-          cols.NavigationButton(p => p.Id, "Select", Url.Action("Edit")).Title("");
+          cols.NavigationButton(p => p.Id, "Select", Url.Action("Detail")).Title("");
           cols.Bound(p => p.SystemCode).Width(125);
           cols.Bound(p => p.Name);
           cols.Bound(p => p.Address.FirstAddressLine);
       })
       .StandardPagingGrid("District", "Administration")
 )
-
-@section scripts {
-    @Scripts.Render("~/bundles/kendo")
-}
 
 @section headerActions {
     <div class="aui-buttons">

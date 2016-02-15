@@ -25,7 +25,7 @@ namespace eSIS.Core.UI.MVC
         {
             return gridBuilder
                 .NoRecords("No records found.")
-                .Pageable(p => p.Refresh(true).PageSizes(true))
+                .Pageable(p => p.Refresh(true).PageSizes(new[] { 10, 25, 50 }))
                 .Sortable()
                 .Scrollable(s => s.Virtual(true))
                 .Filterable(ftb => ftb.Mode(GridFilterMode.Row))
