@@ -175,6 +175,7 @@
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-2.1.4.min.js" />
     <Content Include="Areas\Administration\Views\Dashboard\Index.cshtml" />
+    <Content Include="Areas\Administration\Views\District\Create.cshtml" />
     <None Include="Scripts\jquery-2.2.0.intellisense.js" />
     <Content Include="Scripts\jquery-2.2.0.js" />
     <Content Include="Scripts\jquery-2.2.0.min.js" />
@@ -316,19 +317,21 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\Maintenance.cshtml" />
-    <Content Include="Views\Shared\_AlertsFromTempData.cshtml" />
     <Content Include="Views\Shared\_BareLayout.cshtml" />
+    <Content Include="Views\Shared\_Loading.cshtml" />
+    <Content Include="Views\Shared\_EditDelete.cshtml" />
+    <Content Include="Views\Shared\_AlertsFromTempData.cshtml" />
     <Content Include="Views\Shared\_Create.cshtml" />
     <Content Include="Views\Shared\_Edit.cshtml" />
-    <Content Include="Views\Shared\_EditDelete.cshtml" />
-    <Content Include="Views\Shared\_Loading.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\Address.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\Address.cshtml" />
+    <Content Include="Areas\Administration\Views\Shared\EditorTemplates\District.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Administration\Models\" />
+    <Folder Include="Areas\Administration\Views\Shared\DisplayTemplates\" />
     <Folder Include="Models\" />
-    <Folder Include="Views\Shared\DisplayTemplates\" />
-    <Folder Include="Views\Shared\EditorTemplates\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

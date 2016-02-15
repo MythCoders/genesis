@@ -1,0 +1,17 @@
+﻿@model Address
+
+<div class="form-horizontal">
+    @Html.EditorForField(m => Model.FirstAddressLine, 2, 10)
+    @Html.EditorForField(m => Model.SecondAddressLine, 2, 10)
+    @Html.EditorForField(m => Model.City, 2, 10)
+    @Html.EditorForField(m => Model.Region, 2, 10)
+    @Html.EditorForField(m => Model.County, 2, 10)
+    @Html.EditorForField(m => Model.PostalCode, 2, 10)
+</div>
+
+<div class="form-horizontal">
+    @Html.EditorForField(m => Model.PhoneNumber, 2, 10)
+    @Html.EditorForField(m => Model.AlternatePhoneNumber, 2, 10)
+    @Html.EditorForField(m => Model.EmailAddress, 2, 10)
+    @Html.EditorForField(m => Model.AlternateEmailAddress, 2, 10)
+</div>

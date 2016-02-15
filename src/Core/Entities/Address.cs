@@ -10,30 +10,44 @@ namespace eSIS.Core.Entities
     [Table("Address", Schema = "sis")]
     public class Address : BaseEntity
     {
-        //TODO: support addresses outside of the US
+        [StringLength(60)]
+        [Display(Name = "street Address")]
+        public string FirstAddressLine { get; set; }
 
         [StringLength(60)]
-        public string StreetAddress { get; set; }
+        [Display(Name = "Po Box")]
+        public string SecondAddressLine { get; set; }
 
         [StringLength(45)]
+        [Display(Name = "City")]
         public string City { get; set; }
 
-        [StringLength(2)]
-        public string State { get; set; }
+        [StringLength(20)]
+        [Display(Name = "State")]
+        public string Region { get; set; }
 
         [StringLength(9)]
-        public string ZipCode { get; set; }
+        [Display(Name = "Zip Code")]
+        public string PostalCode { get; set; }
+
+        [StringLength(20)]
+        [Display(Name = "Country")]
+        public string County { get; set; }
 
         [StringLength(10)]
+        [Display(Name = "Phone Number")]
         public string PhoneNumber { get; set; }
 
         [StringLength(10)]
+        [Display(Name = "Alternate Phone Number")]
         public string AlternatePhoneNumber { get; set; }
 
         [StringLength(60)]
+        [Display(Name = "Email Address")]
         public string EmailAddress { get; set; }
 
         [StringLength(60)]
+        [Display(Name = "Alternate Email Address")]
         public string AlternateEmailAddress { get; set; }
     }
 }

@@ -63,6 +63,18 @@ namespace eSIS.Core.UI.MVC
                 .Width(width);
         }
 
+        public static GridBoundColumnBuilder<TModel> Raw<TModel, TValue>(this GridColumnFactory<TModel> factory,
+            Expression<Func<TModel, TValue>> expression,
+            string html,
+            int width = 80)
+            where TModel : class
+        {
+            return factory.Bound(expression)
+                .ClientTemplate(html)
+                .Filterable(false)
+                .Width(width);
+        }
+
         internal static string HtmlTemplateProperty(string propertyName)
         {
             return $"/#={propertyName}#";

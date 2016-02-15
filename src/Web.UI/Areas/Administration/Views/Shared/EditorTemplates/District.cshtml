@@ -1,0 +1,18 @@
+﻿@model District
+
+<div class="form-horizontal">
+    <div class="form-group">
+        @Html.LabelFor(m => Model.SystemCode, new { @class = "col-md-2 control-label" })
+        <div class="col-sm-2">
+            @Html.EditorFor(m => Model.SystemCode)
+        </div>
+        @Html.LabelFor(m => Model.SystemCode, new { @class = "col-md-2 control-label" })
+        <div class="col-sm-6">
+            @Html.EditorFor(m => Model.Name)
+        </div>
+    </div>
+</div>
+
+<div class="col-md-6">
+    @Html.EditorFor(m => Model.Address)    
+</div>

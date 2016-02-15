@@ -2,11 +2,13 @@
 using System.Threading.Tasks;
 using System.Web.Mvc;
 using eSIS.Core.Classes;
+using eSIS.Core.Entities;
 using Kendo.Mvc.UI;
 
 namespace eSIS.Core.UI
 {
-    public class UiControllerCrudBaseWithPaging<T> : UiControllerCrudBase<T>
+    public class UiControllerCrudBaseWithPaging<T> : UiControllerCrudBase<T> 
+        where T : BaseEntity, new()
     {
         public UiControllerCrudBaseWithPaging(string directoryPath, string controllerName)
             : base(directoryPath, controllerName)

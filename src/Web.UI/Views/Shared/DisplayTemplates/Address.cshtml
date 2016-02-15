@@ -1,0 +1,4 @@
+﻿@using eSIS.Core.Utilities
+@model Address
+
+@Html.Raw(AddressDisplay.FormatAddress(Model.FirstAddressLine, Model.SecondAddressLine, Model.City, Model.Region, Model.PostalCode, null))

@@ -11,7 +11,7 @@
           cols.NavigationButton(p => p.Id, "Select", Url.Action("Edit"));
           cols.Bound(p => p.SystemCode);
           cols.Bound(p => p.Name);
-          cols.Bound(p => p.Address.StreetAddress);
+          cols.Bound(p => p.Address.FirstAddressLine);
       })
       .StandardPagingGrid("District", "Administration")
 )

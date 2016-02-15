@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using System.Web.Mvc;
 using eSIS.Core.Classes;
+using eSIS.Core.Entities;
 using NLog;
 
 // ReSharper disable Mvc.ViewNotResolved
@@ -9,7 +10,8 @@ using NLog;
 
 namespace eSIS.Core.UI
 {
-    public class UiControllerCrudBase<T> : Controller
+    public class UiControllerCrudBase<T> : Controller 
+        where T : BaseEntity, new()
     {
         // ReSharper disable once MemberCanBeProtected.Global
         public readonly WebApiClient ApiClient;
@@ -36,10 +38,32 @@ namespace eSIS.Core.UI
             return View(await ApiClient.MakeGetRequest<T>(url));
         }
 
+        public virtual ActionResult Create()
+        {
+            var model = new T();
+            return View(model);
+        }
+
         public virtual async Task<ActionResult> Edit(int id)
         {
             var url = new Url().SubDirectory(DirectoryPath).Generate();
             return View(await ApiClient.MakeGetRequest<T>($"{url}/{id}"));
         }
+
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public virtual async Task<ActionResult> Edit(T data)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        var url = new Url().SubDirectory(DirectoryPath).Generate();
+
+        //        await ApiClient.MakePutRequest<>();
+        //    }
+
+
+            
+        //    return View(await ApiClient.MakeGetRequest<T>($"{url}/{id}"));
+        //}
     }
 }
