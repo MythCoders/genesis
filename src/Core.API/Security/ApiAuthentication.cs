@@ -30,10 +30,27 @@ namespace eSIS.Core.API.Security
 
                 var apiToken = apiKeyHeaderValues.First();
                 var client = ApiHelper.GetByClientToken(dbContext, apiToken);
-                var claim = new Claim(ClaimTypes.Name, client.Name);
-                var identity = new ClaimsIdentity(new[] { claim }, Constants.ApiRequestKeyHeaderName);
-                var principal = new ClaimsPrincipal(identity);
-                context.Principal = principal;
+
+                if (client != null)
+                {
+                    _logger.Trace("Client found");
+
+                    if (client.IsActive)
+                    {
+                        var claim = new Claim(ClaimTypes.Name, client.Name);
+                        var identity = new ClaimsIdentity(new[] { claim }, Constants.ApiRequestKeyHeaderName);
+                        var principal = new ClaimsPrincipal(identity);
+                        context.Principal = principal;
+                    }
+                    else
+                    {
+                        _logger.Warn("Request denied for client {0}. Client is not active!", client.Name);
+                    }
+                }
+                else
+                {
+                    _logger.Warn("Request denied for auth token {0}.", apiToken);
+                }
             }
 
             _logger.Trace("Finishing authentication");

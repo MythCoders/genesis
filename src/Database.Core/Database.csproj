@@ -67,6 +67,10 @@
     <Compile Include="Migrations\201602060434326_RemoveRequiredField.Designer.cs">
       <DependentUpon>201602060434326_RemoveRequiredField.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201602150241312_ApiClientInDb.cs" />
+    <Compile Include="Migrations\201602150241312_ApiClientInDb.Designer.cs">
+      <DependentUpon>201602150241312_ApiClientInDb.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="SisContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -89,6 +93,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201602060434326_RemoveRequiredField.resx">
       <DependentUpon>201602060434326_RemoveRequiredField.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201602150241312_ApiClientInDb.resx">
+      <DependentUpon>201602150241312_ApiClientInDb.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

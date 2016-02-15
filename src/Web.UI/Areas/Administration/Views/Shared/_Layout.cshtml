@@ -3,13 +3,17 @@
     var systemName = ConfigurationHelper.SystemName();
     var instanceName = ConfigurationHelper.InstanceName();
     var systemVersion = ConfigurationHelper.SystemVersion();
+
+    var pageTitle = string.IsNullOrWhiteSpace(ViewBag.Title)
+        ? $"{systemName} - {instanceName}"
+        : $"{systemName} - {instanceName} - {ViewBag.Title}";
 }
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@systemName - @instanceName - @ViewBag.Title</title>
+    <title>@pageTitle</title>
     @Styles.Render("~/Content/cssadmin")
     @Styles.Render("~/Content/kendo/css")
     @Scripts.Render("~/bundles/modernizr")
@@ -19,8 +23,9 @@
         <div class="sidebar-menu">
             <header class="logo-env">
                 <div class="logo">
-                    <a href="index.html">
-                        <img src="assets/images/logo.png" alt="" />
+                    <a href="@Url.Action("Index", "Dashboard", new {area = "Administration"})">
+                        @systemName (@instanceName) <br />
+                        Administration
                     </a>
                 </div>
                 <div class="sidebar-collapse">
@@ -37,21 +42,9 @@
 
             <ul id="main-menu" class="multiple-expanded">
                 <li>
-                    <a href="@Url.Action("Index", "Event", new {area = "Administration"})">
+                    <a href="@Url.Action("Index", "District", new {area = "Administration"})">
                         <i class="entypo-chart-bar"></i>
-                        <span>Events</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="@Url.Action("Index", "Rsvp", new {area = "Administration"})">
-                        <i class="entypo-chart-bar"></i>
-                        <span>RSVPs</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="@Url.Action("Index", "SystemLog", new {area = "Administration"})">
-                        <i class="entypo-chart-bar"></i>
-                        <span>Error Logs</span>
+                        <span>Districts</span>
                     </a>
                 </li>
                 <li>
@@ -63,10 +56,22 @@
             </ul>
         </div>
         <div class="main-content">
+            @if (!string.IsNullOrWhiteSpace(ViewBag.Title))
+            {
+                <ol class="breadcrumb bc-3">
+                    <li class="active">
+                        <i class="entypo-folder"></i>
+                        @ViewBag.Title
+                    </li>
+                </ol>
+            }
             @RenderBody()
             <hr />
             <footer>
-                <p>@systemName (@instanceName) - @systemVersion</p>
+                <p>
+                    <strong>Connected as: </strong> @User.Identity.Name <br />
+                    <strong>Version: </strong> @systemVersion
+                </p>
             </footer>
         </div>
     </div>

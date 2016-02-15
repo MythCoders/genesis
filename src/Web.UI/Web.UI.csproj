@@ -132,6 +132,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Administration\AdministrationAreaRegistration.cs" />
     <Compile Include="Areas\Administration\Controllers\DistrictController.cs" />
+    <Compile Include="Areas\Administration\Controllers\DashboardController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -145,6 +146,7 @@
     <Content Include="Content\admin\neon-forms.css" />
     <Content Include="Content\admin\site.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\images\eSIS.png" />
     <Content Include="Content\kendo\Default\editor.png" />
     <Content Include="Content\kendo\Default\imagebrowser.png" />
     <Content Include="Content\kendo\Default\indeterminate.gif" />
@@ -172,6 +174,7 @@
     <Content Include="Areas\Administration\Views\District\Index.cshtml" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-2.1.4.min.js" />
+    <Content Include="Areas\Administration\Views\Dashboard\Index.cshtml" />
     <None Include="Scripts\jquery-2.2.0.intellisense.js" />
     <Content Include="Scripts\jquery-2.2.0.js" />
     <Content Include="Scripts\jquery-2.2.0.min.js" />
@@ -323,7 +326,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Administration\Models\" />
-    <Folder Include="Content\images\" />
     <Folder Include="Models\" />
     <Folder Include="Views\Shared\DisplayTemplates\" />
     <Folder Include="Views\Shared\EditorTemplates\" />
