@@ -23,6 +23,12 @@ namespace eSIS.Web.UI
                         "~/Scripts/bootstrap.min.js",
                         "~/Scripts/respond.min.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/admin").Include(
+                        "~/Scripts/admin/main-gsap.js",
+                        "~/Scripts/admin/joinable.js",
+                        "~/Scripts/admin/resizeable.js",
+                        "~/Scripts/admin/neon-api.js"));
+
             bundles.Add(new ScriptBundle("~/bundles/kendo").Include(
                         "~/Scripts/kendo/kendo.all.min.js",
                         //"~/Scripts/kendo/kendo.timezones.min.js", // uncomment if using the Scheduler
