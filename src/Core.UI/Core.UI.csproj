@@ -91,8 +91,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Attributes\BreadcrumbAttribute.cs" />
     <Compile Include="Attributes\MultiButtonAttribute.cs" />
     <Compile Include="Attributes\StatusMessageAttribute.cs" />
+    <Compile Include="Classes\Breadcrumb.cs" />
     <Compile Include="MVC\HelperMethods.cs" />
     <Compile Include="MVC\HtmlExtensions.cs" />
     <Compile Include="MVC\Paging.cs" />

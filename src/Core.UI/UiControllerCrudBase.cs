@@ -22,6 +22,7 @@ namespace eSIS.Core.UI
         public UiControllerCrudBase(string directoryPath, string controllerName)
         {
             Logger = LogManager.GetLogger(controllerName);
+            ViewBag.Controller = controllerName;
             ApiClient = new WebApiClient();
             DirectoryPath = directoryPath;
         }
@@ -40,30 +41,32 @@ namespace eSIS.Core.UI
 
         public virtual ActionResult Create()
         {
+            ViewBag.Action = "Create";
             var model = new T();
             return View(model);
         }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public virtual async Task<ActionResult> Create(T data)
+        {
+            ViewBag.Action = "Create";
+
+            if (ModelState.IsValid)
+            {
+                var url = new Url().SubDirectory(DirectoryPath).Generate();
+                var createdData = await ApiClient.MakePostRequest<T, T>(url, data);
+                return View("Detail", createdData);
+            }
+
+            return View(data);
+        }
+
         public virtual async Task<ActionResult> Edit(int id)
         {
+            ViewBag.Action = "Edit";
             var url = new Url().SubDirectory(DirectoryPath).Generate();
             return View(await ApiClient.MakeGetRequest<T>($"{url}/{id}"));
         }
-
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public virtual async Task<ActionResult> Edit(T data)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-        //        var url = new Url().SubDirectory(DirectoryPath).Generate();
-
-        //        await ApiClient.MakePutRequest<>();
-        //    }
-
-
-            
-        //    return View(await ApiClient.MakeGetRequest<T>($"{url}/{id}"));
-        //}
     }
 }

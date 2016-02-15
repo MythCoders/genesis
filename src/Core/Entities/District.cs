@@ -11,6 +11,7 @@ namespace eSIS.Core.Entities
     public class District : BaseEntity
     {
         [MaxLength(45)]
+        [Display(Name = "District Name")]
         public string Name { get; set; }
 
         public int AddressId { get; set; }

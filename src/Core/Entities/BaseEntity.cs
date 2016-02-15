@@ -23,6 +23,7 @@ namespace eSIS.Core.Entities
 
         [MaxLength(10)]
         [Index]
+        [Display(Name = "System Code")]
         public string SystemCode { get; set; }
 
         /// <summary>

@@ -11,11 +11,11 @@ namespace eSIS.Core.Entities
     public class Address : BaseEntity
     {
         [StringLength(60)]
-        [Display(Name = "street Address")]
+        [Display(Name = "Street Address")]
         public string FirstAddressLine { get; set; }
 
         [StringLength(60)]
-        [Display(Name = "Po Box")]
+        [Display(Name = "PO Box")]
         public string SecondAddressLine { get; set; }
 
         [StringLength(45)]
@@ -39,7 +39,7 @@ namespace eSIS.Core.Entities
         public string PhoneNumber { get; set; }
 
         [StringLength(10)]
-        [Display(Name = "Alternate Phone Number")]
+        [Display(Name = "Alt Phone Number")]
         public string AlternatePhoneNumber { get; set; }
 
         [StringLength(60)]
@@ -47,7 +47,7 @@ namespace eSIS.Core.Entities
         public string EmailAddress { get; set; }
 
         [StringLength(60)]
-        [Display(Name = "Alternate Email Address")]
+        [Display(Name = "Alt Email Address")]
         public string AlternateEmailAddress { get; set; }
     }
 }

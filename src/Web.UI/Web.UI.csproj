@@ -133,6 +133,7 @@
     <Compile Include="Areas\Administration\AdministrationAreaRegistration.cs" />
     <Compile Include="Areas\Administration\Controllers\DistrictController.cs" />
     <Compile Include="Areas\Administration\Controllers\DashboardController.cs" />
+    <Compile Include="Areas\Administration\Controllers\SchoolController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -191,6 +192,13 @@
     <Content Include="fonts\atlassian-icons.eot" />
     <Content Include="fonts\atlassian-icons.ttf" />
     <Content Include="fonts\atlassian-icons.woff" />
+    <Content Include="Areas\Administration\Views\Dashboard\Config.cshtml" />
+    <Content Include="Areas\Administration\Views\School\Index.cshtml" />
+    <Content Include="Areas\Administration\Views\Shared\_Breadcrumbs.cshtml" />
+    <Content Include="Areas\Administration\Views\Shared\_ApplicationHeader.cshtml" />
+    <Content Include="Areas\Administration\Views\Shared\_Sidebar.cshtml" />
+    <Content Include="Areas\Administration\Views\Shared\_ConfigLayout.cshtml" />
+    <Content Include="Areas\Administration\Views\District\Detail.cshtml" />
     <None Include="Scripts\jquery-2.2.0.intellisense.js" />
     <Content Include="Scripts\jquery-2.2.0.js" />
     <Content Include="Scripts\jquery-2.2.0.min.js" />
@@ -334,10 +342,10 @@
     <Content Include="Views\Shared\Maintenance.cshtml" />
     <Content Include="Views\Shared\_BareLayout.cshtml" />
     <Content Include="Views\Shared\_Loading.cshtml" />
-    <Content Include="Views\Shared\_EditDelete.cshtml" />
+    <Content Include="Areas\Administration\Views\Shared\_EditDelete.cshtml" />
     <Content Include="Views\Shared\_AlertsFromTempData.cshtml" />
-    <Content Include="Views\Shared\_Create.cshtml" />
-    <Content Include="Views\Shared\_Edit.cshtml" />
+    <Content Include="Areas\Administration\Views\Shared\_Create.cshtml" />
+    <Content Include="Areas\Administration\Views\Shared\_Edit.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\Address.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\Address.cshtml" />
     <Content Include="Areas\Administration\Views\Shared\EditorTemplates\District.cshtml" />

@@ -1,18 +1,12 @@
 ﻿@model District
 
-<div class="form-horizontal">
-    <div class="form-group">
-        @Html.LabelFor(m => Model.SystemCode, new { @class = "col-md-2 control-label" })
-        <div class="col-sm-2">
-            @Html.EditorFor(m => Model.SystemCode)
-        </div>
-        @Html.LabelFor(m => Model.SystemCode, new { @class = "col-md-2 control-label" })
-        <div class="col-sm-6">
-            @Html.EditorFor(m => Model.Name)
-        </div>
-    </div>
+<div class="field-group">
+    @Html.LabelFor(m => Model.SystemCode)
+    @Html.TextBoxFor(m => Model.SystemCode, new { @class = "text short-field" })
+</div>
+<div class="field-group">
+    @Html.LabelFor(m => Model.Name)
+    @Html.TextBoxFor(m => Model.Name, new {@class = "text"})
 </div>
 
-<div class="col-md-6">
-    @Html.EditorFor(m => Model.Address)    
-</div>
+@Html.EditorFor(m => Model.Address)    

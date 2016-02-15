@@ -1,0 +1,25 @@
+﻿@model List<School>
+
+@{
+    ViewBag.Title = "Schools";
+}
+
+@(Html.Kendo().Grid<District>()
+      .Name("pagingGrid")
+      .Columns(cols =>
+      {
+          cols.NavigationButton(p => p.Id, "Select", Url.Action("Edit"));
+          cols.Bound(p => p.SystemCode);
+          cols.Bound(p => p.Name);
+          cols.Bound(p => p.Address.FirstAddressLine);
+      })
+      .StandardPagingGrid("School", "Administration")
+)
+
+<br /><br />
+
+@Html.ActionLink("Create", "Create", null, new { @class = "aui-button aui-button-primary" })
+
+@section scripts {
+    @Scripts.Render("~/bundles/kendo")
+}

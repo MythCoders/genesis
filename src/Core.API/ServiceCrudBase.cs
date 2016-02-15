@@ -143,7 +143,7 @@ namespace eSIS.Core.API
 
             await Database.SaveChangesAsync();
 
-            return CreatedAtRoute("DefaultApi", new { id = item.Id }, item);
+            return CreatedAtRoute("Default", new { id = item.Id }, item);
         }
 
         [Route("{id:int}")]

@@ -13,5 +13,10 @@ namespace eSIS.Web.UI.Areas.Administration.Controllers
         {
             return View();
         }
+
+        public ActionResult Config()
+        {
+            return View();
+        }
     }
 }
