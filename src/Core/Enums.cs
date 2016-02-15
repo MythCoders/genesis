@@ -27,19 +27,4 @@ namespace eSIS.Core
         [Description("Exception")]
         Exception = 3
     }
-
-    public enum Holiday
-    {
-        None = 0,
-        NewYearsDay,
-        MartinLutherKingDay,
-        PresidentsDay,
-        MemorialDay,
-        IndependenceDay,
-        LaborDay,
-        ColumbusDay,
-        VeteransDay,
-        ThanksgivingDay,
-        ChristmasDay
-    }
 }

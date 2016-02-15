@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using System.Security.Claims;
 using System.Threading;
 using System.Web.Http.Filters;
+using eSIS.Database;
 using NLog;
 
 namespace eSIS.Core.API.Security
@@ -25,9 +26,11 @@ namespace eSIS.Core.API.Security
             {
                 _logger.Trace("Header found");
 
+                var dbContext = new SisContext("ApiAuthentication", "");
+
                 var apiToken = apiKeyHeaderValues.First();
-                var client = ApiHelper.GetByClientToken(apiToken);
-                var claim = new Claim(ClaimTypes.Name, client.ClientName);
+                var client = ApiHelper.GetByClientToken(dbContext, apiToken);
+                var claim = new Claim(ClaimTypes.Name, client.Name);
                 var identity = new ClaimsIdentity(new[] { claim }, Constants.ApiRequestKeyHeaderName);
                 var principal = new ClaimsPrincipal(identity);
                 context.Principal = principal;

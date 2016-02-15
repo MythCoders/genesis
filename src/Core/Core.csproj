@@ -73,6 +73,7 @@
     <Compile Include="Entities\Address.cs" />
     <Compile Include="Entities\BaseEntity.cs" />
     <Compile Include="Entities\Infrastructure\Announcement.cs" />
+    <Compile Include="Entities\Infrastructure\ApiClient.cs" />
     <Compile Include="Entities\Infrastructure\DataAudit.cs" />
     <Compile Include="Entities\Infrastructure\DataAuditDetail.cs" />
     <Compile Include="Entities\Infrastructure\Log.cs" />

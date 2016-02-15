@@ -64,7 +64,7 @@ namespace eSIS.Database
 
         public bool AuditChanges { get; set; } = true;
 
-        #region Core tables
+        #region Infrastructure tables
 
         public DbSet<DataAudit> DataHistory { get; set; }
 
@@ -85,6 +85,8 @@ namespace eSIS.Database
         public DbSet<Announcement> Announcements { get; set; }
 
         public DbSet<LookUp> LookUps { get; set; }
+
+        public DbSet<ApiClient> ApiClients { get; set; }
 
         #endregion
 
