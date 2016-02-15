@@ -200,6 +200,7 @@
     <Content Include="Areas\Administration\Views\Shared\_Sidebar.cshtml" />
     <Content Include="Areas\Administration\Views\Shared\_ConfigLayout.cshtml" />
     <Content Include="Areas\Administration\Views\District\Detail.cshtml" />
+    <Content Include="Areas\Administration\Views\Shared\DisplayTemplates\District.cshtml" />
     <None Include="Scripts\jquery-2.2.0.intellisense.js" />
     <Content Include="Scripts\jquery-2.2.0.js" />
     <Content Include="Scripts\jquery-2.2.0.min.js" />
@@ -354,7 +355,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Administration\Models\" />
-    <Folder Include="Areas\Administration\Views\Shared\DisplayTemplates\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>

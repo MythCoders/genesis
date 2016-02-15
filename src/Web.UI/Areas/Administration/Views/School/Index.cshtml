@@ -1,7 +1,8 @@
 ﻿@model List<School>
 
 @{
-    ViewBag.Title = "Schools";
+    ViewBag.Module = "Schools";
+    ViewBag.Title = "All Schools";
 }
 
 @(Html.Kendo().Grid<District>()
@@ -16,10 +17,8 @@
       .StandardPagingGrid("School", "Administration")
 )
 
-<br /><br />
-
-@Html.ActionLink("Create", "Create", null, new { @class = "aui-button aui-button-primary" })
-
-@section scripts {
-    @Scripts.Render("~/bundles/kendo")
+@section headerActions {
+    <div class="aui-buttons">
+        @Html.ActionLink("Create", "Create", null, new { @class = "aui-button" })
+    </div>
 }

@@ -4,9 +4,9 @@
     var instanceName = ConfigurationHelper.InstanceName();
     var systemVersion = ConfigurationHelper.SystemVersion();
 
-    var pageTitle = string.IsNullOrWhiteSpace(ViewBag.PageTitle)
-        ? $"{systemName} - {instanceName}"
-        : $"{systemName} - {instanceName} - {ViewBag.PageTitle}";
+    var pageTitle = string.IsNullOrWhiteSpace(ViewBag.Title)
+        ? $"{systemName}"
+        : $"{systemName} - {ViewBag.Title}";
 }
 <!DOCTYPE html>
 <html>
@@ -34,10 +34,10 @@
                                 <div class="aui-page-header-inner">
                                     <div class="aui-page-header-main">
                                         @Html.Partial("_Breadcrumbs")
-                                        @if (ViewBag.ModuleName != null)
+                                        @if (ViewBag.Module != null)
                                         {
                                             <div class="aui-item section-title">
-                                                <h1>@ViewBag.ModuleName</h1>    
+                                                <h1>@ViewBag.Module</h1>    
                                             </div>
                                         }
                                     </div>
@@ -53,7 +53,7 @@
                 </div>
             </div>
         </div>
-        <footer id="footer" role="contentinfo">
+        <footer id="footer">
         </footer>
     </div>
 
