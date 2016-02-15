@@ -140,13 +140,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\admin\bootstrap.css" />
-    <Content Include="Content\admin\entypo.css" />
-    <Content Include="Content\admin\neon-core.css" />
-    <Content Include="Content\admin\neon-forms.css" />
-    <Content Include="Content\admin\site.css" />
+    <Content Include="Content\aui\aui-experimental.min.css" />
+    <Content Include="Content\aui\aui-iconfonts.min.css" />
+    <Content Include="Content\aui\aui.min.css" />
     <Content Include="Content\bootstrap.min.css" />
-    <Content Include="Content\images\eSIS.png" />
     <Content Include="Content\kendo\Default\editor.png" />
     <Content Include="Content\kendo\Default\imagebrowser.png" />
     <Content Include="Content\kendo\Default\indeterminate.gif" />
@@ -165,21 +162,23 @@
     <Content Include="Content\kendo\kendo.default.min.css" />
     <Content Include="Content\Site.css" />
     <Content Include="favicon.ico" />
-    <Content Include="fonts\entypo.svg" />
+    <Content Include="fonts\atlassian-icons.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="Areas\Administration\Views\web.config" />
     <Content Include="Areas\Administration\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Administration\Views\District\Index.cshtml" />
-    <Content Include="Scripts\admin\joinable.js" />
-    <Content Include="Scripts\admin\main-gsap.js" />
-    <Content Include="Scripts\admin\neon-api.js" />
-    <Content Include="Scripts\admin\resizeable.js" />
+    <Content Include="Scripts\aui\aui-datepicker.min.js" />
+    <Content Include="Scripts\aui\aui-experimental.min.js" />
+    <Content Include="Scripts\aui\aui.min.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-2.1.4.min.js" />
     <Content Include="Areas\Administration\Views\Dashboard\Index.cshtml" />
     <Content Include="Areas\Administration\Views\District\Create.cshtml" />
+    <Content Include="fonts\atlassian-icons.eot" />
+    <Content Include="fonts\atlassian-icons.ttf" />
+    <Content Include="fonts\atlassian-icons.woff" />
     <None Include="Scripts\jquery-2.2.0.intellisense.js" />
     <Content Include="Scripts\jquery-2.2.0.js" />
     <Content Include="Scripts\jquery-2.2.0.min.js" />
@@ -351,9 +350,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="fonts\entypo.eot" />
-    <Content Include="fonts\entypo.ttf" />
-    <Content Include="fonts\entypo.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
