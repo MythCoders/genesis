@@ -9,17 +9,18 @@ namespace eSIS.Core.Entities.Infrastructure
     public class User : BaseEntity
     {
         [Required]
+        [StringLength(60)]
         public string EmailAddress { get; set; }
 
         public string AccessToken { get; set; }
 
-        public DateTime AccessTokenCreateDate { get; set; }
+        public DateTime? AccessTokenCreateDate { get; set; }
 
-        public bool AccessTokenIsUsed { get; set; }
+        public bool? AccessTokenIsUsed { get; set; }
 
-        public int? ResetQuestion1Id { get; set; }
+        public int ResetQuestion1Id { get; set; }
 
-        public int? ResetQuestion2Id { get; set; }
+        public int ResetQuestion2Id { get; set; }
 
         [Required]
         public string ResetQuestion1Answer { get; set; }
@@ -39,9 +40,14 @@ namespace eSIS.Core.Entities.Infrastructure
         public int Role { get; set; }
 
         [Required]
+        [StringLength(35)]
         public string FirstName { get; set; }
 
+        [StringLength(2)]
+        public string MI { get; set; }
+
         [Required]
+        [StringLength(35)]
         public string LastName { get; set; }
 
         public virtual ResetQuestion ResetQuestion1 { get; set; }
