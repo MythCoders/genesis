@@ -206,6 +206,10 @@
     <Content Include="Areas\Administration\Views\ApiClient\Create.cshtml" />
     <Content Include="Areas\Administration\Views\ApiClient\Edit.cshtml" />
     <Content Include="Areas\Administration\Views\District\Edit.cshtml" />
+    <Content Include="Areas\Administration\Views\School\Create.cshtml" />
+    <Content Include="Areas\Administration\Views\School\Detail.cshtml" />
+    <Content Include="Areas\Administration\Views\School\Edit.cshtml" />
+    <Content Include="Areas\Administration\Views\Shared\EditorTemplates\School.cshtml" />
     <None Include="Scripts\jquery-2.2.0.intellisense.js" />
     <Content Include="Scripts\jquery-2.2.0.js" />
     <Content Include="Scripts\jquery-2.2.0.min.js" />

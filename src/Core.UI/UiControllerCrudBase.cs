@@ -57,6 +57,7 @@ namespace eSIS.Core.UI
             {
                 var url = new Url().SubDirectory(DirectoryPath).Generate();
                 var createdData = await ApiClient.MakePostRequest<T, T>(url, data);
+                TempData["Success"] = "Created";
                 return View("Detail", createdData);
             }
 
@@ -76,6 +77,7 @@ namespace eSIS.Core.UI
         public virtual async Task<ActionResult> Edit(T data)
         {
             ViewBag.Action = "Edit";
+            TempData["Success"] = "Updated";
 
             if (ModelState.IsValid)
             {

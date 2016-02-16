@@ -1,0 +1,28 @@
+﻿@model School
+
+@Html.HiddenFor(m => Model.Id)
+@Html.HiddenFor(m => Model.AddressId)
+@Html.HiddenFor(m => Model.ModDate)
+@Html.HiddenFor(m => Model.ModUser)
+@Html.HiddenFor(m => Model.AddDate)
+@Html.HiddenFor(m => Model.AddUser)
+@Html.HiddenFor(m => Model.Version)
+
+<div class="field-group">
+    @Html.LabelFor(m => Model.SystemCode)
+    @Html.TextBoxFor(m => Model.SystemCode, new { @class = "text short-field" })
+</div>
+<div class="field-group">
+    @Html.LabelFor(m => Model.Name)
+    @Html.TextBoxFor(m => Model.Name, new { @class = "text" })
+</div>
+<div class="field-group">
+    @Html.LabelFor(m => Model.DistrictId)
+    @Html.TextBoxFor(m => Model.Name, new {@class = "text"})
+</div>
+<div class="field-group">
+    @Html.LabelFor(m => Model.SchoolTypeId)
+    @Html.TextBoxFor(m => Model.Name, new { @class = "text" })
+</div>
+
+@Html.EditorFor(m => Model.Address)

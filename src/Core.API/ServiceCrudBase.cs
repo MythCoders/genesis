@@ -186,17 +186,5 @@ namespace eSIS.Core.API
         {
             Database.Entry(existingItem).CurrentValues.SetValues(updatedItem);
         }
-
-        // ReSharper disable once VirtualMemberNeverOverriden.Global
-        //public virtual void PreCreateValidation()
-        //{
-        //    Logger.Trace("No pre-create validation found");
-        //}
-
-        // ReSharper disable once VirtualMemberNeverOverriden.Global
-        //public virtual void PreUpdateValidation()
-        //{
-        //    Logger.Trace("No pre-update validation found");
-        //}
     }
 }
