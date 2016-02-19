@@ -1,9 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.Web.Mvc;
-using eSIS.Core.UI.Classes;
+using MC.eSIS.Core.UI.Classes;
 
-namespace eSIS.Core.UI.Attributes
+namespace MC.eSIS.Core.UI.Attributes
 {
     [AttributeUsage(AttributeTargets.All, Inherited = false, AllowMultiple = true)]
     public class BreadcrumbAttribute : ActionFilterAttribute

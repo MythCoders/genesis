@@ -1,7 +1,7 @@
 using System;
 using System.Web.Mvc;
 
-namespace eSIS.Core.UI.Attributes
+namespace MC.eSIS.Core.UI.Attributes
 {
     public enum StatusMessageEnum
     {

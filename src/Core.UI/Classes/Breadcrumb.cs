@@ -1,6 +1,6 @@
 ﻿using System.Web.Routing;
 
-namespace eSIS.Core.UI.Classes
+namespace MC.eSIS.Core.UI.Classes
 {
     public class Breadcrumb
     {

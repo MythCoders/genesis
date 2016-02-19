@@ -1,9 +1,9 @@
 ﻿using System.Text;
 using System.Threading.Tasks;
 using System.Web.Mvc;
-using eSIS.Core.Classes;
 using Kendo.Mvc.UI;
 using MC.eSIS.Core.Classes;
+using MC.eSIS.Core.Entities;
 
 namespace MC.eSIS.Core.UI
 {

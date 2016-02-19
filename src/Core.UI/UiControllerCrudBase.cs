@@ -1,14 +1,14 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Web.Mvc;
-using eSIS.Core.Classes;
-using eSIS.Core.Entities;
+using MC.eSIS.Core.Classes;
+using MC.eSIS.Core.Entities;
 using NLog;
 
 // ReSharper disable Mvc.ViewNotResolved
 // ReSharper disable VirtualMemberNeverOverriden.Global
 
-namespace eSIS.Core.UI
+namespace MC.eSIS.Core.UI
 {
     public class UiControllerCrudBase<T> : Controller 
         where T : BaseEntity, new()

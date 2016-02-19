@@ -2,7 +2,7 @@
 using System.Reflection;
 using System.Web.Mvc;
 
-namespace eSIS.Core.UI.Attributes
+namespace MC.eSIS.Core.UI.Attributes
 {
     [AttributeUsage(AttributeTargets.Method)]
     public class MultiButtonAttribute : ActionNameSelectorAttribute

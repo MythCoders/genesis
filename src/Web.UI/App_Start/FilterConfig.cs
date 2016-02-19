@@ -1,6 +1,6 @@
 ﻿using System.Web.Mvc;
-using eSIS.Core.UI;
-using eSIS.Core.UI.Attributes;
+using MC.eSIS.Core.UI;
+using MC.eSIS.Core.UI.Attributes;
 
 namespace MC.eSIS.Web.UI
 {

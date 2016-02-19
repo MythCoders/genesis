@@ -1,6 +1,6 @@
 ﻿using System.Text;
 
-namespace eSIS.Core.Utilities
+namespace MC.eSIS.Core.Utilities
 {
     public enum AddressFormat
     {

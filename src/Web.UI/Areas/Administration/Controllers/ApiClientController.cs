@@ -1,7 +1,7 @@
-﻿using eSIS.Core.Entities.Infrastructure;
-using eSIS.Core.UI;
+﻿using MC.eSIS.Core.Entities.Infrastructure;
+using MC.eSIS.Core.UI;
 
-namespace eSIS.Web.UI.Areas.Administration.Controllers
+namespace MC.eSIS.Web.UI.Areas.Administration.Controllers
 {
     public class ApiClientController : UiControllerCrudBaseWithPaging<ApiClient>
     {

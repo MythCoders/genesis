@@ -1,11 +1,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using eSIS.Core.API.Exceptions;
-using eSIS.Core.Entities.Infrastructure;
-using eSIS.Database;
-using MC.eSIS.Core.API.ApiClient;
 using MC.eSIS.Core.API.Exceptions;
+using MC.eSIS.Core.Entities.Infrastructure;
+using MC.eSIS.Database;
 
 namespace MC.eSIS.Core.API
 {

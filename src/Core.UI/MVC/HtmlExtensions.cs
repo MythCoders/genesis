@@ -5,7 +5,7 @@ using System.Security.Principal;
 using System.Web.Mvc;
 using System.Web.Mvc.Html;
 
-namespace eSIS.Core.UI.MVC
+namespace MC.eSIS.Core.UI.MVC
 {
     public static class Helpers
     {

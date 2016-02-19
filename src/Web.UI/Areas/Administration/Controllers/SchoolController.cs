@@ -1,7 +1,7 @@
-﻿using eSIS.Core.Entities;
-using eSIS.Core.UI;
+﻿using MC.eSIS.Core.Entities;
+using MC.eSIS.Core.UI;
 
-namespace eSIS.Web.UI.Areas.Administration.Controllers
+namespace MC.eSIS.Web.UI.Areas.Administration.Controllers
 {
     public class SchoolController : UiControllerCrudBaseWithPaging<School>
     {

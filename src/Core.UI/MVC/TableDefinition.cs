@@ -3,10 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace eSIS.Core.UI.MVC
+namespace MC.eSIS.Core.UI.MVC
 {
     public enum TableTypeEnum
     {

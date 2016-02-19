@@ -1,7 +1,7 @@
 using System;
 using System.Data.Entity.Migrations;
-using eSIS.Core.Entities;
-using eSIS.Core.Entities.Infrastructure;
+using MC.eSIS.Core.Entities;
+using MC.eSIS.Core.Entities.Infrastructure;
 
 namespace MC.eSIS.Database.Migrations
 {

@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace eSIS.Core.Classes
+namespace MC.eSIS.Core.Classes
 {
     public class JsonReturnValueData
     {

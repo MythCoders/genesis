@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace eSIS.Core.Entities.Infrastructure
+namespace MC.eSIS.Core.Entities.Infrastructure
 {
     [Table("ApiClient", Schema = "inf")]
     public class ApiClient : BaseEntity

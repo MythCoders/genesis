@@ -3,15 +3,13 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 using System.Web.Mvc;
 using System.Web.Mvc.Html;
-using eSIS.Core.Helpers;
+using MC.eSIS.Core.Helpers;
 
 // ReSharper disable Mvc.ActionNotResolved
 
-namespace eSIS.Core.UI.MVC
+namespace MC.eSIS.Core.UI.MVC
 {
     public static partial class TableExtensions
     {
