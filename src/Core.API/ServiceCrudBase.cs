@@ -1,18 +1,16 @@
 ﻿using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
-using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Http;
-using eSIS.Core.API.Security;
-using eSIS.Core.Entities;
-using eSIS.Database;
-using Kendo.Mvc.Extensions;
 using Kendo.Mvc.UI;
+using MC.eSIS.Core.API.Security;
+using MC.eSIS.Core.Entities;
+using MC.eSIS.Database;
 using NLog;
 
-namespace eSIS.Core.API
+namespace MC.eSIS.Core.API
 {
     [ApiAuthentication]
     [Authorize]

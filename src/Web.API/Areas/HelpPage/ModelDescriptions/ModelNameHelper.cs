@@ -3,7 +3,7 @@ using System.Globalization;
 using System.Linq;
 using System.Reflection;
 
-namespace eSIS.Web.API.Areas.HelpPage.ModelDescriptions
+namespace MC.eSIS.Web.API.Areas.HelpPage.ModelDescriptions
 {
     internal static class ModelNameHelper
     {

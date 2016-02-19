@@ -5,9 +5,9 @@ using System.Reflection;
 using System.Web.Http.Controllers;
 using System.Web.Http.Description;
 using System.Xml.XPath;
-using eSIS.Web.API.Areas.HelpPage.ModelDescriptions;
+using MC.eSIS.Web.API.Areas.HelpPage.ModelDescriptions;
 
-namespace eSIS.Web.API.Areas.HelpPage
+namespace MC.eSIS.Web.API.Areas.HelpPage
 {
     /// <summary>
     /// A custom <see cref="IDocumentationProvider"/> that reads the API documentation from an XML documentation file.

@@ -2,10 +2,10 @@
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
-using eSIS.Core;
+using MC.eSIS.Core;
 using NLog;
 
-namespace eSIS.Web.API
+namespace MC.eSIS.Web.API
 {
     public class WebApiApplication : System.Web.HttpApplication
     {

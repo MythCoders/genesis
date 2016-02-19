@@ -1,4 +1,4 @@
-﻿namespace eSIS.Core.Classes
+﻿namespace MC.eSIS.Core.Classes
 {
     public class PropertyError
     {

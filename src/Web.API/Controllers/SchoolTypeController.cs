@@ -1,8 +1,8 @@
 using System.Web.Http;
-using eSIS.Core.API;
-using eSIS.Core.Entities;
+using MC.eSIS.Core.API;
+using MC.eSIS.Core.Entities;
 
-namespace eSIS.Web.API.Controllers
+namespace MC.eSIS.Web.API.Controllers
 {
     [RoutePrefix("api/adm/schooltype")]
     public class SchoolTypeController : ServiceCrudBase<SchoolType>

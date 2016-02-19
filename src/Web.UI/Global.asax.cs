@@ -2,7 +2,7 @@
 using System.Web.Optimization;
 using System.Web.Routing;
 
-namespace eSIS.Web.UI
+namespace MC.eSIS.Web.UI
 {
     public class MvcApplication : System.Web.HttpApplication
     {

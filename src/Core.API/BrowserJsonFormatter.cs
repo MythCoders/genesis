@@ -3,7 +3,7 @@ using System.Net.Http.Formatting;
 using System.Net.Http.Headers;
 using Newtonsoft.Json;
 
-namespace eSIS.Core.API
+namespace MC.eSIS.Core.API
 {
     public class BrowserJsonFormatter : JsonMediaTypeFormatter
     {

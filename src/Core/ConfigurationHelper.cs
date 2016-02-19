@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Configuration;
 
-namespace eSIS.Core
+namespace MC.eSIS.Core
 {
     public static class ConfigurationHelper
     {

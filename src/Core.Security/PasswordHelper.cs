@@ -1,6 +1,6 @@
 ﻿using System.Text.RegularExpressions;
 
-namespace eSIS.Core.Security
+namespace MC.eSIS.Core.Security
 {
     public static class PasswordHelper
     {

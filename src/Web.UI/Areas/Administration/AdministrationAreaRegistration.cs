@@ -1,6 +1,6 @@
 ﻿using System.Web.Mvc;
 
-namespace eSIS.Web.UI.Areas.Administration
+namespace MC.eSIS.Web.UI.Areas.Administration
 {
     public class AdministrationAreaRegistration : AreaRegistration 
     {

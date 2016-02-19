@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace eSIS.Core.Security
+namespace MC.eSIS.Core.Security
 {
     public class ResetPasswordData
     {

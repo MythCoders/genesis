@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using eSIS.Core.Classes;
+using MC.eSIS.Core.Classes;
 
-namespace eSIS.Core.Exceptions
+namespace MC.eSIS.Core.Exceptions
 {
     public class ValidationException : Exception
     {

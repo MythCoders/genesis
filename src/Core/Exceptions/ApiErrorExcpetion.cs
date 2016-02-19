@@ -1,7 +1,7 @@
 using System;
 using System.Net;
 
-namespace eSIS.Core.Exceptions
+namespace MC.eSIS.Core.Exceptions
 {
     public class ApiErrorExcpetion : Exception
     {

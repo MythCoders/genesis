@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace eSIS.Core.Entities.Infrastructure
+namespace MC.eSIS.Core.Entities.Infrastructure
 {
     [Table("User", Schema = "inf")]
     public class User : BaseEntity

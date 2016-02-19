@@ -1,6 +1,6 @@
 ﻿using System.Configuration;
 
-namespace eSIS.Core.API.ApiClient
+namespace MC.eSIS.Core.API.ApiClient
 {
     public class ApiClientConfig : ConfigurationElement
     {

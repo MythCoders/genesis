@@ -1,12 +1,12 @@
 ﻿using System.Globalization;
 using System.Net.Http.Formatting;
-using eSIS.Core.API;
 using System.Web.Http;
-using eSIS.Core.API.Exceptions;
+using MC.eSIS.Core.API;
+using MC.eSIS.Core.API.Exceptions;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 
-namespace eSIS.Web.API
+namespace MC.eSIS.Web.API
 {
     public static class WebApiConfig
     {

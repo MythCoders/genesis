@@ -2,10 +2,10 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
 using System.Web;
-using eSIS.Core.API.ApiClient;
-using eSIS.Core.API.Exceptions;
+using MC.eSIS.Core.API.ApiClient;
+using MC.eSIS.Core.API.Exceptions;
 
-namespace eSIS.Core.API
+namespace MC.eSIS.Core.API
 {
     internal static class ApiHelper
     {

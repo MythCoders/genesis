@@ -10,13 +10,13 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Transactions;
-using eSIS.Core;
-using eSIS.Core.Entities;
-using eSIS.Core.Entities.Infrastructure;
-using eSIS.Core.Exceptions;
+using MC.eSIS.Core;
+using MC.eSIS.Core.Entities;
+using MC.eSIS.Core.Entities.Infrastructure;
+using MC.eSIS.Core.Exceptions;
 using NLog;
 
-namespace eSIS.Database
+namespace MC.eSIS.Database
 {
     public class SisContext : DbContext
     {
@@ -27,7 +27,7 @@ namespace eSIS.Database
 
         //This is required by EF migrations
         public SisContext()
-            : base(ConfigurationHelper.InstanceDbConnectionName())
+            : base((string) ConfigurationHelper.InstanceDbConnectionName())
         { }
 
         public SisContext(string userName, string iPAddress)

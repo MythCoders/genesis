@@ -4,7 +4,7 @@ using JetBrains.Annotations;
 using Kendo.Mvc.UI;
 using Kendo.Mvc.UI.Fluent;
 
-namespace eSIS.Core.UI.MVC
+namespace MC.eSIS.Core.UI.MVC
 {
     public static class Paging
     {

@@ -1,6 +1,6 @@
 using System.Data.Entity.Migrations;
 
-namespace eSIS.Database.Migrations
+namespace MC.eSIS.Database.Migrations
 {
     internal sealed class Configuration : DbMigrationsConfiguration<SisContext>
     {

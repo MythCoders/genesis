@@ -7,8 +7,8 @@
     <ProjectGuid>{C7612758-7B9F-45A8-A043-5E0A5453FACD}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>eSIS.Core.Security</RootNamespace>
-    <AssemblyName>eSIS.Core.Security</AssemblyName>
+    <RootNamespace>MC.eSIS.Core.Security</RootNamespace>
+    <AssemblyName>MC.eSIS.Core.Security</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>

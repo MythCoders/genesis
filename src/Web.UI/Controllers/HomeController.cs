@@ -1,11 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Web.Mvc;
-using eSIS.Core.Classes;
-using eSIS.Core.Entities;
-using eSIS.Core.UI;
+using MC.eSIS.Core.Classes;
+using MC.eSIS.Core.Entities;
+using MC.eSIS.Core.UI;
 
-namespace eSIS.Web.UI.Controllers
+namespace MC.eSIS.Web.UI.Controllers
 {
     public class HomeController : Controller
     {

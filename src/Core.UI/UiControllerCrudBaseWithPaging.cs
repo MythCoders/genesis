@@ -1,9 +1,9 @@
 ﻿using System.Threading.Tasks;
 using System.Web.Mvc;
-using eSIS.Core.Classes;
 using Kendo.Mvc.UI;
+using MC.eSIS.Core.Classes;
 
-namespace eSIS.Core.UI
+namespace MC.eSIS.Core.UI
 {
     public class UiControllerCrudBaseWithPaging<T> : UiControllerCrudBase<T>
     {

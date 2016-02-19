@@ -1,7 +1,7 @@
 ﻿using System.Web.Mvc;
 using NLog;
 
-namespace eSIS.Core.UI
+namespace MC.eSIS.Core.UI
 {
     public class UiHandleErrorAttribute : HandleErrorAttribute
     {

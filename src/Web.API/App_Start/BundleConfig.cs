@@ -1,6 +1,6 @@
 ﻿using System.Web.Optimization;
 
-namespace eSIS.Web.API
+namespace MC.eSIS.Web.API
 {
     public class BundleConfig
     {

@@ -4,7 +4,7 @@ using System.Text;
 
 // ReSharper disable UnusedMember.Global
 
-namespace eSIS.Core.Classes
+namespace MC.eSIS.Core.Classes
 {
     public class Url
     {

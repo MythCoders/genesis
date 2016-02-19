@@ -4,7 +4,7 @@ using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
 using System.IO;
 
-namespace eSIS.Core.Security
+namespace MC.eSIS.Core.Security
 {
     public static class CaptchaHelper
     {

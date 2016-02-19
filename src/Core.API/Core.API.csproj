@@ -7,8 +7,8 @@
     <ProjectGuid>{662283CA-B7C7-4BEF-A1FE-478A99F8C4AC}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>eSIS.Core.API</RootNamespace>
-    <AssemblyName>eSIS.Core.API</AssemblyName>
+    <RootNamespace>MC.eSIS.Core.API</RootNamespace>
+    <AssemblyName>MC.eSIS.Core.API</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>

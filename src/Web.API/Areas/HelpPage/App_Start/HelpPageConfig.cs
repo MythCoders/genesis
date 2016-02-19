@@ -5,13 +5,13 @@
 using System.Diagnostics.CodeAnalysis;
 using System.Net.Http.Headers;
 using System.Web.Http;
-using eSIS.Web.API.Areas.HelpPage.SampleGeneration;
+using MC.eSIS.Web.API.Areas.HelpPage.SampleGeneration;
 
 #if Handle_PageResultOfT
 using System.Web.Http.OData;
 #endif
 
-namespace eSIS.Web.API.Areas.HelpPage.App_Start
+namespace MC.eSIS.Web.API.Areas.HelpPage.App_Start
 {
     /// <summary>
     /// Use this class to customize the Help Page.

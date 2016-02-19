@@ -1,6 +1,6 @@
 using System.Collections.ObjectModel;
 
-namespace eSIS.Web.API.Areas.HelpPage.ModelDescriptions
+namespace MC.eSIS.Web.API.Areas.HelpPage.ModelDescriptions
 {
     public class ParameterDescription
     {

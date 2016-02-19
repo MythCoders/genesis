@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using System.Security.Claims;
 using System.Threading;
+using System.Threading.Tasks;
 using System.Web.Http.Filters;
 using NLog;
 
-namespace eSIS.Core.API.Security
+namespace MC.eSIS.Core.API.Security
 {
     [AttributeUsage(AttributeTargets.Class)]
     public class ApiAuthentication : Attribute, IAuthenticationFilter

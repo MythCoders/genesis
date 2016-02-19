@@ -6,10 +6,10 @@ using System.Net.Http;
 using System.Net.Http.Formatting;
 using System.Web.Http;
 using System.Web.Http.Filters;
-using eSIS.Core.Exceptions;
+using MC.eSIS.Core.Exceptions;
 using NLog;
 
-namespace eSIS.Core.API.Exceptions
+namespace MC.eSIS.Core.API.Exceptions
 {
     public class ApiExceptionFilterAttribute : ExceptionFilterAttribute
     {

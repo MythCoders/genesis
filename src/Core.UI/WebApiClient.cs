@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using Newtonsoft.Json;
 using NLog;
 
-namespace eSIS.Core.UI
+namespace MC.eSIS.Core.UI
 {
     public class WebApiClient
     {
@@ -155,4 +155,3 @@ namespace eSIS.Core.UI
         }
     }
 }
-

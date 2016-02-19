@@ -1,6 +1,6 @@
 // ReSharper disable InconsistentNaming
 
-namespace eSIS.Core
+namespace MC.eSIS.Core
 {
     public static class Constants
     {

@@ -4,7 +4,7 @@ using System.Net.Http;
 using System.Net.Http.Formatting;
 using System.Net.Http.Headers;
 
-namespace eSIS.Core.API
+namespace MC.eSIS.Core.API
 {
     public class JsonContentNegotiator : IContentNegotiator
     {

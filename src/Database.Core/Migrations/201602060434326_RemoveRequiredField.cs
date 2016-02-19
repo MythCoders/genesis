@@ -1,8 +1,7 @@
-namespace eSIS.Database.Migrations
+using System.Data.Entity.Migrations;
+
+namespace MC.eSIS.Database.Migrations
 {
-    using System;
-    using System.Data.Entity.Migrations;
-    
     public partial class RemoveRequiredField : DbMigration
     {
         public override void Up()

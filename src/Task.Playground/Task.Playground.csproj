@@ -7,8 +7,8 @@
     <ProjectGuid>{01798BAA-73AA-47A3-90E5-1355E2768B8A}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>eSIS.Task.Playground</RootNamespace>
-    <AssemblyName>eSIS.Task.Playground</AssemblyName>
+    <RootNamespace>MC.eSIS.Task.Playground</RootNamespace>
+    <AssemblyName>MC.eSIS.Task.Playground</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>

@@ -1,7 +1,7 @@
 ﻿using System.Web.Mvc;
 using System.Web.Routing;
 
-namespace eSIS.Web.API
+namespace MC.eSIS.Web.API
 {
     public class RouteConfig
     {

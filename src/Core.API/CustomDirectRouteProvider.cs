@@ -2,7 +2,7 @@
 using System.Web.Http.Controllers;
 using System.Web.Http.Routing;
 
-namespace eSIS.Core.API
+namespace MC.eSIS.Core.API
 {
     /// <summary>
     /// Allows the 'Route' Attribute to be inherited. Allows for a Crud WebApiController

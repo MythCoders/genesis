@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace eSIS.Core.API.Exceptions
+namespace MC.eSIS.Core.API.Exceptions
 {
     public class RequiredHeaderException : Exception
     {

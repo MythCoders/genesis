@@ -3,7 +3,7 @@ using System.IO;
 using System.Security.Cryptography;
 using System.Text;
 
-namespace eSIS.Core.Security
+namespace MC.eSIS.Core.Security
 {
     public static class CryptoHelper
     {

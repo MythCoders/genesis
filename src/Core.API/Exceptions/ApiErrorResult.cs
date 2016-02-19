@@ -3,9 +3,9 @@ using System.Net.Http;
 using System.Net.Http.Formatting;
 using System.Threading;
 using System.Threading.Tasks;
-using eSIS.Core.Exceptions;
+using MC.eSIS.Core.Exceptions;
 
-namespace eSIS.Core.API.Exceptions
+namespace MC.eSIS.Core.API.Exceptions
 {
     public class ApiErrorResult : HttpResponseMessage
     {

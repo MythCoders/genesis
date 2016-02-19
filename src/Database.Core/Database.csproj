@@ -7,8 +7,8 @@
     <ProjectGuid>{F785EEA0-27AD-4A29-ACD4-AE02E7CC8585}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>eSIS.Database</RootNamespace>
-    <AssemblyName>eSIS.Database</AssemblyName>
+    <RootNamespace>MC.eSIS.Database</RootNamespace>
+    <AssemblyName>MC.eSIS.Database</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>

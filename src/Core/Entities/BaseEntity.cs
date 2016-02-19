@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 //using System.Web.Mvc;
 
-namespace eSIS.Core.Entities
+namespace MC.eSIS.Core.Entities
 {
     /// <summary>
     /// All database entites, MUST inherit from this class.

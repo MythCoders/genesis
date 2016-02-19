@@ -1,6 +1,6 @@
-﻿using eSIS.Core;
+﻿using MC.eSIS.Core;
 
-namespace eSIS.Task.Playground
+namespace MC.eSIS.Task.Playground
 {
     class Program
     {
