@@ -131,7 +131,10 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Administration\AdministrationAreaRegistration.cs" />
+    <Compile Include="Areas\Administration\Controllers\ApiClientController.cs" />
     <Compile Include="Areas\Administration\Controllers\DistrictController.cs" />
+    <Compile Include="Areas\Administration\Controllers\DashboardController.cs" />
+    <Compile Include="Areas\Administration\Controllers\SchoolController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -139,12 +142,22 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\admin\bootstrap.css" />
-    <Content Include="Content\admin\entypo.css" />
-    <Content Include="Content\admin\neon-core.css" />
-    <Content Include="Content\admin\neon-forms.css" />
-    <Content Include="Content\admin\site.css" />
+    <Content Include="Content\aui\aui-experimental.min.css" />
+    <Content Include="Content\aui\aui-iconfonts.min.css" />
+    <Content Include="Content\aui\aui.min.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\images\aui-icon-close.png" />
+    <Content Include="Content\images\aui-icon-tools.gif" />
+    <Content Include="Content\images\aui-message-icon-sprite.png" />
+    <Content Include="Content\images\forms\icon-date.png" />
+    <Content Include="Content\images\forms\icon-help.png" />
+    <Content Include="Content\images\forms\icon-range.png" />
+    <Content Include="Content\images\forms\icon-required.png" />
+    <Content Include="Content\images\forms\icon-users.png" />
+    <Content Include="Content\images\sidebar\icon-group-actions.svg" />
+    <Content Include="Content\images\sidebar\icon-group.png" />
+    <Content Include="Content\images\sidebar\icon-handle.png" />
+    <Content Include="Content\images\sidebar\icon-toggle.svg" />
     <Content Include="Content\kendo\Default\editor.png" />
     <Content Include="Content\kendo\Default\imagebrowser.png" />
     <Content Include="Content\kendo\Default\indeterminate.gif" />
@@ -160,18 +173,46 @@
     <Content Include="Content\kendo\Default\sprite_kpi.png" />
     <Content Include="Content\kendo\Default\sprite_kpi_2x.png" />
     <Content Include="Content\kendo\kendo.common.min.css" />
+    <Content Include="Content\kendo\kendo.custom.css" />
     <Content Include="Content\kendo\kendo.default.min.css" />
     <Content Include="Content\Site.css" />
     <Content Include="favicon.ico" />
-    <Content Include="fonts\entypo.svg" />
+    <Content Include="fonts\atlassian-icons.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="Areas\Administration\Views\web.config" />
     <Content Include="Areas\Administration\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Administration\Views\District\Index.cshtml" />
+    <Content Include="Scripts\aui\aui-datepicker.min.js" />
+    <Content Include="Scripts\aui\aui-experimental.min.js" />
+    <Content Include="Scripts\aui\aui.min.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-2.1.4.min.js" />
+    <Content Include="Areas\Administration\Views\Dashboard\Index.cshtml" />
+    <Content Include="Areas\Administration\Views\District\Create.cshtml" />
+    <Content Include="fonts\atlassian-icons.eot" />
+    <Content Include="fonts\atlassian-icons.ttf" />
+    <Content Include="fonts\atlassian-icons.woff" />
+    <Content Include="Areas\Administration\Views\Dashboard\Config.cshtml" />
+    <Content Include="Areas\Administration\Views\School\Index.cshtml" />
+    <Content Include="Areas\Administration\Views\Shared\_Breadcrumbs.cshtml" />
+    <Content Include="Areas\Administration\Views\Shared\_ApplicationHeader.cshtml" />
+    <Content Include="Areas\Administration\Views\Shared\_Sidebar.cshtml" />
+    <Content Include="Areas\Administration\Views\Shared\_ConfigLayout.cshtml" />
+    <Content Include="Areas\Administration\Views\District\Detail.cshtml" />
+    <Content Include="Areas\Administration\Views\Shared\DisplayTemplates\District.cshtml" />
+    <Content Include="Areas\Administration\Views\ApiClient\Index.cshtml" />
+    <Content Include="Areas\Administration\Views\ApiClient\Create.cshtml" />
+    <Content Include="Areas\Administration\Views\ApiClient\Edit.cshtml" />
+    <Content Include="Areas\Administration\Views\District\Edit.cshtml" />
+    <Content Include="Areas\Administration\Views\School\Create.cshtml" />
+    <Content Include="Areas\Administration\Views\School\Detail.cshtml" />
+    <Content Include="Areas\Administration\Views\School\Edit.cshtml" />
+    <Content Include="Areas\Administration\Views\Shared\EditorTemplates\School.cshtml" />
+    <None Include="Scripts\jquery-2.2.0.intellisense.js" />
+    <Content Include="Scripts\jquery-2.2.0.js" />
+    <Content Include="Scripts\jquery-2.2.0.min.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\kendo\kendo.all.min.js" />
@@ -307,14 +348,22 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Shared\Lockout.cshtml" />
+    <Content Include="Views\Shared\Maintenance.cshtml" />
+    <Content Include="Views\Shared\_BareLayout.cshtml" />
+    <Content Include="Views\Shared\_Loading.cshtml" />
+    <Content Include="Areas\Administration\Views\Shared\_EditDelete.cshtml" />
+    <Content Include="Views\Shared\_AlertsFromTempData.cshtml" />
+    <Content Include="Areas\Administration\Views\Shared\_Create.cshtml" />
+    <Content Include="Areas\Administration\Views\Shared\_Edit.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\Address.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\Address.cshtml" />
+    <Content Include="Areas\Administration\Views\Shared\EditorTemplates\District.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Administration\Models\" />
-    <Folder Include="Content\images\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
@@ -331,15 +380,15 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="fonts\entypo.eot" />
-    <Content Include="fonts\entypo.ttf" />
-    <Content Include="fonts\entypo.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\Administration\Views\Shared\_Layout.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Scripts\jquery-2.2.0.min.map" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

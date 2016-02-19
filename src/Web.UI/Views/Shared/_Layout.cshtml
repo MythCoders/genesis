@@ -24,12 +24,13 @@
                     <span class="icon-bar"></span>
                 </button>
                 @(ConfigurationHelper.InstanceIsProduction()
-                        ? Html.ActionLink(systemName, "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-                        : Html.ActionLink($"{systemName} ({instanceName})", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" }))
+                      ? Html.ActionLink(systemName, "Index", "Dashboard", new { area = "" }, new { @class = "navbar-brand" })
+                      : Html.ActionLink($"{systemName} ({instanceName})", "Index", "Dashboard", new { area = "" }, new { @class = "navbar-brand" }))
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                    <li>@Html.ActionLink("Home", "Index", "Dashboard")</li>
+                    <li>@Html.ActionLink("Administration", "Index", new { area = "Administration", controller = "Dashboard" })</li>
                 </ul>
             </div>
         </div>

@@ -23,25 +23,38 @@ namespace MC.eSIS.Web.UI
                         "~/Scripts/bootstrap.min.js",
                         "~/Scripts/respond.min.js"));
 
-            bundles.Add(new ScriptBundle("~/bundles/kendo").Include(
-                        "~/Scripts/kendo/kendo.all.min.js",
-                        //"~/Scripts/kendo/kendo.timezones.min.js", // uncomment if using the Scheduler
-                        "~/Scripts/kendo/kendo.aspnetmvc.min.js"));
-
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.min.css",
                       "~/Content/site.css"));
 
-            bundles.Add(new StyleBundle("~/Content/cssadmin").Include(
-                      "~/Content/admin/bootstrap.css",
-                      "~/Content/admin/neon-core.css",
-                      "~/Content/admin/neon-forms.css",
-                      "~/Content/admin/site.css",
-                      "~/Content/admin/entypo.css"));
+            #region KendoUI
+
+            bundles.Add(new ScriptBundle("~/bundles/kendo").Include(
+                        "~/Scripts/kendo/kendo.all.min.js",
+                        //"~/Scripts/kendo/kendo.grid.min.js",
+                        //"~/Scripts/kendo/kendo.timezones.min.js", // uncomment if using the Scheduler
+                        "~/Scripts/kendo/kendo.aspnetmvc.min.js"));
 
             bundles.Add(new StyleBundle("~/Content/kendo/css").Include(
                 "~/Content/kendo/kendo.common.min.css",
-                "~/Content/kendo/kendo.default.min.css"));
+                "~/Content/kendo/kendo.default.min.css",
+                "~/Content/kendo/kendo.custom.css"));
+
+            #endregion
+
+            #region Admin
+
+            bundles.Add(new StyleBundle("~/Content/cssadmin").Include(
+                      "~/Content/aui/aui.min.css",
+                      "~/Content/aui/aui-iconfonts.min.css",
+                      "~/Content/aui/aui-experimental.min.css"));
+
+            bundles.Add(new ScriptBundle("~/bundles/admin").Include(
+                        "~/Scripts/aui/aui.min.js",
+                        "~/Scripts/aui/aui-datepicker.min.js",
+                        "~/Scripts/aui/aui-experimental.min.js"));
+
+            #endregion
 
             bundles.IgnoreList.Clear();
         }

@@ -5,6 +5,7 @@ using System.Security.Claims;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Web.Http.Filters;
+using eSIS.Database;
 using NLog;
 
 namespace MC.eSIS.Core.API.Security
@@ -21,16 +22,35 @@ namespace MC.eSIS.Core.API.Security
 
             IEnumerable<string> apiKeyHeaderValues;
 
-            if (context.Request.Headers.TryGetValues(Constants.ApiRequestHeaderName, out apiKeyHeaderValues))
+            if (context.Request.Headers.TryGetValues(Constants.ApiRequestKeyHeaderName, out apiKeyHeaderValues))
             {
                 _logger.Trace("Header found");
 
+                var dbContext = new SisContext("ApiAuthentication", "");
+
                 var apiToken = apiKeyHeaderValues.First();
-                var client = ApiHelper.GetByClientToken(apiToken);
-                var claim = new Claim(ClaimTypes.Name, client.ClientName);
-                var identity = new ClaimsIdentity(new[] { claim }, Constants.ApiRequestHeaderName);
-                var principal = new ClaimsPrincipal(identity);
-                context.Principal = principal;
+                var client = ApiHelper.GetByClientToken(dbContext, apiToken);
+
+                if (client != null)
+                {
+                    _logger.Trace("Client found");
+
+                    if (client.IsActive)
+                    {
+                        var claim = new Claim(ClaimTypes.Name, client.Name);
+                        var identity = new ClaimsIdentity(new[] { claim }, Constants.ApiRequestKeyHeaderName);
+                        var principal = new ClaimsPrincipal(identity);
+                        context.Principal = principal;
+                    }
+                    else
+                    {
+                        _logger.Warn("Request denied for client {0}. Client is not active!", client.Name);
+                    }
+                }
+                else
+                {
+                    _logger.Warn("Request denied for auth token {0}.", apiToken);
+                }
             }
 
             _logger.Trace("Finishing authentication");

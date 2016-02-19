@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Web.Mvc;
 
 //using System.Web.Mvc;
 
@@ -17,37 +18,38 @@ namespace MC.eSIS.Core.Entities
         /// </summary>
         [Required]
         [Key]
-        //[HiddenInput(DisplayValue = false)]
+        [HiddenInput(DisplayValue = false)]
         public int Id { get; set; }
 
         [MaxLength(10)]
         [Index]
+        [Display(Name = "System Code")]
         public string SystemCode { get; set; }
 
         /// <summary>
         /// User who created the record
         /// </summary>
         [StringLength(60)]
-        //[HiddenInput(DisplayValue = false)]
+        [HiddenInput(DisplayValue = false)]
         public string AddUser { get; set; }
 
         /// <summary>
         /// Timestamp of when the record was created
         /// </summary>
-        //[HiddenInput(DisplayValue = false)]
+        [HiddenInput(DisplayValue = false)]
         public DateTime? AddDate { get; set; }
 
         /// <summary>
         /// Most recent user to update the record
         /// </summary>
         [StringLength(60)]
-        //[HiddenInput(DisplayValue = false)]
+        [HiddenInput(DisplayValue = false)]
         public string ModUser { get; set; }
 
         /// <summary>
         /// Timestamp of the most recent time the record was updated
         /// </summary>
-        //[HiddenInput(DisplayValue = false)]
+        [HiddenInput(DisplayValue = false)]
         public DateTime? ModDate { get; set; }
 
         /// <summary>
@@ -58,7 +60,7 @@ namespace MC.eSIS.Core.Entities
         /// can make his/her changes again.
         /// </summary>
         [Timestamp]
-        //[HiddenInput(DisplayValue = false)]
+        [HiddenInput(DisplayValue = false)]
         // byte[] is the rowversion/timestamp .NET type
         public byte[] Version { get; set; }
     }

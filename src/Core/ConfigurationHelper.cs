@@ -1,5 +1,9 @@
 ﻿using System;
 using System.Configuration;
+using System.Globalization;
+using System.Net.Http.Formatting;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
 
 namespace MC.eSIS.Core
 {
@@ -60,6 +64,32 @@ namespace MC.eSIS.Core
             }
 
             return (T) Convert.ChangeType(value, typeof (T));
+        }
+
+        public static JsonSerializerSettings GetJsonSerializerSettings()
+        {
+            return new JsonSerializerSettings
+            {
+                TypeNameHandling = TypeNameHandling.All,
+                TypeNameAssemblyFormat = System.Runtime.Serialization.Formatters.FormatterAssemblyStyle.Full,
+                Formatting = Formatting.Indented,
+                ContractResolver = new CamelCasePropertyNamesContractResolver(),
+                NullValueHandling = NullValueHandling.Ignore,
+                DateFormatHandling = DateFormatHandling.MicrosoftDateFormat,
+                DateTimeZoneHandling = DateTimeZoneHandling.Utc,
+                Culture = new CultureInfo("en-US"),
+                ReferenceLoopHandling = ReferenceLoopHandling.Serialize,
+                PreserveReferencesHandling = PreserveReferencesHandling.Objects,
+            };
+        }
+
+        public static JsonMediaTypeFormatter GetJsonMediaTypeFormatter()
+        {
+            return new JsonMediaTypeFormatter
+            {
+                Indent =  true,
+                MaxDepth = 100
+            };
         }
     }
 }

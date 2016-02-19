@@ -1,0 +1,37 @@
+﻿@if (TempData["Status"] != null)
+{
+    <div class="alert alert-success alert-dismissable">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+        @Html.Raw(TempData["Status"])
+    </div>
+}
+@if (TempData["Success"] != null)
+{
+    <script type="text/javascript">
+        AJS.messages.success({
+            title: 'This is a title in a default message.',
+            body: '<p> And this is just content in a Default message.</p>'
+        });
+    </script>
+}
+@if (TempData["Info"] != null)
+{
+    <div class="alert alert-info alert-dismissable">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+        @Html.Raw(TempData["Info"])
+    </div>
+}
+@if (TempData["Warning"] != null)
+{
+    <div class="alert alert-warning alert-dismissable">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+        @Html.Raw(TempData["Warning"])
+    </div>
+}
+@if (TempData["Error"] != null)
+{
+    <div class="alert alert-danger alert-dismissable">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+        @Html.Raw(TempData["Error"])
+    </div>
+}

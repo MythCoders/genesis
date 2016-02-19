@@ -1,23 +1,24 @@
-﻿@using eSIS.Core.UI.MVC
-@using Kendo.Mvc.UI
-@model List<District>
+﻿@model List<District>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Module = "Districts";
+    ViewBag.Title = "All Districts";
 }
 
 @(Html.Kendo().Grid<District>()
       .Name("pagingGrid")
       .Columns(cols =>
       {
-          cols.NavigationButton(p => p.Id, "Select", Url.Action("Edit"));
-          cols.Bound(p => p.SystemCode);
+          cols.NavigationButton(p => p.Id, "Select", Url.Action("Detail")).Title("");
+          cols.Bound(p => p.SystemCode).Width(125);
           cols.Bound(p => p.Name);
-          cols.Bound(p => p.Address.StreetAddress);
+          cols.Bound(p => p.Address.FirstAddressLine);
       })
       .StandardPagingGrid("District", "Administration")
 )
 
-<br /><br />
-
-@Html.ActionLink("Create", "Create", null, new { @class = "btn btn-primary" })
+@section headerActions {
+    <div class="aui-buttons">
+        @Html.ActionLink("Create", "Create", null, new { @class = "aui-button" })
+    </div>
+}

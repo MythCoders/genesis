@@ -1,0 +1,17 @@
+﻿
+@{
+    var action = (string)ViewBag.ActionName;
+    var controller = (string)ViewBag.ControllerName;
+}
+
+@using (Html.BeginForm(action, controller, FormMethod.Post, new { @class = "aui" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+    @Html.EditorFor(m => Model)
+
+    <div class="buttons-container">
+        <input name="action" type="submit" value="Create" class="aui-button aui-button-primary" />
+        @Html.ActionLink("Back", "Index", null, new { @class = "aui-button" })
+    </div>
+}

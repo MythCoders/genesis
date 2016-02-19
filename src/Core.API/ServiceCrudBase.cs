@@ -45,8 +45,8 @@ namespace MC.eSIS.Core.API
         /// </summary>
         /// <param name="request"></param>
         /// <returns></returns>
-        [Route("GetPage")]
-        public IHttpActionResult GetPage(DataSourceRequest request)
+        [Route("Page")]
+        public IHttpActionResult Page(DataSourceRequest request)
         {
             if (request == null)
             {
@@ -90,7 +90,7 @@ namespace MC.eSIS.Core.API
 
         [Route("{id:int}")]
         // ReSharper disable once VirtualMemberNeverOverriden.Global
-        public virtual async Task<IHttpActionResult> Put(int id, T item)
+        public virtual async Task<IHttpActionResult> Put([FromUri] int id, [FromBody] T item)
         {
             if (id != item.Id)
             {
@@ -106,7 +106,9 @@ namespace MC.eSIS.Core.API
                 return BadRequest(ModelState);
             }
 
-            Database.Entry(item).State = EntityState.Modified;
+            var existing = await Database.Set<T>().FindAsync(item.Id);
+            
+            UpdateMapping(existing, item);
 
             try
             {
@@ -141,7 +143,7 @@ namespace MC.eSIS.Core.API
 
             await Database.SaveChangesAsync();
 
-            return CreatedAtRoute("DefaultApi", new { id = item.Id }, item);
+            return CreatedAtRoute("Default", new { id = item.Id }, item);
         }
 
         [Route("{id:int}")]
@@ -178,16 +180,9 @@ namespace MC.eSIS.Core.API
             return Database.Set<T>().Count(e => e.Id == id) > 0;
         }
 
-        // ReSharper disable once VirtualMemberNeverOverriden.Global
-        //public virtual void PreCreateValidation()
-        //{
-        //    Logger.Trace("No pre-create validation found");
-        //}
-
-        // ReSharper disable once VirtualMemberNeverOverriden.Global
-        //public virtual void PreUpdateValidation()
-        //{
-        //    Logger.Trace("No pre-update validation found");
-        //}
+        public virtual void UpdateMapping(T existingItem, T updatedItem)
+        {
+            Database.Entry(existingItem).CurrentValues.SetValues(updatedItem);
+        }
     }
 }

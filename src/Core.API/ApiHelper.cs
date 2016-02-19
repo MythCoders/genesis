@@ -1,7 +1,9 @@
 using System.Collections.Generic;
-using System.Configuration;
 using System.Linq;
 using System.Web;
+using eSIS.Core.API.Exceptions;
+using eSIS.Core.Entities.Infrastructure;
+using eSIS.Database;
 using MC.eSIS.Core.API.ApiClient;
 using MC.eSIS.Core.API.Exceptions;
 
@@ -24,16 +26,14 @@ namespace MC.eSIS.Core.API
             return HttpContext.Current.Request.Headers[name] != null ? HttpContext.Current.Request.Headers.GetValues(name).First() : null;
         }
 
-        public static ApiClientConfig GetByClientToken(string token)
+        public static ApiClient GetByClientToken(SisContext db, string token)
         {
-            var clientSection = ConfigurationManager.GetSection("ApiClientsSection") as ApiClientSection;
-            return clientSection.Clients.FirstOrDefault(p => p.Token == token);
+            return db.ApiClients.SingleOrDefault(p => p.Token == token);
         }
 
-        public static List<ApiClientConfig> GetAllClients()
+        public static List<ApiClient> GetAllClients(SisContext db)
         {
-            var clientSection = ConfigurationManager.GetSection("ApiClientsSection") as ApiClientSection;
-            return clientSection.Clients.ToList();
+            return db.ApiClients.ToList();
         }
     }
 }

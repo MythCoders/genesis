@@ -1,0 +1,22 @@
+﻿@using eSIS.Core.UI.Classes
+
+<ol class="aui-nav aui-nav-breadcrumbs">
+    <li class="aui-nav-selected">
+        eSIS
+    </li>
+
+    @if (ViewBag.Breadcrumbs != null)
+    {
+        var breadCrumbs = (List<Breadcrumb>)ViewBag.Breadcrumbs;
+        foreach (var breadcrumb in breadCrumbs)
+        {
+            <li>
+                @Html.ActionLink(breadcrumb.Name, breadcrumb.Action, breadcrumb.Controller, breadcrumb.Routes, null)
+            </li>
+        }
+    }
+    
+    <li class="aui-nav-selected">
+        @ViewBag.Title
+    </li>
+</ol>

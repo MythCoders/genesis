@@ -1,0 +1,17 @@
+﻿@model District
+
+@{
+    ViewBag.Module = "Districts";
+    ViewBag.Title = Model.Name;
+}
+
+<form class="aui">
+    @Html.DisplayForModel()
+</form>
+
+@section headerActions {
+    <div class="aui-buttons">
+        @Html.ActionLink("Edit", "Edit", new { id = Model.Id }, new { @class = "aui-button aui-button-primary" })
+        @Html.ActionLink("Go Back", "Index", new {id = Model.Id}, new {@class = "aui-button"})
+    </div>
+}

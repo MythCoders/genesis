@@ -1,7 +1,13 @@
 ﻿Use [SIS]
-go
+GO
 
-create procedure [inf].[usp_LogInsert]
+PRINT 'SIS Database Creation Script'
+GO
+
+PRINT 'Creating Stored Procedures...'
+GO
+
+CREATE PROCEDURE [inf].[usp_LogInsert]
     @MachineName [nvarchar](200),
     @SiteName [nvarchar](200),
     @Logged [datetime],
@@ -62,3 +68,7 @@ BEGIN
 			GETDATE()
 		)
 END
+GO
+
+PRINT 'Script Complete'
+GO

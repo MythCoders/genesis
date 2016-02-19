@@ -25,12 +25,15 @@ namespace MC.eSIS.Core.UI.MVC
         {
             return gridBuilder
                 .NoRecords("No records found.")
-                .Pageable(p => p.Refresh(true).PageSizes(true))
+                .Pageable(p => p.Refresh(true).PageSizes(new[] { 10, 25, 50 }))
                 .Sortable()
                 .Scrollable(s => s.Virtual(true))
                 .Filterable(ftb => ftb.Mode(GridFilterMode.Row))
                 .Reorderable(r => r.Columns(true))
-                .DataSource(ds => { ds.Ajax().Read(read => read.Action(actionName, controllerName, new { area = areaName })); })
+                .DataSource(ds =>
+                {
+                    ds.Ajax().Read(read => read.Action(actionName, controllerName, new { area = areaName }));
+                })
                 .Deferred();
         }
 
@@ -56,6 +59,18 @@ namespace MC.eSIS.Core.UI.MVC
         {
             return factory.Bound(expression)
                 .ClientTemplate($"<a class='{cssClass}' href='{url}{HtmlTemplateProperty("Id")}'>{linkText}</a>")
+                .Filterable(false)
+                .Width(width);
+        }
+
+        public static GridBoundColumnBuilder<TModel> Raw<TModel, TValue>(this GridColumnFactory<TModel> factory,
+            Expression<Func<TModel, TValue>> expression,
+            string html,
+            int width = 80)
+            where TModel : class
+        {
+            return factory.Bound(expression)
+                .ClientTemplate(html)
                 .Filterable(false)
                 .Width(width);
         }

@@ -3,77 +3,65 @@
     var systemName = ConfigurationHelper.SystemName();
     var instanceName = ConfigurationHelper.InstanceName();
     var systemVersion = ConfigurationHelper.SystemVersion();
+
+    var pageTitle = string.IsNullOrWhiteSpace(ViewBag.Title)
+        ? $"{systemName}"
+        : $"{systemName} - {ViewBag.Title}";
 }
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@systemName - @instanceName - @ViewBag.Title</title>
+    <title>@pageTitle</title>
+
     @Styles.Render("~/Content/cssadmin")
     @Styles.Render("~/Content/kendo/css")
-    @Scripts.Render("~/bundles/modernizr")
 </head>
-<body class="page-body">
-    <div class="page-container">
-        <div class="sidebar-menu">
-            <header class="logo-env">
-                <div class="logo">
-                    <a href="index.html">
-                        <img src="assets/images/logo.png" alt="" />
-                    </a>
-                </div>
-                <div class="sidebar-collapse">
-                    <a href="#" class="sidebar-collapse-icon with-animation">
-                        <i class="entypo-menu with-animation"></i>
-                    </a>
-                </div>
-                <div class="sidebar-mobile-menu visible-xs">
-                    <a href="#" class="with-animation">
-                        <i class="entypo-menu with-animation"></i>
-                    </a>
-                </div>
+<body>
+    <div id="page">
+        <div id="wrapper">
+            <header id="header" role="banner">
+                @Html.Partial("_ApplicationHeader")
             </header>
+            <div id="content" role="main">
+                @Html.Partial("_Sidebar")
 
-            <ul id="main-menu" class="multiple-expanded">
-                <li>
-                    <a href="@Url.Action("Index", "Event", new {area = "Administration"})">
-                        <i class="entypo-chart-bar"></i>
-                        <span>Events</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="@Url.Action("Index", "Rsvp", new {area = "Administration"})">
-                        <i class="entypo-chart-bar"></i>
-                        <span>RSVPs</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="@Url.Action("Index", "SystemLog", new {area = "Administration"})">
-                        <i class="entypo-chart-bar"></i>
-                        <span>Error Logs</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="@Url.Action("Index", "Home", new {area = ""})">
-                        <i class="entypo-chart-bar"></i>
-                        <span>Public Website</span>
-                    </a>
-                </li>
-            </ul>
+                <div class="aui-page-panel">
+                    <div class="aui-page-panel-inner">
+                        <section class="aui-page-panel-content">
+                            <header class="aui-page-header">
+                                <div class="aui-page-header-inner">
+                                    <div class="aui-page-header-main">
+                                        @Html.Partial("_Breadcrumbs")
+                                        @if (ViewBag.Module != null)
+                                        {
+                                            <div class="aui-item section-title">
+                                                <h1>@ViewBag.Module</h1>    
+                                            </div>
+                                        }
+                                    </div>
+                                    <div class="aui-page-header-actions">
+                                        @RenderSection("headerActions", false)
+                                    </div>
+                                </div>
+                            </header>
+                            <br/>
+                            @RenderBody()
+                        </section>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="main-content">
-            @RenderBody()
-            <hr />
-            <footer>
-                <p>@systemName (@instanceName) - @systemVersion</p>
-            </footer>
-        </div>
+        <footer id="footer">
+        </footer>
     </div>
 
     @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
     @Scripts.Render("~/bundles/kendo")
+    @Scripts.Render("~/bundles/admin")
+    @Scripts.Render("~/bundles/modernizr")
+    
     @RenderSection("scripts", false)
     @Html.Kendo().DeferredScripts()
 </body>
