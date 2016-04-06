@@ -1,7 +1,7 @@
-# eSIS
-*The electronic Student Information System*
+# Genesis
+*Student Information System*
 
-eSIS is an open-sourced Student Information System that runs on the Microsoft platform. 
+Genesis is a student Information System that runs on the Microsoft platform.
 #####Planned Modules
 * Administration
 * Students
