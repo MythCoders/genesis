@@ -1,0 +1,56 @@
+<header id="header" role="banner">
+  <nav class="aui-header aui-dropdown2-trigger-group" role="navigation" data-aui-responsive="true">
+    <div class="aui-header-inner">
+      <div class="aui-header-primary">
+        <h1 class="aui-header-logo" id="logo">
+          <%= link_to 'GeneSIS', controller: 'public' %>
+        </h1>
+        <ul class="aui-nav" style="width: auto;" resolved="">
+          <li>
+            <%= link_to 'Students', controller: 'student' %>
+          </li>
+        </ul>
+      </div>
+      <div class="aui-header-secondary">
+        <ul class="aui-nav" role="menu" resolved="">
+          <li>
+            <form class="aui-quicksearch" action="/repo/all" method="get">
+              <label class="assistive" for="search-query">owner/repository</label>
+              <input name="name" title="( type / )" class="bb-repo-typeahead" id="search-query" type="text" placeholder="Find a repository…" autocomplete="off" data-bb-typeahead-focus="false">
+            </form>
+          </li>
+          <li>
+            <a class="aui-nav-link" id="help-menu-link" aria-expanded="false" aria-haspopup="true" aria-controls="help-menu-dialog" href="#" resolved="" data-aui-trigger="">
+              <span class="aui-icon aui-icon-small aui-iconfont-help" id="help-menu-icon"></span>
+            </a>
+          </li>
+          <li>
+            <a title="jmadkins" class="aui-dropdown2-trigger aui-dropdown2-trigger-arrowless" id="user-dropdown-trigger" aria-expanded="false" aria-haspopup="true" aria-controls="user-dropdown" href="#" resolved="" data-container="#header .aui-header-inner">
+              <div class="aui-avatar aui-avatar-small">
+                <div class="aui-avatar-inner">
+                  <img width="24" height="24" alt="Logged in as jmadkins" src="https://bitbucket.org/account/jmadkins/avatar/32/?ts=1467750194" data-src-url-2x="https://bitbucket.org/account/jmadkins/avatar/64/?ts=1467750194" data-src-url="https://bitbucket.org/account/jmadkins/avatar/32/?ts=1467750194">
+                </div>
+              </div>
+            </a>
+            <nav class="aui-dropdown2 aui-style-default aui-layer" id="user-dropdown" aria-hidden="true" resolved="">
+              <div class="aui-dropdown2-section">
+                <ul>
+                  <li>
+                    <a id="profile-link" href="/jmadkins/">View profile</a>
+                  </li>
+                </ul>
+              </div>
+              <div class="aui-dropdown2-section">
+                <ul>
+                  <li>
+                    <a id="log-out-link" href="https://id.atlassian.com/logout?continue=https%3A%2F%2Fbitbucket.org%2Faccount%2Fsignout%2F">Log out</a>
+                  </li>
+                </ul>
+              </div>
+            </nav>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>

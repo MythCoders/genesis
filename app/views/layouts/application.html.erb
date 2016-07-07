@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Genesis</title>
+    <%= csrf_meta_tags %>
+
+    <link rel="stylesheet" href="//aui-cdn.atlassian.com/aui-adg/5.9.22/css/aui.min.css" media="all">
+    <link rel="stylesheet" href="//aui-cdn.atlassian.com/aui-adg/5.9.22/css/aui-experimental.min.css" media="all">
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script src="//aui-cdn.atlassian.com/aui-adg/5.9.22/js/aui.min.js"></script>
+    <script src="//aui-cdn.atlassian.com/aui-adg/5.9.22/js/aui-experimental.min.js"></script>
+    <script src="//aui-cdn.atlassian.com/aui-adg/5.9.22/js/aui-datepicker.min.js"></script>
+    <script src="//aui-cdn.atlassian.com/aui-adg/5.9.22/js/aui-soy.min.js"></script>
+  </head>
+
+  <body>
+  <div id="page">
+    <div id="wrapper">
+      <%= render 'layouts/navbar' %>
+      <div id="content" role="main">
+        <% render 'layouts/sidebar' %>
+        <%= yield %>
+      </div>
+    </div>
+  </div>
+  </body>
+</html>
