@@ -1,7 +1,7 @@
-# Genesis
+# GeneSIS
 *Student Information System*
 
-Genesis is a student Information System that runs on the Microsoft platform.
+GeneSIS is an open-source student information system that runs on the Ruby-on-Rails platform.
 #####Planned Modules
 * Administration
 * Students
@@ -9,9 +9,3 @@ Genesis is a student Information System that runs on the Microsoft platform.
 * Attendance
 * Grades
 * more to come!
-
-####Projects Used
-* [Json.Net](https://github.com/JamesNK/Newtonsoft.Json)
-* [NLog](https://github.com/NLog/NLog)
-* [Entity Framework](http://www.asp.net/entity-framework)
-* [Bootstrap](http://getbootstrap.com/)
