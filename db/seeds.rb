@@ -5,3 +5,5 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+settings = Setting.create([{key: 'system.name', value: 'GeneSIS'}, {key: 'system.version', value: ''}, {key: 'system.?', value: ''}])

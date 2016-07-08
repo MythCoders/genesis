@@ -1,26 +1,38 @@
+<header class="aui-page-header">
+  <div class="aui-page-header-inner">
+    <div class="aui-page-header-main">
+      <h1>Students</h1>
+    </div>
+    <div class="aui-page-header-actions">
+      <%= link_to 'New Student', new_student_path, :class => 'aui-button add-project-trigger' %>
+    </div>
+  </div>
+</header>
 <div class="aui-page-panel">
   <div class="aui-page-panel-inner">
     <div class="aui-page-panel-content">
-      <ol class="aui-nav aui-nav-breadcrumbs">
-        <li>
-          <%= link_to 'GeneSIS', controller: 'public' %>
-        </li>
-
-        <li class="aui-nav-selected">
-          <%= link_to 'Students', controller: 'student' %>
-      </ol>
-
-      <div class="aui-group">
-        <div class="aui-item section-title">
-          <h1>Students</h1>
-        </div>
-        <div class="aui-item page-actions">
-          <a class="aui-button aui-button-subtle">
-            <span class="aui-icon aui-icon-small aui-iconfont-add"></span>
-            <span class="aui-button-label">New Student</span>
-          </a>
-        </div>
-      </div>
+      <table class="aui">
+        <thead>
+        <tr>
+          <th></th>
+          <th>Student ID</th>
+          <th>Name</th>
+          <th>Grade</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <% @model.each do |s| %>
+            <tr>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+        <% end %>
+        </tr>
+        </tbody>
+      </table>
     </div>
   </div>
 </div>
