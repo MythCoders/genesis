@@ -7,7 +7,7 @@ class CreateSchools < ActiveRecord::Migration[5.0]
       t.string :state, length: 2
       t.string :zipcode, length: 9
       t.string :phone_number, length: 10
-      t.references :district, foreign_key: true
+      t.references :districts, foreign_key: true
 
       t.timestamps
     end

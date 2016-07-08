@@ -1,21 +1,21 @@
 <nav class="aui-header aui-dropdown2-trigger-group" role="navigation" data-aui-responsive="true">
   <div class="aui-header-primary">
     <h1 id="logo" class="aui-header-logo">
-      <%= link_to 'GeneSIS', controller: 'public' %>
+      <%= link_to 'GeneSIS', root_path %>
     </h1>
     <ul class="aui-nav" style="width: auto;">
       <li>
-        <%= link_to 'Students', controller: 'student' %>
+        <%= link_to 'Students', students_path %>
       </li>
-      <li>
+      <!--<li>
         <a href="#dropdown2-jira3" aria-owns="dropdown2-jira3" aria-haspopup="true" class="aui-dropdown2-trigger aui-alignment-target aui-alignment-abutted aui-alignment-abutted-left aui-alignment-element-attached-top aui-alignment-element-attached-left aui-alignment-target-attached-bottom aui-alignment-target-attached-left" aria-controls="dropdown2-jira3" aria-expanded="false">
           Settings
         </a>
         <div class="aui-dropdown2 aui-style-default aui-dropdown2-in-header aui-layer aui-alignment-element aui-alignment-side-bottom aui-alignment-snap-left aui-alignment-abutted aui-alignment-abutted-left aui-alignment-element-attached-top aui-alignment-element-attached-left aui-alignment-target-attached-bottom aui-alignment-target-attached-left" id="dropdown2-jira3" style="top: 0px; min-width: 160px; left: 0px; z-index: 0; position: absolute; transform: translateX(427px) translateY(625px) translateZ(0px);" aria-hidden="true" resolved="" data-aui-alignment="bottom auto" data-aui-alignment-static="true">
           <div class="aui-dropdown2-section">
             <ul>
-              <li><%= link_to 'Districts', controller: 'student' %></li>
-              <li><%= link_to 'Schools', controller: 'student' %></li>
+              <li><%= link_to 'Districts', districts_path %></li>
+              <li><%= link_to 'Schools', schools_path %></li>
             </ul>
           </div>
           <div class="aui-dropdown2-section">
@@ -23,7 +23,7 @@
             </ul>
           </div>
         </div>
-      </li>
+      </li>-->
     </ul>
   </div>
   <div class="aui-header-secondary">
@@ -50,7 +50,7 @@
         <a href="#dropdown2-header9" aria-owns="dropdown2-header9" aria-haspopup="true" class="aui-dropdown2-trigger-arrowless aui-dropdown2-trigger aui-alignment-target aui-alignment-element-attached-top aui-alignment-element-attached-right aui-alignment-target-attached-bottom aui-alignment-target-attached-right" aria-controls="dropdown2-header9" resolved="" aria-expanded="false">
           <div class="aui-avatar aui-avatar-small">
             <div class="aui-avatar-inner">
-              <img src="images/avatar-16.png">
+              <img src="">
             </div>
           </div>
         </a>
@@ -58,13 +58,8 @@
         <div class="aui-dropdown2 aui-style-default aui-dropdown2-in-header aui-layer aui-alignment-element aui-alignment-side-bottom aui-alignment-snap-right aui-alignment-element-attached-top aui-alignment-element-attached-right aui-alignment-target-attached-bottom aui-alignment-target-attached-right" id="dropdown2-header9" style="top: 0px; min-width: 160px; left: 0px; z-index: auto; position: absolute; transform: translateX(1700px) translateY(625px) translateZ(0px);" aria-hidden="true" resolved="" data-aui-alignment="bottom auto" data-aui-alignment-static="true">
           <div class="aui-dropdown2-section">
             <ul>
-              <li><a href="http://example.com/" class="" tabindex="-1">Profile</a></li>
+              <li> <%= link_to 'Settings', admin_home_index_path %> </li>
               <li><a href="http://example.com/" tabindex="-1">Extensions</a></li>
-            </ul>
-          </div>
-          <div class="aui-dropdown2-section">
-            <ul>
-              <li><a href="http://example.com/" tabindex="-1">Use Agile by default</a></li>
             </ul>
           </div>
           <div class="aui-dropdown2-section">
