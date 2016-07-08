@@ -1,0 +1,38 @@
+<header class="aui-page-header">
+  <div class="aui-page-header-inner">
+    <div class="aui-page-header-main">
+      <h1>Students</h1>
+    </div>
+    <div class="aui-page-header-actions">
+      <%= link_to 'New Student', new_student_path, :class => 'aui-button add-project-trigger' %>
+    </div>
+  </div>
+</header>
+<div class="aui-page-panel">
+  <div class="aui-page-panel-inner">
+    <div class="aui-page-panel-content">
+      <table class="aui">
+        <thead>
+        <tr>
+          <th></th>
+          <th>Student ID</th>
+          <th>Name</th>
+          <th>Grade</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <% @model.each do |s| %>
+            <tr>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+        <% end %>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
