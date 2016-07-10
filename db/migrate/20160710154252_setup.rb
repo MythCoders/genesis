@@ -1,6 +1,20 @@
 class Setup < ActiveRecord::Migration[5.0]
   def change
 
+    create_table :enrollment_codes do |t|
+      t.string :title, :length => 100, :null => false
+      t.string :short_name, :length => 10, :null => false
+      t.boolean :is_admission, :null => false, :default => false
+      t.boolean :is_active, :null => false, :dafault => false
+      t.timestamps
+    end
+
+    create_table :settings do |t|
+      t.string :key, :null => false, :unique => true, :index => true
+      t.string :value, :null => false
+      t.timestamps
+    end
+
     create_table :districts do |t|
       t.string :name, :null => false, :limit => 50
       t.string :address, :limit => 50
@@ -18,12 +32,13 @@ class Setup < ActiveRecord::Migration[5.0]
       t.string :state, :limit => 2
       t.string :zip_code, :limit => 9
       t.string :phone_number, :limit => 10
-      t.references :districts, :foreign_key => true, :column => 'district_id'
+      t.integer :district_id
       t.timestamps
     end
 
     create_table :school_years do |t|
-      t.string :title, :null => false, :length => 50
+      t.integer :school_id, :null => false
+      t.string :title, :null => false, :length => 30
       t.string :short_name, :null => false, :length => 5
       t.integer :year, :null => false
       t.date :start_date
@@ -32,18 +47,44 @@ class Setup < ActiveRecord::Migration[5.0]
       t.date :grade_end_date
       t.date :reg_start_date
       t.date :reg_end_date
-      t.references :schools, :foreign_key => true
       t.timestamps
     end
 
     create_table :grades do |t|
-      t.string :title, :length => 100
+      t.string :title, :length => 30
       t.string :short_name, :length => 10
-      #t.integer :next_grade_id, :references => :grades, :null => true
-      #t.integer :previous_grade_id, :references => :grades, :null => true
-      t.references :grades, :column => 'next_grade_id', :foreign_key => true, :null => true
-      t.references :grades, :column => 'previous_grade_id', :foreign_key => true, :null => true
+      t.integer :sort_order, :null => true
+      t.integer :next_grade_id, :null => true
+      t.integer :previous_grade_id, :null => true
       t.timestamps
+    end
+
+    create_table :mark_scales do |t|
+      t.string :name, :null => false, :length => 30
+      t.text :description, :length => 250
+      t.boolean :is_active, :null => false, :default => false
+      t.timestamps
+    end
+
+    create_table :marks do |t|
+      t.string :title, :null => false, :length => 3
+      t.string :description, :length => 250
+      t.decimal :gpa_value, :null => false
+      t.decimal :breakoff, :null => true
+      t.decimal :weighted_gpa_scale, :null => true
+      t.integer :mark_scale_id, :null => false
+      t.timestamps
+    end
+
+    create_join_table :school_years, :grades, table_name: :school_year_grades do |t|
+      t.index :school_year_id
+      t.index :grade_id
+    end
+
+    create_join_table :school_years, :mark_scales, table_name: :school_year_mark_scales do |t|
+      t.index :school_year_id
+      t.index :mark_scale_id
+      t.boolean :is_default, :default => false
     end
 
     create_table :students do |t|
@@ -57,46 +98,14 @@ class Setup < ActiveRecord::Migration[5.0]
       t.timestamps
     end
 
-    create_table :enrollment_codes do |t|
-      t.string :title, :length => 100
-      t.string :short_name, :length => 10
-      t.integer :type
-      t.timestamps
-    end
-
     create_table :enrollments do |t|
-      t.references :students, :foreign_key => true
-      t.references :school_years, :foreign_key => true
-      t.references :grades, :foreign_key => true
-      t.date :start_date
-      t.date :end_date
-      t.integer :add_code_id, :references => :enrollment_codes
-      t.integer :drop_code_id, :references => :enrollment_codes
-      t.integer :next_school_id, :references => :schools
-      #calendar
-      t.timestamps
-    end
-
-    create_table :mark_scales do |t|
-      t.string :name, :null => false, :length => 25
-      t.text :description, :length => 250
-      t.boolean :is_active, :null => false, :default => false
-      t.timestamps
-    end
-
-    create_table :marks do |t|
-      t.string :title, :null => false, :length => 3
-      t.string :description, :length => 250
-      t.integer :gpa_value, :null => false
-      t.integer :breakoff, :null => false
-      t.integer :weighted_gpa_value
-      t.references :mark_scales, :foreign_key => true
-      t.timestamps
-    end
-
-    create_table :settings do |t|
-      t.string :key, :null => false, :unique => true, :index => true
-      t.string :value, :null => false
+      t.integer :student_id, :null => false
+      t.integer :school_year_grade_id, :null => false
+      t.date :admission_date, :null => false
+      t.integer :admission_code_id, :null => false
+      t.date :withdraw_date
+      t.integer :withdraw_code_id
+      t.integer :next_school_id
       t.timestamps
     end
 
