@@ -13,7 +13,16 @@ module MCGenesis
     # -- all .rb files in that directory are automatically loaded.
 
     # Custom directories with classes and modules you want to be autoloadable.
-    config.autoload_paths += %W(#{config.root}/lib)
+    config.autoload_paths << Rails.root.join('lib')
 
+    # Configure sensitive parameters which will be filtered from the log file.
+    config.filter_parameters += [:password]
+
+    # Version of your assets, change this if you want to expire all your assets
+    config.assets.version = '1.0'
+
+    # Configure log level here so that additional environment file
+    # can change it (environments/ENV.rb would take precedence over it)
+    config.log_level = Rails.env.production? ? :info : :debug
   end
 end
