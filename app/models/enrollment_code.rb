@@ -1,0 +1,3 @@
+class EnrollmentCode < ApplicationRecord
+
+end
