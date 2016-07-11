@@ -24,10 +24,10 @@
         <tr>
           <% @model.each do |s| %>
             <tr>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
+              <td><%= link_to 'Select', student_path(s) %></td>
+              <td><%= s.student_id %></td>
+              <td><%= format_person_name(s.first_name, s.middle_name, s.last_name, s.suffix, ) %></td>
+              <td><%= s.current_grade %></td>
             </tr>
         <% end %>
         </tr>

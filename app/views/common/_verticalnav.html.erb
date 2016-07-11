@@ -1,0 +1,18 @@
+<div id="aui-vnav-example" class="aui-flatpack-example">
+  <nav class="aui-navgroup aui-navgroup-vertical">
+    <div class="aui-navgroup-inner">
+      <% tabs.each do |group| %>
+        <p>Group</p>
+      <%= group.each do |item| %>
+          <p>Item</p>
+      <% end -%>
+
+      <% end -%>
+      <ul class="aui-nav __skate">
+        <li class="aui-nav-selected"><a href="http://example.com/">Selected Nav Item</a></li>
+        <li><a href="http://example.com/">Nav item</a></li>
+        <li><a href="http://example.com/">Nav item</a></li>
+      </ul>
+    </div>
+  </nav>
+</div>
