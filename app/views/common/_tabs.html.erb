@@ -1,0 +1,15 @@
+<div class="aui-tabs horizontal-tabs">
+  <ul class="tabs-menu">
+    <% tabs.each_with_index do |tab, index| -%>
+        <li class="<%= (index == 0 ? 'menu-item active-tab' : 'menu-item') %>">
+          <a href="<%= "#tabs-#{index}" %>"><%= tab[:label] %></a>
+        </li>
+    <% end -%>
+  </ul>
+  <% tabs.each_with_index do |tab, index| -%>
+      <div class="<%= (index == 0 ? 'tabs-pane active-pane' : 'tabs-pane') %>" id="<%= "tabs-#{index}" %>">
+        <%= content_tag('div', render(:partial => tab[:partial])) %>
+      </div>
+  <% end -%>
+</div>
+

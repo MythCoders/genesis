@@ -5,13 +5,9 @@ module ApplicationHelper
   SEX = [MALE = 'M', FEMALE = 'F']
   ACCOUNT_STATUS = [ANONYMOUS = 0, ACTIVE = 1, REGISTERED = 2, LOCKED = 3]
 
-  def render_tabs(tabs, selected = params[:tab])
+  def render_tabs(tabs)
     if tabs.any?
-      unless tabs.detect { |tab| tab[:name] == selected }
-        selected = nil
-      end
-      selected ||= tabs.first[:name]
-      render :partial => 'common/tabs', :locals => {:tabs => tabs, :selected_tab => selected}
+      render :partial => 'common/tabs', :locals => {:tabs => tabs}
     else
       content_tag 'p', l(:label_no_data), :class => 'no-data'
     end

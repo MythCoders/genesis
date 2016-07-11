@@ -11,8 +11,7 @@ module SettingsHelper
 
   def sample_tabs
     tabs = [{:name => 't1', :partial => 'settings/district', :label => 'Tab #1'},
-            {:name => 't2', :partial => 'settings/school', :label => 'Tab #2'},
-            {:name => 't3', :partial => 'settings/grades', :label => 'Tab #3'}
+            {:name => 't2', :partial => 'settings/grades', :label => 'Tab #2'}
     ]
   end
 
