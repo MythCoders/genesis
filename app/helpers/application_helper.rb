@@ -6,22 +6,46 @@ module ApplicationHelper
   ACCOUNT_STATUS = [ANONYMOUS = 0, ACTIVE = 1, REGISTERED = 2, LOCKED = 3]
 
   def render_tabs(tabs, selected = params[:tab])
-    render_item(tabs, selected, 'common/tabs')
+    if tabs.any?
+      unless tabs.detect {|tab| tab[1].name == selected}
+        selected = nil
+      end
+      selected ||= tabs.first[:name]
+      render :partial => 'common/tabs', :locals => {:tabs => tabs, :selected_tab => selected}
+    else
+      content_tag 'p', l(:label_no_data), :class => 'no-data'
+    end
   end
 
   def render_vertical_nav(tabs, selected = params[:tab])
-    render_item(tabs, selected, 'common/verticalnav')
+    if tabs.any?
+      #unless tabs.detect {|tab| tab[1].name == selected}
+      #  selected = nil
+      #end
+      selected ||= ':district'
+      render :partial => 'common/verticalnav', :locals => {:tabs => tabs, :selected_tab => selected}
+    else
+      content_tag 'p', l(:label_no_data), :class => 'no-data'
+    end
   end
 
   def render_horizontal_nav(tabs, selected = params[:tab])
-    render_item(tabs, selected, 'common/horizontalnav')
+    if tabs.any?
+      unless tabs.detect {|tab| tab[1].name == selected}
+        selected = nil
+      end
+      selected ||= tabs.first[:name]
+      render :partial => 'common/horizontalnav', :locals => {:tabs => tabs, :selected_tab => selected}
+    else
+      content_tag 'p', l(:label_no_data), :class => 'no-data'
+    end
   end
 
   def html_title(*args)
     if args.empty?
       title = @html_title || []
-      #title << @project.name if @project
-      title << Genesis::INFO.app_name #Setting.app_title unless Setting.app_title == title.last
+      title << @student.name if @student
+      title << Genesis::INFO.app_name
       title.reject(&:blank?).join(' - ')
     else
       @html_title ||= []
@@ -134,24 +158,6 @@ module ApplicationHelper
     parameters = format == 2 ? formatted_address : format_address(address_line_1, address_line_2, city, state, zip_code, zip_code_four, 2)
 
     "<a href=\"http://bing.com/maps?q=#{parameters}\" target=\"_blank\">#{formatted_address}</a>"
-  end
-
-  private
-
-  def render_item(tabs, selected, partial_name)
-    if tabs.any?
-      if tabs[0].is_a?(Hash)
-
-      end
-
-      unless tabs.detect {|tab| tab[1].name == selected}
-        selected = nil
-      end
-      selected ||= tabs.first[:name]
-      render :partial => partial_name, :locals => {:tabs => tabs, :selected_tab => selected}
-    else
-      content_tag 'p', l(:label_no_data), :class => 'no-data'
-    end
   end
 
 end

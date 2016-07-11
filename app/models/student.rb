@@ -1,9 +1,15 @@
 class Student < ApplicationRecord
 
-  #has_and_belongs_to_many :school_years,
+  include ApplicationHelper
+
+  #has_and_belongs_to_many :school_years
 
   def current_grade
     'Not Registered'
+  end
+
+  def full_name(format = 1)
+    format_person_name(self.first_name, self.middle_name, self.last_name, self.suffix, format)
   end
 
   private

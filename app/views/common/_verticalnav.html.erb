@@ -1,18 +1,39 @@
-<div id="aui-vnav-example" class="aui-flatpack-example">
-  <nav class="aui-navgroup aui-navgroup-vertical">
-    <div class="aui-navgroup-inner">
-      <% tabs.each do |group| %>
-        <p>Group</p>
-      <%= group.each do |item| %>
-          <p>Item</p>
-      <% end -%>
-
-      <% end -%>
-      <ul class="aui-nav __skate">
-        <li class="aui-nav-selected"><a href="http://example.com/">Selected Nav Item</a></li>
-        <li><a href="http://example.com/">Nav item</a></li>
-        <li><a href="http://example.com/">Nav item</a></li>
-      </ul>
+<div class='aui-page-panel'>
+  <div class='aui-page-panel-inner'>
+    <div class='aui-page-panel-nav'>
+      <nav class='aui-navgroup aui-navgroup-vertical'>
+        <div class='aui-navgroup-inner'>
+          <% tabs.each_with_index do |tab, index| %>
+              <% if tab[:type] == 'heading' %>
+                  <div class="aui-nav-heading">
+                    <strong><%= tab[:label] -%></strong>
+                  </div>
+              <% else -%>
+                  <% if tabs[index - 1][:type] == 'heading' %>
+                      <ul class="aui-nav">
+                  <% end -%>
+                  <li class="<%= (tab[:name] != selected_tab ? nil : 'aui-nav-selected') %>">
+                    <%= link_to tab[:label], {:tab => tab[:name]},
+                                :id => "tab-#{tab[:name]}",
+                                :onclick => "showTab('#{tab[:name]}', this.href); this.blur(); return false;" %>
+                  </li>
+                  <% if tabs[index + 1] != nil and tabs[index + 1][:type] == 'heading' %>
+                      </ul>
+                  <% end %>
+              <% end -%>
+          <% end -%>
+        </div>
+      </nav>
     </div>
-  </nav>
+    <div class='aui-page-panel-content'>
+      <% tabs.each do |tab| -%>
+          <% if tab[:type] == 'link' %>
+              <%= content_tag('div', render(:partial => tab[:partial], :locals => {:tab => tab}),
+                              :id => "tab-content-#{tab[:name]}",
+                              :style => (tab[:name] != selected_tab ? 'display:none' : nil),
+                              :class => 'tab-content') %>
+          <% end %>
+      <% end -%>
+    </div>
+  </div>
 </div>
