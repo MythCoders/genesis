@@ -7,7 +7,7 @@ module ApplicationHelper
 
   def render_tabs(tabs, selected = params[:tab])
     if tabs.any?
-      unless tabs.detect {|tab| tab[1].name == selected}
+      unless tabs.detect { |tab| tab[:name] == selected }
         selected = nil
       end
       selected ||= tabs.first[:name]
@@ -19,10 +19,18 @@ module ApplicationHelper
 
   def render_vertical_nav(tabs, selected = params[:tab])
     if tabs.any?
-      #unless tabs.detect {|tab| tab[1].name == selected}
-      #  selected = nil
-      #end
-      selected ||= ':district'
+      unless tabs.detect { |tab| tab[:name] == selected }
+        selected = nil
+      end
+
+      if selected == nil
+        if tabs[0][:type] == 'heading'
+          selected = tabs[1][:name]
+        else
+          selected = tabs[0][:name]
+        end
+      end
+
       render :partial => 'common/verticalnav', :locals => {:tabs => tabs, :selected_tab => selected}
     else
       content_tag 'p', l(:label_no_data), :class => 'no-data'
@@ -31,7 +39,7 @@ module ApplicationHelper
 
   def render_horizontal_nav(tabs, selected = params[:tab])
     if tabs.any?
-      unless tabs.detect {|tab| tab[1].name == selected}
+      unless tabs.detect { |tab| tab[:name] == selected }
         selected = nil
       end
       selected ||= tabs.first[:name]
