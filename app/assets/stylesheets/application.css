@@ -18,3 +18,9 @@
     margin-top: 0;
     border-top-style: none;
 }
+
+.alertHeader {
+    border-bottom: 1px solid #CCCCCC;
+    padding: 8px;
+    clear: both;
+}

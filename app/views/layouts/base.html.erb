@@ -20,6 +20,11 @@
   <div id="page">
     <div id="wrapper">
       <%= render 'layouts/navbar' %>
+      <% if flash[:system_alert] %>
+          <div class="alertHeader" id="announcement-banner">
+            <p><%= flash[:system_alert] %></p>
+          </div>
+      <% end %>
       <div id="content" role="main">
         <% render 'layouts/sidebar' %>
         <%= yield %>
