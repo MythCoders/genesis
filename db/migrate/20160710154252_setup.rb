@@ -70,21 +70,23 @@ class Setup < ActiveRecord::Migration[5.0]
       t.string :title, :null => false, :length => 3
       t.string :description, :length => 250
       t.decimal :gpa_value, :null => false
-      t.decimal :breakoff, :null => true
+      t.decimal :score_cut_off, :null => true
       t.decimal :weighted_gpa_scale, :null => true
       t.integer :mark_scale_id, :null => false
       t.timestamps
     end
 
-    create_join_table :school_years, :grades, table_name: :school_year_grades do |t|
-      t.index :school_year_id
-      t.index :grade_id
+    create_table :school_year_grades do |t|
+      t.integer :school_year_id
+      t.integer :grade_id
+      t.timestamps
     end
 
-    create_join_table :school_years, :mark_scales, table_name: :school_year_mark_scales do |t|
-      t.index :school_year_id
-      t.index :mark_scale_id
-      t.boolean :is_default, :default => false
+    create_table :school_year_mark_scales do |t|
+      t.integer :school_year_id
+      t.integer :mark_scale_id
+      t.boolean :is_default, :default => true
+      t.timestamps
     end
 
     create_table :students do |t|

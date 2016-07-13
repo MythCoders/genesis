@@ -10,10 +10,42 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160710154252) do
+ActiveRecord::Schema.define(version: 20160712214020) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "custom_field_enumerations", force: :cascade do |t|
+    t.integer  "custom_field_id",                            null: false
+    t.string   "name",            limit: 255,                null: false
+    t.boolean  "active",                      default: true, null: false
+    t.integer  "position",                    default: 1,    null: false
+    t.datetime "created_at",                                 null: false
+    t.datetime "updated_at",                                 null: false
+  end
+
+  create_table "custom_fields", force: :cascade do |t|
+    t.string   "type",            limit: 30,  default: "",    null: false
+    t.string   "name",            limit: 30,  default: "",    null: false
+    t.string   "field_format",    limit: 30,  default: "",    null: false
+    t.text     "possible_values"
+    t.string   "regexp",          limit: 255, default: ""
+    t.integer  "min_length"
+    t.integer  "max_length"
+    t.boolean  "is_required",                 default: false, null: false
+    t.boolean  "is_for_all",                  default: false, null: false
+    t.boolean  "is_filter",                   default: false, null: false
+    t.integer  "position"
+    t.boolean  "searchable",                  default: false
+    t.text     "default_value"
+    t.boolean  "editable",                    default: true
+    t.boolean  "visible",                     default: true,  null: false
+    t.boolean  "multiple",                    default: false
+    t.text     "format_store"
+    t.text     "description"
+    t.datetime "created_at",                                  null: false
+    t.datetime "updated_at",                                  null: false
+  end
 
   create_table "districts", force: :cascade do |t|
     t.string   "name",         limit: 50, null: false
@@ -69,26 +101,41 @@ ActiveRecord::Schema.define(version: 20160710154252) do
     t.string   "title",              null: false
     t.string   "description"
     t.decimal  "gpa_value",          null: false
-    t.decimal  "breakoff"
+    t.decimal  "score_cut_off"
     t.decimal  "weighted_gpa_scale"
     t.integer  "mark_scale_id",      null: false
     t.datetime "created_at",         null: false
     t.datetime "updated_at",         null: false
   end
 
-  create_table "school_year_grades", id: false, force: :cascade do |t|
-    t.integer "school_year_id", null: false
-    t.integer "grade_id",       null: false
-    t.index ["grade_id"], name: "index_school_year_grades_on_grade_id", using: :btree
-    t.index ["school_year_id"], name: "index_school_year_grades_on_school_year_id", using: :btree
+  create_table "roles", force: :cascade do |t|
+    t.string   "name",                    limit: 30, default: "",        null: false
+    t.integer  "position"
+    t.boolean  "assignable",                         default: true
+    t.integer  "builtin",                            default: 0,         null: false
+    t.text     "permissions"
+    t.string   "issues_visibility",       limit: 30, default: "default", null: false
+    t.string   "users_visibility",        limit: 30, default: "all",     null: false
+    t.string   "time_entries_visibility", limit: 30, default: "all",     null: false
+    t.boolean  "all_roles_managed",                  default: true,      null: false
+    t.text     "settings"
+    t.datetime "created_at",                                             null: false
+    t.datetime "updated_at",                                             null: false
   end
 
-  create_table "school_year_mark_scales", id: false, force: :cascade do |t|
-    t.integer "school_year_id",                 null: false
-    t.integer "mark_scale_id",                  null: false
-    t.boolean "is_default",     default: false
-    t.index ["mark_scale_id"], name: "index_school_year_mark_scales_on_mark_scale_id", using: :btree
-    t.index ["school_year_id"], name: "index_school_year_mark_scales_on_school_year_id", using: :btree
+  create_table "school_year_grades", force: :cascade do |t|
+    t.integer  "school_year_id"
+    t.integer  "grade_id"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
+
+  create_table "school_year_mark_scales", force: :cascade do |t|
+    t.integer  "school_year_id"
+    t.integer  "mark_scale_id"
+    t.boolean  "is_default",     default: true
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
   end
 
   create_table "school_years", force: :cascade do |t|
@@ -136,6 +183,25 @@ ActiveRecord::Schema.define(version: 20160710154252) do
     t.date     "date_of_birth"
     t.datetime "created_at",               null: false
     t.datetime "updated_at",               null: false
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string   "username",           limit: 255, default: "",    null: false
+    t.string   "hashed_password",    limit: 40,  default: "",    null: false
+    t.string   "first_name",         limit: 30,  default: "",    null: false
+    t.string   "last_name",          limit: 255, default: "",    null: false
+    t.boolean  "admin",                          default: false, null: false
+    t.integer  "status",                         default: 1,     null: false
+    t.datetime "last_login_on"
+    t.string   "language",           limit: 5,   default: ""
+    t.string   "type",               limit: 255
+    t.string   "identity_url",       limit: 255
+    t.string   "mail_notification",  limit: 255, default: "",    null: false
+    t.string   "salt",               limit: 64
+    t.boolean  "must_change_passwd",             default: false, null: false
+    t.datetime "passwd_changed_on"
+    t.datetime "created_at",                                     null: false
+    t.datetime "updated_at",                                     null: false
   end
 
 end
