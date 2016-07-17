@@ -168,16 +168,4 @@ module ApplicationHelper
     "<a href=\"http://bing.com/maps?q=#{parameters}\" target=\"_blank\">#{formatted_address}</a>"
   end
 
-  
-
-
-
-  private
-
-  def menu
-    menu = {
-
-    }
-  end
-
 end
