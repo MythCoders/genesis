@@ -3,7 +3,7 @@ module ApplicationHelper
   FULL_NAME_FORMAT = [LAST_FIRST = 1, FIRST_LAST = 2]
   ADDRESS_FORMAT = [WITH_LINE_BREAKS = 1, ONE_LINE = 2]
   SEX = [MALE = 'M', FEMALE = 'F']
-  ACCOUNT_STATUS = [ANONYMOUS = 0, ACTIVE = 1, REGISTERED = 2, LOCKED = 3]
+  USER_BASE_ROLES = [STUDENT = 1, PARENT = 4, TEACHER = 12, ADMIN = 64, SUPER_ADMIN = 256]
 
   def render_tabs(tabs)
     if tabs.any?

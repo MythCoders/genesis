@@ -10,10 +10,49 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160712214020) do
+ActiveRecord::Schema.define(version: 20160717133321) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "attendance", force: :cascade do |t|
+    t.integer  "attendance_calendar_id"
+    t.integer  "attendance_code_id",     null: false
+    t.integer  "student_id"
+    t.string   "comment"
+    t.integer  "minutes_present"
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  create_table "attendance_calendar_days", force: :cascade do |t|
+    t.integer  "attendance_calendar_id", null: false
+    t.date     "school_date",            null: false
+    t.string   "block"
+    t.integer  "minutes"
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  create_table "attendance_calendars", force: :cascade do |t|
+    t.integer  "school_year_id", null: false
+    t.string   "title",          null: false
+    t.boolean  "is_default",     null: false
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
+
+  create_table "attendance_codes", force: :cascade do |t|
+    t.string   "title",                null: false
+    t.string   "short_name",           null: false
+    t.integer  "sort_order"
+    t.boolean  "usable_by_office",     null: false
+    t.boolean  "usable_by_teachers",   null: false
+    t.boolean  "default_for_teachers", null: false
+    t.boolean  "is_default_absent",    null: false
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+  end
 
   create_table "custom_field_enumerations", force: :cascade do |t|
     t.integer  "custom_field_id",                            null: false
@@ -89,7 +128,12 @@ ActiveRecord::Schema.define(version: 20160712214020) do
     t.datetime "updated_at",        null: false
   end
 
-  create_table "mark_scales", force: :cascade do |t|
+  create_table "report_card_comments", force: :cascade do |t|
+    t.integer "school_year_id", null: false
+    t.string  "text"
+  end
+
+  create_table "report_card_grade_scales", force: :cascade do |t|
     t.string   "name",                        null: false
     t.text     "description"
     t.boolean  "is_active",   default: false, null: false
@@ -97,30 +141,94 @@ ActiveRecord::Schema.define(version: 20160712214020) do
     t.datetime "updated_at",                  null: false
   end
 
-  create_table "marks", force: :cascade do |t|
-    t.string   "title",              null: false
+  create_table "report_card_grades", force: :cascade do |t|
+    t.string   "title",                      null: false
     t.string   "description"
-    t.decimal  "gpa_value",          null: false
+    t.decimal  "gpa_value",                  null: false
     t.decimal  "score_cut_off"
     t.decimal  "weighted_gpa_scale"
-    t.integer  "mark_scale_id",      null: false
+    t.integer  "report_card_grade_scale_id", null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+  end
+
+  create_table "roles", force: :cascade do |t|
+    t.string  "title",      null: false
+    t.string  "short_name", null: false
+    t.integer "sort_order"
+    t.integer "base_type"
+  end
+
+  create_table "school_periods", force: :cascade do |t|
+    t.integer  "school_year_id",   null: false
+    t.string   "title",            null: false
+    t.string   "short_name",       null: false
+    t.integer  "sort_order"
+    t.string   "block"
+    t.boolean  "takes_attendance"
+    t.time     "start_time"
+    t.time     "end_time"
+    t.time     "start_time_u"
+    t.time     "end_time_u"
+    t.time     "start_time_m"
+    t.time     "end_time_m"
+    t.time     "start_time_t"
+    t.time     "end_time_t"
+    t.time     "start_time_w"
+    t.time     "end_time_w"
+    t.time     "start_time_r"
+    t.time     "end_time_r"
+    t.time     "start_time_f"
+    t.time     "end_time_f"
+    t.time     "start_time_s"
+    t.time     "end_time_s"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+  end
+
+  create_table "school_progress_periods", force: :cascade do |t|
+    t.integer  "school_quarter_id", null: false
+    t.string   "title",             null: false
+    t.string   "short_name",        null: false
+    t.integer  "sort_order"
+    t.date     "start_date"
+    t.date     "end_date"
+    t.date     "grade_start_date"
+    t.date     "grade_end_date"
+    t.date     "reg_start_date"
+    t.date     "reg_end_date"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+  end
+
+  create_table "school_quarters", force: :cascade do |t|
+    t.integer  "school_semester_id", null: false
+    t.string   "title",              null: false
+    t.string   "short_name",         null: false
+    t.integer  "sort_order"
+    t.date     "start_date"
+    t.date     "end_date"
+    t.date     "grade_start_date"
+    t.date     "grade_end_date"
+    t.date     "reg_start_date"
+    t.date     "reg_end_date"
     t.datetime "created_at",         null: false
     t.datetime "updated_at",         null: false
   end
 
-  create_table "roles", force: :cascade do |t|
-    t.string   "name",                    limit: 30, default: "",        null: false
-    t.integer  "position"
-    t.boolean  "assignable",                         default: true
-    t.integer  "builtin",                            default: 0,         null: false
-    t.text     "permissions"
-    t.string   "issues_visibility",       limit: 30, default: "default", null: false
-    t.string   "users_visibility",        limit: 30, default: "all",     null: false
-    t.string   "time_entries_visibility", limit: 30, default: "all",     null: false
-    t.boolean  "all_roles_managed",                  default: true,      null: false
-    t.text     "settings"
-    t.datetime "created_at",                                             null: false
-    t.datetime "updated_at",                                             null: false
+  create_table "school_semesters", force: :cascade do |t|
+    t.integer  "school_year_id",   null: false
+    t.string   "title",            null: false
+    t.string   "short_name",       null: false
+    t.integer  "sort_order"
+    t.date     "start_date"
+    t.date     "end_date"
+    t.date     "grade_start_date"
+    t.date     "grade_end_date"
+    t.date     "reg_start_date"
+    t.date     "reg_end_date"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
   end
 
   create_table "school_year_grades", force: :cascade do |t|
@@ -154,15 +262,16 @@ ActiveRecord::Schema.define(version: 20160712214020) do
   end
 
   create_table "schools", force: :cascade do |t|
-    t.string   "name",         limit: 50, null: false
-    t.string   "address",      limit: 50
-    t.string   "city",         limit: 30
-    t.string   "state",        limit: 2
-    t.string   "zip_code",     limit: 9
-    t.string   "phone_number", limit: 10
+    t.string   "name",            limit: 50, null: false
+    t.string   "address",         limit: 50
+    t.string   "city",            limit: 30
+    t.string   "state",           limit: 2
+    t.string   "zip_code",        limit: 9
+    t.string   "phone_number",    limit: 10
+    t.string   "principals_name", limit: 50
     t.integer  "district_id"
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
   end
 
   create_table "settings", force: :cascade do |t|
@@ -186,22 +295,34 @@ ActiveRecord::Schema.define(version: 20160712214020) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "username",           limit: 255, default: "",    null: false
-    t.string   "hashed_password",    limit: 40,  default: "",    null: false
-    t.string   "first_name",         limit: 30,  default: "",    null: false
-    t.string   "last_name",          limit: 255, default: "",    null: false
-    t.boolean  "admin",                          default: false, null: false
-    t.integer  "status",                         default: 1,     null: false
-    t.datetime "last_login_on"
-    t.string   "language",           limit: 5,   default: ""
-    t.string   "type",               limit: 255
-    t.string   "identity_url",       limit: 255
-    t.string   "mail_notification",  limit: 255, default: "",    null: false
-    t.string   "salt",               limit: 64
-    t.boolean  "must_change_passwd",             default: false, null: false
-    t.datetime "passwd_changed_on"
-    t.datetime "created_at",                                     null: false
-    t.datetime "updated_at",                                     null: false
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "middle_name"
+    t.string   "phone_number"
+    t.integer  "rolesf"
+    t.string   "email",                  default: "", null: false
+    t.string   "encrypted_password",     default: "", null: false
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",          default: 0,  null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
+    t.string   "confirmation_token"
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
+    t.string   "unconfirmed_email"
+    t.integer  "failed_attempts",        default: 0,  null: false
+    t.string   "unlock_token"
+    t.datetime "locked_at"
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
+    t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree
+    t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+    t.index ["unlock_token"], name: "index_users_on_unlock_token", unique: true, using: :btree
   end
 
 end
