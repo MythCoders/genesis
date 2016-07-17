@@ -1,19 +1,11 @@
 Rails.application.routes.draw do
 
-  get 'account/login'
-
-  get 'account/logout'
-
-  get 'account/lost_password'
-
-  get 'account/password_recovery'
-
-  get 'account/register'
-
+  devise_for :users
   resources :settings
   resources :schools
   resources :districts
   resources :students
+  resources :users
 
   root 'public#index'
 end

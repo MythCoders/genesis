@@ -2,141 +2,139 @@
   <div class="aui-header-primary">
     <h1 class="aui-header-logo">
       <a href="<%= root_path %>">
-        <span class="aui-header-logo-text"><%= Genesis::INFO.app_name %></span>
+        <p class="aui-header-logo-text"><%= Genesis::INFO.app_name %></p>
       </a>
     </h1>
     <ul class="aui-nav">
-      <li>
-        <a href="#dropdownStudent" class="aui-dropdown2-trigger" aria-controls="dropdownStudent">
-          <span class="aui-icon aui-icon-small aui-iconfont-user">Students</span>
-          Students
-        </a>
-        <div class="aui-dropdown2 aui-style-default" id="dropdownStudent">
-          <div class="aui-dropdown2-section">
-            <ul>
-              <li> <%= link_to 'Search', students_path %> </li>
-              <li> <%= link_to 'New Student', new_student_path %> </li>
-            </ul>
-          </div>
-        </div>
-      </li>
-      <li>
-        <a href="#dropdownScheduling" class="aui-dropdown2-trigger" aria-controls="dropdownScheduling">
-          <span class="aui-icon aui-icon-small aui-iconfont-calendar">Scheduling</span>
-          Scheduling
-        </a>
-        <div class="aui-dropdown2 aui-style-default" id="dropdownScheduling">
-          <div class="aui-dropdown2-section">
-            <ul>
-              <li> <%= link_to 'Item', root_path %> </li>
-            </ul>
-          </div>
-        </div>
-      </li>
-      <li>
-        <a href="#dropdownGrades" class="aui-dropdown2-trigger" aria-controls="dropdownGrades">
-          <span class="aui-icon aui-icon-small aui-iconfont-file-xls">Grades</span>
-          Grades
-        </a>
-        <div class="aui-dropdown2 aui-style-default" id="dropdownGrades">
-          <div class="aui-dropdown2-section">
-            <ul>
-              <li> <%= link_to 'Item', root_path %> </li>
-            </ul>
-          </div>
-        </div>
-      </li>
-      <li>
-        <a href="#dropdownAssessment" class="aui-dropdown2-trigger" aria-controls="dropdownAssessment">
-          <span class="aui-icon aui-icon-small aui-iconfont-bp-default">Assessment</span>
-          Assessment
-        </a>
-        <div class="aui-dropdown2 aui-style-default" id="dropdownAssessment">
-          <div class="aui-dropdown2-section">
-            <ul>
-              <li> <%= link_to 'Item', root_path %> </li>
-            </ul>
-          </div>
-        </div>
-      </li>
-      <li>
-        <a href="#dropdownAttendance" class="aui-dropdown2-trigger" aria-controls="dropdownAttendance">
-          <span class="aui-icon aui-icon-small aui-iconfont-jira-completed-task">Attendance</span>
-          Attendance
-        </a>
-        <div class="aui-dropdown2 aui-style-default" id="dropdownAttendance">
-          <div class="aui-dropdown2-section">
-            <ul>
-              <li> <%= link_to 'Item', root_path %> </li>
-            </ul>
-          </div>
-        </div>
-      </li>
-      <li>
-        <a href="#dropdownEligibility" class="aui-dropdown2-trigger" aria-controls="dropdownEligibility">
-          <span class="aui-icon aui-icon-small aui-iconfont-component">Eligibility</span>
-          Eligibility
-        </a>
-        <div class="aui-dropdown2 aui-style-default" id="dropdownEligibility">
-          <div class="aui-dropdown2-section">
-            <ul>
-              <li> <%= link_to 'Item', root_path %> </li>
-            </ul>
-          </div>
-        </div>
-      </li>
-      <li>
-        <a href="#dropdownDiscipline" class="aui-dropdown2-trigger" aria-controls="dropdownDiscipline">
-          <span class="aui-icon aui-icon-small aui-iconfont-jira-issues">Discipline</span>
-          Discipline
-        </a>
-        <div class="aui-dropdown2 aui-style-default" id="dropdownDiscipline">
-          <div class="aui-dropdown2-section">
-            <ul>
-              <li> <%= link_to 'Item', root_path %> </li>
-            </ul>
-          </div>
-        </div>
-      </li>
-      <li>
-        <a href="#dropdownBilling" class="aui-dropdown2-trigger" aria-controls="dropdownBilling">
-          <span class="aui-icon aui-icon-small aui-iconfont-pages">Billing</span>
-          Billing
-        </a>
-        <div class="aui-dropdown2 aui-style-default" id="dropdownBilling">
-          <div class="aui-dropdown2-section">
-            <ul>
-              <li> <%= link_to 'Item', root_path %> </li>
-            </ul>
-          </div>
-        </div>
-      </li>
+      <% if user_signed_in? %>
+          <li>
+            <a href="#dropdownStudent" class="aui-dropdown2-trigger" aria-controls="dropdownStudent">
+              <span class="aui-icon aui-icon-small aui-iconfont-user">Students</span>
+              Students
+            </a>
+            <div class="aui-dropdown2 aui-style-default" id="dropdownStudent">
+              <div class="aui-dropdown2-section">
+                <ul>
+                  <li> <%= link_to 'Search', students_path %> </li>
+                  <li> <%= link_to 'New Student', new_student_path %> </li>
+                </ul>
+              </div>
+            </div>
+          </li>
+          <li>
+            <a href="#dropdownScheduling" class="aui-dropdown2-trigger" aria-controls="dropdownScheduling">
+              <span class="aui-icon aui-icon-small aui-iconfont-calendar">Scheduling</span>
+              Scheduling
+            </a>
+            <div class="aui-dropdown2 aui-style-default" id="dropdownScheduling">
+              <div class="aui-dropdown2-section">
+                <ul>
+                  <li> <%= link_to 'Item', root_path %> </li>
+                </ul>
+              </div>
+            </div>
+          </li>
+          <li>
+            <a href="#dropdownGrades" class="aui-dropdown2-trigger" aria-controls="dropdownGrades">
+              <span class="aui-icon aui-icon-small aui-iconfont-file-xls">Grades</span>
+              Grades
+            </a>
+            <div class="aui-dropdown2 aui-style-default" id="dropdownGrades">
+              <div class="aui-dropdown2-section">
+                <ul>
+                  <li> <%= link_to 'Item', root_path %> </li>
+                </ul>
+              </div>
+            </div>
+          </li>
+          <li>
+            <a href="#dropdownAssessment" class="aui-dropdown2-trigger" aria-controls="dropdownAssessment">
+              <span class="aui-icon aui-icon-small aui-iconfont-bp-default">Assessment</span>
+              Assessment
+            </a>
+            <div class="aui-dropdown2 aui-style-default" id="dropdownAssessment">
+              <div class="aui-dropdown2-section">
+                <ul>
+                  <li> <%= link_to 'Item', root_path %> </li>
+                </ul>
+              </div>
+            </div>
+          </li>
+          <li>
+            <a href="#dropdownAttendance" class="aui-dropdown2-trigger" aria-controls="dropdownAttendance">
+              <span class="aui-icon aui-icon-small aui-iconfont-jira-completed-task">Attendance</span>
+              Attendance
+            </a>
+            <div class="aui-dropdown2 aui-style-default" id="dropdownAttendance">
+              <div class="aui-dropdown2-section">
+                <ul>
+                  <li> <%= link_to 'Item', root_path %> </li>
+                </ul>
+              </div>
+            </div>
+          </li>
+          <li>
+            <a href="#dropdownEligibility" class="aui-dropdown2-trigger" aria-controls="dropdownEligibility">
+              <span class="aui-icon aui-icon-small aui-iconfont-component">Eligibility</span>
+              Eligibility
+            </a>
+            <div class="aui-dropdown2 aui-style-default" id="dropdownEligibility">
+              <div class="aui-dropdown2-section">
+                <ul>
+                  <li> <%= link_to 'Item', root_path %> </li>
+                </ul>
+              </div>
+            </div>
+          </li>
+          <li>
+            <a href="#dropdownDiscipline" class="aui-dropdown2-trigger" aria-controls="dropdownDiscipline">
+              <span class="aui-icon aui-icon-small aui-iconfont-jira-issues">Discipline</span>
+              Discipline
+            </a>
+            <div class="aui-dropdown2 aui-style-default" id="dropdownDiscipline">
+              <div class="aui-dropdown2-section">
+                <ul>
+                  <li> <%= link_to 'Item', root_path %> </li>
+                </ul>
+              </div>
+            </div>
+          </li>
+          <li>
+            <a href="#dropdownBilling" class="aui-dropdown2-trigger" aria-controls="dropdownBilling">
+              <span class="aui-icon aui-icon-small aui-iconfont-pages">Billing</span>
+              Billing
+            </a>
+            <div class="aui-dropdown2 aui-style-default" id="dropdownBilling">
+              <div class="aui-dropdown2-section">
+                <ul>
+                  <li> <%= link_to 'Item', root_path %> </li>
+                </ul>
+              </div>
+            </div>
+          </li>
+      <% end %>
     </ul>
   </div>
   <div class="aui-header-secondary">
     <ul class="aui-nav">
       <li>
-        <form action="/" method="post" class="aui-quicksearch">
-          <label for="quicksearch_id" class="assistive">Search</label>
-          <input id="quick-search-query" class="search" type="text" placeholder="Search..." name="quicksearchname">
+        <form action="" method="post">
+          <a href="#schools" aria-owns="schools" aria-haspopup="true" class="aui-dropdown2-trigger">Sunnyside High
+            School</a>
+
+          <div id="schools" class="aui-style-default aui-dropdown2">
+            <ul class="aui-list-truncate">
+              <li><a href="#">Menu item</a></li>
+              <li><a href="#">Menu item</a></li>
+              <li><a href="#">Menu item</a></li>
+            </ul>
+          </div>
         </form>
       </li>
       <li>
-        <a id="adv-search-link" class="aui-button aui-button-primary">O-</a>
-      </li>
-      <li>
-        <a href="#dropdown2-header8" aria-owns="dropdown2-header8" aria-haspopup="true" class="aui-dropdown2-trigger" aria-controls="dropdown2-header8" aria-expanded="false">
-          <span class="aui-icon aui-icon-small aui-iconfont-help">Help</span>
+        <a id="adv-search-link">
+          <span class='aui-icon aui-icon-small aui-iconfont-search'></span>
         </a>
-        <div class="aui-dropdown2 aui-style-default aui-dropdown2-in-header aui-layer" id="dropdown2-header8">
-          <div class="aui-dropdown2-section">
-            <ul>
-              <li><a href="http://example.com/" class="active">Online help</a></li>
-              <li><a href="http://example.com/">Keyboard shortcuts</a></li>
-              <li><a href="http://example.com/">About</a></li>
-            </ul>
-          </div>
-        </div>
       </li>
       <li>
         <a href="#dropdown2-header9" aria-owns="dropdown2-header9" aria-haspopup="true" class="aui-dropdown2-trigger" aria-controls="dropdown2-header9" aria-expanded="false">
@@ -146,12 +144,16 @@
         <div class="aui-dropdown2 aui-style-default " id="dropdown2-header9" aria-hidden="true">
           <div class="aui-dropdown2-section">
             <ul>
-              <li> <%= link_to 'School Configuration', settings_path %> </li>
-              <li> <%= link_to 'System Settings', settings_path %> </li>
+              <% if current_user.is_admin? %>
+                  <li> <%= link_to 'School Configuration', settings_path %> </li>
+                  <li> <%= link_to 'System Settings', settings_path %> </li>
+              <% end %>
             </ul>
           </div>
           <div class="aui-dropdown2-section">
             <ul>
+              <li> <%= link_to 'My Profile and Preferences', edit_user_path(current_user.id) %> </li>
+              <li><a href="http://example.com/">Log out</a></li>
               <li><a href="http://example.com/">Log out</a></li>
             </ul>
           </div>

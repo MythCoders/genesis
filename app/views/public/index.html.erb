@@ -3,26 +3,16 @@
     <section class="aui-page-panel-content">
       <p>GeneSIS, student information system.</p>
 
-      <form class="aui">
-        <div class="field-group">
-          <label for="comment-email">Email
-            <span class="aui-icon icon-required">(required)</span></label>
-          <input class="text medium-field" type="text"
-                 id="comment-email" name="comment-email" placeholder="you@example.com">
-          <div class="description">Your
-            primary email address.</div>
-        </div>
-        <div class="field-group">
-          <label for="comment-input">Comment</label>
-        <textarea class="textarea" name="comment-input" id="comment-input" placeholder="Your comment here..."></textarea>
-        </div>
-        <div class="buttons-container">
-          <div class="buttons">
-            <input class="button submit" type="submit" value="Save" id="comment-save-button">
-            <a class="cancel" href="#">Cancel</a>
-          </div>
-        </div>
-      </form>
+      <% if user_signed_in? %>
+          <li><%= link_to 'Edit account', edit_user_registration_path %></li>
+          <li><%= link_to 'Sign out', destroy_user_session_path, :method=>'delete' %></li>
+      <% else %>
+          <li><%= link_to 'Sign in', new_user_session_path %></li>
+          <li><%= link_to 'Sign up', new_user_registration_path %></li>
+      <% end %>
+      <% if user_signed_in? %>
+          <li><%= link_to 'Users', users_path %></li>
+      <% end %>
     </section>
   </div>
 </div>
