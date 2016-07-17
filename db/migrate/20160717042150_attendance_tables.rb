@@ -16,7 +16,7 @@ class AttendanceTables < ActiveRecord::Migration[5.0]
     end
 
     create_table :attendance do |t|
-      t.integer :attendance_calendar_id
+      t.integer :attendance_calendar_day_id
       t.integer :attendance_code_id, :null => false
       t.integer :student_id #change this later?
       t.string :comment, :length => 500

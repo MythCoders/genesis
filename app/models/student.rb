@@ -1,5 +1,7 @@
 class Student < ApplicationRecord
 
+  has_many :enrollments
+
   include ApplicationHelper
 
   #has_and_belongs_to_many :school_years
