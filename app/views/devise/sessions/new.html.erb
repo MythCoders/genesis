@@ -1,10 +1,11 @@
-<div style="text-align: center;">
+<%= stylesheet_link_tag 'application', media: 'all' %>
+
+<div class="page-type-indra page-type-login">
   <div class="aui-page-panel indra-one-wide">
     <header class="indra-header aui-page-header">
       <div class="aui-page-header-inner">
         <div class="aui-pageheader-main">
-          <h1>Log in</h1>
-          <p><%= Genesis::INFO.versioned_name %></p>
+          <h1><%= Genesis::INFO.app_name %> <small>Log In - Version <%= Genesis::INFO.version %></small></h1>
         </div>
       </div>
     </header>

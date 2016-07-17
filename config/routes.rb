@@ -7,5 +7,5 @@ Rails.application.routes.draw do
   resources :students
   resources :users
 
-  root 'public#index'
+  root 'home#index'
 end
