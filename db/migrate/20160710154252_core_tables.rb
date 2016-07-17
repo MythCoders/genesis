@@ -5,7 +5,7 @@ class CoreTables < ActiveRecord::Migration[5.0]
       t.string :title, :length => 100, :null => false
       t.string :short_name, :length => 10, :null => false
       t.boolean :is_admission, :null => false, :default => false
-      t.boolean :is_active, :null => false, :dafault => false
+      t.boolean :is_active, :null => false, :default => false
       t.timestamps
     end
 
@@ -27,7 +27,7 @@ class CoreTables < ActiveRecord::Migration[5.0]
     create_table :students do |t|
       t.integer :student_id
       t.string :first_name, :null => false, :limit => 30
-      t.string :middle_name, :limit => 50
+      t.string :middle_name, :limit => 30
       t.string :last_name, :null => false, :limit => 30
       t.string :suffix, :limit => 5
       t.string :sex, :limit => 1

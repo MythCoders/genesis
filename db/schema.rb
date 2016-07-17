@@ -16,13 +16,13 @@ ActiveRecord::Schema.define(version: 20160717133321) do
   enable_extension "plpgsql"
 
   create_table "attendance", force: :cascade do |t|
-    t.integer  "attendance_calendar_id"
-    t.integer  "attendance_code_id",     null: false
+    t.integer  "attendance_calendar_day_id"
+    t.integer  "attendance_code_id",         null: false
     t.integer  "student_id"
     t.string   "comment"
     t.integer  "minutes_present"
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
   end
 
   create_table "attendance_calendar_days", force: :cascade do |t|
@@ -87,21 +87,23 @@ ActiveRecord::Schema.define(version: 20160717133321) do
   end
 
   create_table "districts", force: :cascade do |t|
-    t.string   "name",         limit: 50, null: false
-    t.string   "address",      limit: 50
-    t.string   "city",         limit: 30
-    t.string   "state",        limit: 2
-    t.string   "zip_code",     limit: 9
-    t.string   "phone_number", limit: 10
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
+    t.string   "name",                 limit: 50, null: false
+    t.string   "short_name",           limit: 5,  null: false
+    t.string   "address",              limit: 50
+    t.string   "city",                 limit: 30
+    t.string   "state",                limit: 2
+    t.string   "zip_code",             limit: 9
+    t.string   "phone_number",         limit: 10
+    t.string   "superintendents_name", limit: 50
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
   end
 
   create_table "enrollment_codes", force: :cascade do |t|
     t.string   "title",                        null: false
     t.string   "short_name",                   null: false
     t.boolean  "is_admission", default: false, null: false
-    t.boolean  "is_active",                    null: false
+    t.boolean  "is_active",    default: false, null: false
     t.datetime "created_at",                   null: false
     t.datetime "updated_at",                   null: false
   end
@@ -263,6 +265,7 @@ ActiveRecord::Schema.define(version: 20160717133321) do
 
   create_table "schools", force: :cascade do |t|
     t.string   "name",            limit: 50, null: false
+    t.string   "short_name",      limit: 5,  null: false
     t.string   "address",         limit: 50
     t.string   "city",            limit: 30
     t.string   "state",           limit: 2
@@ -285,7 +288,7 @@ ActiveRecord::Schema.define(version: 20160717133321) do
   create_table "students", force: :cascade do |t|
     t.integer  "student_id"
     t.string   "first_name",    limit: 30, null: false
-    t.string   "middle_name",   limit: 50
+    t.string   "middle_name",   limit: 30
     t.string   "last_name",     limit: 30, null: false
     t.string   "suffix",        limit: 5
     t.string   "sex",           limit: 1

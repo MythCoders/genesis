@@ -1,2 +1,46 @@
-<h1>Admin::District#index</h1>
-<p>Find me in app/views/admin/district/index.html.erb</p>
+<div class="generalAdminHeading aui-page-header">
+  <div class="aui-page-header-inner">
+    <div class="aui-page-header-main">
+      <ol class="aui-nav aui-nav-horizontal">
+        <li>
+          <h1>
+            School Districts
+          </h1>
+        </li>
+      </ol>
+    </div>
+    <div class="aui-page-header-actions">
+      <%= link_to 'New School Districts', new_district_path, :class => 'aui-button add-project-trigger' %>
+    </div>
+  </div>
+</div>
+<div class="aui-page-panel">
+  <div class="aui-page-panel-inner">
+    <div class="aui-page-panel-content">
+      <table class="aui">
+        <thead>
+        <tr>
+          <th></th>
+          <th></th>
+          <th>District Code</th>
+          <th>Name</th>
+          <th>Address</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <% @model.each do |d| %>
+            <tr>
+              <td><%= link_to 'Select', district_path(d) %></td>
+              <td><%= link_to 'Edit', edit_district_path(d) %></td>
+              <th><%= d.short_name %></th>
+              <th><%= d.name %></th>
+              <th></th>
+            </tr>
+        <% end %>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

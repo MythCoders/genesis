@@ -1,10 +1,15 @@
 class Student < ApplicationRecord
+  include ApplicationHelper
 
   has_many :enrollments
 
-  include ApplicationHelper
+  validates :first_name, presence: true, length: 30
+  validates :middle_name, length: 30
+  validates :last_name, presence: true, length: 30
+  validates :suffix, length: 5
+  validates :sex, length: 1
+  validates :date_of_birth, date: true
 
-  #has_and_belongs_to_many :school_years
 
   def current_grade
     'Not Registered'

@@ -2,16 +2,19 @@ class Schools < ActiveRecord::Migration[5.0]
   def change
     create_table :districts do |t|
       t.string :name, :null => false, :limit => 50
+      t.string :short_name, :null => false, :limit => 5
       t.string :address, :limit => 50
       t.string :city, :limit => 30
       t.string :state, :limit => 2
       t.string :zip_code, :limit => 9
       t.string :phone_number, :limit => 10
+      t.string :superintendents_name, :limit => 50
       t.timestamps
     end
 
     create_table :schools do |t|
       t.string :name, :null => false, :limit => 50
+      t.string :short_name, :null => false, :limit => 5
       t.string :address, :limit => 50
       t.string :city, :limit => 30
       t.string :state, :limit => 2

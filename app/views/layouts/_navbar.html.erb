@@ -121,18 +121,29 @@
     <ul class="aui-nav">
       <% if user_signed_in? %>
           <li>
-            <form action="" method="post">
-              <a href="#schools" aria-owns="schools" aria-haspopup="true" class="aui-dropdown2-trigger">Sunnyside High
-                School</a>
+            <div>
+              <a href="#schools" aria-owns="schools" aria-haspopup="true" class="aui-dropdown2-trigger">Sunnyside High School</a>
 
               <div id="schools" class="aui-style-default aui-dropdown2">
                 <ul class="aui-list-truncate">
-                  <li><a href="#">Menu item</a></li>
-                  <li><a href="#">Menu item</a></li>
-                  <li><a href="#">Menu item</a></li>
+                  <li><a href="#">Sunnyside Elementary School</a></li>
+                  <li><a href="#">Sunnyside Middle School</a></li>
+                  <li><a href="#"><strong>Sunnyside High School</strong></a></li>
                 </ul>
               </div>
-            </form>
+            </div>
+          </li>
+          <li>
+            <div>
+              <a href="#school-years" aria-owns="school-years" aria-haspopup="true" class="aui-dropdown2-trigger">2016-2017</a>
+
+              <div id="school-years" class="aui-style-default aui-dropdown2">
+                <ul class="aui-list-truncate">
+                  <li><a href="#">2015-2016</a></li>
+                  <li><a href="#"><strong>2016-2017</strong></a></li>
+                </ul>
+              </div>
+            </div>
           </li>
           <li>
             <a id="adv-search-link">
@@ -148,7 +159,8 @@
               <div class="aui-dropdown2-section">
                 <ul>
                   <% if current_user.is_admin? %>
-                      <li> <%= link_to 'School Configuration', settings_path %> </li>
+                      <li> <%= link_to 'Districts', districts_path %> </li>
+                      <li> <%= link_to 'Schools', schools_path %> </li>
                       <li> <%= link_to 'System Settings', settings_path %> </li>
                   <% end %>
                 </ul>

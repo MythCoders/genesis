@@ -7,7 +7,7 @@ schools = School.create([{id: 1, name: 'Sunnyside Elementary School', address: '
                         {id: 2, name: 'Sunnyside Middle School', address: '122 Main St.', city: 'Columbus', state: 'OH', zip_code: '43214', phone_number: '6141233000', district_id: 1},
                         {id: 3, name: 'Sunnyside High School', address: '123 Main St.', city: 'Columbus', state: 'OH', zip_code: '43214', phone_number: '6141234000', district_id: 1}])
 
-SchoolYear.create(id: 1, school_id: 3, title: '2016-2017', short_name: 'FY', year: 2016, start_date: '9/6/2016', end_date: '5/26/2017', grade_start_date: '8/1/2016', grade_end_date: '5/31/2017', reg_start_date: '6/1//2015', reg_end_date: '12/31/2016')
+SchoolYear.create(id: 1, school_id: 3, title: '2016-2017', short_name: 'FY', year: 2016, start_date: '9/6/2016', end_date: '5/26/2017', grade_start_date: '8/1/2016', grade_end_date: '5/31/2017', reg_start_date: '6/1/2015', reg_end_date: '12/31/2016')
 
 Student.create(student_id: 1000, first_name: 'Justin', middle_name: 'M', last_name: 'Adkins', sex: 'M', date_of_birth: '07/18/1994')
 

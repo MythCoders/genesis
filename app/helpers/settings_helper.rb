@@ -18,8 +18,6 @@ module SettingsHelper
   def settings_nav_menu
     tabs = [
         {:type => 'heading', :label => 'General'},
-        {:type => 'link', :name => 'district', :label => 'Districts', :partial => 'settings/district'},
-        {:type => 'link', :name => 'school', :label => 'Schools', :partial => 'settings/school'},
         {:type => 'link', :name => 'grade', :label => 'Grade Levels', :partial => 'settings/grades'},
         {:type => 'link', :name => 'customfields', :label => 'Custom Fields', :partial => 'settings/markscales'},
         {:type => 'heading', :label => 'Codes'},
