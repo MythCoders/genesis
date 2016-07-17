@@ -68,5 +68,33 @@ function showTab(name, url) {
     return false;
 }
 
+function loadAdvancedSearch() {
+    // ADVANCED SEARCH
+    var spinning = false;
+
+    AJS.$("#adv-search-link").click(function () {
+        AJS.dialog2("#adv-search-dialog").show();
+    });
+
+    AJS.$("#adv-search-close-button").click(function(e) {
+        e.preventDefault();
+        AJS.dialog2("#adv-search-dialog").hide();
+    });
+
+    AJS.$('#quick-search-query').on('keyup', function() {
+
+        if (!spinning) {
+            AJS.$(this).text('Stop Spinning!');
+            AJS.$('.button-spinner').spin();
+            spinning = true;
+        } else {
+            AJS.$(this).text('Do Something');
+            AJS.$('.button-spinner').spinStop();
+            spinning = false;
+        }
+    });
+}
+
+$(document).ready(loadAdvancedSearch);
 $(document).ready(warnLeavingUnsavedMessage);
 $(document).ready(setupAjaxIndicator);

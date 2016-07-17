@@ -45,6 +45,10 @@ module ApplicationHelper
     end
   end
 
+  def render_nav_bar(menu)
+    render :partial => 'layouts/navbar', :locals => {:menu => menu}
+  end
+
   def html_title(*args)
     if args.empty?
       title = @html_title || []
@@ -162,6 +166,14 @@ module ApplicationHelper
     parameters = format == 2 ? formatted_address : format_address(address_line_1, address_line_2, city, state, zip_code, zip_code_four, 2)
 
     "<a href=\"http://bing.com/maps?q=#{parameters}\" target=\"_blank\">#{formatted_address}</a>"
+  end
+
+  private
+
+  def menu
+    menu = {
+
+    }
   end
 
 end

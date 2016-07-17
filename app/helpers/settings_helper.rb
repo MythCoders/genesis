@@ -20,11 +20,15 @@ module SettingsHelper
         {:type => 'heading', :label => 'General'},
         {:type => 'link', :name => 'district', :label => 'Districts', :partial => 'settings/district'},
         {:type => 'link', :name => 'school', :label => 'Schools', :partial => 'settings/school'},
-        {:type => 'link', :name => 'grade', :label => 'Grades', :partial => 'settings/grades'},
+        {:type => 'link', :name => 'grade', :label => 'Grade Levels', :partial => 'settings/grades'},
+        {:type => 'link', :name => 'customfields', :label => 'Custom Fields', :partial => 'settings/markscales'},
         {:type => 'heading', :label => 'Codes'},
         {:type => 'link', :name => 'enrollcodes', :label => 'Enrollment Codes', :partial => 'settings/enrollcodes'},
         {:type => 'link', :name => 'markscales', :label => 'Report Card Mark Scales', :partial => 'settings/markscales'},
-        {:type => 'link', :name => 'system', :label => 'System', :partial => 'settings/system'}
+        {:type => 'link', :name => 'system', :label => 'System', :partial => 'settings/system'},
+        {:type => 'heading', :label => 'Security'},
+        {:type => 'link', :name => 'users', :label => 'Users', :partial => 'settings/system'},
+        {:type => 'link', :name => 'roles', :label => 'Roles', :partial => 'settings/markscales'}
     ]
   end
 end
