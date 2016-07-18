@@ -20,8 +20,6 @@
       <table class="aui">
         <thead>
         <tr>
-          <th></th>
-          <th></th>
           <th>District Code</th>
           <th>Name</th>
           <th>Address</th>
@@ -31,11 +29,9 @@
         <tr>
           <% @model.each do |d| %>
             <tr>
-              <td><%= link_to 'Select', district_path(d) %></td>
-              <td><%= link_to 'Edit', edit_district_path(d) %></td>
-              <th><%= d.short_name %></th>
+              <td><%= link_to d.short_name, district_path(d) %></td>
               <th><%= d.name %></th>
-              <th></th>
+              <th><%= format_address(d.address, nil, d.city, d.state, d.zip_code).html_safe %></th>
             </tr>
         <% end %>
         </tr>

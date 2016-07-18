@@ -4,7 +4,7 @@
       <ol class="aui-nav aui-nav-horizontal">
         <li>
           <h1>
-            New School
+            Edit School
           </h1>
         </li>
       </ol>
@@ -14,9 +14,9 @@
 <div class="aui-page-panel">
   <div class="aui-page-panel-inner">
     <div class="aui-page-panel-content">
-      <%= form_for :model, url: schools_path, :html => { :class => 'aui' } do |f| %>
+      <%= form_for :model, url: districts_path, :html => { :class => 'aui' } do |f| %>
 
-          <%= render :partial => 'schools/form', :locals => {:f => f} %>
+          <%= render :partial => 'districts/form', :locals => {:f => f} %>
 
           <div class="buttons-container">
             <div class="buttons">

@@ -20,7 +20,6 @@
       <table class="aui">
         <thead>
         <tr>
-          <th></th>
           <th>School Code</th>
           <th>District Code</th>
           <th>Name</th>
@@ -31,7 +30,10 @@
         <tr>
           <% @model.each do |s| %>
             <tr>
-
+              <td><%= link_to s.short_name, school_path(s) %></td>
+              <th><%= s.district.short_name %></th>
+              <th><%= s.name %></th>
+              <th><%= format_address(s.address, nil, s.city, s.state, s.zip_code).html_safe %></th>
             </tr>
         <% end %>
         </tr>

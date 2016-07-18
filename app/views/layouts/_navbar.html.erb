@@ -126,9 +126,9 @@
 
               <div id="schools" class="aui-style-default aui-dropdown2">
                 <ul class="aui-list-truncate">
-                  <li><a href="#">Sunnyside Elementary School</a></li>
-                  <li><a href="#">Sunnyside Middle School</a></li>
-                  <li><a href="#"><strong>Sunnyside High School</strong></a></li>
+                  <% @schools.each do |s| %>
+                      <li><a href="#"><%= s.name %> </a></li>
+                  <% end %>
                 </ul>
               </div>
             </div>
