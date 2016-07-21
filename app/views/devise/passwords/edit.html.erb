@@ -1,25 +1,49 @@
-<h2>Change your password</h2>
+<%= stylesheet_link_tag 'application', media: 'all' %>
 
-<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
-  <%= devise_error_messages! %>
-  <%= f.hidden_field :reset_password_token %>
+<div class="page-type-indra page-type-login">
+  <div class="aui-page-panel indra-one-wide">
+    <header class="indra-header aui-page-header">
+      <div class="aui-page-header-inner">
+        <div class="aui-pageheader-main">
+          <h1><%= Genesis::INFO.app_name %>
+            <small>New Password - v<%= Genesis::INFO.version %></small>
+          </h1>
+        </div>
+      </div>
+    </header>
+    <div class="aui-group indra-login-method">
+      <div class="aui-item indra-login-item indra-login-crowd">
 
-  <div class="field">
-    <%= f.label :password, "New password" %><br />
-    <% if @minimum_password_length %>
-      <em>(<%= @minimum_password_length %> characters minimum)</em><br />
-    <% end %>
-    <%= f.password_field :password, autofocus: true, autocomplete: "off" %>
+        <%= form_for(resource, as: resource_name, url: password_path(resource_name), :html => { :method => :put, :class => 'aui top-label'}) do |f| %>
+
+            <%= devise_error_messages! %>
+
+            <%= f.hidden_field :reset_password_token %>
+
+            <div class="field-group">
+              <%= f.label :password, 'New password' %>
+              <%= f.password_field :password, autofocus: true, autocomplete: 'off', :class => 'text full-width-field' %>
+              <% if @minimum_password_length %>
+                  <div class="description">
+                    <%= @minimum_password_length %> characters minimum
+                  </div>
+              <% end %>
+            </div>
+
+            <div class="field-group">
+              <%= f.label :password_confirmation, 'Confirm new password' %>
+              <%= f.password_field :password_confirmation, autocomplete: 'off', :class => 'text full-width-field' %>
+            </div>
+
+            <div class="buttons-container">
+              <div class="buttons">
+                <%= f.submit 'Change my password', :class => 'aui-button aui-button-primary' %>
+              </div>
+            </div>
+
+            <%= render 'devise/shared/links' %>
+        <% end %>
+      </div>
+    </div>
   </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation, "Confirm new password" %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Change my password" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+</div>

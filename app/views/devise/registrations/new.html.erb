@@ -1,29 +1,48 @@
-<h2>Sign up</h2>
+<%= stylesheet_link_tag 'application', media: 'all' %>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= devise_error_messages! %>
+<div class="page-type-indra page-type-login">
+  <div class="aui-page-panel indra-one-wide">
+    <header class="indra-header aui-page-header">
+      <div class="aui-page-header-inner">
+        <div class="aui-pageheader-main">
+          <h1><%= Genesis::INFO.app_name %> <small>Sign Up - v<%= Genesis::INFO.version %></small></h1>
+        </div>
+      </div>
+    </header>
+    <div class="aui-group indra-login-method">
+      <div class="aui-item indra-login-item indra-login-crowd">
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
+        <%= form_for(resource, as: resource_name, url: registration_path(resource_name), :html => { :class => 'aui top-label' }) do |f| %>
+
+            <%= devise_error_messages! %>
+
+            <div class="field-group">
+              <%= f.label :email %>
+              <%= f.email_field :email, autofocus: true, :class => 'text full-width-field' %>
+            </div>
+
+            <div class="field">
+              <%= f.label :password %>
+              <%= f.password_field :password, autocomplete: 'off', :class => 'text full-width-field' %>
+              <% if @minimum_password_length %>
+                  <div class="description"><%= @minimum_password_length %> characters minimum</div>
+              <% end %>
+            </div>
+
+            <div class="field-group">
+              <%= f.label :password_confirmation %>
+              <%= f.password_field :password_confirmation, autocomplete: 'off', :class => 'text full-width-field' %>
+            </div>
+
+            <div class="buttons-container">
+              <div class="buttons">
+                <%= f.submit 'Sign Up', :class => 'aui-button aui-button-primary' %>
+              </div>
+            </div>
+
+            <%= render 'devise/shared/links' %>
+        <% end %>
+      </div>
+    </div>
   </div>
-
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "off" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+</div>
