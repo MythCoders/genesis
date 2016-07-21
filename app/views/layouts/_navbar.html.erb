@@ -145,7 +145,7 @@
             </div>
           </li>
           <li>
-            <a id="adv-search-link">
+            <a id="adv-search-link" style="cursor: pointer;">
               <span class='aui-icon aui-icon-small aui-iconfont-search'></span>
             </a>
           </li>
@@ -158,13 +158,13 @@
               <div class="aui-dropdown2-section">
                 <ul>
                   <% if current_user.is_admin? %>
-                      <li> <%= link_to 'Announcements', schools_path %> </li>
-                      <li> <%= link_to 'Calendars', schools_path %> </li>
+                      <li> <%= link_to 'Announcements', announcements_path %> </li>
+                      <li> <%= link_to 'Calendars', calendars_path %> </li>
                       <li> <%= link_to 'Districts', districts_path %> </li>
                       <li> <%= link_to 'Marking Periods', schools_path %> </li>
                       <li> <%= link_to 'Schools', schools_path %> </li>
-                      <li> <%= link_to 'User Roles', schools_path %> </li>
-                      <li> <%= link_to 'Users', schools_path %> </li>
+                      <li> <%= link_to 'User Roles', roles_path %> </li>
+                      <li> <%= link_to 'Users', users_path %> </li>
                   <% end %>
                 </ul>
               </div>
