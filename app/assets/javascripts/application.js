@@ -16,42 +16,66 @@
 //= require_tree .
 
 function setupAjaxIndicator() {
-    $(document).bind('ajaxSend', function(event, xhr, settings) {
+    $(document).bind('ajaxSend', function (event, xhr, settings) {
         if ($('.ajax-loading').length === 0 && settings.contentType != 'application/octet-stream') {
             $('#ajax-indicator').show();
         }
     });
-    $(document).bind('ajaxStop', function() {
+    $(document).bind('ajaxStop', function () {
         $('#ajax-indicator').hide();
+    });
+}
+
+function updateUserActiveItems() {
+    var schoolId = 1;
+    var schoolYearId = 10;
+    var gradingPeriodId = 12;
+
+    $.ajax({
+        url: '',
+        type: 'post',
+        contentType: "application/x-www-form-urlencoded",
+        data: '{"schoolId":"schoolId", "program":"EXPLORE"}',
+        success: function (data, status) {
+            console.log("Success!!");
+            console.log(data);
+            console.log(status);
+        },
+        error: function (xhr, desc, err) {
+            console.log(xhr);
+            console.log("Desc: " + desc + "\nErr:" + err);
+        }
     });
 }
 
 var warnLeavingUnsavedMessage;
 function warnLeavingUnsaved(message) {
     warnLeavingUnsavedMessage = message;
-    $(document).on('submit', 'form', function(){
+    $(document).on('submit', 'form', function () {
         $('textarea').removeData('changed');
         $('textbos').removeData('changed');
     });
-    $(document).on('change', 'textarea', function(){
+    $(document).on('change', 'textarea', function () {
         $(this).data('changed', 'changed');
     });
-    $(document).on('change', 'textbos', function(){
+    $(document).on('change', 'textbos', function () {
         $(this).data('changed', 'changed');
     });
-    window.onbeforeunload = function(){
+    window.onbeforeunload = function () {
         var warn = false;
-        $('textarea').blur().each(function(){
+        $('textarea').blur().each(function () {
             if ($(this).data('changed')) {
                 warn = true;
             }
         });
-        $('textbox').blur().each(function(){
+        $('textbox').blur().each(function () {
             if ($(this).data('changed')) {
                 warn = true;
             }
         });
-        if (warn) {return warnLeavingUnsavedMessage;}
+        if (warn) {
+            return warnLeavingUnsavedMessage;
+        }
     };
 }
 
@@ -76,12 +100,12 @@ function loadAdvancedSearch() {
         AJS.dialog2("#adv-search-dialog").show();
     });
 
-    AJS.$("#adv-search-close-button").click(function(e) {
+    AJS.$("#adv-search-close-button").click(function (e) {
         e.preventDefault();
         AJS.dialog2("#adv-search-dialog").hide();
     });
 
-    AJS.$('#quick-search-query').on('keyup', function() {
+    AJS.$('#quick-search-query').on('keyup', function () {
 
         if (!spinning) {
             AJS.$(this).text('Stop Spinning!');

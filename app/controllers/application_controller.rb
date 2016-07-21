@@ -5,11 +5,22 @@ class ApplicationController < ActionController::Base
 
   before_action :authenticate_user!
   before_action :check_user_profile
-  before_action :get_districts
+  before_action :populate_session_variables
 
-  def get_districts
-    @schools = School.select('id, name, short_name')
-    @districts = District.select('id, name, short_name')
+
+  def populate_session_variables
+    if session['schools'].nil?
+      #TODO: Change this to schools user has access to
+      session['schools'] = School.all
+    end
+
+    if session['districts'].nil?
+      session['districts'] = District.all
+    end
+
+    if session['school_years'].nil?
+      session['school_years'] = SchoolYear.all
+    end
   end
 
   def check_user_profile

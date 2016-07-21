@@ -3,13 +3,11 @@ class Student < ApplicationRecord
 
   has_many :enrollments
 
-  validates :first_name, presence: true, length: 30
-  validates :middle_name, length: 30
-  validates :last_name, presence: true, length: 30
-  validates :suffix, length: 5
-  validates :sex, length: 1
-  validates :date_of_birth, date: true
-
+  validates :first_name, presence: true, length: {maximum: 30}
+  validates :middle_name, length: {maximum: 30}
+  validates :last_name, presence: true, length: {maximum: 30}
+  validates :suffix, length: {maximum: 5}
+  validates :sex, length: {maximum: 1}
 
   def current_grade
     'Not Registered'

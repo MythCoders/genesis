@@ -19,7 +19,7 @@ module MCGenesis
     config.filter_parameters += [:password]
 
     # Version of your assets, change this if you want to expire all your assets
-    config.assets.version = '1.0'
+    config.assets.version = '0.2'
 
     # Configure log level here so that additional environment file
     # can change it (environments/ENV.rb would take precedence over it)

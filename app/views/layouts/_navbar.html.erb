@@ -126,8 +126,8 @@
 
               <div id="schools" class="aui-style-default aui-dropdown2">
                 <ul class="aui-list-truncate">
-                  <% @schools.each do |s| %>
-                      <li><a href="#"><%= s.name %> </a></li>
+                  <% session['schools'].each do |s| %>
+                      <li><a href="#" onclick="updateUserActiveItems();"><%= s['name'] %> </a></li>
                   <% end %>
                 </ul>
               </div>
@@ -159,15 +159,18 @@
               <div class="aui-dropdown2-section">
                 <ul>
                   <% if current_user.is_admin? %>
+                      <li> <%= link_to 'Announcements', schools_path %> </li>
+                      <li> <%= link_to 'Calendars', schools_path %> </li>
                       <li> <%= link_to 'Districts', districts_path %> </li>
+                      <li> <%= link_to 'Marking Periods', schools_path %> </li>
                       <li> <%= link_to 'Schools', schools_path %> </li>
-                      <li> <%= link_to 'System Settings', settings_path %> </li>
                   <% end %>
                 </ul>
               </div>
               <div class="aui-dropdown2-section">
                 <ul>
-                  <li><%= link_to 'My Profile and Preferences', edit_user_registration_path %></li>
+                  <li><%= link_to 'System Administration', settings_path %></li>
+                  <li><%= link_to 'Profile and Preferences', edit_user_registration_path %></li>
                   <li><%= link_to 'Log out', destroy_user_session_path, :method=>'delete' %></li>
                 </ul>
               </div>

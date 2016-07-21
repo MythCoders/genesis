@@ -6,8 +6,7 @@ class Enrollment < ApplicationRecord
   belongs_to :admission_code, class: 'EnrollmentCode'
   belongs_to :withdraw_code, class: 'EnrollmentCode'
 
-  validates :admission_date, date: true, presence: true
-  validates :withdraw_date, date: true
+  validates :admission_date, presence: true
 
   validates_presence_of :admission_code
   validates_presence_of :withdraw_code, :if => :is_withdraw_code_required?
