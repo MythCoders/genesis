@@ -22,7 +22,7 @@
         </thead>
         <tbody>
         <tr>
-          <% @model.each do |s| %>
+          <% @students.each do |s| %>
             <tr>
               <td><%= link_to 'Select', student_path(s) %></td>
               <td><%= s.student_id %></td>

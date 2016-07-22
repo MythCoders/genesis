@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   def index
+    @model = User.all
   end
 
   def new
