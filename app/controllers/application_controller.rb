@@ -9,18 +9,24 @@ class ApplicationController < ActionController::Base
 
 
   def populate_session_variables
-    if session['schools'].nil?
-      #TODO: Change this to schools user has access to
-      session['schools'] = School.all
-    end
 
+    #TODO: Change logic to reflect schools/years current users has access to
     if session['districts'].nil?
       session['districts'] = District.all
     end
 
-    if session['school_years'].nil?
-      session['school_years'] = SchoolYear.all
+    if session['schools'].nil?
+      session['schools'] = School.all
     end
+
+    if session['school_id'].nil?
+      session['school_id'] = session['schools'].select(:id).first().id
+    end
+
+    if session['school_years'].nil?
+      session['school_years'] = SchoolYear.where(school_id: session['school_id'])
+    end
+
   end
 
   def check_user_profile

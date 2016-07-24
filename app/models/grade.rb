@@ -1,7 +1,6 @@
 class Grade < ApplicationRecord
 
-  has_and_belongs_to_many :schools
-  has_many :enrollments
+  has_many :school_years, :through => :school_year_grades
 
   validates :title, length: {maximum: 30}
   validates :short_name, length: {maximum: 10}

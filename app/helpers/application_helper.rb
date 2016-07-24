@@ -52,7 +52,7 @@ module ApplicationHelper
   def html_title(*args)
     if args.empty?
       title = @html_title || []
-      title << @student.name if @student
+      title << @student.full_name if @student
       title << Genesis::INFO.app_name
       title.reject(&:blank?).join(' - ')
     else

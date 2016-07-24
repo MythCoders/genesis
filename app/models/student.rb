@@ -1,7 +1,8 @@
 class Student < ApplicationRecord
   include ApplicationHelper
 
-  has_many :enrollments
+  has_many :enrollments, :autosave => true
+  accepts_nested_attributes_for :enrollments, allow_destroy: false
 
   validates :first_name, presence: true, length: {maximum: 30}
   validates :middle_name, length: {maximum: 30}
