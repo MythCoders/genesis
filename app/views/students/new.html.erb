@@ -11,7 +11,7 @@
 <div class="aui-page-panel">
   <div class="aui-page-panel-inner">
     <div class="aui-page-panel-content">
-      <%= form_for :student, url: students_path, :html => { :class => 'aui' } do |f| %>
+      <%= form_for @student, url: students_path, :html => { :class => 'aui' } do |f| %>
 
           <%= render :partial => "students/#{@type}admit", :locals => { :f => f } %>
 

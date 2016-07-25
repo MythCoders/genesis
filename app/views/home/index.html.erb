@@ -2,7 +2,9 @@
   <div class="aui-page-header-inner">
     <div class="aui-page-header-main">
       <ol class="aui-nav aui-nav-horizontal">
-        <li><h1>Dashboard</h1></li>
+        <li>
+          <h1>Dashboard <small>Welcome, <%= current_user.full_name %>!</small></h1>
+        </li>
       </ol>
     </div>
   </div>
@@ -10,10 +12,8 @@
 <div class="aui-page-panel">
   <div class="aui-page-panel-inner">
     <div class="aui-page-panel-content">
-      <p>
-        <strong>Welcome,</strong> <%= current_user.full_name %>!
-      </p>
       <p>Current SchoolId <%= session[:school_id] %></p>
+
 
     </div>
   </div>

@@ -4,7 +4,7 @@ class Student < ApplicationRecord
   has_many :enrollments, :autosave => true
   accepts_nested_attributes_for :enrollments, allow_destroy: false
 
-  before_create :before_create
+  before_create :assign_student_id
 
   validates :first_name, presence: true, length: {maximum: 30}
   validates :middle_name, length: {maximum: 30}
@@ -17,16 +17,21 @@ class Student < ApplicationRecord
   end
 
   def current_grade(format = 'long')
-    if format == 'long'
-      'Senior'
+    if self.enrollments.any?
+      if self.enrollments.count == 1
+        grade = self.enrollments.first.school_year_grade.grade
+      else
+        grade = self.enrollments.first.school_year_grade.grade
+      end
+      format == 'long' ? grade.title : grade.short_name
     else
-      '12'
+      format == 'long' ? 'Not Registered' : 'NR'
     end
   end
 
   private
 
-  def before_create
+  def assign_student_id
     if Student.count == 0
       self.student_id = 1000
     else
