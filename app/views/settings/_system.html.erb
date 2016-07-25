@@ -1,7 +1,23 @@
 <div class="aui-page-panel oddpanelbug" id="districts">
   <div class="aui-page-panel-inner">
     <div class="aui-page-panel-content">
-      <h2>System Settings</h2>
+      <h2>System Settings
+        <small style="color: red">Beware: changes to these settings affect all GeneSIS districts and schools and will
+          take effect immediately.
+        </small>
+      </h2>
+
+      <div class="aui-group">
+        <div class="aui-item">
+          Your content here
+        </div>
+        <div class="aui-item">
+          <div>
+            <strong>GeneSIS v:</strong> <%= Genesis::INFO.version %><br/>
+            <strong>Ruby v:</strong> <%= RUBY_VERSION %>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>

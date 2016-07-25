@@ -42,4 +42,5 @@ class StudentsController < ApplicationController
   def get_user_pref
     'quick'
   end
+
 end

@@ -10,8 +10,11 @@ module SettingsHelper
   end
 
   def sample_tabs
-    tabs = [{:name => 't1', :partial => 'settings/district', :label => 'Tab #1'},
-            {:name => 't2', :partial => 'settings/grades', :label => 'Tab #2'}
+    tabs = [{:name => 't1', :partial => 'settings/grades', :label => 'General Information'},
+            {:name => 't2', :partial => 'settings/markscales', :label => 'Address & Contacts'},
+            {:name => 't2', :partial => 'settings/markscales', :label => 'Medical'},
+            {:name => 't2', :partial => 'settings/markscales', :label => 'Notes'},
+            {:name => 't2', :partial => 'settings/markscales', :label => '?'}
     ]
   end
 
@@ -23,6 +26,7 @@ module SettingsHelper
         {:type => 'heading', :label => 'Codes'},
         {:type => 'link', :name => 'enrollcodes', :label => 'Enrollment Codes', :partial => 'settings/enrollcodes'},
         {:type => 'link', :name => 'markscales', :label => 'Report Card Mark Scales', :partial => 'settings/markscales'},
+        {:type => 'heading', :label => ''},
         {:type => 'link', :name => 'system', :label => 'System', :partial => 'settings/system'}
     ]
   end
