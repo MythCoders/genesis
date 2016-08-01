@@ -29,13 +29,19 @@ class Student < ApplicationRecord
     end
   end
 
+  def is_registered
+    current_grade('short') == 'NR' ? true : false
+  end
+
   private
 
   def assign_student_id
-    if Student.count == 0
-      self.student_id = 1000
-    else
-      self.student_id = (Student.maximum(:student_id)) + 1
+    if self.student_id.nil?
+      if Student.count == 0
+        self.student_id = 1000
+      else
+        self.student_id = (Student.maximum(self.student_id)) + 1
+      end
     end
   end
 

@@ -1,15 +1,18 @@
 <div class="aui-tabs horizontal-tabs">
   <ul class="tabs-menu">
-    <% tabs.each_with_index do |tab, index| -%>
-        <li class="<%= (index == 0 ? 'menu-item active-tab' : 'menu-item') %>">
-          <a href="<%= "#tabs-#{index}" %>"><%= tab[:label] %></a>
+    <% tabs.each do |tab| -%>
+        <li class="<%= (tab[:name] == selected_tab ? 'menu-item active-tab' : 'menu-item') %>">
+          <%= link_to tab[:label], {:tab => tab[:name]},
+                      :id => "tab-#{tab[:name]}",
+                      :onclick => "showTab('#{tab[:name]}', this.href); this.blur(); return false;)" %>
         </li>
     <% end -%>
   </ul>
-  <% tabs.each_with_index do |tab, index| -%>
-      <div class="<%= (index == 0 ? 'tabs-pane active-pane' : 'tabs-pane') %>" id="<%= "tabs-#{index}" %>">
-        <%= content_tag('div', render(:partial => tab[:partial])) %>
-      </div>
-  <% end -%>
 </div>
 
+<% tabs.each do |tab| -%>
+    <%= content_tag('div', render(:partial => tab[:partial], :locals => {:tab => tab}),
+                    :id => "tab-content-#{tab[:name]}",
+                    :style => (tab[:name] != selected_tab ? 'display:none' : nil),
+                    :class => 'tabs-pane active-pane tab-content') %>
+<% end -%>

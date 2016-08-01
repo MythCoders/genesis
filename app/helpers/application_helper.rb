@@ -5,9 +5,18 @@ module ApplicationHelper
   SEX = [MALE = 'M', FEMALE = 'F']
   USER_BASE_ROLES = [STUDENT = 1, PARENT = 4, TEACHER = 12, ADMIN = 64, SUPER_ADMIN = 256]
 
-  def render_tabs(tabs)
+  def render_tabs(tabs, selected = params[:tab])
     if tabs.any?
-      render :partial => 'common/tabs', :locals => {:tabs => tabs}
+
+      unless tabs.detect { |tab| tab[:name] == selected }
+        selected = nil
+      end
+
+      if selected == nil
+        selected = tabs[0][:name]
+      end
+
+      render :partial => 'common/tabs', :locals => {:tabs => tabs, :selected_tab => selected}
     else
       content_tag 'p', l(:label_no_data), :class => 'no-data'
     end

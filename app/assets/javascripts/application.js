@@ -80,8 +80,8 @@ function warnLeavingUnsaved(message) {
 }
 
 function showTab(name, url) {
-    $('#tab-content-' + name).parent().find('.tab-content').hide();
-    $('#tab-content-' + name).parent().find('div.tabs a').removeClass('selected');
+    $('#tab-content-' + name).parent().find('.tabs').hide();
+    $('#tab-content-' + name).parent().find('div.tabs-menu a').removeClass('selected');
     $('#tab-content-' + name).show();
     $('#tab-' + name).addClass('selected');
     //replaces current URL with the "href" attribute of the current link

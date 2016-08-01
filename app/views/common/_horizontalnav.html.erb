@@ -6,7 +6,7 @@
             <li class="<%= (tab[:name] != selected_tab ? nil : 'aui-nav-selected') %>">
               <%= link_to tab[:label], {:tab => tab[:name]},
                           :id => "tab-#{tab[:name]}",
-                          :onclick => "showTab('#{tab[:name]}', this.href); this.blur(); return false;" %>
+                          :onclick => "showTab('#{tab[:name]}', this.href); this.blur(); return false;)" %>
             </li>
         <% end -%>
       </ul>
