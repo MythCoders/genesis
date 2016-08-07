@@ -3,10 +3,10 @@
     <div class="aui-navgroup-primary">
       <ul class="aui-nav">
         <% tabs.each do |tab| %>
-            <li class="<%= (tab[:name] != selected_tab ? nil : 'aui-nav-selected') %>">
+            <li class="<%= (tab[:name] == selected_tab ? 'aui-nav-selected' : nil) %>">
               <%= link_to tab[:label], {:tab => tab[:name]},
                           :id => "tab-#{tab[:name]}",
-                          :onclick => "showTab('#{tab[:name]}', this.href); this.blur(); return false;)" %>
+                          :onclick => "showHorizontalNavItem('#{tab[:name]}', this.href); this.blur(); return false;)" %>
             </li>
         <% end -%>
       </ul>

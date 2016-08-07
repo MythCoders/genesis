@@ -15,7 +15,7 @@
                   <li class="<%= (tab[:name] != selected_tab ? nil : 'aui-nav-selected') %>">
                     <%= link_to tab[:label], {:tab => tab[:name]},
                                 :id => "tab-#{tab[:name]}",
-                                :onclick => "showTab('#{tab[:name]}', this.href); this.blur(); return false;" %>
+                                :onclick => "showVerticalNavItem('#{tab[:name]}', this.href); this.blur(); return false;" %>
                   </li>
                   <% if tabs[index + 1] != nil and tabs[index + 1][:type] == 'heading' %>
                       </ul>

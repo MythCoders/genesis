@@ -79,6 +79,32 @@ function warnLeavingUnsaved(message) {
     };
 }
 
+function showVerticalNavItem() {
+    $('#tab-content-' + name).parent().find('.tabs').hide();
+    $('#tab-content-' + name).parent().find('div.tabs-menu a').removeClass('selected');
+    $('#tab-content-' + name).show();
+    $('#tab-' + name).addClass('selected');
+    //replaces current URL with the "href" attribute of the current link
+    //(only triggered if supported by browser)
+    if ("replaceState" in window.history) {
+        window.history.replaceState(null, document.title, url);
+    }
+    return false;
+}
+
+function showHorizontalNavItem() {
+    $('#tab-content-' + name).parent().find('.tabs').hide();
+    $('#tab-content-' + name).parent().find('div.tabs-menu a').removeClass('aui-nav-selected');
+    $('#tab-content-' + name).show();
+    $('#tab-' + name).addClass('aui-nav-selected');
+    //replaces current URL with the "href" attribute of the current link
+    //(only triggered if supported by browser)
+    if ("replaceState" in window.history) {
+        window.history.replaceState(null, document.title, url);
+    }
+    return false;
+}
+
 function showTab(name, url) {
     $('#tab-content-' + name).parent().find('.tabs').hide();
     $('#tab-content-' + name).parent().find('div.tabs-menu a').removeClass('selected');
