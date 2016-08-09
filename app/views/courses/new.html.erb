@@ -1,0 +1,28 @@
+<header class="aui-page-header">
+  <div class="aui-page-header-inner">
+    <div class="aui-page-header-main">
+      <h1>New Course</h1>
+    </div>
+    <div class="aui-page-header-actions">
+
+    </div>
+  </div>
+</header>
+<div class="aui-page-panel">
+  <div class="aui-page-panel-inner">
+    <div class="aui-page-panel-content">
+      <%= form_for @course, url: courses_path, :html => { :class => 'aui' } do |f| %>
+
+          <%= render :partial => 'courses/form', :locals => { :f => f } %>
+
+          <div class="buttons-container">
+            <div class="buttons">
+              <%= f.submit 'Create', :class => 'button submit' %>
+              <%= link_to 'Cancel', courses_path, :class => 'cancel' %>
+            </div>
+          </div>
+
+      <% end %>
+    </div>
+  </div>
+</div>

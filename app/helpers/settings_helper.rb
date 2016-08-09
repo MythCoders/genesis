@@ -11,9 +11,9 @@ module SettingsHelper
 
   def sample_tabs
     tabs = [{:name => 't1', :partial => 'students/info', :label => 'General Information'},
-            {:name => 't2', :partial => 'settings/markscales', :label => 'Address & Contacts'},
-            {:name => 't3', :partial => 'students/info', :label => 'Medical'},
-            {:name => 't4', :partial => 'settings/markscales', :label => 'Notes'},
+            {:name => 't2', :partial => 'students/address', :label => 'Address & Contacts'},
+            {:name => 't3', :partial => 'students/custom', :label => 'Medical'},
+            {:name => 't4', :partial => 'students/notes', :label => 'Notes'},
             {:name => 't5', :partial => 'students/info', :label => '?'}
     ]
   end

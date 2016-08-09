@@ -4,6 +4,7 @@ Rails.application.routes.draw do
 
   resources :announcements
   resources :calendars
+  resources :courses
   resources :districts
   resources :roles
   resources :settings

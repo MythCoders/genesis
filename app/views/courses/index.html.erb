@@ -1,0 +1,38 @@
+<header class="aui-page-header">
+  <div class="aui-page-header-inner">
+    <div class="aui-page-header-main">
+      <h1>Courses</h1>
+    </div>
+    <div class="aui-page-header-actions">
+      <%= link_to 'New Course', new_course_path, :class => 'aui-button' %>
+    </div>
+  </div>
+</header>
+<div class="aui-page-panel">
+  <div class="aui-page-panel-inner">
+    <div class="aui-page-panel-content">
+      <table class="aui">
+        <thead>
+        <tr>
+          <th></th>
+          <th>Course Code</th>
+          <th>Name</th>
+          <th>Category</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <% @courses.each do |s| %>
+            <tr>
+              <td><%= link_to 'Select', course_path(s) %></td>
+              <td><%= s.short_name %></td>
+              <td><%= s.title %></td>
+              <td><%= s.course_category.title %></td>
+            </tr>
+        <% end %>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

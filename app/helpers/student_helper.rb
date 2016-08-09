@@ -1,6 +1,9 @@
 module StudentHelper
 
   def path_to_student_photo
+    if @student.nil?
+      #TODO: get path to image for student
+    end
     image_path '/images/emptystudent.svg'
   end
 
