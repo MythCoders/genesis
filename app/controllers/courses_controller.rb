@@ -1,14 +1,14 @@
 class CoursesController < ApplicationController
   def index
-    @courses = Course.all
+    @model = Course.all
   end
 
   def show
-    @course = Course.find(params[:id])
+    @model = Course.find(params[:id])
   end
 
   def new
-    @course = Course.new
+    @model = Course.new
     @course_cats = CourseCategory.select('id, title, short_name')
   end
 
@@ -20,6 +20,14 @@ class CoursesController < ApplicationController
     else
       render 'new'
     end
+  end
+
+  def edit
+    @model = Course.find(params[:id])
+  end
+
+  def update
+
   end
 
   private

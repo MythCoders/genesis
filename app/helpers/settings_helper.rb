@@ -9,15 +9,6 @@ module SettingsHelper
     ]
   end
 
-  def sample_tabs
-    tabs = [{:name => 't1', :partial => 'students/info', :label => 'General Information'},
-            {:name => 't2', :partial => 'students/address', :label => 'Address & Contacts'},
-            {:name => 't3', :partial => 'students/custom', :label => 'Medical'},
-            {:name => 't4', :partial => 'students/notes', :label => 'Notes'},
-            {:name => 't5', :partial => 'students/info', :label => '?'}
-    ]
-  end
-
   def settings_nav_menu
     tabs = [
         {:type => 'heading', :label => 'General'},

@@ -7,7 +7,6 @@ class ApplicationController < ActionController::Base
   before_action :check_user_profile
   before_action :populate_session_variables
 
-
   def populate_session_variables
 
     #TODO: Change logic to reflect schools/years current users has access to
@@ -20,7 +19,14 @@ class ApplicationController < ActionController::Base
     end
 
     if session['school_id'].nil?
-      session['school_id'] = session['schools'].select(:id).first().id
+      if School.any?
+        if session['schools'].nil?
+          session['schools'] = School.all
+        end
+        session['school_id'] = session['schools'].first()[:id]
+      else
+        session['school_id'] = 0
+      end
     end
 
     if session['school_years'].nil?

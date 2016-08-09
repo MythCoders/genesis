@@ -1,4 +1,6 @@
 class StudentsController < ApplicationController
+  include StudentHelper
+
   def index
     @q = Student.ransack(params[:q])
     @students = @q.result
@@ -9,6 +11,11 @@ class StudentsController < ApplicationController
   end
 
   def new
+    if !can_new_student_be_admitted
+      flash[:error] = 'No students'
+      index
+    end
+
     if params[:type].nil? || get_user_pref == 'quick'
       @type = 'quick'
     else

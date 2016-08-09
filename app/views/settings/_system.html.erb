@@ -8,14 +8,37 @@
       </h2>
 
       <div class="aui-group">
+
         <div class="aui-item">
           Your content here
         </div>
+
         <div class="aui-item">
-          <div>
-            <strong>GeneSIS v:</strong> <%= Genesis::INFO.version %><br/>
-            <strong>Ruby v:</strong> <%= RUBY_VERSION %>
-          </div>
+          <table class="aui">
+            <thead>
+            <tr>
+              <th colspan="2">SYSTEM VERSION INFORMATION</th>
+            </tr>
+            <tr>
+              <th>Component</th>
+              <th>Version</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+              <td>GeneSIS</td>
+              <td><%= Genesis::INFO.version %></td>
+            </tr>
+            <tr>
+              <td>Ruby</td>
+              <td><%= RUBY_VERSION %></td>
+            </tr>
+            <tr>
+              <td>Rails</td>
+              <td><%= Rails::VERSION::STRING %></td>
+            </tr>
+            </tbody>
+          </table>
         </div>
       </div>
     </div>

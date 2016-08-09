@@ -22,7 +22,7 @@
         </thead>
         <tbody>
         <tr>
-          <% @courses.each do |s| %>
+          <% @model.each do |s| %>
             <tr>
               <td><%= link_to 'Select', course_path(s) %></td>
               <td><%= s.short_name %></td>
