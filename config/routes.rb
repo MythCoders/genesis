@@ -8,7 +8,11 @@ Rails.application.routes.draw do
   resources :districts
   resources :roles
   resources :settings
-  resources :schools
+
+  resources :schools do
+    resources :school_year_grades
+  end
+
   resources :students
   resources :users
 
