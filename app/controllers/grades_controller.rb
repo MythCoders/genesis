@@ -4,11 +4,11 @@ class GradesController < ApplicationController
   end
 
   def show
-    @model = Grade.find(params[:id])
+    @grade = Grade.find(params[:id])
   end
 
   def edit
-    @model = Grade.find(params[:id])
+    @grade = Grade.find(params[:id])
     @grades = Grade.order(:sort_order).all
   end
 
@@ -23,6 +23,7 @@ class GradesController < ApplicationController
     if @grade.save
       redirect_to @grade
     else
+      @grades = Grade.order(:sort_order).all
       render 'new'
     end
   end

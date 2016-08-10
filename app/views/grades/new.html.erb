@@ -4,7 +4,7 @@
       <ol class="aui-nav aui-nav-horizontal">
         <li>
           <h1>
-            New Grade
+            New Grade Level
           </h1>
         </li>
       </ol>
@@ -14,8 +14,9 @@
 <div class="aui-page-panel">
   <div class="aui-page-panel-inner">
     <div class="aui-page-panel-content">
-      <%= form_for :model, url: grades_path, :html => { :class => 'aui' } do |f| %>
+      <%= form_for :grade, url: grades_path, :html => { :class => 'aui' } do |f| %>
 
+          <%= render :partial => 'common/errors', :locals => {:model => f} %>
           <%= render :partial => 'grades/form', :locals => {:f => f} %>
 
           <div class="buttons-container">
