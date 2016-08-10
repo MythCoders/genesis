@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   resources :calendars
   resources :courses
   resources :districts
+  resources :grades
   resources :roles
   resources :settings
 

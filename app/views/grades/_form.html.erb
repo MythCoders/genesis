@@ -1,0 +1,24 @@
+<div class="field-group">
+  <%= f.label :title %>
+  <%= f.text_field :title, :class => 'text medium-field', :placeholder => 'Name' %>
+</div>
+
+<div class="field-group">
+  <%= f.label :short_name %>
+  <%= f.text_field :short_name, :class => 'text medium-field', :placeholder => 'Short Name' %>
+</div>
+
+<div class="field-group">
+  <%= f.label :sort_order %>
+  <%= f.text_field :sort_order, :class => 'text short-field', :placeholder => 'Sort' %>
+</div>
+
+<div class="field-group">
+  <%= f.label :next_grade_id %>
+  <%= f.select :next_grade_id, options_from_collection_for_select(@grades, :id, :title), {include_blank: '- Select -'}, {:class => 'select'} %>
+</div>
+
+<div class="field-group">
+  <%= f.label :previous_grade_id %>
+  <%= f.select :previous_grade_id, options_from_collection_for_select(@grades, :id, :title), {include_blank: '- Select -'}, {:class => 'select'} %>
+</div>

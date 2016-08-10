@@ -1,0 +1,44 @@
+<div class="generalAdminHeading aui-page-header">
+  <div class="aui-page-header-inner">
+    <div class="aui-page-header-main">
+      <ol class="aui-nav aui-nav-horizontal">
+        <li>
+          <h1>
+            Grade Levels
+          </h1>
+        </li>
+      </ol>
+    </div>
+    <div class="aui-page-header-actions">
+      <%= link_to 'New Grade Level', new_grade_path, :class => 'aui-button add-project-trigger' %>
+    </div>
+  </div>
+</div>
+<div class="aui-page-panel">
+  <div class="aui-page-panel-inner">
+    <div class="aui-page-panel-content">
+      <table class="aui">
+        <thead>
+        <tr>
+          <th></th>
+          <th style="width: 10%">Sort Order</th>
+          <th>Title</th>
+          <th>Short Name</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+        <% @model.each do |t| %>
+            <tr>
+              <td><%= link_to 'Edit', edit_grade_path(t) %></td>
+              <td><%= t.sort_order %></td>
+              <td><%= t.title %></td>
+              <td><%= t.short_name %></td>
+            </tr>
+        <% end %>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

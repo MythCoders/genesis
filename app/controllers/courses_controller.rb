@@ -9,7 +9,7 @@ class CoursesController < ApplicationController
 
   def new
     @model = Course.new
-    @course_cats = CourseCategory.select('id, title, short_name')
+    @course_cats = CourseCategory.order(:title).select('id, title, short_name')
   end
 
   def create
