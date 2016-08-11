@@ -15,15 +15,7 @@
         </tr>
         </thead>
         <tbody>
-          <% Grade.all.order(:sort_order).each do |t| %>
-            <tr>
-              <td></td>
-              <td><%= t.sort_order %></td>
-              <td><%= t.title %></td>
-              <td><%= t.short_name %></td>
-              <td></td>
-            </tr>
-          <% end %>
+
         </tbody>
       </table>
     </div>

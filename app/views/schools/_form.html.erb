@@ -10,15 +10,7 @@
 
 <div class="field-group">
   <%= f.label :district_id %>
-  <div id="dwarfers" class="aui-style-default aui-dropdown2">
-    <ul class="aui-list-truncate">
-      <li><a href="#">Menu item</a></li>
-      <li><a href="#">Menu item</a></li>
-      <li><a href="#">Menu item</a></li>
-      <li><a href="#">Menu item</a></li>
-    </ul>
-  </div>
-  <%= f.select :district_id, options_from_collection_for_select(@districts, :id, :name), {include_blank: '- Select -'}, {:class => 'select'} %>
+  <%= f.select :district_id, options_from_collection_for_select(@districts, :id, :name, @model.district_id), {include_blank: '- Select -'}, {:class => 'select'} %>
 </div>
 
 <div class="field-group">

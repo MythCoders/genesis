@@ -10,7 +10,7 @@ class SchoolsController < ApplicationController
 
   def new
     @model = School.new
-    @districts = District.select('id, name, short_name')
+    @districts = District.order(:name).select('id, name, short_name')
   end
 
   def create
@@ -25,6 +25,7 @@ class SchoolsController < ApplicationController
 
   def edit
     @model = School.find(params[:id])
+    @districts = District.order(:name).select('id, name, short_name')
   end
 
   def update

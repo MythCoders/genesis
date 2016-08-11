@@ -26,9 +26,7 @@ function setupAjaxIndicator() {
 }
 
 function updateUserActiveItems() {
-    var schoolId = 1;
-    var schoolYearId = 10;
-    var gradingPeriodId = 12;
+    var schoolId = sessionStorage.getItem('SchoolId');
 
     $.ajax({
         url: '',

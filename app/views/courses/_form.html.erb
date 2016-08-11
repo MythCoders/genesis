@@ -15,5 +15,5 @@
 
 <div class="field-group">
   <%= f.label :course_category_id %>
-  <%= f.select :course_category_id, options_from_collection_for_select(@course_cats, :id, :title), {include_blank: '- Select -'}, {:class => 'select'} %>
+  <%= f.select :course_category_id, options_from_collection_for_select(@course_cats, :id, :title, @model.course_category_id), {include_blank: '- Select -'}, {:class => 'select'} %>
 </div>
