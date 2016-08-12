@@ -1,0 +1,61 @@
+<h3>Basic Information</h3>
+
+<div class="field-group">
+  <%= f.label :title %>
+  <%= f.text_field :title, :class => 'text medium-field' %>
+  <div class="description">Appears throughout the System</div>
+</div>
+
+<div class="field-group">
+  <%= f.label :short_name %>
+  <%= f.text_field :short_name, :class => 'text medium-field' %>
+  <div class="description">Displayed on Reports</div>
+</div>
+
+<div class="field-group">
+  <%= f.label :year %>
+  <%= f.text_field :year, :class => 'text short-field' %>
+</div>
+
+<div class="aui-group">
+  <div class="aui-item">
+    <h3>Attendance Dates</h3>
+
+    <div class="field-group">
+      <%= f.label :start_date %>
+      <%= f.text_field :start_date, :class => 'text medium-field', :placeholder => 'MM/DD/YYYY' %>
+      <div class="description">Displayed on Reports</div>
+    </div>
+
+    <div class="field-group">
+      <%= f.label :end_date %>
+      <%= f.text_field :end_date, :class => 'text medium-field', :placeholder => 'MM/DD/YYYY' %>
+    </div>
+  </div>
+  <div class="aui-item">
+    <h3>Grade Posting Dates</h3>
+    <div class="field-group">
+      <%= f.label :grade_start_date %>
+      <%= f.text_field :grade_start_date, :class => 'text medium-field', :placeholder => 'MM/DD/YYYY' %>
+    </div>
+
+    <div class="field-group">
+      <%= f.label :grade_end_date %>
+      <%= f.text_field :grade_end_date, :class => 'text medium-field', :placeholder => 'MM/DD/YYYY' %>
+    </div>
+  </div>
+  <div class="aui-item">
+    <h3>Admission Dates</h3>
+
+    <div class="field-group">
+      <%= f.label :reg_start_date %>
+      <%= f.text_field :reg_start_date, :class => 'text medium-field', :placeholder => 'MM/DD/YYYY' %>
+      <div class="description">Displayed on Reports</div>
+    </div>
+
+    <div class="field-group">
+      <%= f.label :reg_end_date %>
+      <%= f.text_field :reg_end_date, :class => 'text medium-field', :placeholder => 'MM/DD/YYYY' %>
+    </div>
+  </div>
+</div>

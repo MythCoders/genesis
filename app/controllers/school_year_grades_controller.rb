@@ -6,6 +6,7 @@ class SchoolYearGradesController < ApplicationController
   end
 
   def new
+    @model = SchoolYearGrade.new(:school_id => params[:school_id])
   end
 
   def edit

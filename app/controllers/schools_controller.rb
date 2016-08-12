@@ -5,7 +5,7 @@ class SchoolsController < ApplicationController
 
   def show
     flash[:info] = 'Works?'
-    @model = School.find(params[:id])
+    @model = School.includes(:school_years).find(params[:id])
   end
 
   def new

@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   resources :settings
 
   resources :schools do
-    resources :school_year_grades
+    resources :school_years
   end
 
   resources :students

@@ -15,7 +15,19 @@
 <div class="aui-page-panel">
   <div class="aui-page-panel-inner">
     <div class="aui-page-panel-content">
-
+      <div class="aui-group-split">
+        <div class="aui-item">
+          <h2>School Years</h2>
+          <% if @model.school_years.any? %>
+              <p>Yes</p>
+          <% else %>
+              <%=	link_to 'This school has not yet been in session. Create a new School Year now!', new_school_school_year_path(@model) %>
+          <% end %>
+        </div>
+        <div class="aui-item">
+          <p>Hello Dave!</p>
+        </div>
+      </div>
     </div>
   </div>
 </div>
