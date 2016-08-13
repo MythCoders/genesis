@@ -4,9 +4,9 @@
       <ol class="aui-nav aui-nav-horizontal">
         <li>
           <h1>
-            <%= @model.name %>
+            <%= @school.name %>
           </h1><br/>
-          <%= format_address(@model.address, nil, @model.city, @model.state, @model.zip_code).html_safe %>
+          <%= format_address(@school.address, nil, @school.city, @school.state, @school.zip_code).html_safe %>
         </li>
       </ol>
     </div>
@@ -18,7 +18,7 @@
       <div class="aui-group">
         <div class="aui-item">
           <h2>School Years</h2>
-          <% if @model.school_years.any? %>
+          <% if @school.school_years.any? %>
               <table class="aui">
                 <thead>
                 <tr>
@@ -29,10 +29,10 @@
                   <th>Course Registration Period</th>
                 </tr>
                 </thead>
-                <% @model.school_years.each do |sy| %>
+                <% @school.school_years.each do |sy| %>
                     <tr>
                       <td>
-                        <%= link_to sy.year, edit_school_school_year_path(sy) %>
+                        <%= link_to sy.year, edit_school_school_year_path(@school, sy) %>
                       </td>
                       <td>
                         <%= sy.title %>
@@ -50,10 +50,10 @@
                 <% end %>
               </table>
 
-              <%= link_to 'Add School Year', new_school_school_year_path(@model) %>
+              <%= link_to 'Add School Year', new_school_school_year_path(@school) %>
 
           <% else %>
-              <%= link_to 'This school has not yet been in session. Create a new School Year now!', new_school_school_year_path(@model) %>
+              <%= link_to 'This school has not yet been in session. Create a new School Year now!', new_school_school_year_path(@school) %>
           <% end %>
         </div>
         <div class="aui-item">

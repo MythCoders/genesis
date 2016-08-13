@@ -18,10 +18,11 @@ class Student < ApplicationRecord
 
   def current_grade(format = 'long')
     if self.enrollments.any?
-      if self.enrollments.count == 1
-        grade = self.enrollments.first.school_year_grade.grade
+      current_enrollments = self.enrollments.where('admission_date <= ? and withdraw_date is null or withdraw_date >= ?', Date.today, Date.today)
+      if current_enrollments.count == 1
+        return format == 'long' ? '12th Grade' : '12'
       else
-        grade = self.enrollments.first.school_year_grade.grade
+        return '!?!'
       end
       format == 'long' ? grade.title : grade.short_name
     else

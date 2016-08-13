@@ -213,4 +213,10 @@ module ApplicationHelper
     html.html_safe
   end
 
+  def render_school_dropdown
+    html = ''
+
+    html
+  end
+
 end

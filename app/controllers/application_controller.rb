@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
   before_action :authenticate_user!
   before_action :check_user_profile
   before_action :populate_session_variables
-
+  
   def populate_session_variables
 
     #TODO: Change logic to reflect schools/years current users has access to

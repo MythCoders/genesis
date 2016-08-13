@@ -1,7 +1,7 @@
 class Enrollment < ApplicationRecord
 
   belongs_to :student
-  belongs_to :school_year
+  #belongs_to :school
   belongs_to :school_year_grade
   belongs_to :admission_code, :class_name => 'EnrollmentCode'
   belongs_to :withdraw_code, :class_name => 'EnrollmentCode'

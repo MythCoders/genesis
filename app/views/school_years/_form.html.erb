@@ -1,31 +1,46 @@
 <%= f.hidden_field :school_id %>
 
-<h3>Basic Information</h3>
-
-<div class="field-group">
-  <%= f.label :year %>
-  <%= f.text_field :year, :class => 'text short-field' %>
-  <div class="description">Usually the first part of the starting calendar year</div>
-</div>
-
-<div class="field-group">
-  <%= f.label :title %>
-  <%= f.text_field :title, :class => 'text medium-field' %>
-  <div class="description">Displayed through out the system</div>
-</div>
-
-<div class="field-group">
-  <%= f.label :short_name %>
-  <%= f.text_field :short_name, :class => 'text medium-field' %>
-  <div class="description">Displayed on system reports and reports cards</div>
-</div>
-
 <div class="aui-group">
   <div class="aui-item">
+    <h3>Basic Information</h3>
+
+    <div class="field-group">
+      <%= f.label :year %>
+      <%= f.text_field :year, :class => 'text short-field' %>
+      <div class="description">Usually the first part of the starting calendar year</div>
+    </div>
+
+    <div class="field-group">
+      <%= f.label :title %>
+      <%= f.text_field :title, :class => 'text medium-field' %>
+      <div class="description">Displayed through out the system</div>
+    </div>
+
+    <div class="field-group">
+      <%= f.label :short_name %>
+      <%= f.text_field :short_name, :class => 'text medium-field' %>
+      <div class="description">Displayed on system reports and reports cards</div>
+    </div>
+
+    <div class="field-group">
+      <%= f.label :grades_being_taught_this_year %>
+      <% @grades.each do |g| %>
+          <div class="checkbox">
+            <input class="checkbox" type="checkbox" name="checkBoxTwo" id="checkBoxTwo">
+            <label for="checkBoxTwo"><%= g.title %></label>
+          </div>
+      <% end %>
+    </div>
+  </div>
+  <div class="aui-item">
     <h3>
-      Attendance Dates <br/>
-      <small>Dates that attendance will be taken</small>
+      Dates
     </h3>
+
+    <div class="field-group">
+      <%= f.label :attendance, {:style => 'font-weight: bold;'} %>
+      <div class="description">Dates that attendance will be taken</div>
+    </div>
 
     <div class="field-group">
       <%= f.label :start_date %>
@@ -36,35 +51,34 @@
       <%= f.label :end_date %>
       <%= f.text_field :end_date, :class => 'text medium-field', :placeholder => 'MM/DD/YYYY' %>
     </div>
-  </div>
-  <div class="aui-item">
-    <h3>
-      Grade Posting Dates <br/>
-      <small>When course instructors can post final to progress reports and report cards</small>
-    </h3>
+
     <div class="field-group">
-      <%= f.label :grade_start_date %>
+      <%= f.label :grade_posting, {:style => 'font-weight: bold;'} %>
+      <div class="description">When course instructors can post final to <br/> progress reports and report cards</div>
+    </div>
+
+    <div class="field-group">
+      <%= f.label :start_date %>
       <%= f.text_field :grade_start_date, :class => 'text medium-field', :placeholder => 'MM/DD/YYYY' %>
     </div>
 
     <div class="field-group">
-      <%= f.label :grade_end_date %>
+      <%= f.label :end_date %>
       <%= f.text_field :grade_end_date, :class => 'text medium-field', :placeholder => 'MM/DD/YYYY' %>
     </div>
-  </div>
-  <div class="aui-item">
-    <h3>
-      Admission Dates <br/>
-      <small>When students are allowed to admit into a school</small>
-    </h3>
 
     <div class="field-group">
-      <%= f.label :reg_start_date %>
+      <%= f.label :admission_window, {:style => 'font-weight: bold;'} %>
+      <div class="description">When students are allowed to admit into a school</div>
+    </div>
+
+    <div class="field-group">
+      <%= f.label :start_date %>
       <%= f.text_field :reg_start_date, :class => 'text medium-field', :placeholder => 'MM/DD/YYYY' %>
     </div>
 
     <div class="field-group">
-      <%= f.label :reg_end_date %>
+      <%= f.label :end_date %>
       <%= f.text_field :reg_end_date, :class => 'text medium-field', :placeholder => 'MM/DD/YYYY' %>
     </div>
   </div>
