@@ -15,13 +15,45 @@
 <div class="aui-page-panel">
   <div class="aui-page-panel-inner">
     <div class="aui-page-panel-content">
-      <div class="aui-group-split">
+      <div class="aui-group">
         <div class="aui-item">
           <h2>School Years</h2>
           <% if @model.school_years.any? %>
-              <p>Yes</p>
+              <table class="aui">
+                <thead>
+                <tr>
+                  <th>Year</th>
+                  <th>Name</th>
+                  <th>Attendance Period</th>
+                  <th>Grading Posting Period</th>
+                  <th>Course Registration Period</th>
+                </tr>
+                </thead>
+                <% @model.school_years.each do |sy| %>
+                    <tr>
+                      <td>
+                        <%= link_to sy.year, edit_school_school_year_path(sy) %>
+                      </td>
+                      <td>
+                        <%= sy.title %>
+                      </td>
+                      <td>
+                        <%= display_thur_dates(sy.start_date, sy.end_date) %>
+                      </td>
+                      <td>
+                        <%= display_thur_dates(sy.grade_start_date, sy.grade_end_date) %>
+                      </td>
+                      <td>
+                        <%= display_thur_dates(sy.reg_start_date, sy.reg_end_date) %>
+                      </td>
+                    </tr>
+                <% end %>
+              </table>
+
+              <%= link_to 'Add School Year', new_school_school_year_path(@model) %>
+
           <% else %>
-              <%=	link_to 'This school has not yet been in session. Create a new School Year now!', new_school_school_year_path(@model) %>
+              <%= link_to 'This school has not yet been in session. Create a new School Year now!', new_school_school_year_path(@model) %>
           <% end %>
         </div>
         <div class="aui-item">

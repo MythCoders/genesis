@@ -4,7 +4,7 @@
       <ol class="aui-nav aui-nav-horizontal">
         <li>
           <h1>
-            New School Year for <%= @school_year.school.name %>
+            Edit School Year for <%= @school_year.school.name %>
           </h1>
         </li>
       </ol>
@@ -14,14 +14,14 @@
 <div class="aui-page-panel">
   <div class="aui-page-panel-inner">
     <div class="aui-page-panel-content">
-      <%= form_for :school_year, url: school_school_years_path, :html => { :class => 'aui' } do |f| %>
+      <%= form_for :school_year, url: school_school_year_path(@school_year), method: :patch, :html => { :class => 'aui' } do |f| %>
 
           <%= error_messages_for 'school_year' %>
           <%= render :partial => 'school_years/form', :locals => {:f => f} %>
 
           <div class="buttons-container">
             <div class="buttons">
-              <%= f.submit 'Create', :class => 'button submit' %>
+              <%= f.submit 'Save Changes', :class => 'button submit' %>
               <%= link_to 'Cancel', school_path(@school_year.school), :class => 'cancel' %>
             </div>
           </div>

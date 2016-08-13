@@ -177,4 +177,40 @@ module ApplicationHelper
     "<a href=\"http://bing.com/maps?q=#{parameters}\" target=\"_blank\">#{formatted_address}</a>"
   end
 
+  def display_date(value, return_if_nil = '')
+    if value.nil?
+      return_if_nil
+    else
+      value.strftime('%x')
+    end
+  end
+
+  def display_thur_dates(date1, date2, separator = '-')
+    if date1.nil? and date2.nil?
+      ''
+    else
+      "#{display_date(date1, '?')} #{separator} #{display_date(date2, '?')}"
+    end
+  end
+
+  # Render the error messages for the given objects
+  def error_messages_for(*objects)
+    objects = objects.map {|o| o.is_a?(String) ? instance_variable_get("@#{o}") : o}.compact
+    errors = objects.map {|o| o.errors.full_messages}.flatten
+    render_error_messages(errors)
+  end
+
+  # Renders a list of error messages
+  def render_error_messages(errors)
+    html = ''
+    if errors.present?
+      html << "<div id='errorExplanation'><ul>\n"
+      errors.each do |error|
+        html << "<li>#{h error}</li>\n"
+      end
+      html << "</ul></div>\n"
+    end
+    html.html_safe
+  end
+
 end

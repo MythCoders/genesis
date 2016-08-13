@@ -1,30 +1,35 @@
+<%= f.hidden_field :school_id %>
+
 <h3>Basic Information</h3>
+
+<div class="field-group">
+  <%= f.label :year %>
+  <%= f.text_field :year, :class => 'text short-field' %>
+  <div class="description">Usually the first part of the starting calendar year</div>
+</div>
 
 <div class="field-group">
   <%= f.label :title %>
   <%= f.text_field :title, :class => 'text medium-field' %>
-  <div class="description">Appears throughout the System</div>
+  <div class="description">Displayed through out the system</div>
 </div>
 
 <div class="field-group">
   <%= f.label :short_name %>
   <%= f.text_field :short_name, :class => 'text medium-field' %>
-  <div class="description">Displayed on Reports</div>
-</div>
-
-<div class="field-group">
-  <%= f.label :year %>
-  <%= f.text_field :year, :class => 'text short-field' %>
+  <div class="description">Displayed on system reports and reports cards</div>
 </div>
 
 <div class="aui-group">
   <div class="aui-item">
-    <h3>Attendance Dates</h3>
+    <h3>
+      Attendance Dates <br/>
+      <small>Dates that attendance will be taken</small>
+    </h3>
 
     <div class="field-group">
       <%= f.label :start_date %>
       <%= f.text_field :start_date, :class => 'text medium-field', :placeholder => 'MM/DD/YYYY' %>
-      <div class="description">Displayed on Reports</div>
     </div>
 
     <div class="field-group">
@@ -33,7 +38,10 @@
     </div>
   </div>
   <div class="aui-item">
-    <h3>Grade Posting Dates</h3>
+    <h3>
+      Grade Posting Dates <br/>
+      <small>When course instructors can post final to progress reports and report cards</small>
+    </h3>
     <div class="field-group">
       <%= f.label :grade_start_date %>
       <%= f.text_field :grade_start_date, :class => 'text medium-field', :placeholder => 'MM/DD/YYYY' %>
@@ -45,12 +53,14 @@
     </div>
   </div>
   <div class="aui-item">
-    <h3>Admission Dates</h3>
+    <h3>
+      Admission Dates <br/>
+      <small>When students are allowed to admit into a school</small>
+    </h3>
 
     <div class="field-group">
       <%= f.label :reg_start_date %>
       <%= f.text_field :reg_start_date, :class => 'text medium-field', :placeholder => 'MM/DD/YYYY' %>
-      <div class="description">Displayed on Reports</div>
     </div>
 
     <div class="field-group">

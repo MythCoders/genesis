@@ -7,4 +7,7 @@ class SchoolYear < ApplicationRecord
   has_many :school_periods
   #has_and_belongs_to_many :report_card_grade_scales
 
+  validates :title, length: {maximum: 30}, presence: true
+  validates :short_name, length: {maximum: 5}, uniqueness: true, presence: true
+
 end
