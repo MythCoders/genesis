@@ -11,8 +11,9 @@
 <div class="aui-page-panel">
   <div class="aui-page-panel-inner">
     <div class="aui-page-panel-content">
-      <%= form_for @model, url: courses_path, :html => { :class => 'aui' } do |f| %>
+      <%= form_for @course, url: courses_path, :html => { :class => 'aui' } do |f| %>
 
+          <%= error_messages_for 'course' %>
           <%= render :partial => 'courses/form', :locals => { :f => f } %>
 
           <div class="buttons-container">

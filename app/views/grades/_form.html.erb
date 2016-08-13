@@ -15,10 +15,10 @@
 
 <div class="field-group">
   <%= f.label :next_grade_id %>
-  <%= f.select :next_grade_id, options_from_collection_for_select(@grades, :id, :title, @model.next_grade_id), {include_blank: '- N/A -'}, {:class => 'select'} %>
+  <%= f.select :next_grade_id, options_from_collection_for_select(@grades, :id, :title, @grade.next_grade_id), {include_blank: '- N/A -'}, {:class => 'select'} %>
 </div>
 
 <div class="field-group">
   <%= f.label :previous_grade_id %>
-  <%= f.select :previous_grade_id, options_from_collection_for_select(@grades, :id, :title, @model.previous_grade_id), {include_blank: '- N/A -'}, {:class => 'select'} %>
+  <%= f.select :previous_grade_id, options_from_collection_for_select(@grades, :id, :title, @grade.previous_grade_id), {include_blank: '- N/A -'}, {:class => 'select'} %>
 </div>

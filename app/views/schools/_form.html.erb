@@ -10,7 +10,7 @@
 
 <div class="field-group">
   <%= f.label :district_id %>
-  <%= f.select :district_id, options_from_collection_for_select(@districts, :id, :name, @model.district_id), {include_blank: '- Select -'}, {:class => 'select'} %>
+  <%= f.select :district_id, options_from_collection_for_select(@districts, :id, :name, @school.district_id), {include_blank: '- Select -'}, {:class => 'select'} %>
 </div>
 
 <div class="field-group">

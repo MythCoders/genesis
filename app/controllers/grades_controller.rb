@@ -4,19 +4,19 @@ class GradesController < ApplicationController
   end
 
   def edit
-    @model = Grade.find(params[:id])
+    @grade = Grade.find(params[:id])
     @grades = Grade.order(:sort_order).all
   end
 
   def new
-    @model = Grade.new
+    @grade = Grade.new
     @grades = Grade.order(:sort_order).all
   end
 
   def create
-    @model = Grade.new(grade_params)
+    @grade = Grade.new(grade_params)
 
-    if @model.save
+    if @grade.save
       flash[:success] = 'Your record was created successfully!'
       redirect_to index
     else
@@ -26,9 +26,9 @@ class GradesController < ApplicationController
   end
 
   def update
-    @model = Grade.find(params[:id])
+    @grade = Grade.find(params[:id])
 
-    if @model.update(grade_params)
+    if @grade.update(grade_params)
       flash[:success] = ''
       redirect_to index
     else
@@ -39,6 +39,6 @@ class GradesController < ApplicationController
   private
 
   def grade_params
-    params.require(:model).permit(:id, :title, :short_name, :sort_order, :next_grade_id, :previous_grade_id)
+    params.require(:grade).permit(:id, :title, :short_name, :sort_order, :next_grade_id, :previous_grade_id)
   end
 end

@@ -28,7 +28,7 @@
         </thead>
         <tbody>
         <tr>
-          <% @model.each do |s| %>
+          <% @schools.each do |s| %>
             <tr>
               <td><%= link_to s.short_name, school_path(s) %></td>
               <th><%= s.district.short_name %></th>

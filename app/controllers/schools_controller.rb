@@ -1,46 +1,48 @@
 class SchoolsController < ApplicationController
   def index
-    @model = School.includes(:district).all
+    @schools = School.includes(:district).all
   end
 
   def show
     flash[:info] = 'Works?'
-    @model = School.includes(:school_years).find(params[:id])
+    @school = School.includes(:school_years).find(params[:id])
   end
 
   def new
-    @model = School.new
+    @school = School.new
     @districts = District.order(:name).select('id, name, short_name')
   end
 
   def create
-    @model = School.new(school_params)
+    @school = School.new(school_params)
 
-    if @model.save
-      redirect_to @model
+    if @school.save
+      redirect_to @school
     else
+      @districts = District.order(:name).select('id, name, short_name')
       render 'new'
     end
   end
 
   def edit
-    @model = School.find(params[:id])
+    @school = School.find(params[:id])
     @districts = District.order(:name).select('id, name, short_name')
   end
 
   def update
-    @model = School.find(params[:id])
+    @school = School.find(params[:id])
 
-    if @model.update(school_params)
-      redirect_to @model
+    if @school.update(school_params)
+      redirect_to @school
     else
+      @districts = District.order(:name).select('id, name, short_name')
       render 'edit'
     end
   end
 
   def destroy
-    @model = School.find(params[:id])
-    @model.destroy
+    @school = School.find(params[:id])
+    @school.destroy
 
     redirect_to school_path
   end
@@ -48,6 +50,6 @@ class SchoolsController < ApplicationController
   private
 
   def school_params
-    params.require(:model).permit(:id, :name, :short_name, :district_id, :address, :city, :state, :zip_code, :phone_number, :principals_name)
+    params.require(:school).permit(:id, :name, :short_name, :district_id, :address, :city, :state, :zip_code, :phone_number, :principals_name)
   end
 end

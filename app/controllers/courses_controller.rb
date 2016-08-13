@@ -4,11 +4,11 @@ class CoursesController < ApplicationController
   end
 
   def show
-    @model = Course.find(params[:id])
+    @course = Course.find(params[:id])
   end
 
   def new
-    @model = Course.new
+    @course = Course.new
     @course_cats = CourseCategory.order(:title).select('id, title, short_name')
   end
 
@@ -23,7 +23,7 @@ class CoursesController < ApplicationController
   end
 
   def edit
-    @model = Course.find(params[:id])
+    @course = Course.find(params[:id])
   end
 
   def update
