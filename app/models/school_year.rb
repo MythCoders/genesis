@@ -1,7 +1,8 @@
 class SchoolYear < ApplicationRecord
 
   belongs_to :school
-  has_many :grades, :through =>  :school_year_grades
+  has_many :grades, through: :school_year_grades
+  has_many :school_year_grades
   has_many :school_semesters
   has_many :enrollments
   has_many :school_periods

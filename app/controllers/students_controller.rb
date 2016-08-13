@@ -25,7 +25,7 @@ class StudentsController < ApplicationController
     @student = Student.new
     @student.enrollments << Enrollment.new
 
-    @grades = SchoolYearGrade.where(school_year_id: 1)
+    @grades = SchoolYear.find(1).grades
     @admission_codes = EnrollmentCode.where(:is_admission => true)
   end
 

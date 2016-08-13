@@ -25,7 +25,7 @@
     <div id="admission-information">
       <div class="field-group">
         <%= ff.label :grade %>
-        <%= ff.select :school_year_grade_id, options_from_collection_for_select(@grades, :id, :grade ), {include_blank: '- Select -'}, {:class => 'select'} %>
+        <%= ff.select :school_year_grade_id, options_from_collection_for_select(@grades, :id, :title), {include_blank: '- N/A -'}, {:class => 'select'} %>
       </div>
 
       <div class="field-group">
