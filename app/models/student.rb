@@ -20,9 +20,10 @@ class Student < ApplicationRecord
     if self.enrollments.any?
       current_enrollments = self.enrollments.where('admission_date <= ? and withdraw_date is null or withdraw_date >= ?', Date.today, Date.today)
       if current_enrollments.count == 1
-        return format == 'long' ? '12th Grade' : '12'
+        grade = current_enrollments.first.school_year_grade.grade
       else
-        return '!?!'
+        logger.warn('Student with multiple active enrollments ?', self.id)
+        return 'long' ? 'MULTIPLE SCHOOLS!' : '!?!'
       end
       format == 'long' ? grade.title : grade.short_name
     else

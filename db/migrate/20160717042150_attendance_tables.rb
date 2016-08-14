@@ -13,15 +13,7 @@ class AttendanceTables < ActiveRecord::Migration[5.0]
       t.string :block
       t.integer :minutes
       t.timestamps
-    end
-
-    create_table :attendance do |t|
-      t.integer :attendance_calendar_day_id
-      t.integer :attendance_code_id, :null => false
-      t.integer :student_id #change this later?
-      t.string :comment, :length => 500
-      t.integer :minutes_present
-      t.timestamps
+      t.foreign_key :attendance_calendars, column: :attendance_calendar_id
     end
 
     create_table :attendance_codes do |t|
@@ -33,6 +25,17 @@ class AttendanceTables < ActiveRecord::Migration[5.0]
       t.boolean :default_for_teachers, :null => false
       t.boolean :is_default_absent, :null => false
       t.timestamps
+    end
+
+    create_table :attendance do |t|
+      t.integer :attendance_calendar_day_id
+      t.integer :attendance_code_id, :null => false
+      t.integer :student_id #change this later?
+      t.string :comment, :length => 500
+      t.integer :minutes_present
+      t.timestamps
+      t.foreign_key :attendance_calendar_days, column: :attendance_calendar_day_id
+      t.foreign_key :attendance_codes, column: :attendance_code_id
     end
   end
 end

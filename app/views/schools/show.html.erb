@@ -17,8 +17,22 @@
     <div class="aui-page-panel-content">
       <div class="aui-group">
         <div class="aui-item">
+          <h2>Information</h2>
+          <table class="aui">
+            <tr>
+              <td style="width: 25%">Active Staff</td>
+              <td>0</td>
+            </tr>
+            <tr>
+              <td>Enrolled Students</td>
+              <td>0</td>
+            </tr>
+          </table>
+        </div>
+        <div class="aui-item">
           <h2>School Years</h2>
           <% if @school.school_years.any? %>
+
               <table class="aui">
                 <thead>
                 <tr>
@@ -50,14 +64,13 @@
                 <% end %>
               </table>
 
-              <%= link_to 'Add School Year', new_school_school_year_path(@school) %>
+              <br/>
+
+              <%= link_to 'Add School Year', new_school_school_year_path(@school), :class => 'aui-button aui-button-subtle' %>
 
           <% else %>
               <%= link_to 'This school has not yet been in session. Create a new School Year now!', new_school_school_year_path(@school) %>
           <% end %>
-        </div>
-        <div class="aui-item">
-          <p>Hello Dave!</p>
         </div>
       </div>
     </div>

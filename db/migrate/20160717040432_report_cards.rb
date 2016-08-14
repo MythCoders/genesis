@@ -20,6 +20,7 @@ class ReportCards < ActiveRecord::Migration[5.0]
       t.decimal :weighted_gpa_scale, :null => true
       t.integer :report_card_grade_scale_id, :null => false
       t.timestamps
+      t.foreign_key :report_card_grade_scales, column: :report_card_grade_scale_id
     end
   end
 end

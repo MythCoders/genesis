@@ -23,6 +23,7 @@ class Schools < ActiveRecord::Migration[5.0]
       t.string :principals_name, :limit => 50
       t.integer :district_id
       t.timestamps
+      t.foreign_key :districts, column: :district_id
     end
 
     create_table :school_years do |t|
@@ -37,19 +38,24 @@ class Schools < ActiveRecord::Migration[5.0]
       t.date :reg_start_date
       t.date :reg_end_date
       t.timestamps
+      t.foreign_key :schools, column: :school_id
     end
 
     create_table :school_year_grades do |t|
       t.integer :school_year_id
       t.integer :grade_id
       t.timestamps
+      t.foreign_key :school_years, column: :school_year_id
+      t.foreign_key :grades, column: :grade_id
     end
 
-    create_table :school_year_mark_scales do |t|
+    create_table :school_year_grade_scales do |t|
       t.integer :school_year_id
-      t.integer :mark_scale_id
+      t.integer :report_card_grade_scale_id
       t.boolean :is_default, :default => true
       t.timestamps
+      t.foreign_key :school_years, column: :school_year_id
+      t.foreign_key :report_card_grade_scales, column: :report_card_grade_scale_id
     end
 
     create_table :school_semesters do |t|
@@ -64,6 +70,7 @@ class Schools < ActiveRecord::Migration[5.0]
       t.date :reg_start_date
       t.date :reg_end_date
       t.timestamps
+      t.foreign_key :school_years, column: :school_year_id
     end
 
     create_table :school_quarters do |t|
@@ -78,6 +85,7 @@ class Schools < ActiveRecord::Migration[5.0]
       t.date :reg_start_date
       t.date :reg_end_date
       t.timestamps
+      t.foreign_key :school_semesters, column: :school_semester_id
     end
 
     create_table :school_progress_periods do |t|
@@ -92,6 +100,7 @@ class Schools < ActiveRecord::Migration[5.0]
       t.date :reg_start_date
       t.date :reg_end_date
       t.timestamps
+      t.foreign_key :school_quarters, column: :school_quarter_id
     end
 
     create_table :school_periods do |t|
@@ -118,6 +127,24 @@ class Schools < ActiveRecord::Migration[5.0]
       t.time :start_time_s
       t.time :end_time_s
       t.timestamps
+      t.foreign_key :school_years, column: :school_year_id
+    end
+
+    create_table :enrollments do |t|
+      t.integer :student_id, :null => false
+      t.integer :school_year_grade_id, :null => false
+      t.integer :admission_code_id, :null => false
+      t.date :admission_date, :null => false
+      t.integer :withdraw_code_id, :null => true
+      t.date :withdraw_date
+      t.integer :next_school_id
+      t.timestamps
+
+      t.foreign_key :students, :column => :student_id
+      t.foreign_key :enrollment_codes, :column => :admission_code_id
+      t.foreign_key :school_year_grades, :column => :school_year_grade_id
+      t.foreign_key :enrollment_codes, :column => :withdraw_code_id
+      t.foreign_key :schools, :column => :next_school_id
     end
   end
 end

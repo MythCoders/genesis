@@ -7,4 +7,12 @@
     <%= label_tag :name %>
     <%= @student.full_name %>
   </div>
+  <div class="field-group">
+    <%= label_tag :sex %>
+    <%= @student.sex %>
+  </div>
+  <div class="field-group">
+    <%= label_tag :date_of_birth %>
+    <%= display_date(@student.date_of_birth) %>
+  </div>
 </form>

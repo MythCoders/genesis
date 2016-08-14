@@ -5,7 +5,7 @@ module StudentHelper
             {:name => 't2', :partial => 'students/address', :label => 'Address & Contacts'},
             {:name => 't3', :partial => 'students/custom', :label => 'Medical'},
             {:name => 't4', :partial => 'students/notes', :label => 'Notes'},
-            {:name => 't5', :partial => 'students/info', :label => '?'}
+            {:name => 't5', :partial => 'students/custom', :label => '?'}
     ]
   end
 

@@ -22,6 +22,8 @@ class CoreTables < ActiveRecord::Migration[5.0]
       t.integer :next_grade_id, :null => true
       t.integer :previous_grade_id, :null => true
       t.timestamps
+      t.foreign_key :grades, :column => :next_grade_id
+      t.foreign_key :grades, :column => :previous_grade_id
     end
 
     create_table :students do |t|
@@ -32,17 +34,6 @@ class CoreTables < ActiveRecord::Migration[5.0]
       t.string :suffix, :limit => 5
       t.string :sex, :limit => 1
       t.date :date_of_birth
-      t.timestamps
-    end
-
-    create_table :enrollments do |t|
-      t.integer :student_id, :null => false
-      t.integer :school_year_grade_id, :null => false
-      t.date :admission_date, :null => false
-      t.integer :admission_code_id, :null => false
-      t.date :withdraw_date
-      t.integer :withdraw_code_id
-      t.integer :next_school_id
       t.timestamps
     end
 

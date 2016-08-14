@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160807233838) do
+ActiveRecord::Schema.define(version: 20160814030755) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -64,7 +64,7 @@ ActiveRecord::Schema.define(version: 20160807233838) do
   create_table "courses", force: :cascade do |t|
     t.string   "title"
     t.string   "short_name"
-    t.integer  "course_category_id"
+    t.integer  "course_category_id", null: false
     t.string   "description"
     t.datetime "created_at",         null: false
     t.datetime "updated_at",         null: false
@@ -127,10 +127,10 @@ ActiveRecord::Schema.define(version: 20160807233838) do
   create_table "enrollments", force: :cascade do |t|
     t.integer  "student_id",           null: false
     t.integer  "school_year_grade_id", null: false
-    t.date     "admission_date",       null: false
     t.integer  "admission_code_id",    null: false
-    t.date     "withdraw_date"
+    t.date     "admission_date",       null: false
     t.integer  "withdraw_code_id"
+    t.date     "withdraw_date"
     t.integer  "next_school_id"
     t.datetime "created_at",           null: false
     t.datetime "updated_at",           null: false
@@ -249,19 +249,19 @@ ActiveRecord::Schema.define(version: 20160807233838) do
     t.datetime "updated_at",       null: false
   end
 
+  create_table "school_year_grade_scales", force: :cascade do |t|
+    t.integer  "school_year_id"
+    t.integer  "report_card_grade_scale_id"
+    t.boolean  "is_default",                 default: true
+    t.datetime "created_at",                                null: false
+    t.datetime "updated_at",                                null: false
+  end
+
   create_table "school_year_grades", force: :cascade do |t|
     t.integer  "school_year_id"
     t.integer  "grade_id"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
-  end
-
-  create_table "school_year_mark_scales", force: :cascade do |t|
-    t.integer  "school_year_id"
-    t.integer  "mark_scale_id"
-    t.boolean  "is_default",     default: true
-    t.datetime "created_at",                    null: false
-    t.datetime "updated_at",                    null: false
   end
 
   create_table "school_years", force: :cascade do |t|
@@ -342,4 +342,26 @@ ActiveRecord::Schema.define(version: 20160807233838) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
+  add_foreign_key "attendance", "attendance_calendar_days"
+  add_foreign_key "attendance", "attendance_codes"
+  add_foreign_key "attendance_calendar_days", "attendance_calendars"
+  add_foreign_key "courses", "course_categories"
+  add_foreign_key "enrollments", "enrollment_codes", column: "admission_code_id"
+  add_foreign_key "enrollments", "enrollment_codes", column: "withdraw_code_id"
+  add_foreign_key "enrollments", "school_year_grades"
+  add_foreign_key "enrollments", "schools", column: "next_school_id"
+  add_foreign_key "enrollments", "students"
+  add_foreign_key "grades", "grades", column: "next_grade_id"
+  add_foreign_key "grades", "grades", column: "previous_grade_id"
+  add_foreign_key "report_card_grades", "report_card_grade_scales"
+  add_foreign_key "school_periods", "school_years"
+  add_foreign_key "school_progress_periods", "school_quarters"
+  add_foreign_key "school_quarters", "school_semesters"
+  add_foreign_key "school_semesters", "school_years"
+  add_foreign_key "school_year_grade_scales", "report_card_grade_scales"
+  add_foreign_key "school_year_grade_scales", "school_years"
+  add_foreign_key "school_year_grades", "grades"
+  add_foreign_key "school_year_grades", "school_years"
+  add_foreign_key "school_years", "schools"
+  add_foreign_key "schools", "districts"
 end
