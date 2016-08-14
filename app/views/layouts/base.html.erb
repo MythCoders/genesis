@@ -40,14 +40,7 @@
 <script type="application/javascript">
   <% flash.each do |name, msg| %>
   <% if msg.is_a?(String) %>
-//  var myFlag = AJS.flag({
-//    type: '<%= name %>',
-//    title: 'Issue ADG-745 has been created.',
-//    body: '<ul class="aui-nav-actions-list">' +
-//    '<li><a href="#">View issue</a></li>' +
-//    '<li><a href="#">Add to sprint</a></li>' +
-//    '</ul>'
-//  });
+    var flg = AJS.flag({type: '<%= name %>',title: 'Alert...',body: '<%= msg %>'});
   <% end %>
   <% end %>
 </script>

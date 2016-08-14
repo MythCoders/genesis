@@ -4,12 +4,20 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   before_action :authenticate_user!
-  before_action :check_user_profile
+  before_action :check_params
   before_action :populate_session_variables
-  
-  def populate_session_variables
 
-    #reset_session
+  def check_params
+    if params.has_key?(:frc_clr_ses)
+      flash[:success] = 'Session cleared'
+      reset_session
+    end
+    if params.has_key?(:frc_sudo_mode)
+      flash[:success] = 'Sudo'
+    end
+  end
+
+  def populate_session_variables
 
     if session['school_id'].nil? or session['school_id'] == 0
 
@@ -18,8 +26,9 @@ class ApplicationController < ActionController::Base
       else
         session['school_id'] = 0
       end
+    end
 
-    else
+    if session['school_id'] != 0
       yrs = SchoolYear.order(:year).where(:school_id => session['school_id'])
 
       if yrs.any?
@@ -27,17 +36,8 @@ class ApplicationController < ActionController::Base
       else
         session['school_year_id'] = 0
       end
-
     end
 
-  end
-
-  def check_user_profile
-    if user_signed_in?
-      if current_user.first_name.nil?
-        flash[:info] = 'Configure your profile!'
-      end
-    end
   end
 
 end

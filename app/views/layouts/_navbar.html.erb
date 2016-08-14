@@ -28,11 +28,11 @@
             </a>
           </li>
           <li>
-            <a href="#dropdown2-header9" aria-owns="dropdown2-header9" aria-haspopup="true" class="aui-dropdown2-trigger" aria-controls="dropdown2-header9" aria-expanded="false">
+            <a href="#options-dropdown" aria-owns="options-dropdown" aria-haspopup="true" class="aui-dropdown2-trigger" aria-controls="options-dropdown" aria-expanded="false">
               <span class='aui-icon aui-icon-small aui-iconfont-configure'></span>
             </a>
 
-            <div class="aui-dropdown2 aui-style-default " id="dropdown2-header9" aria-hidden="true">
+            <div class="aui-dropdown2 aui-style-default " id="options-dropdown" aria-hidden="true">
               <div class="aui-dropdown2-section">
                 <ul>
                   <% if current_user.is_admin? %>
@@ -57,6 +57,26 @@
               </div>
             </div>
           </li>
+
+          <% if Rails.env.development? %>
+
+              <li>
+                <a href="#dev-menu" aria-owns="dev-menu" aria-haspopup="true" class="aui-dropdown2-trigger" aria-controls="dev-menu" aria-expanded="false">
+                  <span class='aui-icon aui-icon-small aui-iconfont-devtools-side-diff'></span>
+                </a>
+
+                <div class="aui-dropdown2 aui-style-default " id="dev-menu" aria-hidden="true">
+                  <div class="aui-dropdown2-section">
+                    <ul>
+                      <li><%= link_to 'Clear Session', '?frc_clr_ses' %></li>
+                      <li><%= link_to 'Force Sudo Mode', '?frc_sudo_mode' %></li>
+                    </ul>
+                  </div>
+                </div>
+              </li>
+
+          <% end %>
+
       <% end %>
     </ul>
   </div>
