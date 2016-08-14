@@ -3,7 +3,7 @@ module Genesis
 
     VER_MAJOR = 0
     VER_MINOR = 1
-    VER_REVISION = 146
+    VER_REVISION = 147
 
     class << self
       def app_name; 'GeneSIS' end

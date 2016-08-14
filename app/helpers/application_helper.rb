@@ -216,6 +216,54 @@ module ApplicationHelper
   def render_school_dropdown
     html = ''
 
+    if session['school_id'] != 0
+      active_school = School.find(session['school_id'])
+
+      if School.any?
+
+        html << '<li><div>'
+        html << "<a href='#schools' aria-owns='schools' aria-haspopup='true' class='aui-dropdown2-trigger'>#{active_school.name}</a>"
+        html << '<div id="schools" class="aui-style-default aui-dropdown2">'
+        html << '<ul class="aui-list-truncate">'
+
+        schools = School.order(:name).all
+
+        schools.each do |s|
+          if s.id == active_school.id
+            html << "<li><a href='#' onclick=''><strong>#{s.name}</strong></a></li>"
+          else
+            html << "<li><a href='#' onclick=''>#{s.name}</a></li>"
+          end
+        end
+
+        html << '</ul></div></div></li>'
+
+      end
+
+      if !active_school.nil? and active_school.school_years.any?
+
+        active_year = SchoolYear.find(session['school_year_id'])
+
+        html << '<li><div>'
+        html << "<a href='#school-years' aria-owns='school-years' aria-haspopup='true' class='aui-dropdown2-trigger'>#{active_year.title}</a>"
+        html << '<div id="school-years" class="aui-style-default aui-dropdown2">'
+        html << '<ul class="aui-list-truncate">'
+
+        years = active_school.school_years.order(:year).all
+
+        years.each do |y|
+          if y.year == active_year.year
+            html << "<li><a href='#' onclick=''><strong>#{y.title}</strong></a></li>"
+          else
+            html << "<li><a href='#' onclick=''>#{y.title}</a></li>"
+          end
+        end
+
+        html << '</ul></div></div></li>'
+      end
+
+    end
+
     html
   end
 

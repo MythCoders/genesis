@@ -21,30 +21,7 @@
   <div class="aui-header-secondary">
     <ul class="aui-nav">
       <% if user_signed_in? %>
-          <li>
-            <div>
-              <a href="#schools" aria-owns="schools" aria-haspopup="true" class="aui-dropdown2-trigger">Sunnyside High School</a>
-
-              <div id="schools" class="aui-style-default aui-dropdown2">
-                <ul class="aui-list-truncate">
-                  <% session['schools'].each do |s| %>
-                      <li><a href="#" onclick="updateUserActiveItems();"><%= s['name'] %> </a></li>
-                  <% end %>
-                </ul>
-              </div>
-            </div>
-          </li>
-          <li>
-            <div>
-              <a href="#school-years" aria-owns="school-years" aria-haspopup="true" class="aui-dropdown2-trigger">2016-2017</a>
-              <div id="school-years" class="aui-style-default aui-dropdown2">
-                <ul class="aui-list-truncate">
-                  <li><a href="#">2015-2016</a></li>
-                  <li><a href="#"><strong>2016-2017</strong></a></li>
-                </ul>
-              </div>
-            </div>
-          </li>
+          <%= render_school_dropdown.html_safe %>
           <li>
             <a id="adv-search-link" style="cursor: pointer;">
               <span class='aui-icon aui-icon-small aui-iconfont-search'></span>

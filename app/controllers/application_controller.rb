@@ -9,28 +9,25 @@ class ApplicationController < ActionController::Base
   
   def populate_session_variables
 
-    #TODO: Change logic to reflect schools/years current users has access to
-    if session['districts'].nil?
-      session['districts'] = District.all
-    end
+    #reset_session
 
-    if session['schools'].nil?
-      session['schools'] = School.all
-    end
+    if session['school_id'].nil? or session['school_id'] == 0
 
-    if session['school_id'].nil?
       if School.any?
-        if session['schools'].nil?
-          session['schools'] = School.all
-        end
-        session['school_id'] = session['schools'].first()[:id]
+        session['school_id'] = School.first.id
       else
         session['school_id'] = 0
       end
-    end
 
-    if session['school_years'].nil?
-      session['school_years'] = SchoolYear.where(school_id: session['school_id'])
+    else
+      yrs = SchoolYear.order(:year).where(:school_id => session['school_id'])
+
+      if yrs.any?
+        session['school_year_id'] = yrs.first.id
+      else
+        session['school_year_id'] = 0
+      end
+
     end
 
   end

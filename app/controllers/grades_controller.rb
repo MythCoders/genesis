@@ -18,7 +18,7 @@ class GradesController < ApplicationController
 
     if @grade.save
       flash[:success] = 'Your record was created successfully!'
-      index
+      return index
     else
       @grades = Grade.order(:sort_order).all
       render 'new'
