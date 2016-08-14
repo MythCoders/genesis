@@ -14,31 +14,7 @@
         </div>
 
         <div class="aui-item">
-          <table class="aui">
-            <thead>
-            <tr>
-              <th colspan="2">SYSTEM VERSION INFORMATION</th>
-            </tr>
-            <tr>
-              <th>Component</th>
-              <th>Version</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-              <td>GeneSIS</td>
-              <td><%= Genesis::INFO.version %></td>
-            </tr>
-            <tr>
-              <td>Ruby</td>
-              <td><%= RUBY_VERSION %></td>
-            </tr>
-            <tr>
-              <td>Rails</td>
-              <td><%= Rails::VERSION::STRING %></td>
-            </tr>
-            </tbody>
-          </table>
+          <pre><%= Genesis::INFO.environment %></pre>
         </div>
       </div>
     </div>

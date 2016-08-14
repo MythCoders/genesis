@@ -15,9 +15,6 @@
   <%= javascript_include_tag 'application', media: 'all' %>
 </head>
 
-<link rel="stylesheet" href="//aui-cdn.atlassian.com/aui-adg/5.10.1/css/aui.min.css" media="all">
-<link rel="stylesheet" href="" media="all">
-
 <body class="aui-layout aui-theme-default">
 <div id="page">
   <div id="header" role="banner">
@@ -40,7 +37,7 @@
 <script type="application/javascript">
   <% flash.each do |name, msg| %>
   <% if msg.is_a?(String) %>
-    var flg = AJS.flag({type: '<%= name %>',title: 'Alert...',body: '<%= msg %>',close: 'auto'});
+  var flg = AJS.flag({type: '<%= name %>',body: '<%= msg %>',close: 'auto'});
   <% end %>
   <% end %>
 </script>

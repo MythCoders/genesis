@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  root :to => 'home#index', :as => 'home'
+
   devise_for :users
 
   resources :announcements
@@ -17,5 +19,4 @@ Rails.application.routes.draw do
   resources :students
   resources :users
 
-  root 'home#index'
 end
