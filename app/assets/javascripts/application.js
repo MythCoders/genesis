@@ -25,11 +25,12 @@ function setupAjaxIndicator() {
     });
 }
 
-function updateUserActiveItems() {
-    var schoolId = sessionStorage.getItem('SchoolId');
+function updateUserActiveItems(clickedItem) {
+    var schoolId = $("#SIS.SCHOOL_ID").val();
+    var schoolYearId = $("#SIS.SCHOOL_YEAR_ID").val();
 
     $.ajax({
-        url: '',
+        url: '/update_school',
         type: 'post',
         contentType: "application/x-www-form-urlencoded",
         data: '{"schoolId":"schoolId", "program":"EXPLORE"}',

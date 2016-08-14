@@ -28,7 +28,17 @@ module StudentHelper
   end
 
   def can_new_student_be_admitted
-    true
+    return_value = true
+
+    if !SchoolYear.find(session['school_year_id']).grades.any?
+      return_value = false
+    end
+
+    if EnrollmentCode.where(:is_admission => true).none!
+      return_value = false
+    end
+
+    return_value
   end
 
   private

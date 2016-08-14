@@ -17,6 +17,7 @@ module SettingsHelper
         {:type => 'heading', :label => 'Codes'},
         {:type => 'link', :name => 'enrollcodes', :label => 'Enrollment Codes', :partial => 'settings/enrollcodes'},
         {:type => 'link', :name => 'markscales', :label => 'Report Card Mark Scales', :partial => 'settings/markscales'},
+        {:type => 'link', :name => 'coursecats', :label => 'Course Categories', :partial => 'settings/course_categories'},
         {:type => 'heading', :label => ''},
         {:type => 'link', :name => 'system', :label => 'System', :partial => 'settings/system'}
     ]

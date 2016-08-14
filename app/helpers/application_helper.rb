@@ -214,57 +214,75 @@ module ApplicationHelper
   end
 
   def render_school_dropdown
-    html = ''
+    return '' unless session['school_id'] != 0
 
-    if session['school_id'] != 0
-      active_school = School.find(session['school_id'])
+    active_school = School.find(session['school_id'])
+    html = "<input type='hidden' value='#{active_school.id}' id='SIS.SCHOOL_ID' name='SIS.SCHOOL_ID' />"
 
-      if School.any?
+    if School.any?
 
-        html << '<li><div>'
-        html << "<a href='#schools' aria-owns='schools' aria-haspopup='true' class='aui-dropdown2-trigger'>#{active_school.name}</a>"
-        html << '<div id="schools" class="aui-style-default aui-dropdown2">'
-        html << '<ul class="aui-list-truncate">'
+      html << '<li><div>'
+      html << "<a href='#schools' aria-owns='schools' aria-haspopup='true' class='aui-dropdown2-trigger'>#{active_school.name}</a>"
+      html << '<div id="schools" class="aui-style-default aui-dropdown2">'
+      html << '<ul class="aui-list-truncate">'
 
-        schools = School.order(:name).all
+      schools = School.order(:name).all
 
-        schools.each do |s|
-          if s.id == active_school.id
-            html << "<li><a href='#' onclick=''><strong>#{s.name}</strong></a></li>"
-          else
-            html << "<li><a href='#' onclick=''>#{s.name}</a></li>"
-          end
+      schools.each do |s|
+        if s.id == active_school.id
+          html << "<li><a href='#' onclick=''><strong>#{s.name}</strong></a></li>"
+        else
+          html << "<li><a href='#' onclick=''>#{s.name}</a></li>"
         end
-
-        html << '</ul></div></div></li>'
-
       end
 
-      if !active_school.nil? and active_school.school_years.any?
-
-        active_year = SchoolYear.find(session['school_year_id'])
-
-        html << '<li><div>'
-        html << "<a href='#school-years' aria-owns='school-years' aria-haspopup='true' class='aui-dropdown2-trigger'>#{active_year.title}</a>"
-        html << '<div id="school-years" class="aui-style-default aui-dropdown2">'
-        html << '<ul class="aui-list-truncate">'
-
-        years = active_school.school_years.order(:year).all
-
-        years.each do |y|
-          if y.year == active_year.year
-            html << "<li><a href='#' onclick=''><strong>#{y.title}</strong></a></li>"
-          else
-            html << "<li><a href='#' onclick=''>#{y.title}</a></li>"
-          end
-        end
-
-        html << '</ul></div></div></li>'
-      end
+      html << '</ul></div></div></li>'
 
     end
 
+    if !active_school.nil? and active_school.school_years.any?
+
+      active_year = SchoolYear.find(session['school_year_id'])
+
+      html << "<input type='hidden' value='#{active_year.id}' id='SIS.SCHOOL_YEAR_ID' name='SIS.SCHOOL_YEAR_ID' />"
+
+      html << '<li><div>'
+      html << "<a href='#school-years' aria-owns='school-years' aria-haspopup='true' class='aui-dropdown2-trigger'>#{active_year.title}</a>"
+      html << '<div id="school-years" class="aui-style-default aui-dropdown2">'
+      html << '<ul class="aui-list-truncate">'
+
+      years = active_school.school_years.order(:year).all
+
+      years.each do |y|
+        if y.year == active_year.year
+          html << "<li><a href='#' onclick=''><strong>#{y.title}</strong></a></li>"
+        else
+          html << "<li><a href='#' onclick=''>#{y.title}</a></li>"
+        end
+      end
+
+      html << '</ul></div></div></li>'
+    end
+
     html
+  end
+
+  def delete_link(url, options={})
+    options = {
+        :method => :delete,
+        :data => {:confirm => l(:text_are_you_sure)},
+        :class => 'icon icon-del'
+    }.merge(options)
+
+    link_to l(:button_delete), url, options
+  end
+
+  def back_url
+    url = params[:back_url]
+    if url.nil? && referer = request.env['HTTP_REFERER']
+      url = CGI.unescape(referer.to_s)
+    end
+    url
   end
 
 end
