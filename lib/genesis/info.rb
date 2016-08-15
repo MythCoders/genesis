@@ -3,10 +3,11 @@ module Genesis
 
     VER_MAJOR = 0
     VER_MINOR = 1
-    VER_REVISION = 150
+    VER_FOO = 0
+    VER_REVISION = '???'
 
     VER_BRANCH = 'master'
-    VER_BUILD = 'd6f60b0'
+    VER_BUILD = '???'
 
     class << self
       def app_name
