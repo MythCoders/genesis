@@ -16,5 +16,5 @@ test:
   host: ec2-54-235-179-112.compute-1.amazonaws.com
   database: db3tt9q656nvn2
   user: ezkdcnkrlkaojz
-  password: D4skjsqz85tjsbbr-RYqtqpnO7
-  url: 'postgres://ezkdcnkrlkaojz:D4skjsqz85tjsbbr@ec2-54-235-179-112.compute-1.amazonaws.com/db3tt9q656nvn2'
+  password: "D4skjsqz85tjsbbr-RYqtqpnO7"
+  url: "postgres://ezkdcnkrlkaojz:D4skjsqz85tjsbbr-RYqtqpnO7@ec2-54-235-179-112.compute-1.amazonaws.com/db3tt9q656nvn2"
