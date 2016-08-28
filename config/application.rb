@@ -6,7 +6,8 @@ module GeneSISApp
   class Application < Rails::Application
     config.autoload_paths << Rails.root.join('lib')
     config.filter_parameters += [:password]
-    config.assets.version = '0.3'
+    config.assets.version = '0.4'
     config.log_level = Rails.env.production? ? :info : :debug
+    config.app_generators.stylesheet_engine :less
   end
 end
