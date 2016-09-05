@@ -10,9 +10,15 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require jquery
-//= require jquery_ujs
+//= require jquery-1.11.3.min
 //= require turbolinks
+//= require TweenMax.min
+//= require jquery-ui-1.10.3.minimal.min
+//= require bootstrap.min
+//= require joinable
+//= require resizeable
+//= require neon-api
+//= require neon-custom
 
 function setupAjaxIndicator() {
     $(document).bind('ajaxSend', function (event, xhr, settings) {
@@ -142,7 +148,3 @@ function loadAdvancedSearch() {
         }
     });
 }
-
-$(document).ready(loadAdvancedSearch);
-$(document).ready(warnLeavingUnsavedMessage);
-$(document).ready(setupAjaxIndicator);

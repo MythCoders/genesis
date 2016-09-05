@@ -1,83 +1,164 @@
-<nav class="aui-header aui-dropdown2-trigger-group" role="navigation" data-aui-responsive="true">
-  <div class="aui-header-primary">
-    <h1 class="aui-header-logo">
-      <a href="<%= home_path %>">
-        <p class="aui-header-logo-text" style="padding: 10px 0 10px 0;">
-          <%= Genesis::INFO.app_name %>
-        </p>
+<header class="navbar navbar-fixed-top">
+
+  <div class="navbar-inner">
+
+    <div class="navbar-brand">
+      <a href="">
+        <img src="" alt="" />
       </a>
-    </h1>
-    <ul class="aui-nav">
-      <% if user_signed_in? %>
+    </div>
+
+    <ul class="navbar-nav">
+      <li class="has-sub">
+        <a href="index.html">
+          <i class="entypo-gauge"></i>
+          <span>Dashboard</span>
+        </a>
+        <ul>
           <li>
-            <a href="<%= students_url %>">
-              <span class="aui-icon aui-icon-small aui-iconfont-user">Students</span>
-              Students
-            </a>
-          </li>
-      <% end %>
-    </ul>
-  </div>
-  <div class="aui-header-secondary">
-    <ul class="aui-nav">
-      <% if user_signed_in? %>
-          <%= render_school_dropdown.html_safe %>
-          <li>
-            <a id="adv-search-link" style="cursor: pointer;">
-              <span class='aui-icon aui-icon-small aui-iconfont-search'></span>
+            <a href="index.html">
+              <span>Dashboard 1</span>
             </a>
           </li>
           <li>
-            <a href="#options-dropdown" aria-owns="options-dropdown" aria-haspopup="true" class="aui-dropdown2-trigger" aria-controls="options-dropdown" aria-expanded="false">
-              <span class='aui-icon aui-icon-small aui-iconfont-configure'></span>
+            <a href="dashboard-2.html">
+              <span>Dashboard 2</span>
             </a>
-
-            <div class="aui-dropdown2 aui-style-default " id="options-dropdown" aria-hidden="true">
-              <div class="aui-dropdown2-section">
-                <ul>
-                  <% if current_user.is_admin? %>
-                      <li> <%= link_to 'Announcements', announcements_path %> </li>
-                      <li> <%= link_to 'Calendars', calendars_path %> </li>
-                      <li> <%= link_to 'Courses', courses_path %> </li>
-                      <li> <%= link_to 'Districts', districts_path %> </li>
-                      <li> <%= link_to 'Grade Levels', grades_path %> </li>
-                      <li> <%= link_to 'Marking Periods', schools_path %> </li>
-                      <li> <%= link_to 'Schools', schools_path %> </li>
-                      <li> <%= link_to 'User Roles', roles_path %> </li>
-                      <li> <%= link_to 'Users', users_path %> </li>
-                  <% end %>
-                </ul>
-              </div>
-              <div class="aui-dropdown2-section">
-                <ul>
-                  <li><%= link_to 'System Administration', settings_path %></li>
-                  <li><%= link_to 'Profile and Preferences', edit_user_registration_path %></li>
-                  <li><%= link_to 'Log out', destroy_user_session_path, :method=>'delete' %></li>
-                </ul>
-              </div>
-            </div>
           </li>
-
-          <% if Rails.env.development? %>
-
+        </ul>
+      </li>
+      <li class="opened active has-sub">
+        <a href="layout-api.html">
+          <i class="entypo-layout"></i>
+          <span>Layouts</span>
+        </a>
+        <ul>
+          <li>
+            <a href="layout-api.html">
+              <span>Layout API</span>
+            </a>
+          </li>
+          <li>
+            <a href="layout-collapsed-sidebar.html">
+              <span>Collapsed Sidebar</span>
+            </a>
+          </li>
+          <li>
+            <a href="layout-fixed-sidebar.html">
+              <span>Fixed Sidebar</span>
+            </a>
+          </li>
+          <li>
+            <a href="layout-chat-open.html">
+              <span>Chat Open</span>
+            </a>
+          </li>
+          <li class="active">
+            <a href="layout-horizontal-menu-boxed.html">
+              <span>Horizontal Menu Boxed</span>
+            </a>
+          </li>
+          <li>
+            <a href="layout-horizontal-menu-fluid.html">
+              <span>Horizontal Menu Fluid</span>
+            </a>
+          </li>
+          <li>
+            <a href="layout-mixed-menus.html">
+              <span>Mixed Menus</span>
+            </a>
+          </li>
+          <li>
+            <a href="layout-page-transition-fade.html">
+              <span>Page Enter Transitions</span>
+            </a>
+            <ul>
               <li>
-                <a href="#dev-menu" aria-owns="dev-menu" aria-haspopup="true" class="aui-dropdown2-trigger" aria-controls="dev-menu" aria-expanded="false">
-                  <span class='aui-icon aui-icon-small aui-iconfont-devtools-side-diff'></span>
+                <a href="layout-page-transition-fade.html">
+                  <span>Fade Come</span>
                 </a>
-
-                <div class="aui-dropdown2 aui-style-default " id="dev-menu" aria-hidden="true">
-                  <div class="aui-dropdown2-section">
-                    <ul>
-                      <li><%= link_to 'Clear Session', '?frc_clr_ses' %></li>
-                      <li><%= link_to 'Force Sudo Mode', '?frc_sudo_mode' %></li>
-                    </ul>
-                  </div>
-                </div>
               </li>
+              <li>
+                <a href="layout-page-transition-left-in.html">
+                  <span>Left In</span>
+                </a>
+              </li>
+              <li>
+                <a href="layout-page-transition-right-in.html">
+                  <span>Right In</span>
+                </a>
+              </li>
+              <li>
+                <a href="layout-page-transition-fade-only.html">
+                  <span>Fade Only</span>
+                </a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </li>
 
-          <% end %>
+      <li id="search" class="search-input-collapsed">
+        <form method="get" action="">
+          <input type="text" name="q" class="search-input" placeholder="Search something..." />
+          <button type="submit">
+            <i class="entypo-search"></i>
+          </button>
+        </form>
+      </li>
+    </ul>
 
-      <% end %>
+    <ul class="nav navbar-right pull-right">
+      <li class="dropdown">
+
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+          <i class="entypo-list"></i>
+          <span class="badge badge-info">6</span>
+        </a>
+
+        <ul class="dropdown-menu">...</ul>
+      </li>
+
+      <li class="dropdown">
+
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+          <i class="entypo-mail"></i>
+          <span class="badge badge-secondary">10</span>
+        </a>
+
+        <ul class="dropdown-menu">...</ul>
+      </li>
+
+      <li class="dropdown">
+
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+          <i class="entypo-globe"></i>
+          <span class="badge badge-warning">1</span>
+        </a>
+
+        <ul class="dropdown-menu">...</ul>
+      </li>
+
+      <li>
+        <a href="#">Live Site</a>
+      </li>
+
+      <li class="sep"></li>
+
+      <li>
+        <a href="extra-login.html">
+          Log Out <i class="entypo-logout right"></i>
+        </a>
+      </li>
+
+      <li class="visible-xs">
+        <div class="horizontal-mobile-menu visible-xs">
+          <a href="#" class="with-animation">
+            <i class="entypo-menu"></i>
+          </a>
+        </div>
+      </li>
+
     </ul>
   </div>
-</nav>
+</header>

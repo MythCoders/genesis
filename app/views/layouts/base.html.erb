@@ -6,38 +6,17 @@
   <title><%= html_title %></title>
   <%= csrf_meta_tags %>
   <meta name="description" content="<%= Genesis::INFO.versioned_name %>"/>
-  <%= stylesheet_link_tag 'bootstrap', media: 'all' %>
-  <%= stylesheet_link_tag 'neon', media: 'all' %>
   <%= stylesheet_link_tag 'application', media: 'all' %>
   <%= javascript_include_tag 'application', media: 'all' %>
 </head>
 
-<body class="aui-layout aui-theme-default">
-<div id="page">
-  <div id="header" role="banner">
-    <%= render 'layouts/navbar' %>
-  </div>
-  <% if flash[:system_alert] %>
-      <div class="alertHeader" id="announcement-banner">
-        <p><%= flash[:system_alert] %></p>
-      </div>
-  <% end %>
-  <div id="content" role="main">
-    <% render 'layouts/sidebar' %>
+<body class="page-body">
+<div class="page-container horizontal-menu">
+  <%= render 'layouts/navbar' %>
+  <div class="main-content">
     <%= yield %>
   </div>
 </div>
-<div id="quick-search">
-  <%= render 'layouts/quicksearch' %>
-  <button class="btn btn-primary">Dave</button>
-</div>
 <%= yield :scripts %>
-<script type="application/javascript">
-  <% flash.each do |name, msg| %>
-  <% if msg.is_a?(String) %>
-  var flg = AJS.flag({type: '<%= name %>',body: '<%= msg %>',close: 'auto'});
-  <% end %>
-  <% end %>
-</script>
 </body>
 </html>
