@@ -1,6 +1,8 @@
 class StudentsController < ApplicationController
   include StudentHelper
 
+  layout 'sidebar', only: 'show'
+
   def index
     @q = Student.ransack(params[:q])
     @students = @q.result

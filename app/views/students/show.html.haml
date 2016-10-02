@@ -1,0 +1,6 @@
+= content_for :sidebar do
+  = render :partial => 'students/sidebar', :locals => {:student => @student}
+
+.row
+  .col-md-12
+    = render_tabs student_tabs
