@@ -12,11 +12,12 @@
  *
  *= require bootstrap
  *= require font-awesome
- *= require entypo
- *= require neon-core
- *= require neon-forms
  *= require_self
  */
+
+body {
+    padding-top: 5rem;
+}
 
 .oddpanelbug {
     margin-top: 0;

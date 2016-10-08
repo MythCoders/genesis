@@ -1,41 +1,36 @@
-%header.navbar.navbar-fixed-top
-  .navbar-inner
-    .navbar-brand
-      = link_to Genesis::INFO.app_name, home_path, :style => 'color: white;'
-    - if user_signed_in?
-      %ul.navbar-nav
-        %li.has-sub
-          %a{:href => students_path}
-            %i.entypo-user
-            %span Students
-      %ul.nav.navbar-right.pull-right
-        %li#search.dropdown.search-input-collapsed
-        %li.sep
-        %li.has-sub
-          %a.dropdown-toggle{'data-toggle': 'dropdown', 'data-hover': 'dropdown'}
-            %i.entypo-cog
-          %ul.dropdown-menu
-            %li.has-sub
-              = link_to 'Announcements', announcements_path
-            %li.has-sub
-              = link_to 'Calendars', calendars_path
-            %li.has-sub
-              = link_to 'Courses', courses_path
-            %li.has-sub
-              = link_to 'Districts', districts_path
-            %li.has-sub
-              = link_to 'Grade Levels', grades_path
-            %li.has-sub
-              = link_to 'Marking Periods', schools_path
-            %li.has-sub
-              = link_to 'Schools', schools_path
-            %li.has-sub
-              = link_to 'User Roles', roles_path
-            %li.has-sub
-              = link_to 'Users', users_path
-            %li.has-sub
-              = link_to 'System Administration', settings_path
-            %li.has-sub
-              = link_to 'Profile and Preferences', edit_user_registration_path
-            %li.has-sub
-              = link_to 'Log out', destroy_user_session_path, :method=>'delete'
+%nav.navbar.navbar-dark.bg-inverse.navbar-fixed-top
+  %a.navbar-brand{:href => home_path}= Genesis::INFO.app_name
+  - if user_signed_in?
+    %ul.nav.navbar-nav
+      %li.nav-item
+        %a.nav-link{:href => students_path}
+          %i.fa.fa-user
+          Students
+      %li.nav-item.dropdown
+        %a.nav-link.dropdown-toggle{'data-toggle': 'dropdown'}
+          %i.fa.fa-cog
+        %ul.dropdown-menu
+          %li.dropdown-item
+            = link_to 'Announcements', announcements_path
+          %li.dropdown-item
+            = link_to 'Calendars', calendars_path
+          %li.dropdown-item
+            = link_to 'Courses', courses_path
+          %li.dropdown-item
+            = link_to 'Districts', districts_path
+          %li.dropdown-item
+            = link_to 'Grade Levels', grades_path
+          %li.dropdown-item
+            = link_to 'Marking Periods', schools_path
+          %li.dropdown-item
+            = link_to 'Schools', schools_path
+          %li.dropdown-item
+            = link_to 'User Roles', roles_path
+          %li.dropdown-item
+            = link_to 'Users', users_path
+          %li.dropdown-item
+            = link_to 'System Administration', settings_path
+          %li.dropdown-item
+            = link_to 'Profile and Preferences', edit_user_registration_path
+          %li.dropdown-item
+            = link_to 'Log out', destroy_user_session_path, :method=>'delete'

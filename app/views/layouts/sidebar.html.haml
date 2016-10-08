@@ -1,11 +1,10 @@
 !!!
 %html
   %head= render partial: 'layouts/header'
-  %body.page-body
-    .page-container.horizontal-menu.with-sidebar
-      = render 'layouts/navbar'
+  %body
+    = render 'layouts/navbar'
+    .container
+      = render 'layouts/alerts'
       = yield :sidebar
-      .main-content
-        = render 'layouts/alerts'
-        = yield
-      = yield :scripts
+      = yield
+    = yield :scripts

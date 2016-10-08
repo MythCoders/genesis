@@ -1,0 +1,19 @@
+.panel.panel-primary
+  .panel-heading
+    .panel-title Courses
+  %table.table.table-bordered.table-striped
+    %thead
+      %tr
+        %th
+        %th Course Code
+        %th Name
+        %th Category
+    %tbody
+      - @model.each do |s|
+        %tr
+          %td= link_to 'Select', course_path(s)
+          %td= s.short_name
+          %td= s.title
+          %td= s.course_category.title
+
+= link_to 'New Course', new_course_path, :class => 'aui-button'

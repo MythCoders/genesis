@@ -1,7 +1,6 @@
 class StudentsController < ApplicationController
   include StudentHelper
-
-  layout 'sidebar', only: 'show'
+  layout :compute_layout
 
   def index
     @q = Student.ransack(params[:q])
@@ -42,6 +41,10 @@ class StudentsController < ApplicationController
   end
 
   private
+
+  def compute_layout
+    action_name == 'show' ? 'sidebar' : 'base'
+  end
 
   def build_new_student
     @student = Student.new

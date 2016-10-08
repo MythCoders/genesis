@@ -1,9 +1,9 @@
 !!!
 %html
   %head= render partial: 'layouts/header'
-  %body.page-container.horizontal-menu
+  %body
     = render 'layouts/navbar'
-    .main-content
+    .container
       = render 'layouts/alerts'
       = yield
     = yield :scripts

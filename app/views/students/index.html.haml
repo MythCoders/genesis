@@ -1,6 +1,7 @@
-.panel.panel-primary
-  .panel-heading
-    .panel-title Students
+.card
+  .card-header
+    %i.fa.fa-search
+    Student Search
   %table.table.table-bordered.table-striped
     %thead
       %tr
@@ -17,10 +18,11 @@
           %td= s.current_grade
 
 - if !can_new_student_be_admitted
-  .btn-group.left-dropdown
-    = link_to 'New Admission', new_student_path, :class => 'btn btn-green'
-    %button.btn.btn-green.dropdown-toggle{ 'data-toggle': 'dropdown'}
-      %span.caret
-    %ul.dropdown-menu.dropdown-green
-      %li= link_to 'Quick Admission', new_student_path, :type => 'quick'
-      %li= link_to 'Standard Admission', new_student_path, :type => 'long'
+  .btn-group
+    = link_to 'New Admission', new_student_path, :class => 'btn btn-secondary'
+    .btn-group
+      %button.btn.btn-secondary.dropdown-toggle{ 'data-toggle': 'dropdown'}
+        %span.caret
+      %ul.dropdown-menu
+        %li.dropdown-item= link_to 'Quick Admission', new_student_path, :type => 'quick'
+        %li.dropdown-item= link_to 'Standard Admission', new_student_path, :type => 'long'

@@ -1,7 +1,5 @@
 class SessionsController < Devise::SessionsController
 
-  layout 'login'
-
   def show
     super
   end

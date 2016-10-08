@@ -1,7 +1,7 @@
-%ul.nav.tabs-vertical
+%ul.nav.nav-pills.nav-stacked
   - tabs.each do |tab|
-    %li{class: "#{tab[:name] == selected_tab ? 'active' : nil}" }
-      %a{href: "##{tab[:name]}", 'data-toggle': 'tab'}
+    %li.nav-item
+      %a{class: "#{tab[:name] == selected_tab ? 'nav-link active' : 'nav-link'}", href: "##{tab[:name]}", 'data-toggle': 'tab', role: 'tab'}
         = tab[:label]
 .tab-content
   - tabs.each do |tab|

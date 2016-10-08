@@ -12,13 +12,7 @@
 //
 //= require jquery-1.11.3.min
 //= require turbolinks
-//= require TweenMax.min
-//= require jquery-ui-1.10.3.minimal.min
 //= require bootstrap.min
-//= require joinable
-//= require resizeable
-//= require neon-api
-//= require neon-custom
 
 function setupAjaxIndicator() {
     $(document).bind('ajaxSend', function (event, xhr, settings) {
