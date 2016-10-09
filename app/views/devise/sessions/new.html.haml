@@ -1,24 +1,27 @@
-= stylesheet_link_tag 'application', media: 'all'
-
-.login-container
-  .login-header.login-caret
-    .login-content
-      %p.description= Genesis::INFO.app_name
-      %p.description= Genesis::INFO.version
-  .login-form
-    .login-content
-      = form_for(resource, as: resource_name, url: session_path(resource_name), :html => { :class => 'aui top-label' } ) do |f|
-        .form-group
-          .input-group
-            .input-group-addon
-              %i.entypo-user
-            = f.email_field :email, autofocus: true, :class => 'form-control', :placeholder => 'Email Address'
-        .form-group
-          .input-group
-            .input-group-addon
-              %i.entypo-key
-            = f.password_field :password, autocomplete: 'off', :class => 'form-control', :placeholder => 'Password'
-        .form-group
-          = f.submit 'Log in', :class => 'btn btn-primary btn-block btn-login'
-        .login-bottom-links
-          = render 'devise/shared/links'
+.card
+  %h4.card-header
+    = Genesis::INFO.app_name
+    .small
+      Login
+  .card-block
+    .col-sm-5
+      .container
+        = form_for(resource, as: resource_name, url: session_path(resource_name), :html => { :class => '' } ) do |f|
+          .form-group
+            .input-group
+              .input-group-addon
+                %i.fa.fa-envelope
+              = f.email_field :email, autofocus: true, :class => 'form-control', :placeholder => 'Email Address'
+          .form-group
+            .input-group
+              .input-group-addon
+                %i.fa.fa-key
+              = f.password_field :password, autocomplete: 'off', :class => 'form-control', :placeholder => 'Password'
+          .form-group
+            = f.submit 'Log in', :class => 'btn btn-primary btn-block btn-login'
+          .login-bottom-links
+            = render 'devise/shared/links'
+    .col-md-7
+      %h3
+        Announcements
+      Other stuff!

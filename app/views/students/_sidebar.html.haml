@@ -1,39 +1,28 @@
-.sidebar-menu
-  .sidebar-menu-inner
-    %ul.main-menu#main-menu
-      %li.root-level
-        %a{href: student_path(@student)}
-          %i.fa.fa-table
-          %span.title Information
-      %li.root-level
-        %a
-          %i.fa.fa-clock-o
-          %span.title Schedule
-      %li.root-level
-        %a
-          %i.fa.fa-calendar-check-o
-          %span.title Attendance
-      %li.root-level
-        %a
-          %i.fa.fa-list-alt
-          %span.title Enrollment History
-      %li.root-level
-        %a
-          %i.fa.fa-graduation-cap
-          %span.title Transcripts
-      %li.root-level
-        %a
-          %i.fa.fa-thumbs-down
-          %span.title Discipline
-      %li.root-level
-        %a
-          %i.fa.fa-money
-          %span.title Billing
-      %li.root-level
-        %a
-          %i.fa.fa-futbol-o
-          %span.title Eligibility
-      %li.root-level
-        %a
-          %i.fa.fa-book
-          %span.title Assessments
+.list-group
+  %a.list-group-item.list-group-item-action.active{href: student_path(@student)}
+    %i.fa.fa-wpforms
+    Information
+  %a.list-group-item.list-group-item-action{href: student_path(@student)}
+    %i.fa.fa-clock-o
+    Schedule
+  %a.list-group-item.list-group-item-action{href: student_path(@student)}
+    %i.fa.fa-calendar-check-o
+    Attendance
+  %a.list-group-item.list-group-item-action{href: student_path(@student)}
+    %i.fa.fa-list-alt
+    Enrollments
+  %a.list-group-item.list-group-item-action{href: student_path(@student)}
+    %i.fa.fa-graduation-cap
+    Transcripts
+  %a.list-group-item.list-group-item-action{href: student_path(@student)}
+    %i.fa.fa-thumbs-down
+    Discipline
+  %a.list-group-item.list-group-item-action{href: student_path(@student)}
+    %i.fa.fa-money
+    Billing
+  %a.list-group-item.list-group-item-action{href: student_path(@student)}
+    %i.fa.fa-futbol-o
+    Eligibility
+  %a.list-group-item.list-group-item-action{href: student_path(@student)}
+    %i.fa.fa-book
+    Assessments

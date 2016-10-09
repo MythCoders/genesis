@@ -1,6 +1,6 @@
-%nav.navbar.navbar-dark.bg-inverse.navbar-fixed-top
-  %a.navbar-brand{:href => home_path}= Genesis::INFO.app_name
-  - if user_signed_in?
+- if user_signed_in?
+  %nav.navbar.navbar-dark.bg-inverse.navbar-fixed-top
+    %a.navbar-brand{:href => home_path}= Genesis::INFO.app_name
     %ul.nav.navbar-nav
       %li.nav-item
         %a.nav-link{:href => students_path}

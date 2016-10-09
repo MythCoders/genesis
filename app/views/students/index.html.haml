@@ -17,12 +17,12 @@
           %td= format_person_name(s.first_name, s.middle_name, s.last_name, s.suffix,)
           %td= s.current_grade
 
-- if !can_new_student_be_admitted
+.btn-group
+  %a.btn.btn-secondary{ href: new_student_path, class: can_new_student_be_admitted ? '' : 'disabled'}
+    New Admission
   .btn-group
-    = link_to 'New Admission', new_student_path, :class => 'btn btn-secondary'
-    .btn-group
-      %button.btn.btn-secondary.dropdown-toggle{ 'data-toggle': 'dropdown'}
-        %span.caret
-      %ul.dropdown-menu
-        %li.dropdown-item= link_to 'Quick Admission', new_student_path, :type => 'quick'
-        %li.dropdown-item= link_to 'Standard Admission', new_student_path, :type => 'long'
+    %button.btn.btn-secondary.dropdown-toggle{ 'data-toggle': 'dropdown', disabled: can_new_student_be_admitted ? '' : 'disabled' }
+      %span.caret
+    %ul.dropdown-menu
+      %li.dropdown-item= link_to 'Quick Admission', new_student_path, :type => 'quick'
+      %li.dropdown-item= link_to 'Standard Admission', new_student_path, :type => 'long'
