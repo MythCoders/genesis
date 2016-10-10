@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
   root :to => 'home#index', :as => 'home'
 
-  devise_for :users, :controllers=> { :sessions => 'sessions' }
+  devise_for :users
 
   resources :announcements
   resources :calendars

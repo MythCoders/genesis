@@ -11,6 +11,7 @@ gem 'jbuilder', '~> 2.5' # Build JSON APIs with ease. Read more: https://github.
 gem 'devise'
 gem 'ransack'
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+gem 'jquery-rails'
 
 group :development, :test do
   gem 'byebug', platform: :mri
