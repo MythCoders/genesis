@@ -7,5 +7,5 @@
         = error_messages_for 'course'
         = render :partial => 'courses/form', :locals => { :f => f }
     .card-footer
-      = link_to 'Cancel', courses_path, :class => 'btn btn-default'
+      = link_to 'Cancel', courses_path, :class => 'btn btn-secondary'
       = f.submit 'Save Changes', :class => 'btn btn-primary'

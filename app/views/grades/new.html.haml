@@ -7,5 +7,5 @@
         = error_messages_for 'grade'
         = render :partial => 'grades/form', :locals => {:f => f}
     .card-footer
-      = link_to 'Cancel', grades_path, :class => 'btn btn-default'
+      = link_to 'Cancel', grades_path, :class => 'btn btn-secondary'
       = f.submit 'Create', :class => 'btn btn-primary'

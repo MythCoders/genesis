@@ -2,6 +2,7 @@ class Student < ApplicationRecord
   include ApplicationHelper
 
   has_many :enrollments, :autosave => true
+  has_many :student_addresses
   accepts_nested_attributes_for :enrollments, allow_destroy: false
 
   before_create :assign_student_id

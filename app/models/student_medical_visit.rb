@@ -1,0 +1,3 @@
+class StudentMedicalVisit < ApplicationRecord
+
+end
