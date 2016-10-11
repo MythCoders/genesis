@@ -1,0 +1,10 @@
+!!!
+%html
+  %head= render partial: 'layouts/header'
+  %body
+    = render 'layouts/navbar'
+    .container
+      = render 'layouts/alerts'
+      = yield :sidebar
+      = yield
+    = yield :scripts

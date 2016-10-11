@@ -1,0 +1,3 @@
+class StudentMedicalAlert < ApplicationRecord
+
+end

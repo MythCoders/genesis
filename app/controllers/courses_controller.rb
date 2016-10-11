@@ -24,6 +24,7 @@ class CoursesController < ApplicationController
 
   def edit
     @course = Course.find(params[:id])
+    @course_cats = CourseCategory.order(:title).select('id, title, short_name')
   end
 
   def update

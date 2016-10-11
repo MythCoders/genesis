@@ -1,0 +1,19 @@
+.form-group
+  = f.label :title
+  = f.text_field :title, :class => 'form-control', :placeholder => 'Name'
+
+.form-group
+  = f.label :short_name
+  = f.text_field :short_name, :class => 'form-control', :placeholder => 'Short Name'
+
+.form-group
+  = f.label :sort_order
+  = f.text_field :sort_order, :class => 'form-control', :placeholder => 'Sort Order'
+
+.form-group
+  = f.label :next_grade_id
+  = f.select :next_grade_id, options_from_collection_for_select(@grades, :id, :title, @grade.next_grade_id), {include_blank: '- N/A -'}, {:class => 'form-control'}
+
+.form-group
+  = f.label :previous_grade_id
+  = f.select :previous_grade_id, options_from_collection_for_select(@grades, :id, :title, @grade.previous_grade_id), {include_blank: '- N/A -'}, {:class => 'form-control'}

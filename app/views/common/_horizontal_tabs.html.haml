@@ -1,0 +1,9 @@
+%ul.nav.nav-tabs{role: 'tablist'}
+  - tabs.each do |tab|
+    %li.nav-item
+      %a{class: "#{tab[:name] == selected_tab ? 'nav-link active' : 'nav-link'}", href: "##{tab[:name]}", 'data-toggle': 'tab', role: 'tab'}
+        = tab[:label]
+.tab-content
+  - tabs.each do |tab|
+    .tab-pane{class: "#{tab[:name] == selected_tab ? 'active' : nil}", id: tab[:name]}
+      = render(:partial => tab[:partial], :locals => {:tab => tab})

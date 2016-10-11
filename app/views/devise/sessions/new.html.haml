@@ -1,0 +1,33 @@
+.card
+  .card-header
+    %strong= Genesis::INFO.app_name
+    | Login
+  .card-block
+    .col-sm-5
+      .container
+        = form_for(resource, as: resource_name, url: session_path(resource_name), :html => { :class => '' } ) do |f|
+          .form-group
+            .input-group
+              .input-group-addon
+                %i.fa.fa-envelope
+              = f.email_field :email, autofocus: true, :class => 'form-control', :placeholder => 'Email Address'
+          .form-group
+            .input-group
+              .input-group-addon
+                %i.fa.fa-key
+              = f.password_field :password, autocomplete: 'off', :class => 'form-control', :placeholder => 'Password'
+          .form-group
+            = f.submit 'Log in', :class => 'btn btn-primary btn-block btn-login'
+          .login-bottom-links
+            = render 'devise/shared/links'
+    .col-md-7
+      %h3
+        Announcements
+      .text-muted
+        There are no announcements at this time
+  .card-footer.text-muted
+    .pull-left
+      Licensed to State Board of Education
+    .pull-right
+      Powered by
+      = Genesis::INFO.versioned_name

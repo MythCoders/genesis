@@ -1,0 +1,9 @@
+- if @model.present? and @model.errors.any?
+  %div#error_explanation{style: 'color: red'}
+    %strong
+      = pluralize(@model.errors.count, 'error')
+      prohibited this record from being saved
+    %ul
+      - @model.errors.full_messages.each do |msg|
+        %li= msg
+  %hr

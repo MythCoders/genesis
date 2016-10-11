@@ -1,0 +1,11 @@
+= form_for :district, url: districts_path, :html => { :class => '' } do |f|
+  .card
+    .card-header
+      New School District
+    .card-deck
+      .form-horizontal
+        = error_messages_for 'district'
+        = render :partial => 'districts/form', :locals => {:f => f}
+    .card-footer
+      = link_to 'Cancel', districts_path, :class => 'btn btn-secondary'
+      = f.submit 'Create', :class => 'btn btn-primary'

@@ -1,11 +1,11 @@
 class SchoolYear < ApplicationRecord
 
-  belongs_to :school
   has_many :grades, through: :school_year_grades
   has_many :school_year_grades
   has_many :school_semesters
-  #has_many :enrollments
   has_many :school_periods
+  belongs_to :school
+  #has_many :enrollments
 
   accepts_nested_attributes_for :school_year_grades, allow_destroy: true
 

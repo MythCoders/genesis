@@ -5,24 +5,7 @@ module ApplicationHelper
   SEX = [MALE = 'M', FEMALE = 'F']
   USER_BASE_ROLES = [STUDENT = 1, PARENT = 4, TEACHER = 12, ADMIN = 64, SUPER_ADMIN = 256]
 
-  def render_tabs(tabs, selected = params[:tab])
-    if tabs.any?
-
-      unless tabs.detect { |tab| tab[:name] == selected }
-        selected = nil
-      end
-
-      if selected == nil
-        selected = tabs[0][:name]
-      end
-
-      render :partial => 'common/tabs', :locals => {:tabs => tabs, :selected_tab => selected}
-    else
-      content_tag 'p', l(:label_no_data), :class => 'no-data'
-    end
-  end
-
-  def render_vertical_nav(tabs, selected = params[:tab])
+  def render_vertical_tabs(tabs, selected = params[:tab])
     if tabs.any?
       unless tabs.detect { |tab| tab[:name] == selected }
         selected = nil
@@ -36,7 +19,7 @@ module ApplicationHelper
         end
       end
 
-      render :partial => 'common/verticalnav', :locals => {:tabs => tabs, :selected_tab => selected}
+      render :partial => 'common/vertical_tabs', :locals => {:tabs => tabs, :selected_tab => selected}
     else
       content_tag 'p', l(:label_no_data), :class => 'no-data'
     end
@@ -48,7 +31,7 @@ module ApplicationHelper
         selected = nil
       end
       selected ||= tabs.first[:name]
-      render :partial => 'common/horizontalnav', :locals => {:tabs => tabs, :selected_tab => selected}
+      render :partial => 'common/horizontal_tabs', :locals => {:tabs => tabs, :selected_tab => selected}
     else
       content_tag 'p', l(:label_no_data), :class => 'no-data'
     end

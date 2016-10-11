@@ -1,0 +1,11 @@
+= form_for :course, url: course_path(@course), method: :post, :html => { :class => 'form-horizontal' } do |f|
+  .card
+    .card-header
+      Edit Course
+    .card-deck
+      .form-horizontal
+        = error_messages_for 'course'
+        = render :partial => 'courses/form', :locals => { :f => f }
+    .card-footer
+      = link_to 'Cancel', courses_path, :class => 'btn btn-secondary'
+      = f.submit 'Save Changes', :class => 'btn btn-primary'
