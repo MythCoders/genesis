@@ -1,12 +1,12 @@
 class SchoolYearsController < ApplicationController
   def new
     @school_year = SchoolYear.new(:school_id => params[:school_id])
-    populate_grades_select_list
+    populate_grades
   end
 
   def edit
     @school_year = SchoolYear.find(params[:id])
-    populate_grades_select_list
+    populate_grades
   end
 
   def create
@@ -15,7 +15,7 @@ class SchoolYearsController < ApplicationController
     if @school_year.save
       redirect_to school_path(@school_year.school)
     else
-      populate_grades_select_list
+      populate_grades
       render 'new'
     end
   end
@@ -26,7 +26,7 @@ class SchoolYearsController < ApplicationController
     if @school_year.update(school_year_params)
       redirect_to school_path(@school_year.school)
     else
-      populate_grades_select_list
+      populate_grades
       render 'edit'
     end
 
@@ -34,7 +34,7 @@ class SchoolYearsController < ApplicationController
 
   private
 
-  def populate_grades_select_list
+  def populate_grades
     @grades = Grade.order(:sort_order).all
   end
 

@@ -44,7 +44,7 @@ module ApplicationHelper
   def html_title(*args)
     if args.empty?
       title = @html_title || []
-      title << @student.full_name if @student
+      title << @student.formatted_full_name  if @student
       title << Genesis::INFO.app_name
       title.reject(&:blank?).join(' - ')
     else
@@ -153,11 +153,15 @@ module ApplicationHelper
     return_value
   end
 
-  def format_address_with__html_link(address_line_1, address_line_2, city, state, zip_code, zip_code_four = '', format = 1)
+  def format_address_with_html_link(address_line_1, address_line_2, city, state, zip_code, zip_code_four = '', format = 1, label = nil)
     formatted_address = format_address(address_line_1, address_line_2, city, state, zip_code, zip_code_four, format)
     parameters = format == 2 ? formatted_address : format_address(address_line_1, address_line_2, city, state, zip_code, zip_code_four, 2)
 
-    "<a href=\"http://bing.com/maps?q=#{parameters}\" target=\"_blank\">#{formatted_address}</a>"
+    if label.nil?
+      "<a href=\"http://bing.com/maps?q=#{parameters}\" target=\"_blank\">#{formatted_address}</a>"
+    else
+      "<a href=\"http://bing.com/maps?q=#{parameters}\" target=\"_blank\">#{label}</a>"
+    end
   end
 
   def display_date(value, return_if_nil = '')

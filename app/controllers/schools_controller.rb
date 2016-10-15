@@ -4,13 +4,12 @@ class SchoolsController < ApplicationController
   end
 
   def show
-    flash[:info] = 'Works?'
-    @school = School.includes(:school_years).find(params[:id])
+    @school = School.includes(:school_years).order('school_years.year asc').find(params[:id])
   end
 
   def new
     @school = School.new
-    @districts = District.order(:name).select('id, name, short_name')
+    populate_districts
   end
 
   def create
@@ -19,14 +18,14 @@ class SchoolsController < ApplicationController
     if @school.save
       redirect_to @school
     else
-      @districts = District.order(:name).select('id, name, short_name')
+      populate_districts
       render 'new'
     end
   end
 
   def edit
     @school = School.find(params[:id])
-    @districts = District.order(:name).select('id, name, short_name')
+    populate_districts
   end
 
   def update
@@ -35,7 +34,7 @@ class SchoolsController < ApplicationController
     if @school.update(school_params)
       redirect_to @school
     else
-      @districts = District.order(:name).select('id, name, short_name')
+      populate_districts
       render 'edit'
     end
   end
@@ -48,6 +47,10 @@ class SchoolsController < ApplicationController
   end
 
   private
+
+  def populate_districts
+    @districts = District.order(:name).select('id, name, short_name')
+  end
 
   def school_params
     params.require(:school).permit(:id, :name, :short_name, :district_id, :address, :city, :state, :zip_code, :phone_number, :principals_name)

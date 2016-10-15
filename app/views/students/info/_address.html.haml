@@ -1,0 +1,43 @@
+%br
+%h4 Address & Contacts
+%hr
+
+%table.table.table-bordered
+  %thead
+    %tr
+      %th{style: 'width: 4%'}
+      %th{style: 'width: 4%'}
+      %th{style: 'width: 27%'} Address
+      %th Contacts
+  %tbody
+    - @student.student_addresses.each do |t|
+      %tr
+        %td
+          %a
+            Edit
+        %td
+          - if t.is_mailing
+            %i.fa.fa-envelope
+          - if t.is_residential
+            %i.fa.fa-home
+          - if t.is_bus_pickup
+            %i.fa.fa-arrow-up
+          - if t.is_bus_drop_off
+            %i.fa.fa-arrow-down
+        %td
+          = format_address(t.address.street, nil, t.address.city, t.address.state, t.address.zip_code).html_safe
+          %br
+          = format_address_with_html_link(t.address.street, nil, t.address.city, t.address.state, t.address.zip_code, nil, nil, 'Map It').html_safe
+        %td
+          %table.table
+            %thead
+              %tr
+                %th{style: 'width: 4%'}
+                %th Name
+            %tbody
+              - t.student_relationships.each do |r|
+                %tr
+                  %td
+                    %a
+                      Edit
+                  %td Name

@@ -1,20 +1,29 @@
 class Student < ApplicationRecord
-  include ApplicationHelper
 
   has_many :enrollments, :autosave => true
   has_many :student_addresses
-  accepts_nested_attributes_for :enrollments, allow_destroy: false
+  has_many :student_medical_alerts
+  has_many :student_medical_visits
+  has_many :student_notes
+  has_many :student_relationships, through: :student_addresses
+
+  accepts_nested_attributes_for :enrollments
+  accepts_nested_attributes_for :student_addresses
 
   before_create :assign_student_id
-
   validates :first_name, presence: true, length: {maximum: 30}
   validates :middle_name, length: {maximum: 30}
   validates :last_name, presence: true, length: {maximum: 30}
   validates :suffix, length: {maximum: 5}
   validates :sex, length: {maximum: 1}
 
-  def full_name(format = 1)
-    format_person_name(self.first_name, self.middle_name, self.last_name, self.suffix, format)
+  def primary_address
+    self.primary_address_id.nil? ? nil : StudentAddress.find(self.primary_address_id).address
+  end
+
+  def any_active_medical_alerts?
+    #TODO: medical alerts
+    self.student_id == 1010
   end
 
   def current_grade(format = 'long')
@@ -24,7 +33,7 @@ class Student < ApplicationRecord
         grade = current_enrollments.first.school_year_grade.grade
       else
         logger.warn('Student with multiple active enrollments ?', self.id)
-        return 'long' ? 'MULTIPLE SCHOOLS!' : '!?!'
+        return format == 'long' ? 'MULTIPLE SCHOOLS!' : '!?!'
       end
       format == 'long' ? grade.title : grade.short_name
     else
@@ -32,8 +41,8 @@ class Student < ApplicationRecord
     end
   end
 
-  def is_registered
-    current_grade('short') == 'NR' ? true : false
+  def is_registered?
+    current_grade('short') == 'NR' ? false : true
   end
 
   private
@@ -43,7 +52,7 @@ class Student < ApplicationRecord
       if Student.count == 0
         self.student_id = 1000
       else
-        self.student_id = (Student.maximum(self.student_id)) + 1
+        self.student_id = (Student.maximum(:student_id)) + 1
       end
     end
   end

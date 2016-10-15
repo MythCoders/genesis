@@ -10,10 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160814030755) do
+ActiveRecord::Schema.define(version: 20160824000941) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "addresses", force: :cascade do |t|
+    t.string "street",       limit: 50, null: false
+    t.string "city",         limit: 30, null: false
+    t.string "state",        limit: 2
+    t.string "zip_code",     limit: 9,  null: false
+    t.string "phone_number", limit: 10
+  end
 
   create_table "attendance", force: :cascade do |t|
     t.integer  "attendance_calendar_day_id"
@@ -144,6 +152,15 @@ ActiveRecord::Schema.define(version: 20160814030755) do
     t.integer  "previous_grade_id"
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
+  end
+
+  create_table "people", force: :cascade do |t|
+    t.string   "first_name",    limit: 30
+    t.string   "middle_name",   limit: 30
+    t.string   "last_name",     limit: 30
+    t.string   "email_address", limit: 60
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
   end
 
   create_table "report_card_comments", force: :cascade do |t|
@@ -301,16 +318,66 @@ ActiveRecord::Schema.define(version: 20160814030755) do
     t.index ["key"], name: "index_settings_on_key", using: :btree
   end
 
+  create_table "student_addresses", force: :cascade do |t|
+    t.integer  "student_id",      null: false
+    t.integer  "address_id",      null: false
+    t.boolean  "is_mailing"
+    t.boolean  "is_residential"
+    t.boolean  "is_bus_pickup"
+    t.boolean  "is_bus_drop_off"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
+  create_table "student_medical_alerts", force: :cascade do |t|
+    t.integer  "student_id", null: false
+    t.string   "title",      null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "student_medical_visits", force: :cascade do |t|
+    t.integer  "student_id", null: false
+    t.datetime "time_in",    null: false
+    t.datetime "time_out"
+    t.string   "reason"
+    t.string   "result"
+    t.string   "comment"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "student_notes", force: :cascade do |t|
+    t.integer  "student_id",             null: false
+    t.string   "title",      limit: 100, null: false
+    t.string   "body"
+    t.boolean  "is_flagged"
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  create_table "student_relationships", force: :cascade do |t|
+    t.integer  "student_address_id", null: false
+    t.integer  "person_id",          null: false
+    t.boolean  "has_custody"
+    t.boolean  "is_emergency"
+    t.string   "relation"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+    t.integer  "contact_order"
+  end
+
   create_table "students", force: :cascade do |t|
     t.integer  "student_id"
-    t.string   "first_name",    limit: 30, null: false
-    t.string   "middle_name",   limit: 30
-    t.string   "last_name",     limit: 30, null: false
-    t.string   "suffix",        limit: 5
-    t.string   "sex",           limit: 1
+    t.string   "first_name",         limit: 30, null: false
+    t.string   "middle_name",        limit: 30
+    t.string   "last_name",          limit: 30, null: false
+    t.string   "suffix",             limit: 5
+    t.string   "sex",                limit: 1
     t.date     "date_of_birth"
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
+    t.integer  "primary_address_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -364,4 +431,12 @@ ActiveRecord::Schema.define(version: 20160814030755) do
   add_foreign_key "school_year_grades", "school_years"
   add_foreign_key "school_years", "schools"
   add_foreign_key "schools", "districts"
+  add_foreign_key "student_addresses", "addresses"
+  add_foreign_key "student_addresses", "students"
+  add_foreign_key "student_medical_alerts", "students"
+  add_foreign_key "student_medical_visits", "students"
+  add_foreign_key "student_notes", "students"
+  add_foreign_key "student_relationships", "people"
+  add_foreign_key "student_relationships", "student_addresses"
+  add_foreign_key "students", "student_addresses", column: "primary_address_id"
 end

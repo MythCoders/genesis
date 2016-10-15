@@ -1,28 +1,24 @@
+<%= render :partial => 'students/sidebar', :locals => {:student => @student} %>
 <header class="aui-page-header">
   <div class="aui-page-header-inner">
     <div class="aui-page-header-main">
-      <h1>Admit New Student</h1>
+      <h1>Edit Student</h1>
     </div>
     <div class="aui-page-header-actions">
-
     </div>
   </div>
 </header>
 <div class="aui-page-panel">
   <div class="aui-page-panel-inner">
     <div class="aui-page-panel-content">
-      <%= form_for :student, url: students_path, :html => { :class => 'aui' } do |f| %>
-
+      <%= form_for @student, url: student_path(@student), method: :patch, :html => {:class => 'aui'} do |f| %>
           <%= error_messages_for 'student' %>
-          <%= render :partial => "students/#{@type}admit", :locals => { :f => f } %>
-
           <div class="buttons-container">
             <div class="buttons">
-              <%= f.submit 'Create', :class => 'button submit' %>
-              <%= link_to 'Cancel', students_path, :class => 'cancel', :type => @type %>
+              <%= f.submit 'Save Changes', :class => 'button submit' %>
+              <%= link_to 'Cancel', back_url, :class => 'cancel' %>
             </div>
           </div>
-
       <% end %>
     </div>
   </div>

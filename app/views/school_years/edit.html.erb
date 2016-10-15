@@ -14,7 +14,7 @@
 <div class="aui-page-panel">
   <div class="aui-page-panel-inner">
     <div class="aui-page-panel-content">
-      <%= form_for :school_year, url: school_school_year_path(@school_year), method: :patch, :html => { :class => 'aui' } do |f| %>
+      <%= form_for @school_year, url: school_school_year_path(@school_year), method: :patch, :html => { :class => 'aui' } do |f| %>
 
           <%= error_messages_for 'school_year' %>
           <%= render :partial => 'school_years/form', :locals => {:f => f} %>

@@ -16,6 +16,7 @@ Rails.application.routes.draw do
     resources :school_years
   end
 
+  resources :student_relationships
   resources :students
   resources :users
 

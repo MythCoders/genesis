@@ -1,6 +1,5 @@
 class StudentsController < ApplicationController
   include StudentHelper
-  layout :compute_layout
 
   def index
     @q = Student.ransack(params[:q])
@@ -8,7 +7,7 @@ class StudentsController < ApplicationController
   end
 
   def show
-    @student = Student.find(params[:id])
+    @student = Student.includes(:student_addresses).find(params[:id])
   end
 
   def new
@@ -17,17 +16,13 @@ class StudentsController < ApplicationController
       redirect_to action: :index
     end
 
-    if params[:type].nil? || get_user_pref == 'quick'
-      @type = 'quick'
-    else
-      @type = 'slow'
-    end
-
     @student = Student.new
     @student.enrollments << Enrollment.new
+    @student.student_addresses << StudentAddress.new do |sa|
+      sa.address = Address.new
+    end
 
-    @grades = SchoolYear.find(session['school_year_id']).grades
-    @admission_codes = EnrollmentCode.where(:is_admission => true)
+    populate_select_lists
   end
 
   def create
@@ -36,15 +31,12 @@ class StudentsController < ApplicationController
     if @student.save
       redirect_to @student
     else
+      populate_select_lists
       render 'new', :type => @type
     end
   end
 
   private
-
-  def compute_layout
-    action_name == 'show' ? 'sidebar' : 'base'
-  end
 
   def build_new_student
     @student = Student.new
@@ -53,12 +45,26 @@ class StudentsController < ApplicationController
     end
   end
 
+  def populate_select_lists
+    @grades = SchoolYear.find(session['school_year_id']).grades
+    @admission_codes = EnrollmentCode.where(:is_admission => true)
+
+    if params[:type].nil? || get_user_pref == 'quick'
+      @type = 'quick'
+    else
+      @type = 'slow'
+    end
+  end
+
   def student_params
     params.require(:student).permit(:id, :student_id, :first_name, :middle_name, :last_name, :suffix, :date_of_birth, :sex,
-                                    {:enrollments_attributes => [:id, :student_id, :school_year_grade_id, :admission_date, :admission_code_id, :withdraw_date, :withdraw_code_id, :next_school_id]})
+                                    { :enrollments_attributes => [:id, :student_id, :school_year_grade_id, :admission_date, :admission_code_id, :withdraw_date, :withdraw_code_id, :next_school_id] },
+                                    { :student_addresses_attributes => [:id, :student_id, :address_id, :is_mailing, :is_residential, :is_bus_pickup, :is_bus_drop_off,
+                                                                        { :address_attributes => [:id, :street, :city, :state, :zip_code, :phone_number] } ] })
   end
 
   def get_user_pref
+    #todo: load preference
     'quick'
   end
 
