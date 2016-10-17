@@ -1,17 +1,18 @@
-# GeneSIS
-*Student Information System*
+# [GeneSIS](https://gitlab.com/mythcoders/genesis)
 
 GeneSIS is an open-sourced student information system that runs on the Ruby-on-Rails platform. 
-Aimed to provide a great looking system with all the power and functionality you'd expect from 
+Aimed to provide a great looking interface with all the power and functionality you'd expect from 
 a profession application.
 
 ## Table of contents
+
 - [Requirements](#requirements)
 - [Bugs and feature requests](#bugs-and-feature-requests)
 - [Versioning](#versioning)
 - [Copyright and license](#copyright-and-license)
 
 ## Requirements
+
 * Ruby 2.2.4
 * Rails 5.0
 * PostgresSQL 9.5
@@ -22,7 +23,6 @@ a profession application.
 ## Bugs and feature requests
 Have a bug or a feature request? Please first read the issue guidelines and search for existing and closed issues. 
 If your problem or idea is not addressed yet, [please open a new issue](https://gitlab.com/mythcoders/genesis/issues/new).
-
 
 ## Versioning
 
