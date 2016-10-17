@@ -1,0 +1,11 @@
+= form_for form_for @school_year, url: school_school_years_path, :html => { :class => '' } do |f|
+  .card
+    .card-header
+      New school year for
+      = @school_year.school.name
+    .card-deck
+      = error_messages_for 'school_year'
+      = render :partial =>  'school_years/form', :locals => {:f => f}
+    .card-footer
+      = link_to 'Cancel', school_path(@school_year.school), :class => 'btn btn-secondary'
+      = f.submit 'Create', :class => 'btn btn-primary'

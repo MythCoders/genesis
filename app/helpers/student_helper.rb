@@ -37,7 +37,7 @@ module StudentHelper
       return_value = false
     end
 
-    if EnrollmentCode.where(:is_admission => true).none!
+    if !EnrollmentCode.where(:is_admission => true).any?
       return_value = false
     end
 

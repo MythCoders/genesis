@@ -45,6 +45,7 @@ module ApplicationHelper
     if args.empty?
       title = @html_title || []
       title << @student.formatted_full_name  if @student
+      title << @page_title if @page_title
       title << Genesis::INFO.app_name
       title.reject(&:blank?).join(' - ')
     else
@@ -270,6 +271,10 @@ module ApplicationHelper
       url = CGI.unescape(referer.to_s)
     end
     url
+  end
+
+  def bs_text_field(form_helper, attribute, html_class = 'form-control')
+    form_helper.text_field attribute, :class => html_class
   end
 
 end

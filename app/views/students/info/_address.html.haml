@@ -33,6 +33,7 @@
             %thead
               %tr
                 %th{style: 'width: 4%'}
+                %th{style: 'width: 4%'}
                 %th Name
             %tbody
               - t.student_relationships.each do |r|
@@ -40,4 +41,10 @@
                   %td
                     %a
                       Edit
-                  %td Name
+                  %td
+                    - if r.has_custody
+                      %i.fa.fa-legal
+                    - if r.is_emergency
+                      %i.fa.fa-ambulance
+                  %td
+                    = "#{r.person.formatted_full_name(2)}, #{r.relation}"

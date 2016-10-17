@@ -10,4 +10,10 @@ class ApplicationRecord < ActiveRecord::Base
     format_address(self.street, nil, self.city, self.state, self.zip_code, nil, format)
   end
 
+  def method_missing(sym, *args)
+    msg = "Unable to find method '#{sym}' on class '#{self.class.name}'. Args were: #{args.inspect}"
+    logger.warn(msg)
+    puts msg
+  end
+
 end

@@ -3,7 +3,7 @@
 
 .row
   .col-sm-4
-    %table.table.table-bordered.table-sm
+    %table.table.table-bordered
       %tbody
         %tr
           %td Active Staff
@@ -15,7 +15,7 @@
     .card
       .card-header School Years
       - if @school.school_years.any?
-        %table.table.table-bordered
+        %table.table.table-bordered.table-striped
           %tbody
             - @school.school_years.each do |sy|
               %tr

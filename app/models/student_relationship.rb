@@ -4,4 +4,5 @@ class StudentRelationship < ApplicationRecord
 
   belongs_to :student_address
   belongs_to :person
+
 end

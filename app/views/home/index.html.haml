@@ -1,1 +1,31 @@
-%h2 Hello Dave
+%h2
+  Dashboard
+  %small welcome back Justin!
+%hr
+.row
+  .col-sm-4
+    .card
+      .card-header
+        %i.fa.fa-search
+        Student Quick Search
+      .card-block
+        %form.form-inline
+          .form-group
+            %label Student ID
+            %input.form-control
+    .card
+      .card-header
+        %i.fa.fa-bell-o
+        Alerts
+      %ul.list-group.list-group-flush
+        %li.list-group-item
+          %span.tag.tag-default.tag-pill.pull-xs-right 2 min
+          Alert #1
+        %li.list-group-item
+          %span.tag.tag-default.tag-pill.pull-xs-right 37 min
+          Alert #2
+        %li.list-group-item
+          %span.tag.tag-default.tag-pill.pull-xs-right 1 hour
+          Alert #3
+  .col-sm-8
+    %p Additional content will go here.
