@@ -41,17 +41,13 @@ module ApplicationHelper
     render :partial => 'layouts/navbar', :locals => {:menu => menu}
   end
 
-  def html_title(*args)
-    if args.empty?
-      title = @html_title || []
-      title << @student.formatted_full_name  if @student
-      title << @page_title if @page_title
-      title << Genesis::INFO.app_name
-      title.reject(&:blank?).join(' - ')
-    else
-      @html_title ||= []
-      @html_title += args
-    end
+  def page_title(*titles)
+    @page_title ||= []
+
+    @page_title.push(*titles.compact) if titles.any?
+
+    # Segments are seperated by middot
+    @page_title.join(" \u00b7 ")
   end
 
   def format_person_name(first_name, middle_initial, last_name, suffix = nil, format = 2)

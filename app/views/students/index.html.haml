@@ -1,3 +1,5 @@
+- page_title 'Student Search'
+
 .card
   .card-header
     %i.fa.fa-search
@@ -14,14 +16,14 @@
         %tr
           %td= link_to 'Select', student_path(s)
           %td= s.student_id
-          %td= format_person_name(s.first_name, s.middle_name, s.last_name, s.suffix,)
+          %td= s.formatted_full_name
           %td= s.current_grade
 
 .btn-group
-  %a.btn.btn-secondary{ href: new_student_path, class: can_new_student_be_admitted ? '' : 'disabled'}
+  %a.btn.btn-secondary{ href: new_student_path, class: can_new_student_be_admitted? ? '' : 'disabled'}
     New Admission
   .btn-group
-    %button.btn.btn-secondary.dropdown-toggle{ 'data-toggle': 'dropdown', disabled: can_new_student_be_admitted ? '' : 'disabled' }
+    %button.btn.btn-secondary.dropdown-toggle{ 'data-toggle': 'dropdown', disabled: can_new_student_be_admitted? ? '' : 'disabled' }
       %span.caret
     %ul.dropdown-menu
       %li.dropdown-item= link_to 'Quick Admission', new_student_path, :type => 'quick'

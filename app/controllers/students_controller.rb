@@ -2,7 +2,6 @@ class StudentsController < ApplicationController
   include StudentHelper
 
   def index
-    @page_title = 'Student Search'
     @q = Student.ransack(params[:q])
     @students = @q.result
   end
@@ -12,8 +11,7 @@ class StudentsController < ApplicationController
   end
 
   def new
-    @page_title = 'Student Admission'
-    if !can_new_student_be_admitted
+    unless can_new_student_be_admitted?
       flash[:error] = 'No students can be admitted for the currently selected school year.'
       redirect_to action: :index
     end

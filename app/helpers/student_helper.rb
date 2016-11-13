@@ -30,14 +30,14 @@ module StudentHelper
     sidebar.sections << action_links
   end
 
-  def can_new_student_be_admitted
+  def can_new_student_be_admitted?
     return_value = true
 
-    if !SchoolYear.find(session['school_year_id']).grades.any?
+    unless SchoolYear.find(session['school_year_id']).grades.any?
       return_value = false
     end
 
-    if !EnrollmentCode.where(:is_admission => true).any?
+    unless EnrollmentCode.where(:is_admission => true).any?
       return_value = false
     end
 
