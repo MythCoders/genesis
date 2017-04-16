@@ -1,0 +1,19 @@
+.container
+  %h4 Basic Information
+  .form-group.row
+    = f.label :year, :class => 'col-sm-1 col-form-label'
+    .col-sm-3= f.text_field :year, :class => 'form-control', :placeholder => 'Year'
+    = f.label :title, :class => 'col-sm-1 col-form-label'
+    .col-sm-3= f.text_field :title, :class => 'form-control', :placeholder => 'Title'
+    = f.label :short_name, :class => 'col-sm-2 col-form-label'
+    .col-sm-2= f.text_field :short_name, :class => 'form-control'
+  .form-group.row
+    = f.label :grades_being_taught, :class => 'col-sm-2 col-form-label'
+    - @grades.each do |g|
+      .checkbox
+        = check_box_tag 'school_year[grade_ids][]', g.id, @school_year.is_grade_being_taught?(g.short_name), {:disabled => !can_grade_be_edited(g.short_name) }
+    - if @school_year.has_started?
+      .text-warning
+        The school year has already started and can't be changed anymore
+  .form-group.row
+    = f.label :attendance

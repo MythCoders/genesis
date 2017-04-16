@@ -19,14 +19,16 @@ module Genesis
         "#{app_name} #{version}"
       end
       def environment
-        s = "Instance Information:\n"
+        blank = "-------------------------"
+        s = "System Information\n"
         s << [
+            [nil,nil],
             ["#{app_name} version", "#{version}-#{VER_BUILD}"],
             ['Ruby version', "#{RUBY_VERSION}-p#{RUBY_PATCHLEVEL} (#{RUBY_RELEASE_DATE}) [#{RUBY_PLATFORM}]"],
             ['Rails version', Rails::VERSION::STRING],
-            ['Environment', Rails.env],
+            ['Rails environment', Rails.env],
             ['Database adapter', ActiveRecord::Base.connection.adapter_name],
-            ['Branch', VER_BRANCH]
+            ['Database version', "?"]
         ].map {|info| '  %-20s %s' % info}.join("\n") + "\n"
       end
     end

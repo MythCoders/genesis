@@ -2,22 +2,6 @@
 %h4 General Information
 %hr
 
+= label_tag :name
+= @student.formatted_full_name
 
-
-
-
-
-<form class="aui">
-  <div class="field-group">
-    <%= label_tag :name %>
-    <%= @student.formatted_full_name %>
-  </div>
-  <div class="field-group">
-    <%= label_tag :sex %>
-    <%= @student.sex %>
-  </div>
-  <div class="field-group">
-    <%= label_tag :date_of_birth %>
-    <%= display_date(@student.date_of_birth) %>
-  </div>
-</form>

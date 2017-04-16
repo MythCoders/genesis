@@ -5,6 +5,8 @@ module ApplicationHelper
   SEX = [MALE = 'M', FEMALE = 'F']
   USER_BASE_ROLES = [STUDENT = 1, PARENT = 4, TEACHER = 12, ADMIN = 64, SUPER_ADMIN = 256]
 
+  MIDDOT = " \u00b7 "
+
   def render_vertical_tabs(tabs, selected = params[:tab])
     if tabs.any?
       unless tabs.detect { |tab| tab[:name] == selected }
@@ -47,7 +49,12 @@ module ApplicationHelper
     @page_title.push(*titles.compact) if titles.any?
 
     # Segments are seperated by middot
-    @page_title.join(" \u00b7 ")
+    @page_title.join(MIDDOT)
+  end
+
+  def current_page_title
+    title = @page_title.split(MIDDOT)[0][0]
+    title == 'GeneSIS' ? nil : title
   end
 
   def format_person_name(first_name, middle_initial, last_name, suffix = nil, format = 2)
