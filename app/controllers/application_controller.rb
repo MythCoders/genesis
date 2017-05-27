@@ -1,11 +1,16 @@
 class ApplicationController < ActionController::Base
-  layout 'base'
+  layout :determine_layout
 
   protect_from_forgery with: :exception
 
   before_action :authenticate_user!
   before_action :check_params
   before_action :populate_session_variables
+
+  def determine_layout
+    module_name = self.class.to_s.split('::').first
+    return (module_name.eql?('Devise') ? 'pages' : 'application')
+  end
 
   def check_params
     if params.has_key?(:frc_clr_ses)

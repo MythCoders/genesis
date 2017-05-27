@@ -1,0 +1,143 @@
+/ START Off Sidebar (right)
+%nav
+  %div{:role => "tabpanel"}
+    / Nav tabs
+    %ul.nav.nav-tabs.nav-justified{:role => "tablist"}
+      %li.active{:role => "presentation"}
+        %a{"aria-controls" => "app-settings", "data-toggle" => "tab", :href => "#app-settings", :role => "tab"}
+          %em.icon-equalizer.fa-lg
+      %li{:role => "presentation"}
+        %a{"aria-controls" => "app-chat", "data-toggle" => "tab", :href => "#app-chat", :role => "tab"}
+          %em.icon-user.fa-lg
+    / Tab panes
+    .tab-content
+      #app-settings.tab-pane.fade.in.active{:role => "tabpanel"}
+        %h3.text-center.text-thin Settings
+        .p
+          %h4.text-muted.text-thin Themes
+          .table-grid.mb
+            .col.mb
+              .setting-color
+                %label{"data-load-css" => "#{asset_path('angle/themes/theme-a.css')}"}
+                  %input{:checked => "checked", :name => "setting-theme", :type => "radio"}/
+                  %span.icon-check
+                  %span.split
+                    %span.color.bg-info
+                    %span.color.bg-info-light
+                  %span.color.bg-white
+            .col.mb
+              .setting-color
+                %label{"data-load-css" => "#{asset_path('angle/themes/theme-b.css')}"}
+                  %input{:name => "setting-theme", :type => "radio"}/
+                  %span.icon-check
+                  %span.split
+                    %span.color.bg-green
+                    %span.color.bg-green-light
+                  %span.color.bg-white
+            .col.mb
+              .setting-color
+                %label{"data-load-css" => "#{asset_path('angle/themes/theme-c.css')}"}
+                  %input{:name => "setting-theme", :type => "radio"}/
+                  %span.icon-check
+                  %span.split
+                    %span.color.bg-purple
+                    %span.color.bg-purple-light
+                  %span.color.bg-white
+            .col.mb
+              .setting-color
+                %label{"data-load-css" => "#{asset_path('angle/themes/theme-d.css')}"}
+                  %input{:name => "setting-theme", :type => "radio"}/
+                  %span.icon-check
+                  %span.split
+                    %span.color.bg-danger
+                    %span.color.bg-danger-light
+                  %span.color.bg-white
+          .table-grid.mb
+            .col.mb
+              .setting-color
+                %label{"data-load-css" => "#{asset_path('angle/themes/theme-e.css')}"}
+                  %input{:name => "setting-theme", :type => "radio"}/
+                  %span.icon-check
+                  %span.split
+                    %span.color.bg-info-dark
+                    %span.color.bg-info
+                  %span.color.bg-gray-dark
+            .col.mb
+              .setting-color
+                %label{"data-load-css" => "#{asset_path('angle/themes/theme-f.css')}"}
+                  %input{:name => "setting-theme", :type => "radio"}/
+                  %span.icon-check
+                  %span.split
+                    %span.color.bg-green-dark
+                    %span.color.bg-green
+                  %span.color.bg-gray-dark
+            .col.mb
+              .setting-color
+                %label{"data-load-css" => "#{asset_path('angle/themes/theme-g.css')}"}
+                  %input{:name => "setting-theme", :type => "radio"}/
+                  %span.icon-check
+                  %span.split
+                    %span.color.bg-purple-dark
+                    %span.color.bg-purple
+                  %span.color.bg-gray-dark
+            .col.mb
+              .setting-color
+                %label{"data-load-css" => "#{asset_path('angle/themes/theme-h.css')}"}
+                  %input{:name => "setting-theme", :type => "radio"}/
+                  %span.icon-check
+                  %span.split
+                    %span.color.bg-danger-dark
+                    %span.color.bg-danger
+                  %span.color.bg-gray-dark
+        .p
+          %h4.text-muted.text-thin Layout
+          .clearfix
+            %p.pull-left Fixed
+            .pull-right
+              %label.switch
+                %input#chk-fixed{"data-toggle-state" => "layout-fixed", :type => "checkbox"}/
+                %span
+          .clearfix
+            %p.pull-left Boxed
+            .pull-right
+              %label.switch
+                %input#chk-boxed{"data-toggle-state" => "layout-boxed", :type => "checkbox"}/
+                %span
+          .clearfix
+            %p.pull-left RTL
+            .pull-right
+              %label.switch
+                %input#chk-rtl{:type => "checkbox"}/
+                %span
+        .p
+          %h4.text-muted.text-thin Aside
+          .clearfix
+            %p.pull-left Collapsed
+            .pull-right
+              %label.switch
+                %input#chk-collapsed{"data-toggle-state" => "aside-collapsed", :type => "checkbox"}/
+                %span
+          .clearfix
+            %p.pull-left Collapsed Text
+            .pull-right
+              %label.switch
+                %input#chk-collapsed-text{"data-toggle-state" => "aside-collapsed-text", :type => "checkbox"}/
+                %span
+          .clearfix
+            %p.pull-left Float
+            .pull-right
+              %label.switch
+                %input#chk-float{"data-toggle-state" => "aside-float", :type => "checkbox"}/
+                %span
+          .clearfix
+            %p.pull-left Hover
+            .pull-right
+              %label.switch
+                %input#chk-hover{"data-toggle-state" => "aside-hover", :type => "checkbox"}/
+                %span
+          .clearfix
+            %p.pull-left Show Scrollbar
+            .pull-right
+              %label.switch
+                %input#chk-hover{"data-target" => ".sidebar", "data-toggle-state" => "show-scrollbar", :type => "checkbox"}/
+                %span

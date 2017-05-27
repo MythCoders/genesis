@@ -1,0 +1,15 @@
+!!!
+%html{:lang => "en"}
+  %head= render partial: 'layouts/partials/header'
+  %body
+    .wrapper
+      = yield
+    .p-lg.text-center
+      %span ©
+      %span 2017
+      %span -
+      %span Angle
+      %br/
+      %span Bootstrap Admin Template
+    = javascript_include_tag 'base', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'

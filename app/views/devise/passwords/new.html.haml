@@ -1,18 +1,15 @@
-.card
-  .card-header
-    %strong= Genesis::INFO.app_name
-    | Forgot Password
-  .card-block
-    .col-sm-8.offset-sm-2
-      .container
-        = devise_error_messages!
-        = form_for(resource, as: resource_name, url: confirmation_path(resource_name), :html => { :method => :post }) do |f|
-          .form-group.row
-            = f.label :email, class: 'col-sm-2 col-form-label'
-            .col-sm-10
-              = f.email_field :email, autofocus: true, :class => 'form-control', :placeholder => 'Email Address'
-
-          .form-group
-            = f.submit 'Sent reset instructions', :class => 'btn btn-primary btn-block btn-login'
-          .login-bottom-links
-            = render 'devise/shared/links'
+.block-center.mt-xl.wd-xl
+  .panel.panel-dark.panel-flat
+    .panel-heading.text-center
+      %a{:href => "#"}
+        %img.block-center.img-rounded{:alt => "Image", :src => "#{image_path('angle/logo.png')}"}
+    .panel-body
+      %p.text-center.pv Forgot Password
+      = devise_error_messages!
+      = form_for(resource, as: resource_name, url: confirmation_path(resource_name), :html => { :method => :post }) do |f|
+        .form-group.has-feedback
+          = f.label :email, class: 'text-muted'
+          = f.email_field :email, autofocus: true, :class => 'form-control', :placeholder => 'Email', :required => 'required'
+          %span.fa.fa-envelope.form-control-feedback.text-muted
+          = f.submit 'Sent reset instructions', :class => 'btn btn-primary btn-block btn-login mt-lg'
+      = render 'devise/shared/links'

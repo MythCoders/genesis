@@ -1,0 +1,29 @@
+%nav.navbar.topnavbar{:role => 'navigation'}
+  .navbar-header
+    %a.navbar-brand{:href => '#/'}
+      .brand-logo
+        %img.img-responsive{:alt => 'App Logo', :src => "#{image_path('angle/logo.png')}"}
+      .brand-logo-collapsed
+        %img.img-responsive{:alt => 'App Logo', :src => "#{image_path('angle/logo-single.png')}"}
+  .nav-wrapper
+    %ul.nav.navbar-nav
+      %li
+        %a.hidden-xs{'data-toggle-state' => 'aside-collapsed', :href => '#'}
+          %em.fa.fa-navicon
+        %a.visible-xs.sidebar-toggle{'data-no-persist' => 'true', 'data-toggle-state' => 'aside-toggled', :href => '#'}
+          %em.fa.fa-navicon
+      %li
+        %a{'data-search-open' => '', :href => '#'}
+          %em.icon-magnifier
+    %ul.nav.navbar-nav.navbar-right
+      %li
+        %a{'data-no-persist' => 'true', 'data-toggle-state' => 'offsidebar-open', :href => '#'}
+          %em.icon-notebook
+      %li
+        = link_to destroy_user_session_path, :method=>'delete', :title => 'Sign out' do
+          %em.fa.fa-lock
+  %form.navbar-form{:action => 'search.html', :role => 'search'}
+    .form-group.has-feedback
+      %input.form-control{:placeholder => 'Type and hit enter ...', :type => 'text'}
+      .fa.fa-times.form-control-feedback{'data-search-dismiss' => ''}
+    %button.hidden.btn.btn-default{:type => 'submit'} Submit

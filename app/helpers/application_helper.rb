@@ -7,6 +7,14 @@ module ApplicationHelper
 
   MIDDOT = " \u00b7 "
 
+  def controller?(*controller)
+    controller.include?(params[:controller])
+  end
+
+  def action?(*action)
+    action.include?(params[:action])
+  end
+
   def render_vertical_tabs(tabs, selected = params[:tab])
     if tabs.any?
       unless tabs.detect { |tab| tab[:name] == selected }

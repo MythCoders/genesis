@@ -1,12 +1,13 @@
 source 'https://rubygems.org'
 
-gem 'rails', '~> 5.0.0'
-gem 'pg', '~> 0.18' # database for Active Record
-gem 'puma', '~> 3.0' # app server
+gem 'rails', '~> 5.1.1'
+gem 'pg', '~> 0.20' # database for Active Record
+gem 'puma', '~> 3.8.2' # app server
 gem 'uglifier', '>= 1.3.0'
 gem 'haml'
 gem 'coffee-rails', '~> 4.2'
-gem 'turbolinks', '~> 5'
+gem 'sass-rails' # Use SCSS for stylesheets
+gem 'turbolinks', '~> 5.0.1'
 gem 'jbuilder', '~> 2.5' # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'devise'
 gem 'ransack'
@@ -20,3 +21,5 @@ end
 group :development do
   gem 'web-console'
 end
+
+gem 'bower-rails', '~> 0.9.2'

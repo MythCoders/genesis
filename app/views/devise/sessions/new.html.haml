@@ -1,43 +1,16 @@
-.card
-  .card-header
-    %strong= Genesis::INFO.app_name
-    | Login
-  .card-block
-    .col-sm-5
-      .container
-        = form_for(resource, as: resource_name, url: session_path(resource_name), :html => { :class => '' } ) do |f|
-          .form-group
-            .input-group
-              .input-group-addon
-                %i.fa.fa-envelope
-              = f.email_field :email, autofocus: true, :class => 'form-control', :placeholder => 'Email Address'
-          .form-group
-            .input-group
-              .input-group-addon
-                %i.fa.fa-key
-              = f.password_field :password, autocomplete: 'off', :class => 'form-control', :placeholder => 'Password'
-          .form-group
-            = f.submit 'Log in', :class => 'btn btn-primary btn-block btn-login'
-          .login-bottom-links
-            = render 'devise/shared/links'
-    .col-md-7
-      %h3 Announcements
-      .text-muted
-        There are no announcements at this time
-      %ul
-        %li
-          %strong Veteran's Day
-          %small 11/6/2016
-          %br
-          There will be no school on Friday November 11, 2016 in honor of Vetern's Day.
-        %li
-          %strong Parent Teacher Conference
-          %small 11/7/2016
-          %br
-          Be on the look out. THey are coming up soon!
-  .card-footer.text-muted
-    .pull-left.hidden-sm-down
-      Licensed to Ohio Board of Education
-    .pull-right
-      Powered by
-      = Genesis::INFO.versioned_name
+.block-center.mt-xl.wd-xl
+  .panel.panel-dark.panel-flat
+    .panel-heading.text-center
+      %a{:href => "#"}
+        %img.block-center.img-rounded{:alt => "Image", :src => "#{image_path('angle/logo.png')}"}
+    .panel-body
+      %p.text-center.pv Login
+      = form_for(resource, as: resource_name, url: session_path(resource_name), :html => { :class => 'mb-lg' } ) do |f|
+        .form-group.has-feedback
+          = f.email_field :email, autofocus: true, :class => 'form-control', :placeholder => 'Email', :required => 'required'
+          %span.fa.fa-envelope.form-control-feedback.text-muted
+          .form-group.has-feedback
+            = f.password_field :password, autocomplete: 'off', :class => 'form-control', :placeholder => 'Password', :required => 'required'
+            %span.fa.fa-lock.form-control-feedback.text-muted
+          = f.submit 'Login', :class => 'btn btn-primary btn-block btn-login mt-lg'
+      = render 'devise/shared/links'
