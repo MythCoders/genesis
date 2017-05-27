@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
   root :to => 'home#index', :as => 'home'
 
-  devise_for :users
+  devise_for :users, :path_prefix => 'security'
 
   resources :announcements
   resources :calendars

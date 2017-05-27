@@ -1,10 +1,9 @@
 .block-center.mt-xl.wd-xl
-  .panel.panel-dark.panel-flat
+  .panel.panel-flat.panel-dark
     .panel-heading.text-center
       %a{:href => "#"}
-        %img.block-center.img-rounded{:alt => "Image", :src => "#{image_path('angle/logo.png')}"}
+        %img.block-center.img-rounded{:alt => 'GeneSIS logo', :src => "#{image_path('angle/logo.png')}"}
     .panel-body
-      %p.text-center.pv Login
       = form_for(resource, as: resource_name, url: session_path(resource_name), :html => { :class => 'mb-lg' } ) do |f|
         .form-group.has-feedback
           = f.email_field :email, autofocus: true, :class => 'form-control', :placeholder => 'Email', :required => 'required'
@@ -14,3 +13,16 @@
             %span.fa.fa-lock.form-control-feedback.text-muted
           = f.submit 'Login', :class => 'btn btn-primary btn-block btn-login mt-lg'
       = render 'devise/shared/links'
+    .panel-footer
+      %span{:class => [('text-danger' if Rails.env.development?), ('text-danger' if Rails.env.test?)]}
+        - if Rails.env.production?
+          Licensed to Board of Education
+        - if Rails.env.development?
+          Dev environment
+        - if Rails.env.test?
+          Test environment
+      .pull-right
+        - if Rails.env.production?
+          = "v. #{Genesis::INFO.version}"
+        - else
+          = "v. #{Genesis::INFO.build_string}"

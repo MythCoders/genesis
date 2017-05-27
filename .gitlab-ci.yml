@@ -1,20 +1,40 @@
 image: "ruby:2.2.4"
-
 variables:
-  HEROKU_API_KEY: "e5f13cc6-c576-46fe-a13c-c9dd9e972e5b"
-  HEROKU_PRODUCTION_APP_NAME: "genesis-itst"
-
+  HEROKU_APP_NAME: "genesis"
+services:
+  - postgres:latest
 cache:
   paths:
-    - vendor/
-
+    - vendor/ruby
 stages:
-  - build
+  - testing
+  - database
+  - deploy
 
-build:
-  stage: build
+before_script: #this will run with every build
+  - ruby -v
+  - apt-get update -q && apt-get install nodejs -yqq
+  - gem install bundler  --no-ri --no-rdoc
+  - bundle install -j $(nproc) --path vendor
+
+seed test:
+  stage: database
   script:
-  - gem install bundler
-  - bundle install --path vendor --without development test
-  #- bundle exec rails db:migrate RAILS_ENV=production
-  #- bundle exec rails c production
+  - bundle exec rake db:migrate
+  - bundle exec rake db:seed
+  - bundle exec rake test
+  only:
+    - master@mythcoders/genesis
+
+deploy test:
+  stage: deploy
+  environment:
+    name: test
+    url: https://genesis-itst.herokuapp.com/
+  variables:
+    HEROKU_APP_NAME: "genesis-test"
+  script:
+    - gem install dpl
+    - dpl --provider=heroku --api-key=$HEROKU_API_KEY --app=$HEROKU_APP_NAME
+  only:
+    - master@mythcoders/genesis

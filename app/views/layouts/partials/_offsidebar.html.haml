@@ -1,15 +1,9 @@
-/ START Off Sidebar (right)
 %nav
   %div{:role => "tabpanel"}
-    / Nav tabs
-    %ul.nav.nav-tabs.nav-justified{:role => "tablist"}
-      %li.active{:role => "presentation"}
-        %a{"aria-controls" => "app-settings", "data-toggle" => "tab", :href => "#app-settings", :role => "tab"}
-          %em.icon-equalizer.fa-lg
-      %li{:role => "presentation"}
-        %a{"aria-controls" => "app-chat", "data-toggle" => "tab", :href => "#app-chat", :role => "tab"}
-          %em.icon-user.fa-lg
-    / Tab panes
+    -#%ul.nav.nav-tabs.nav-justified{:role => "tablist"}
+    -#  %li.active{:role => "presentation"}
+    -#    %a{"aria-controls" => "app-settings", "data-toggle" => "tab", :href => "#app-settings", :role => "tab"}
+    -#      %em.icon-equalizer.fa-lg
     .tab-content
       #app-settings.tab-pane.fade.in.active{:role => "tabpanel"}
         %h3.text-center.text-thin Settings
@@ -19,7 +13,7 @@
             .col.mb
               .setting-color
                 %label{"data-load-css" => "#{asset_path('angle/themes/theme-a.css')}"}
-                  %input{:checked => "checked", :name => "setting-theme", :type => "radio"}/
+                  %input{:checked => "checked", :name => "setting-theme", :type => "radio"}
                   %span.icon-check
                   %span.split
                     %span.color.bg-info
@@ -28,7 +22,7 @@
             .col.mb
               .setting-color
                 %label{"data-load-css" => "#{asset_path('angle/themes/theme-b.css')}"}
-                  %input{:name => "setting-theme", :type => "radio"}/
+                  %input{:name => "setting-theme", :type => "radio"}
                   %span.icon-check
                   %span.split
                     %span.color.bg-green
@@ -37,7 +31,7 @@
             .col.mb
               .setting-color
                 %label{"data-load-css" => "#{asset_path('angle/themes/theme-c.css')}"}
-                  %input{:name => "setting-theme", :type => "radio"}/
+                  %input{:name => "setting-theme", :type => "radio"}
                   %span.icon-check
                   %span.split
                     %span.color.bg-purple
@@ -46,7 +40,7 @@
             .col.mb
               .setting-color
                 %label{"data-load-css" => "#{asset_path('angle/themes/theme-d.css')}"}
-                  %input{:name => "setting-theme", :type => "radio"}/
+                  %input{:name => "setting-theme", :type => "radio"}
                   %span.icon-check
                   %span.split
                     %span.color.bg-danger
