@@ -12,103 +12,28 @@
               %span.user-block-name Hello, User!
               %span.user-block-role System Administrator
       = render_menu :sidebar
-      %li{:class => "#{'active' if controller?('students');}"}
-        %a{:href => students_path, :title => 'Students'}
-          %em
-            %i.fa.fa-users
-          %span Students
-      %li{:class => "#{'active' if controller?('other');}"}
-        %a{:href => students_path, :title => 'Attendance'}
-          %em
-            %i.fa.fa-calendar-check-o
-          %span Attendance
-      %li{:class => "#{'active' if controller?('other');}"}
-        %a{:href => students_path, :title => 'Grades'}
-          %em
-            %i.fa.fa-question-circle
-          %span Grades
-      %li{:class => "#{'active' if controller?('other');}"}
-        %a{:href => students_path, :title => 'Assessments'}
-          %em
-            %i.fa.fa-puzzle-piece
-          %span Assessments
-      %li{:class => "#{'active' if controller?('other');}"}
-        %a{:href => students_path, :title => 'Discipline'}
-          %em
-            %i.fa.fa-gavel
-          %span Discipline
-      %li{:class => "#{'active' if controller?('other');}"}
-        %a{:href => students_path, :title => 'Food Service'}
-          %em
-            %i.fa.fa-cutlery
-          %span Food Service
-      %li{:class => "#{'active' if controller?('other');}"}
-        %a{:href => students_path, :title => 'Transportation'}
-          %em
-            %i.fa.fa-bus
-          %span Transportation
-      %li{:class => "#{'active' if controller?('other');}"}
-        %a{:href => students_path, :title => 'Finances'}
-          %em
-            %i.fa.fa-money
-          %span Finances
-      %li{:class => "#{'active' if controller?('other');}"}
-        %a{:href => students_path, :title => 'Sports'}
-          %em
-            %i.fa.fa-soccer-ball-o
-          %span Sports
-      %li{:class => "#{'active' if controller?('other');}"}
-        %a{:href => students_path, :title => 'Communications'}
-          %em
-            %i.fa.fa-comments
-          %span Communications
-        %li{:class => "#{'active' if controller?('other');}"}
-          %a{:href => students_path, :title => 'Medical'}
-            %em
-              %i.fa.fa-hospital-o
-            %span Medical
-      %li{:class => "#{'active' if controller?('other');}"}
-        %a{:href => students_path, :title => 'eLearning'}
-          %em
-            %i.fa.fa-cloud
-          %span eLearning
-      %li{:class => "#{'active' if controller?('other');}"}
-        %a{:href => students_path, :title => 'Library'}
-          %em
-            %i.fa.fa-book
-          %span Library
-      %li{:class => "#{'active' if controller?('other');}"}
-        %a{:href => students_path, :title => 'Reports'}
-          %em
-            %i.fa.fa-file-excel-o
-          %span Reports
-      %li{:class => "#{'active' if controller?('other');}"}
-        %a{:href => students_path, :title => 'Help'}
-          %em
-            %i.fa.fa-info-circle
-          %span Help
-      %li{:class => "#{'active' if controller?('maps')}"}
-        %a{'data-toggle' => 'collapse', :href => '#administration', :title => 'Administration'}
-          %em.icon-settings
-          %span{'data-localize' => 'sidebar.nav.map.MAP'} Administration
-        %ul#administration.nav.sidebar-subnav.collapse
-          %li{:class => "#{'active' if controller?('announcements');}"}
-            = link_to 'Announcements', announcements_path
-          %li{:class => "#{'active' if controller?('calendars');}"}
-            = link_to 'Calendars', calendars_path
-          %li{:class => "#{'active' if controller?('courses');}"}
-            = link_to 'Courses', courses_path
-          %li{:class => "#{'active' if controller?('districts');}"}
-            = link_to 'Districts', districts_path
-          %li{:class => "#{'active' if controller?('grades');}"}
-            = link_to 'Grade Levels', grades_path
-          %li{:class => "#{'active' if controller?('schools');}"}
-            = link_to 'Marking Periods', schools_path
-          %li{:class => "#{'active' if controller?('maps');}"}
-            = link_to 'Schools', schools_path
-          %li{:class => "#{'active' if controller?('roles');}"}
-            = link_to 'User Roles', roles_path
-          %li{:class => "#{'active' if controller?('users');}"}
-            = link_to 'Users', users_path
-          %li{:class => "#{'active' if controller?('settings');}"}
-            = link_to 'Control Panel', settings_path
+      -#%li{:class => "#{'active' if controller?('maps')}"}
+      -#  %a{'data-toggle' => 'collapse', :href => '#administration', :title => 'Administration'}
+      -#    %em.icon-settings
+      -#    %span{'data-localize' => 'sidebar.nav.map.MAP'} Administration
+      -#  %ul#administration.nav.sidebar-subnav.collapse
+      -#    %li{:class => "#{'active' if controller?('announcements');}"}
+      -#      = link_to 'Announcements', announcements_path
+      -#    %li{:class => "#{'active' if controller?('calendars');}"}
+      -#      = link_to 'Calendars', calendars_path
+      -#    %li{:class => "#{'active' if controller?('courses');}"}
+      -#      = link_to 'Courses', courses_path
+      -#    %li{:class => "#{'active' if controller?('districts');}"}
+      -#      = link_to 'Districts', districts_path
+      -#    %li{:class => "#{'active' if controller?('grades');}"}
+      -#      = link_to 'Grade Levels', grades_path
+      -#    %li{:class => "#{'active' if controller?('schools');}"}
+      -#      = link_to 'Marking Periods', schools_path
+      -#    %li{:class => "#{'active' if controller?('maps');}"}
+      -#      = link_to 'Schools', schools_path
+      -#    %li{:class => "#{'active' if controller?('roles');}"}
+      -#      = link_to 'User Roles', roles_path
+      -#    %li{:class => "#{'active' if controller?('users');}"}
+      -#      = link_to 'Users', users_path
+      -#    %li{:class => "#{'active' if controller?('settings');}"}
+      -#      = link_to 'Control Panel', settings_path
