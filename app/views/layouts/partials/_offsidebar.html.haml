@@ -1,19 +1,20 @@
+- theme = cookies[:theme]
 %nav
-  %div{:role => "tabpanel"}
+  %div{:role => 'tabpanel'}
     -#%ul.nav.nav-tabs.nav-justified{:role => "tablist"}
     -#  %li.active{:role => "presentation"}
     -#    %a{"aria-controls" => "app-settings", "data-toggle" => "tab", :href => "#app-settings", :role => "tab"}
     -#      %em.icon-equalizer.fa-lg
     .tab-content
-      #app-settings.tab-pane.fade.in.active{:role => "tabpanel"}
+      #app-settings.tab-pane.fade.in.active{:role => 'tabpanel'}
         %h3.text-center.text-thin Settings
         .p
           %h4.text-muted.text-thin Themes
           .table-grid.mb
             .col.mb
               .setting-color
-                %label{"data-load-css" => "#{asset_path('angle/themes/theme-a.css')}"}
-                  %input{:checked => "checked", :name => "setting-theme", :type => "radio"}
+                %label{'data-change-theme' => 'a'}
+                  %input{:checked => ('checked' if theme == 'a'), :name => 'setting-theme', :type => 'radio'}
                   %span.icon-check
                   %span.split
                     %span.color.bg-info
@@ -21,8 +22,8 @@
                   %span.color.bg-white
             .col.mb
               .setting-color
-                %label{"data-load-css" => "#{asset_path('angle/themes/theme-b.css')}"}
-                  %input{:name => "setting-theme", :type => "radio"}
+                %label{'data-change-theme' => 'b'}
+                  %input{:checked => ('checked' if theme == 'b'),:name => 'setting-theme', :type => 'radio'}
                   %span.icon-check
                   %span.split
                     %span.color.bg-green
@@ -30,8 +31,8 @@
                   %span.color.bg-white
             .col.mb
               .setting-color
-                %label{"data-load-css" => "#{asset_path('angle/themes/theme-c.css')}"}
-                  %input{:name => "setting-theme", :type => "radio"}
+                %label{'data-change-theme' => 'c'}
+                  %input{:checked => ('checked' if theme == 'c'), :name => 'setting-theme', :type => 'radio'}
                   %span.icon-check
                   %span.split
                     %span.color.bg-purple
@@ -39,8 +40,8 @@
                   %span.color.bg-white
             .col.mb
               .setting-color
-                %label{"data-load-css" => "#{asset_path('angle/themes/theme-d.css')}"}
-                  %input{:name => "setting-theme", :type => "radio"}
+                %label{'data-change-theme' => 'd'}
+                  %input{:checked => ('checked' if theme == 'd'), :name => 'setting-theme', :type => 'radio'}
                   %span.icon-check
                   %span.split
                     %span.color.bg-danger
@@ -49,8 +50,8 @@
           .table-grid.mb
             .col.mb
               .setting-color
-                %label{"data-load-css" => "#{asset_path('angle/themes/theme-e.css')}"}
-                  %input{:name => "setting-theme", :type => "radio"}/
+                %label{'data-change-theme' => 'e'}
+                  %input{:checked => ('checked' if theme == 'e'), :name => 'setting-theme', :type => 'radio'}
                   %span.icon-check
                   %span.split
                     %span.color.bg-info-dark
@@ -58,8 +59,8 @@
                   %span.color.bg-gray-dark
             .col.mb
               .setting-color
-                %label{"data-load-css" => "#{asset_path('angle/themes/theme-f.css')}"}
-                  %input{:name => "setting-theme", :type => "radio"}/
+                %label{'data-change-theme' => 'f'}
+                  %input{:checked => ('checked' if theme == 'f'), :name => 'setting-theme', :type => 'radio'}
                   %span.icon-check
                   %span.split
                     %span.color.bg-green-dark
@@ -67,8 +68,8 @@
                   %span.color.bg-gray-dark
             .col.mb
               .setting-color
-                %label{"data-load-css" => "#{asset_path('angle/themes/theme-g.css')}"}
-                  %input{:name => "setting-theme", :type => "radio"}/
+                %label{'data-change-theme' => 'g'}
+                  %input{:checked => ('checked' if theme == 'g'), :name => 'setting-theme', :type => 'radio'}
                   %span.icon-check
                   %span.split
                     %span.color.bg-purple-dark
@@ -76,8 +77,8 @@
                   %span.color.bg-gray-dark
             .col.mb
               .setting-color
-                %label{"data-load-css" => "#{asset_path('angle/themes/theme-h.css')}"}
-                  %input{:name => "setting-theme", :type => "radio"}/
+                %label{'data-change-theme' => 'h'}
+                  %input{:checked => ('checked' if theme == 'h'), :name => 'setting-theme', :type => 'radio'}
                   %span.icon-check
                   %span.split
                     %span.color.bg-danger-dark
@@ -89,19 +90,19 @@
             %p.pull-left Fixed
             .pull-right
               %label.switch
-                %input#chk-fixed{"data-toggle-state" => "layout-fixed", :type => "checkbox"}/
+                %input#chk-fixed{'data-toggle-state' => 'layout-fixed', :type => 'checkbox'}/
                 %span
           .clearfix
             %p.pull-left Boxed
             .pull-right
               %label.switch
-                %input#chk-boxed{"data-toggle-state" => "layout-boxed", :type => "checkbox"}/
+                %input#chk-boxed{'data-toggle-state' => 'layout-boxed', :type => 'checkbox'}/
                 %span
           .clearfix
             %p.pull-left RTL
             .pull-right
               %label.switch
-                %input#chk-rtl{:type => "checkbox"}/
+                %input#chk-rtl{:type => 'checkbox'}/
                 %span
         .p
           %h4.text-muted.text-thin Aside
@@ -109,29 +110,29 @@
             %p.pull-left Collapsed
             .pull-right
               %label.switch
-                %input#chk-collapsed{"data-toggle-state" => "aside-collapsed", :type => "checkbox"}/
+                %input#chk-collapsed{'data-toggle-state' => 'aside-collapsed', :type => 'checkbox'}/
                 %span
           .clearfix
             %p.pull-left Collapsed Text
             .pull-right
               %label.switch
-                %input#chk-collapsed-text{"data-toggle-state" => "aside-collapsed-text", :type => "checkbox"}/
+                %input#chk-collapsed-text{'data-toggle-state' => 'aside-collapsed-text', :type => 'checkbox'}/
                 %span
           .clearfix
             %p.pull-left Float
             .pull-right
               %label.switch
-                %input#chk-float{"data-toggle-state" => "aside-float", :type => "checkbox"}/
+                %input#chk-float{'data-toggle-state' => 'aside-float', :type => 'checkbox'}/
                 %span
           .clearfix
             %p.pull-left Hover
             .pull-right
               %label.switch
-                %input#chk-hover{"data-toggle-state" => "aside-hover", :type => "checkbox"}/
+                %input#chk-hover{'data-toggle-state' => 'aside-hover', :type => 'checkbox'}/
                 %span
           .clearfix
             %p.pull-left Show Scrollbar
             .pull-right
               %label.switch
-                %input#chk-hover{"data-target" => ".sidebar", "data-toggle-state" => "show-scrollbar", :type => "checkbox"}/
+                %input#chk-hover{'data-target' => '.sidebar', 'data-toggle-state' => 'show-scrollbar', :type => 'checkbox'}/
                 %span

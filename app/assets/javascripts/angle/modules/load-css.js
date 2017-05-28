@@ -1,49 +1,49 @@
 // LOAD CUSTOM CSS
 // ----------------------------------- 
 
-(function(window, document, $, undefined){
+(function (window, document, $, undefined) {
 
-  $(function(){
+    $(function () {
 
-    $('[data-load-css]').on('click', function (e) {
-        
-      var element = $(this);
+        $('[data-load-css]').on('click', function (e) {
 
-      if(element.is('a'))
-        e.preventDefault();
-      
-      var uri = element.data('loadCss'),
-          link;
+            var element = $(this);
 
-      if(uri) {
-        link = createLink(uri);
-        if ( !link ) {
-          $.error('Error creating stylesheet link element.');
-        }
-      }
-      else {
-        $.error('No stylesheet location defined.');
-      }
+            if (element.is('a'))
+                e.preventDefault();
 
+            var uri = element.data('loadCss'),
+                link;
+
+            if (uri) {
+                link = createLink(uri);
+                if (!link) {
+                    $.error('Error creating stylesheet link element.');
+                }
+            }
+            else {
+                $.error('No stylesheet location defined.');
+            }
+
+        });
     });
-  });
 
-  function createLink(uri) {
-    var linkId = 'autoloaded-stylesheet',
-        oldLink = $('#'+linkId).attr('id', linkId + '-old');
+    function createLink(uri) {
+        var linkId = 'autoloaded-stylesheet',
+            oldLink = $('#' + linkId).attr('id', linkId + '-old');
 
-    $('head').append($('<link/>').attr({
-      'id':   linkId,
-      'rel':  'stylesheet',
-      'href': uri
-    }));
+        $('head').append($('<link/>').attr({
+            'id': linkId,
+            'rel': 'stylesheet',
+            'href': uri
+        }));
 
-    if( oldLink.length ) {
-      oldLink.remove();
+        if (oldLink.length) {
+            oldLink.remove();
+        }
+
+        return $('#' + linkId);
     }
-
-    return $('#'+linkId);
-  }
 
 
 })(window, document, window.jQuery);

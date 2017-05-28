@@ -11,8 +11,18 @@
 // about supported directives.
 //
 //= require_tree ./angle/
+//= require jquery.cookie
 //= require jquery_ujs
 //= require turbolinks
+
+$('[data-change-theme]').on('click', function (e) {
+    var element = $(this);
+    if (element.is('a')) {
+        e.preventDefault();
+    }
+    $.cookie('theme', element.data('changeTheme'), {expires: 365});
+    location.reload();
+});
 
 function setupAjaxIndicator() {
     $(document).bind('ajaxSend', function (event, xhr, settings) {

@@ -14,4 +14,8 @@ class User < ApplicationRecord
     true
   end
 
+  def self.current
+
+  end
+
 end

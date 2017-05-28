@@ -1,29 +1,57 @@
 - page_title 'Student Search'
 
-.card
-  .card-header
-    %i.fa.fa-search
-    Student Search
-  %table.table.table-bordered.table-striped
-    %thead
-      %tr
-        %th
-        %th Student Id
-        %th Name
-        %th Grade
-    %tbody
-      - @students.each do |s|
-        %tr
-          %td= link_to 'Select', student_path(s)
-          %td= s.student_id
-          %td= s.formatted_full_name
-          %td= s.current_grade
+%h3 Students
+
+.row
+  .col-lg-9
+    .form-group.mb-xl
+      %input.form-control.mb{:placeholder => 'Search by first name, last name', :type => 'text'}
+      .clearfix
+        %button.pull-left.btn.btn-default{:type => 'button'} Search
+        .pull-right
+          %label.checkbox-inline.c-checkbox
+            %input#inlineCheckbox10{:type => 'checkbox', :value => 'option1'}
+            = succeed 'Include withdrawn students' do
+              %span.fa.fa-check
+          %label.checkbox-inline.c-checkbox
+            %input#inlineCheckbox20{:type => 'checkbox', :value => 'option2'}
+            = succeed 'Search entire district' do
+              %span.fa.fa-check
+          %label.checkbox-inline.c-checkbox
+            %input#inlineCheckbox30{:type => 'checkbox', :value => 'option3'}
+            = succeed 'Apps' do
+              %span.fa.fa-check
+    .table-responsive
+      %table.table.table-bordered.table-striped
+        %thead
+          %tr
+            %th.action-column
+            %th Student Id
+            %th Name
+            %th Grade
+        %tbody
+          - @students.each do |s|
+            %tr
+              %td= link_to 'Select', student_path(s)
+              %td= s.student_id
+              %td= s.formatted_full_name
+              %td= s.current_grade
+  .col-lg-3
+    .panel.panel-default
+      .panel-heading
+        %h3.panel-title Filters
+      .panel-body
+        .form-group
+          %label Grade
+          %br
+          %input{:type => 'text', :class => 'form-control'}
+        %button.btn.btn-default.btn-lg Apply
 
 .btn-group
-  %a.btn.btn-secondary{ href: new_student_path, class: can_new_student_be_admitted? ? '' : 'disabled'}
+  %a.btn.btn-default{ href: new_student_path, class: can_new_student_be_admitted? ? '' : 'disabled'}
     New Admission
   .btn-group
-    %button.btn.btn-secondary.dropdown-toggle{ 'data-toggle': 'dropdown', disabled: can_new_student_be_admitted? ? '' : 'disabled' }
+    %button.btn.btn-default.dropdown-toggle{ 'data-toggle': 'dropdown', disabled: can_new_student_be_admitted? ? '' : 'disabled' }
       %span.caret
     %ul.dropdown-menu
       %li.dropdown-item= link_to 'Quick Admission', new_student_path, :type => 'quick'

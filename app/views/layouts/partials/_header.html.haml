@@ -1,14 +1,16 @@
 - site_name = Genesis::INFO.app_name
+- theme = cookies[:theme]
 %title= page_title(site_name)
-
 
 %meta{charset: 'utf-8'}
 %meta{:content => 'text/html; charset=UTF-8', 'http-equiv' => 'Content-Type'}/
 %meta{'http-equiv': 'X-UA-Compatible', content: 'IE=edge'}
 %meta{name: 'viewport', content: 'width=device-width, initial-scale=1, maximum-scale=1'}
 %meta{name: 'description', content: "#{Genesis::INFO.versioned_name}"}
-
 = stylesheet_link_tag 'base', media: 'all'
 = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload', id: 'maincss'
+
+- unless theme.nil?
+  = stylesheet_link_tag "angle/themes/theme-#{theme}", media: 'all'
 
 = csrf_meta_tags

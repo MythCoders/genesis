@@ -1,3 +1,40 @@
 .row
-  .col-md-12
-    = render_horizontal_nav settings_tabs
+  .col-md-8
+    .container-md
+      .row
+        .col-md-3
+          .panel.b
+            .panel-heading.bg-gray-lighter.text-bold Control Panel
+            .list-group
+              %a.list-group-item{'data-toggle' => 'tab', :href => '#tabSetting1'} Item 1
+        .col-md-9
+          .tab-content.p0.b0
+            #tabSetting1.tab-pane.active
+              .panel.b
+                .panel-heading.bg-gray-lighter.text-bold Profile
+                .panel-body
+                  %form{:action => ''}
+                    .form-group
+                      %label Picture
+                      %input.form-control.filestyle{'data-buttontext' => 'Upload new picture', 'data-classbutton' => 'btn btn-default', 'data-classinput' => 'form-control inline', 'data-iconname' => 'fa fa-upload mr', 'data-input' => 'false', :type => 'file'}/
+                    .form-group
+                      %label Name
+                      %input.form-control{:type => 'text'}/
+                    .form-group
+                      %label Bio
+                      %textarea.form-control{:rows => '3'}
+                    .form-group
+                      %label URL
+                      %input.form-control{:type => 'text'}/
+                    .form-group
+                      %label Company
+                      %input.form-control{:type => 'text'}/
+                    .form-group
+                      %label Location
+                      %input.form-control{:type => 'text'}/
+                    %button.btn.btn-info{:type => 'button'} Update settings
+                    %p
+                      %small.text-muted * Integer fermentum accumsan metus, id sagittis ipsum molestie vitae
+  .col-md-4
+    %pre= Genesis::INFO.environment
+    %pre= Genesis::INFO.installed_modules

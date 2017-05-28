@@ -1,14 +1,9 @@
 - page_title @student.formatted_full_name, 'Student Information'
 
-= stylesheet_link_tag 'offcanvas'
-
 .row.row-offcanvas.row-offcanvas-left
-  .col-sm-3.col-xs-12.sidebar-offcanvas#sidebar
+  .col-sm-2.col-xs-12.sidebar-offcanvas#sidebar
     = render :partial => 'students/common/sidebar', :locals => {:student => @student}
-  .col-sm-9.col-xs-12
-    %p.pull-xs-right.hidden-sm-up
-      %button.btn.btn-primary.btn-sm{type: 'button', 'data-toggle': 'offcanvas'}
-        Toggle nav
+  .col-sm-10.col-xs-12
     = render_horizontal_nav student_tabs
 
 = content_for :scripts do

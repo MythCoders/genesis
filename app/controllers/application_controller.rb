@@ -7,6 +7,9 @@ class ApplicationController < ActionController::Base
   before_action :check_params
   before_action :populate_session_variables
 
+  include Genesis::MenuManager::MenuController
+  helper Genesis::MenuManager::MenuHelper
+
   def determine_layout
     module_name = self.class.to_s.split('::').first
     return (module_name.eql?('Devise') ? 'pages' : 'application')

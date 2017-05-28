@@ -1,6 +1,6 @@
 %nav.navbar.topnavbar{:role => 'navigation'}
   .navbar-header
-    %a.navbar-brand{:href => '#/'}
+    %a.navbar-brand{:href => home_path}
       .brand-logo
         %img.img-responsive{:alt => 'App Logo', :src => "#{image_path('angle/logo.png')}"}
       .brand-logo-collapsed
@@ -13,12 +13,22 @@
         %a.visible-xs.sidebar-toggle{'data-no-persist' => 'true', 'data-toggle-state' => 'aside-toggled', :href => '#'}
           %em.fa.fa-navicon
       %li
+        %a.hidden-xs#user-block-toggle{'data-toggle' => 'collapse', :href => '#user-block'}
+          %em.icon-user
+      %li
         %a{'data-search-open' => '', :href => '#'}
           %em.icon-magnifier
+      %li
+        %a{:href => '#'}
+          Active Student: Adkins, Justin
+          %em.fa.fa-warning
     %ul.nav.navbar-nav.navbar-right
       %li
         %a{'data-no-persist' => 'true', 'data-toggle-state' => 'offsidebar-open', :href => '#'}
           %em.icon-equalizer
+      %li.visible-lg
+        %a{'data-toggle-fullscreen' => '', :href => '#'}
+          %em.fa.fa-expand
       %li
         = link_to destroy_user_session_path, :method=>'delete', :title => 'Sign out' do
           %em.fa.fa-lock

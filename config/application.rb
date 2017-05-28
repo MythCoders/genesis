@@ -5,8 +5,9 @@ Bundler.require(*Rails.groups)
 module GeneSISApp
   class Application < Rails::Application
 
-    config.encoding = 'utf-8'
+    I18n.enforce_available_locales = true
 
+    config.encoding = 'utf-8'
     config.autoload_paths << Rails.root.join('lib')
 
     # Configure Logging

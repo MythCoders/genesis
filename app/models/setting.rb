@@ -161,10 +161,10 @@ class Setting < ApplicationRecord
     logger.info "Settings cache cleared." if logger
   end
 
-  def self.define_plugin_setting(plugin)
-    if plugin.settings
-      name = "plugin_#{plugin.id}"
-      define_setting name, {'default' => plugin.settings[:default], 'serialized' => true}
+  def self.define_module_setting(sis_module)
+    if sis_module.settings
+      name = "module_#{sis_module.id}"
+      define_setting name, {'default' => sis_module.settings[:default], 'serialized' => true}
     end
   end
 
@@ -196,14 +196,14 @@ class Setting < ApplicationRecord
     end
   end
 
-  def self.load_plugin_settings
-    Redmine::Plugin.all.each do |plugin|
-      define_plugin_setting(plugin)
+  def self.load_module_settings
+    Genesis::Module.all.each do |sis_module|
+      define_module_setting(sis_module)
     end
   end
 
   load_available_settings
-  load_plugin_settings
+  load_module_settings
 
   private
 
