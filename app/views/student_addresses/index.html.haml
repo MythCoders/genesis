@@ -1,0 +1,50 @@
+- page_title @student.formatted_full_name, 'Addresses'
+
+= render :partial => 'students/common/header', :locals => {:student => @student }
+
+.row
+  .col-sm-2.col-xs-12
+    = render :partial => 'students/common/sidebar', :locals => {:student => @student}
+  .col-sm-10.col-xs-12
+    - @student.student_addresses.each do |t|
+      .panel.panel-primary
+        .panel-heading
+          %h3.panel-title
+            = format_address(t.address.street, nil, t.address.city, t.address.state, t.address.zip_code, nil, 2)
+            - if t.is_mailing
+              %i.fa.fa-envelope
+              - if t.is_residential
+                %i.fa.fa-home
+              - if t.is_bus_pickup
+                %i.fa.fa-arrow-up
+              - if t.is_bus_drop_off
+                %i.fa.fa-arrow-down
+            = format_address_with_html_link(t.address.street, nil, t.address.city, t.address.state, t.address.zip_code, nil, nil, 'Map It').html_safe
+        %table.table.table-striped.table-bordered
+          %thead
+            %tr
+              %th.action-column
+              %th{:width => '10%'} Contact Order
+              %th Name
+              %th Relation
+          %tbody
+            - t.student_relationships.each do |r|
+              %tr
+                %td
+                  %a
+                    Edit
+                %td
+                  - if r.has_custody
+                    %i.fa.fa-legal
+                  - if r.is_emergency
+                    %i.fa.fa-ambulance
+                %td= r.person.formatted_full_name(2)
+                %td= r.relation
+        .panel-footer
+          %a.btn.btn-primary
+            %i.fa.fa-plus
+            New contact
+
+    %a.btn.btn-primary
+      %i.fa.fa-plus
+      New address

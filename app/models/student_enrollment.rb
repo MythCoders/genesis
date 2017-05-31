@@ -1,4 +1,4 @@
-class Enrollment < ApplicationRecord
+class StudentEnrollment < ApplicationRecord
 
   belongs_to :student#, :autosave => true
   belongs_to :school_year_grade

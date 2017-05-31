@@ -1,4 +1,4 @@
-- page_title @student.formatted_full_name, 'Student Information'
+- page_title @student.formatted_full_name, 'Notes'
 
 = render :partial => 'students/common/header', :locals => {:student => @student }
 
@@ -6,4 +6,4 @@
   .col-sm-2.col-xs-12
     = render :partial => 'students/common/sidebar', :locals => {:student => @student}
   .col-sm-10.col-xs-12
-    = render_horizontal_nav student_tabs
+    Content

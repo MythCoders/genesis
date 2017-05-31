@@ -2,36 +2,34 @@
   .navbar-header
     %a.navbar-brand{:href => home_path}
       .brand-logo
-        %img.img-responsive{:alt => 'App Logo', :src => "#{image_path('angle/logo.png')}"}
+        %img.img-responsive{:alt => "#{Genesis::INFO.app_name} Logo", :src => "#{image_path('angle/logo.png')}"}
       .brand-logo-collapsed
-        %img.img-responsive{:alt => 'App Logo', :src => "#{image_path('angle/logo-single.png')}"}
+        %img.img-responsive{:alt => "#{Genesis::INFO.app_name} Logo", :src => "#{image_path('angle/logo-single.png')}"}
   .nav-wrapper
     %ul.nav.navbar-nav
       %li
-        %a.hidden-xs{'data-toggle-state' => 'aside-collapsed', :href => '#'}
-          %em.fa.fa-navicon
-        %a.visible-xs.sidebar-toggle{'data-no-persist' => 'true', 'data-toggle-state' => 'aside-toggled', :href => '#'}
-          %em.fa.fa-navicon
+        %a.hidden-xs{'data-toggle-state' => 'aside-collapsed', :href => '#', :title => 'Toggle sidebar'}
+          %em= fa_icon 'navicon'
+        %a.visible-xs.sidebar-toggle{'data-no-persist' => 'true', 'data-toggle-state' => 'aside-toggled', :href => '#', :title => 'Toggle sidebar'}
+          %em= fa_icon 'navicon'
       %li
-        %a.hidden-xs#user-block-toggle{'data-toggle' => 'collapse', :href => '#user-block'}
-          %em.icon-user
-      %li
-        %a{'data-search-open' => '', :href => '#'}
-          %em.icon-magnifier
+        %a{'data-search-open' => '', :href => '#', :title => 'Search'}
+          %em= fa_icon 'search'
       %li
         %a{:href => '#'}
-          Active Student: Adkins, Justin
-          %em.fa.fa-warning
+          Student:
+          Adkins, Justin
+          &nbsp;
+          %em= fa_icon 'warning', :title => 'There is an alert for this student!', :class => 'text-yellow'
+          &nbsp;
+          %em= fa_icon 'heartbeat', :title => 'There is a medical alert for this student!', :class => 'text-danger'
     %ul.nav.navbar-nav.navbar-right
       %li
-        %a{'data-no-persist' => 'true', 'data-toggle-state' => 'offsidebar-open', :href => '#'}
-          %em.icon-equalizer
-      %li.visible-lg
-        %a{'data-toggle-fullscreen' => '', :href => '#'}
-          %em.fa.fa-expand
+        %a{'data-no-persist' => 'true', 'data-toggle-state' => 'offsidebar-open', :href => '#', :title => 'Settings'}
+          %em= fa_icon 'sliders'
       %li
         = link_to destroy_user_session_path, :method=>'delete', :title => 'Sign out' do
-          %em.fa.fa-lock
+          %em= fa_icon 'sign-out'
   %form.navbar-form{:action => 'search.html', :role => 'search'}
     .form-group.has-feedback
       %input.form-control{:placeholder => 'Type and hit enter ...', :type => 'text'}

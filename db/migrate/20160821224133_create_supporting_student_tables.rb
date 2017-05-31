@@ -1,4 +1,4 @@
-class CreateAddresses < ActiveRecord::Migration[5.0]
+class CreateSupportingStudentTables < ActiveRecord::Migration[5.0]
   def change
     create_table :addresses do |t|
       t.string :street, :null => false, :limit => 50
@@ -20,6 +20,9 @@ class CreateAddresses < ActiveRecord::Migration[5.0]
       t.foreign_key :addresses, :column => :address_id
     end
 
+    add_column :students, :primary_address_id, :integer, null: true
+    add_foreign_key :students, :student_addresses, column: 'primary_address_id'
+
     create_table :people do |t|
       t.string :first_name, :limit => 30
       t.string :middle_name, :limit => 30
@@ -34,6 +37,7 @@ class CreateAddresses < ActiveRecord::Migration[5.0]
       t.boolean :has_custody
       t.boolean :is_emergency
       t.string :relation
+      t.integer :contact_order
       t.timestamps
       t.foreign_key :student_addresses, :column => :student_address_id
       t.foreign_key :people, :column => :person_id
@@ -44,24 +48,6 @@ class CreateAddresses < ActiveRecord::Migration[5.0]
       t.string :title, :null => false, :limit => 100
       t.string :body
       t.boolean :is_flagged
-      t.timestamps
-      t.foreign_key :students, :column => :student_id
-    end
-
-    create_table :student_medical_alerts do |t|
-      t.integer :student_id, :null => false
-      t.string :title, :null => false
-      t.timestamps
-      t.foreign_key :students, :column => :student_id
-    end
-
-    create_table :student_medical_visits do |t|
-      t.integer :student_id, :null => false
-      t.datetime :time_in, :null => false
-      t.datetime :time_out
-      t.string :reason
-      t.string :result
-      t.string :comment
       t.timestamps
       t.foreign_key :students, :column => :student_id
     end

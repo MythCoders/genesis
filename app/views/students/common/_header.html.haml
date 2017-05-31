@@ -1,0 +1,42 @@
+.row
+  .col-xs-12
+    .btn-group
+      .btn-group
+        %button.btn.btn-primary.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"}
+          = fa_icon 'plus'
+          New
+          %span.caret
+        %ul.dropdown-menu
+          %li
+            = link_to 'Address', new_student_address_path(@student)
+          %li
+            %a{:href => "#"} Contact
+          %li
+            = link_to 'Note', new_student_note_path(@student)
+      %button.btn.btn-default
+        Edit
+      .btn-group
+        %button.btn.btn-default.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"}
+          = fa_icon 'cog'
+          Options
+          %span.caret
+        %ul.dropdown-menu
+          %li
+            %a{:href => "#"} Withdraw/Transfer
+          %li
+            %a{:href => "#"} ?
+          %li.divider{:role => "separator"}
+          %li
+            %a{:href => "#"}
+              %span.text-danger Delete student
+.row
+  .col-xs-6
+    %h3= @student.formatted_full_name
+  .col-xs-6
+    .col-xs-3.col-xs-push-9
+      .thumbnail
+        .caption
+          %h5 Student Number
+          = @student.student_number
+
+%hr

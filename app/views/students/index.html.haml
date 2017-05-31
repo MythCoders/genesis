@@ -26,14 +26,14 @@
         %thead
           %tr
             %th.action-column
-            %th Student Id
+            %th Student Number
             %th Name
             %th Grade
         %tbody
           - @students.each do |s|
             %tr
               %td= link_to 'Select', student_path(s)
-              %td= s.student_id
+              %td= s.student_number
               %td= s.formatted_full_name
               %td= s.current_grade
   .col-lg-3

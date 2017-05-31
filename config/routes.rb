@@ -5,8 +5,7 @@ Rails.application.routes.draw do
   devise_for :users, :path_prefix => 'security'
 
   resources :announcements
-  resources :calendars
-  resources :courses
+  #resources :calendars
   resources :districts
   resources :grades
   resources :roles
@@ -16,8 +15,12 @@ Rails.application.routes.draw do
     resources :school_years
   end
 
+  resources :students do
+    resources :student_addresses, :path => 'addresses', :as => 'addresses'
+    resources :student_notes, :path => 'notes', :as => 'notes'
+  end
+
   resources :student_relationships
-  resources :students
   resources :users
 
 end

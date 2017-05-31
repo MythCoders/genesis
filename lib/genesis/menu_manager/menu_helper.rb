@@ -31,11 +31,18 @@ module Genesis
 
       def render_menu_node(node, project=nil)
         if node.children.present? || !node.child_menus.nil?
-          return render_menu_node_with_children(node, project)
+          render_menu_node_with_children(node, project)
         else
           caption, url, selected = extract_node_details(node, project)
-          return content_tag('li', render_single_menu_node(node, caption, url, selected),
-                             :class => ('active' if controller?(node.url[:controller]); '' if action?(node.url[:action])))
+          content_tag('li', render_single_menu_node(node, caption, url, selected),
+                             :class => (is_active?(node)))
+        end
+      end
+
+      def is_active?(node)
+        unless node.url.blank?
+          'active' if controller?(node.url[:controller])
+          '' if action?(node.url[:action])
         end
       end
 
@@ -54,11 +61,11 @@ module Genesis
             end
           end
 
-          html << content_tag(:ul, standard_children_list, :class => 'menu-children') unless standard_children_list.empty?
+          html << content_tag(:ul, standard_children_list, :class => 'nav sidebar-subnav collapse', :id => "##{node.name}") unless standard_children_list.empty?
 
           # Unattached children
           unattached_children_list = render_unattached_children_menu(node, project)
-          html << content_tag(:ul, unattached_children_list, :class => 'menu-children unattached') unless unattached_children_list.blank?
+          html << content_tag(:ul, unattached_children_list, :class => 'nav sidebar-subnav unattached') unless unattached_children_list.blank?
 
           html << '</li>'
         end
@@ -146,7 +153,7 @@ module Genesis
 
       # See MenuItem#allowed?
       def allowed_node?(node, user, project)
-        raise MenuError, ':child_menus must be an array of MenuItems' unless node.is_a? MenuItem
+        #raise MenuError, ':child_menus must be an array of MenuItems' unless node.is_a? Genesis::MenuManager::MenuItem
         node.allowed?(user, project)
       end
     end

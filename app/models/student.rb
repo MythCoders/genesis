@@ -1,13 +1,11 @@
 class Student < ApplicationRecord
 
-  has_many :enrollments, :autosave => true
+  has_many :student_enrollments, :autosave => true
   has_many :student_addresses
-  has_many :student_medical_alerts
-  has_many :student_medical_visits
   has_many :student_notes
   has_many :student_relationships, through: :student_addresses
 
-  accepts_nested_attributes_for :enrollments
+  accepts_nested_attributes_for :student_enrollments
   accepts_nested_attributes_for :student_addresses
 
   before_create :assign_student_id
@@ -27,7 +25,7 @@ class Student < ApplicationRecord
   end
 
   def current_grade(format = 'long')
-    if self.enrollments.any?
+    if self.student_enrollments.any?
       current_enrollments = self.enrollments.where('admission_date <= ? and withdraw_date is null or withdraw_date >= ?', Date.today, Date.today)
       if current_enrollments.count == 1
         grade = current_enrollments.first.school_year_grade.grade

@@ -1,4 +1,4 @@
-class CustomFields < ActiveRecord::Migration[5.0]
+class CreateCustomFields < ActiveRecord::Migration[5.0]
   def change
 
     create_table :custom_field_enumerations, force: :cascade do |t|

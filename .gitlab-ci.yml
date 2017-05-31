@@ -1,40 +1,40 @@
-image: "ruby:2.2.4"
-variables:
-  HEROKU_APP_NAME: "genesis"
-services:
-  - postgres:latest
-cache:
-  paths:
-    - vendor/ruby
-stages:
-  - testing
-  - database
-  - deploy
-
-before_script: #this will run with every build
-  - ruby -v
-  - apt-get update -q && apt-get install nodejs -yqq
-  - gem install bundler  --no-ri --no-rdoc
-  - bundle install -j $(nproc) --path vendor
-
-seed test:
-  stage: database
-  script:
-  - bundle exec rake db:migrate
-  - bundle exec rake db:seed
-  - bundle exec rake test
-  only:
-    - master@mythcoders/genesis
-
-deploy test:
-  stage: deploy
-  environment:
-    name: test
-    url: https://genesis-itst.herokuapp.com/
-  variables:
-    HEROKU_APP_NAME: "genesis-itst"
-  script:
-    - gem install dpl
-    - dpl --provider=heroku --api-key=$HEROKU_API_KEY --app=$HEROKU_APP_NAME
-  only:
-    - master@mythcoders/genesis
+#image: "ruby:2.2.4"
+#variables:
+#  HEROKU_APP_NAME: "genesis"
+#services:
+#  - postgres:latest
+#cache:
+#  paths:
+#    - vendor/ruby
+#stages:
+#  - testing
+#  - database
+#  - deploy
+#
+#before_script: #this will run with every build
+#  - ruby -v
+#  - apt-get update -q && apt-get install nodejs -yqq
+#  - gem install bundler  --no-ri --no-rdoc
+#  - bundle install -j $(nproc) --path vendor
+#
+#seed test:
+#  stage: database
+#  script:
+#  - bundle exec rake db:migrate
+#  - bundle exec rake db:seed
+#  - bundle exec rake test
+#  only:
+#    - master@mythcoders/genesis
+#
+#deploy test:
+#  stage: deploy
+#  environment:
+#    name: test
+#    url: https://genesis-itst.herokuapp.com/
+#  variables:
+#    HEROKU_APP_NAME: "genesis-itst"
+#  script:
+#    - gem install dpl
+#    - dpl --provider=heroku --api-key=$HEROKU_API_KEY --app=$HEROKU_APP_NAME
+#  only:
+#    - master@mythcoders/genesis

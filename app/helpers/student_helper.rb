@@ -2,13 +2,7 @@ module StudentHelper
 
   def student_tabs
     tabs = [{:name => 't1', :partial => 'students/info/info', :label => 'General Information'},
-            {:name => 't2', :partial => 'students/info/address', :label => 'Address & Contacts'},
-            {:name => 't3', :partial => 'students/info/custom', :label => 'Medical'},
-            {:name => 't4', :partial => 'students/info/notes', :label => 'Notes'},
-            {:name => 't5', :partial => 'students/info/custom', :label => 'Tab'},
-            {:name => 't5', :partial => 'students/info/custom', :label => 'New Tab'},
-            {:name => 't5', :partial => 'students/info/custom', :label => 'Custom Information'},
-            {:name => 't5', :partial => 'students/info/custom', :label => 'Hmm'}
+            {:name => 't2', :partial => 'students/info/custom', :label => 'Tab'}
     ]
   end
 

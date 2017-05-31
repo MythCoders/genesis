@@ -1,30 +1,5 @@
-class Schools < ActiveRecord::Migration[5.0]
+class CreateSupportingSchoolTables < ActiveRecord::Migration[5.0]
   def change
-    create_table :districts do |t|
-      t.string :name, :null => false, :limit => 50
-      t.string :short_name, :null => false, :limit => 5
-      t.string :address, :limit => 50
-      t.string :city, :limit => 30
-      t.string :state, :limit => 2
-      t.string :zip_code, :limit => 9
-      t.string :phone_number, :limit => 10
-      t.string :superintendents_name, :limit => 50
-      t.timestamps
-    end
-
-    create_table :schools do |t|
-      t.string :name, :null => false, :limit => 50
-      t.string :short_name, :null => false, :limit => 5
-      t.string :address, :limit => 50
-      t.string :city, :limit => 30
-      t.string :state, :limit => 2
-      t.string :zip_code, :limit => 9
-      t.string :phone_number, :limit => 10
-      t.string :principals_name, :limit => 50
-      t.integer :district_id
-      t.timestamps
-      t.foreign_key :districts, column: :district_id
-    end
 
     create_table :school_years do |t|
       t.integer :school_id, :null => false
@@ -55,7 +30,6 @@ class Schools < ActiveRecord::Migration[5.0]
       t.boolean :is_default, :default => true
       t.timestamps
       t.foreign_key :school_years, column: :school_year_id
-      t.foreign_key :report_card_grade_scales, column: :report_card_grade_scale_id
     end
 
     create_table :school_semesters do |t|
@@ -130,7 +104,7 @@ class Schools < ActiveRecord::Migration[5.0]
       t.foreign_key :school_years, column: :school_year_id
     end
 
-    create_table :enrollments do |t|
+    create_table :student_enrollments do |t|
       t.integer :student_id, :null => false
       t.integer :school_year_grade_id, :null => false
       t.integer :admission_code_id, :null => false
@@ -145,6 +119,16 @@ class Schools < ActiveRecord::Migration[5.0]
       t.foreign_key :school_year_grades, :column => :school_year_grade_id
       t.foreign_key :enrollment_codes, :column => :withdraw_code_id
       t.foreign_key :schools, :column => :next_school_id
+    end
+
+    create_table :staff_member_employments do |t|
+      t.integer :staff_member_id, :null => false
+      t.integer :school_id, :null => false
+      t.date :start_date, :null => false
+      t.date :end_date
+      t.timestamps
+      t.foreign_key :staff_members, :column => :staff_member_id
+      t.foreign_key :schools, :column => :school_id
     end
   end
 end

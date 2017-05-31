@@ -1,23 +1,23 @@
-class SecurityTables < ActiveRecord::Migration[5.0]
+class CreateSecurityTables < ActiveRecord::Migration[5.0]
   def change
     create_table :roles do |t|
       t.string :title, :null => false, :length => 30
       t.string :short_name, :null => false, :length => 5
+      t.boolean :is_active, :null => false, :default => false
       t.integer :sort_order
       t.integer :base_type
     end
 
     create_table :users do |t|
-      ## Standard fields
-      t.string :first_name
-      t.string :last_name
-      t.string :middle_name
-      t.string :phone_number
-      t.integer :roles
-
       ## Database authenticatable
       t.string :email,              null: false, default: ''
       t.string :encrypted_password, null: false, default: ''
+
+      ## GeneSIS fields
+      t.integer :student_id
+      t.integer :staff_member_id
+      t.integer :person_id
+      t.integer :roles
 
       ## Recoverable
       t.string   :reset_password_token
