@@ -6,7 +6,7 @@
   .col-sm-2.col-xs-12
     = render :partial => 'students/common/sidebar', :locals => {:student => @student}
   .col-sm-10.col-xs-12
-    - @student.student_addresses.order('is_residential DESC').each do |t|
+    - @student.addresses.order('is_residential DESC').each do |t|
       .panel.panel-dark
         .panel-heading
           %h3.panel-title

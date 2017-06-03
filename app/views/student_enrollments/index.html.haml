@@ -6,7 +6,7 @@
   .col-sm-2.col-xs-12
     = render :partial => 'students/common/sidebar', :locals => {:student => @student}
   .col-sm-10.col-xs-12
-    - @student.student_enrollments.each do |r|
+    - @student.enrollments.each do |r|
       %table.table.table-striped.table-bordered
         %thead
           %tr

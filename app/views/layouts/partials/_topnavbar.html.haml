@@ -16,15 +16,22 @@
         %a{'data-search-open' => '', :href => '#', :title => 'Search'}
           %em= fa_icon 'search'
       %li
-        %a{:href => '#'}
-          Student:
-          Adkins, Justin M.
-          &nbsp;
-          %em= fa_icon 'warning', :title => 'There is an alert for this student!', :class => 'text-yellow'
-          &nbsp;
-          %em= fa_icon 'flag', :title => 'There is an flagged note for this student!', :class => 'text-warning'
-          &nbsp;
-          %em= fa_icon 'heartbeat', :title => 'There is a medical alert for this student!', :class => 'text-danger'
+        - unless @student.nil?
+          %a{:href => '#'}
+            Student:
+            Adkins, Justin M.
+            - if @student.has_alert?
+              &nbsp;
+              %em{'data-toggle': 'tooltip', 'data-placement': 'bottom', title: 'There is an alert for this student!'}
+                = fa_icon 'warning', :class => 'text-yellow'
+            - if @student.has_flagged_note?
+              &nbsp;
+              %em{'data-toggle': 'tooltip', 'data-placement': 'bottom', title: 'There is a flagged note for this student!'}
+                = fa_icon 'flag', :class => 'text-warning'
+            - if @student.has_medical_alert?
+              &nbsp;
+              %em{'data-toggle': 'tooltip', 'data-placement': 'bottom', title: 'There is a medical alert for this student!'}
+                = fa_icon 'heartbeat', :class => 'text-danger'
     %ul.nav.navbar-nav.navbar-right
       %li
         %a{'data-no-persist' => 'true', 'data-toggle-state' => 'offsidebar-open', :href => '#', :title => 'Settings'}

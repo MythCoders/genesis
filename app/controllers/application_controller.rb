@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
 
   def determine_layout
     module_name = self.class.to_s.split('::').first
-    return (module_name.eql?('Devise') ? 'pages' : 'application')
+    (module_name.eql?('Devise') ? 'pages' : 'application')
   end
 
   def check_params
@@ -26,9 +26,7 @@ class ApplicationController < ActionController::Base
   end
 
   def populate_session_variables
-
     if session['school_id'].nil? or session['school_id'] == 0
-
       if School.any?
         session['school_id'] = School.first.id
       else
@@ -38,7 +36,6 @@ class ApplicationController < ActionController::Base
 
     if session['school_id'] != 0
       yrs = SchoolYear.order(:year).where(:school_id => session['school_id'])
-
       if yrs.any?
         session['school_year_id'] = yrs.first.id
       else

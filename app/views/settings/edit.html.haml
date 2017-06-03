@@ -1,5 +1,16 @@
+- page_title 'Control Panel', 'Administration'
+
 .row
-  .col-md-8
+  .col-md-12
+    .alert.alert-info
+      = fa_icon 'wrench'
+      %strong System Updates Available
+      %br
+      Newer versions of the GeneSIS core system and/or modules are now available.
+      Updates can make GeneSIS add new features as well as resolve issues. They can also make GeneSIS more secure.
+
+.row
+  .col-md-7
     .container-md
       .row
         .col-md-3
@@ -16,25 +27,25 @@
                   %form{:action => ''}
                     .form-group
                       %label Picture
-                      %input.form-control.filestyle{'data-buttontext' => 'Upload new picture', 'data-classbutton' => 'btn btn-default', 'data-classinput' => 'form-control inline', 'data-iconname' => 'fa fa-upload mr', 'data-input' => 'false', :type => 'file'}/
+                      %input.form-control.filestyle{'data-buttontext' => 'Upload new picture', 'data-classbutton' => 'btn btn-default', 'data-classinput' => 'form-control inline', 'data-iconname' => 'fa fa-upload mr', 'data-input' => 'false', :type => 'file'}
                     .form-group
                       %label Name
-                      %input.form-control{:type => 'text'}/
+                      %input.form-control{:type => 'text'}
                     .form-group
                       %label Bio
                       %textarea.form-control{:rows => '3'}
                     .form-group
                       %label URL
-                      %input.form-control{:type => 'text'}/
+                      %input.form-control{:type => 'text'}
                     .form-group
                       %label Company
-                      %input.form-control{:type => 'text'}/
+                      %input.form-control{:type => 'text'}
                     .form-group
                       %label Location
-                      %input.form-control{:type => 'text'}/
+                      %input.form-control{:type => 'text'}
                     %button.btn.btn-info{:type => 'button'} Update settings
                     %p
                       %small.text-muted * Integer fermentum accumsan metus, id sagittis ipsum molestie vitae
-  .col-md-4
+  .col-md-5
     %pre= Genesis::INFO.environment
     %pre= Genesis::INFO.installed_modules

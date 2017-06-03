@@ -7,7 +7,8 @@ class StudentsController < ApplicationController
   end
 
   def show
-    @student = Student.includes(:student_addresses).find(params[:id])
+    @student = Student.includes(:addresses).find(params[:id])
+    session[:student_id] = @student.id
   end
 
   def new
@@ -17,8 +18,8 @@ class StudentsController < ApplicationController
     end
 
     @student = Student.new
-    @student.student_enrollments << StudentEnrollment.new
-    @student.student_addresses << StudentAddress.new do |sa|
+    @student.enrollments << StudentEnrollment.new
+    @student.addresses << StudentAddress.new do |sa|
       sa.address = Address.new
     end
 
@@ -60,7 +61,7 @@ class StudentsController < ApplicationController
   def student_params
     params.require(:student).permit(:id, :student_id, :first_name, :middle_name, :last_name, :suffix, :date_of_birth, :sex,
                                     { :enrollments_attributes => [:id, :student_id, :school_year_grade_id, :admission_date, :admission_code_id, :withdraw_date, :withdraw_code_id, :next_school_id] },
-                                    { :student_addresses_attributes => [:id, :student_id, :address_id, :is_mailing, :is_residential, :is_bus_pickup, :is_bus_drop_off,
+                                    { :addresses_attributes => [:id, :student_id, :address_id, :is_mailing, :is_residential, :is_bus_pickup, :is_bus_drop_off,
                                                                         { :address_attributes => [:id, :street, :city, :state, :zip_code, :phone_number] } ] })
   end
 

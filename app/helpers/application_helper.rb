@@ -263,6 +263,10 @@ module ApplicationHelper
     html
   end
 
+  def active_student?
+    true
+  end
+
   def delete_link(url, options={})
     options = {
         :method => :delete,

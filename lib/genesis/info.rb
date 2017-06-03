@@ -3,9 +3,9 @@ module Genesis
 
     SIS_MAJOR = 0
     SIS_MINOR = 1
-    SIS_PATCH = 3
-    SIS_BUILD = '173'
-
+    SIS_PATCH = 4
+    SIS_COMMIT = 'fc90335d9f3cbcec9215d172600402c143ffc59d'
+    SIS_BUILD = SIS_COMMIT[0,8]
     SIS_RELEASE_BRANCH = 'master'
 
     class << self
@@ -22,31 +22,31 @@ module Genesis
         "#{version} (#{SIS_BUILD})"
       end
       def environment
-        s = "Instance Configuration\n"
+        s = "#{app_name} Instance Configuration\n"
         s << [
             [nil,nil],
-            ["#{app_name} version", "#{build_string}"],
-            ['Release branch', "#{SIS_RELEASE_BRANCH}"],
+            ['Version', version],
+            ['Build', SIS_BUILD],
+            ['Commit', SIS_COMMIT],
+            ['Branch', "#{SIS_RELEASE_BRANCH}"],
+            [nil,nil],
             ['Environment', Rails.env],
+            ['Platform', "#{RUBY_PLATFORM}"],
+            ['Database', ActiveRecord::Base.connection.adapter_name],
             [nil,nil],
             ['Ruby version', "#{RUBY_VERSION}-p#{RUBY_PATCHLEVEL} (#{RUBY_RELEASE_DATE})"],
             ['Rails version', Rails::VERSION::STRING],
-            ['Bundler version', Bundler::VERSION],
-            [nil,nil],
-            ['Platform', "#{RUBY_PLATFORM}"],
-            ['Database', ActiveRecord::Base.connection.adapter_name]
+            ['Bundler version', Bundler::VERSION]
         ].map {|info| '  %-25s %s' % info}.join("\n") + "\n"
       end
       def installed_modules
-
         s = "Installed Modules\n"
         # plugins = Genesis::Module.all
         # if plugins.any?
-        #   s << plugins.map {|mod| "  %-30s %s" % [mod.id.to_s, mod.version.to_s]}.join("\n")
+        #   s << plugins.map {|mod| "  %-25s %s" % [mod.id.to_s, mod.version.to_s]}.join("\n")
         # else
         #   s << '  no modules installed'
         # end
-
         s << [
             [nil,nil],
             ['Admissions', '0.0.0'],

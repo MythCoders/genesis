@@ -1,12 +1,12 @@
 class Student < ApplicationRecord
 
-  has_many :student_enrollments, :autosave => true
-  has_many :student_addresses
-  has_many :student_notes
-  has_many :student_relationships, through: :student_addresses
+  has_many :enrollments, :class_name => 'StudentEnrollment', :autosave => true
+  has_many :addresses, :class_name => 'StudentAddress'
+  has_many :notes, :class_name => 'StudentNote'
+  has_many :relationships, through: :student_addresses, :class_name => 'StudentRelationship'
 
-  accepts_nested_attributes_for :student_enrollments
-  accepts_nested_attributes_for :student_addresses
+  accepts_nested_attributes_for :enrollments
+  accepts_nested_attributes_for :addresses
 
   before_create :assign_student_id
   validates :first_name, presence: true, length: {maximum: 30}
@@ -19,14 +19,9 @@ class Student < ApplicationRecord
     self.primary_address_id.nil? ? nil : StudentAddress.find(self.primary_address_id).address
   end
 
-  def any_active_medical_alerts?
-    #TODO: medical alerts
-    self.student_id == 1010
-  end
-
   def current_grade(format = 'long')
-    if self.student_enrollments.any?
-      current_enrollments = self.student_enrollments.where('admission_date <= ? and withdraw_date is null or withdraw_date >= ?', Date.today, Date.today)
+    if self.enrollments.any?
+      current_enrollments = self.enrollments.where('admission_date <= ? and withdraw_date is null or withdraw_date >= ?', Date.today, Date.today)
       if current_enrollments.count == 1
         grade = current_enrollments.first.school_year_grade.grade
       else
@@ -41,6 +36,18 @@ class Student < ApplicationRecord
 
   def is_registered?
     current_grade('short') == 'NR' ? false : true
+  end
+
+  def has_alert?
+    true
+  end
+
+  def has_flagged_note?
+    self.notes.where(:is_flagged => true).any?
+  end
+
+  def has_medical_alert?
+    true
   end
 
   private

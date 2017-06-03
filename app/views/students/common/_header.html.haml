@@ -2,6 +2,18 @@
   = "#{@student.formatted_full_name} (#{(@student.student_number)})"
   %small
     = @student.current_grade
+    - if @student.has_alert?
+      &nbsp;
+      %em{'data-toggle': 'tooltip', 'data-placement': 'bottom', title: 'There is an alert for this student!'}
+        = fa_icon 'warning', :class => 'text-yellow'
+      - if @student.has_flagged_note?
+        &nbsp;
+        %em{'data-toggle': 'tooltip', 'data-placement': 'bottom', title: 'There is a flagged note for this student!'}
+          = fa_icon 'flag', :class => 'text-warning'
+      - if @student.has_medical_alert?
+        &nbsp;
+        %em{'data-toggle': 'tooltip', 'data-placement': 'bottom', title: 'There is a medical alert for this student!'}
+          = fa_icon 'heartbeat', :class => 'text-danger'
 
 .row
   .col-xs-12
@@ -33,13 +45,4 @@
           %li
             %a{:href => '#'}
               %span.text-danger Delete student
-    .btn-group
-      .btn-group
-        %button.btn.btn-yellow
-          = fa_icon 'warning'
-        %button.btn.btn-warning
-          = fa_icon 'flag'
-        %button.btn.btn-danger
-          = fa_icon 'heartbeat'
-
 %br

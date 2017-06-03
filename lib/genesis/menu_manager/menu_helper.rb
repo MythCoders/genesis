@@ -50,7 +50,7 @@ module Genesis
         caption, url, selected = extract_node_details(node, project)
 
         html = [].tap do |html|
-          html << '<li class=\'d\'>'
+          html << '<li class=\'dropdown\'>'
           # Parent
           html << render_single_menu_node(node, caption, url, selected)
 
@@ -61,11 +61,11 @@ module Genesis
             end
           end
 
-          html << content_tag(:ul, standard_children_list, :class => 'nav sidebar-subnav collapse', :id => "##{node.name}") unless standard_children_list.empty?
+          html << content_tag(:ul, standard_children_list, :class => 'dropdown-menu', :id => "##{node.name}") unless standard_children_list.empty?
 
           # Unattached children
           unattached_children_list = render_unattached_children_menu(node, project)
-          html << content_tag(:ul, unattached_children_list, :class => 'nav sidebar-subnav unattached') unless unattached_children_list.blank?
+          html << content_tag(:ul, unattached_children_list, :class => 'dropdown-menu unattached') unless unattached_children_list.blank?
 
           html << '</li>'
         end
@@ -96,7 +96,7 @@ module Genesis
         # and should not do anything on click, except if otherwise defined elsewhere
         if url.blank?
           url = '#'
-          options.reverse_merge!(:onclick => 'return false;')
+          options.reverse_merge!('data-toggle' => 'dropdown')
         end
 
         if item.icon.blank?
