@@ -1,20 +1,30 @@
-%h4 Basic Information
-.basic-information
-  .field-group
-    Student Name
-    = f.text_field :first_name, :class => 'text medium-field', :placeholder => 'First'
-    = f.text_field :middle_name, :class => 'text medium-field', :placeholder => 'Middle'
-    = f.text_field :last_name, :class => 'text medium-field', :placeholder => 'Last'
-    = f.text_field :suffix, :class => 'text short-field', :placeholder => 'Suffix'
-  .field-group
-    = f.label :date_of_birth
-    = f.text_field :date_of_birth, :class => 'text medium-field', :placeholder => 'MM/DD/YYYY'
-  .field-group
-    = f.label :sex
-    = f.text_field :sex, :class => 'text short-field', :placeholder => 'M or F'
+.panel.panel-primary
+  .panel-heading
+    %h3.panel-title Basic Information
+  .panel-body
+    .form-group.row
+      = f.label :student_name, :class => 'col-sm-2 col-form-label'
+      .col-sm-3= f.text_field :first_name, :class => 'form-control', :placeholder => 'First'
+      .col-sm-2= f.text_field :middle_name, :class => 'form-control', :placeholder => 'Middle'
+      .col-sm-3= f.text_field :last_name, :class => 'form-control', :placeholder => 'Last'
+      .col-sm-2= f.text_field :suffix, :class => 'form-control', :placeholder => 'Suffix'
+    .form-group.row
+      = f.label :date_of_birth, :class => 'col-sm-2 col-form-label'
+      .col-sm-3= f.text_field :date_of_birth, :class => 'form-control', :placeholder => 'MM/DD/YYYY'
+      -#.col-sm-3= bs_text_field(f, :date_of_birth)
 
-%hr Admission Information
-= f.fields_for :enrollments do |ff|
-  .admission-information
-    = ff.hidden_field :id
-    = ff.hidden_field :student_id
+.panel.panel-primary
+  .panel-heading
+    %h3.panel-title Admission Information
+  .panel-body
+    = f.fields_for :enrollments do |ff|
+      .form-group.row
+        = f.label :student_name, :class => 'col-sm-2 col-form-label'
+        .col-sm-3= f.text_field :first_name, :class => 'form-control', :placeholder => 'First'
+        .col-sm-2= f.text_field :middle_name, :class => 'form-control', :placeholder => 'Middle'
+        .col-sm-3= f.text_field :last_name, :class => 'form-control', :placeholder => 'Last'
+        .col-sm-2= f.text_field :suffix, :class => 'form-control', :placeholder => 'Suffix'
+      .form-group.row
+        = f.label :date_of_birth, :class => 'col-sm-2 col-form-label'
+        .col-sm-3= f.text_field :date_of_birth, :class => 'form-control', :placeholder => 'MM/DD/YYYY'
+        -#.col-sm-3= bs_text_field(f, :date_of_birth)

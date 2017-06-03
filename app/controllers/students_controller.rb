@@ -17,12 +17,13 @@ class StudentsController < ApplicationController
     end
 
     @student = Student.new
-    @student.enrollments << Enrollment.new
+    @student.student_enrollments << StudentEnrollment.new
     @student.student_addresses << StudentAddress.new do |sa|
       sa.address = Address.new
     end
 
     populate_select_lists
+    @type = 'slow'
   end
 
   def create
@@ -65,7 +66,7 @@ class StudentsController < ApplicationController
 
   def get_user_pref
     #todo: load preference
-    'quick'
+    'slow'
   end
 
   def find_student

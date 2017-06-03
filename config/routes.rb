@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   resources :roles
   resources :users
   resources :settings
-  resources :staff_members
+  resources :staff_members, :path => 'staff'
 
   resources :schools do
     resources :school_years

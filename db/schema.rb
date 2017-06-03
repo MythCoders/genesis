@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160821224133) do
+ActiveRecord::Schema.define(version: 20170603183917) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -93,6 +93,15 @@ ActiveRecord::Schema.define(version: 20160821224133) do
     t.string "middle_name", limit: 30
     t.string "last_name", limit: 30
     t.string "email_address", limit: 60
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "primary_phone_number_id"
+  end
+
+  create_table "people_phone_numbers", force: :cascade do |t|
+    t.integer "student_address_id"
+    t.string "phone_number", null: false
+    t.string "number_type", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -259,6 +268,7 @@ ActiveRecord::Schema.define(version: 20160821224133) do
     t.boolean "is_bus_drop_off"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "home_phone"
   end
 
   create_table "student_enrollments", id: :serial, force: :cascade do |t|
@@ -336,6 +346,7 @@ ActiveRecord::Schema.define(version: 20160821224133) do
 
   add_foreign_key "grades", "grades", column: "next_grade_id"
   add_foreign_key "grades", "grades", column: "previous_grade_id"
+  add_foreign_key "people", "people_phone_numbers", column: "primary_phone_number_id"
   add_foreign_key "school_periods", "school_years"
   add_foreign_key "school_progress_periods", "school_quarters"
   add_foreign_key "school_quarters", "school_semesters"

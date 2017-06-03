@@ -1,8 +1,13 @@
+%h3
+  = "#{@student.formatted_full_name} (#{(@student.student_number)})"
+  %small
+    = @student.current_grade
+
 .row
   .col-xs-12
     .btn-group
       .btn-group
-        %button.btn.btn-primary.dropdown-toggle{'aria-expanded' => 'false', 'aria-haspopup' => 'true', 'data-toggle' => 'dropdown', :type => 'button'}
+        %button.btn.btn-default.dropdown-toggle{'aria-expanded' => 'false', 'aria-haspopup' => 'true', 'data-toggle' => 'dropdown', :type => 'button'}
           = fa_icon 'plus'
           New
           %span.caret
@@ -13,8 +18,7 @@
             %a{:href => '#'} Contact
           %li
             = link_to 'Note', new_student_note_path(@student)
-      %button.btn.btn-default
-        = link_to 'Edit', edit_student_path(@student)
+      = link_to 'Edit', edit_student_path(@student), :class => 'btn btn-default'
       .btn-group
         %button.btn.btn-default.dropdown-toggle{'aria-expanded' => 'false', 'aria-haspopup' => 'true', 'data-toggle' => 'dropdown', :type => 'button'}
           = fa_icon 'cog'
@@ -29,22 +33,13 @@
           %li
             %a{:href => '#'}
               %span.text-danger Delete student
-.row
-  .col-xs-6
-    %h3= @student.formatted_full_name
-  .col-xs-6.hidden-xs
-    .col-xs-6
-    .col-xs-3
-      .thumbnail
-        .caption
-          %h5
-            %strong Student Number
-          = @student.student_number
-    .col-xs-3
-      .thumbnail
-        .caption
-          %h5
-            %strong Grade
-          = @student.current_grade
+    .btn-group
+      .btn-group
+        %button.btn.btn-yellow
+          = fa_icon 'warning'
+        %button.btn.btn-warning
+          = fa_icon 'flag'
+        %button.btn.btn-danger
+          = fa_icon 'heartbeat'
 
-%hr
+%br

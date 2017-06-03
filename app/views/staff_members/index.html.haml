@@ -1,0 +1,46 @@
+- page_title 'Staff Search'
+
+%h3
+  = fa_icon 'building'
+  Staff
+
+.row
+  .col-lg-9
+    .form-group.mb-xl
+      %input.form-control.mb{:placeholder => 'Search by first name, last name', :type => 'text'}
+      .clearfix
+        %button.pull-left.btn.btn-default{:type => 'button'} Search
+        .pull-right
+          %label.checkbox-inline.c-checkbox
+            %input#inlineCheckbox10{:type => 'checkbox', :value => 'option1'}
+            = succeed 'Include former staff' do
+              %span.fa.fa-check
+          %label.checkbox-inline.c-checkbox
+            %input#inlineCheckbox20{:type => 'checkbox', :value => 'option2'}
+            = succeed 'Search entire district' do
+              %span.fa.fa-check
+    .table-responsive
+      %table.table.table-bordered.table-striped
+        %thead
+          %tr
+            %th.action-column
+            %th Staff Member Number
+            %th Name
+        %tbody
+          - @staff.each do |s|
+            %tr
+              %td= link_to 'Select', staff_member_path(s)
+              %td= s.staff_member_number
+              %td= s.formatted_full_name
+  .col-lg-3
+    .panel.panel-default
+      .panel-heading
+        %h3.panel-title Filters
+      .panel-body
+        .form-group
+          %label Position
+          %br
+          %input{:type => 'text', :class => 'form-control'}
+        %button.btn.btn-default.btn-lg Apply
+
+= link_to 'New staff member', new_staff_member_path, :class => 'btn btn-primary'

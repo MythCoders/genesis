@@ -54,7 +54,7 @@ module Genesis
             ['Attendance', '0.0.0'],
             ['Communications', '0.0.0'],
             ['Courses', '0.0.0'],
-            ['Data Importer', '0.0.0'],
+            ['Data Warehouse', '0.0.0'],
             ['Discipline', '0.0.0'],
             ['eLearning', '0.0.0'],
             ['Finances', '0.0.0'],

@@ -41,6 +41,10 @@
   @include button-variant(#fff, $brand-pink, rgba(0,0,0,0));
 }
 
+.btn-yellow {
+  @include button-variant(#fff, $brand-yellow, rgba(0,0,0,0));
+}
+
 // Flat square button
 
 .btn-flat {

@@ -1,6 +1,8 @@
 - page_title 'Student Search'
 
-%h3 Students
+%h3
+  = fa_icon 'users'
+  Students
 
 .row
   .col-lg-9
@@ -48,11 +50,11 @@
         %button.btn.btn-default.btn-lg Apply
 
 .btn-group
-  %a.btn.btn-default{ href: new_student_path, class: can_new_student_be_admitted? ? '' : 'disabled'}
+  %a.btn.btn-default{ href: new_student_path, class: ('disabled' unless can_new_student_be_admitted?)}
     New Admission
   .btn-group
-    %button.btn.btn-default.dropdown-toggle{ 'data-toggle': 'dropdown', disabled: can_new_student_be_admitted? ? '' : 'disabled' }
+    %button.btn.btn-default.dropdown-toggle{ 'data-toggle': 'dropdown', disabled: ('disabled' unless can_new_student_be_admitted?)}
       %span.caret
     %ul.dropdown-menu
       %li.dropdown-item= link_to 'Quick Admission', new_student_path, :type => 'quick'
-      %li.dropdown-item= link_to 'Standard Admission', new_student_path, :type => 'long'
+      %li.dropdown-item= link_to 'Standard Admission', new_student_path, :type => 'slow'

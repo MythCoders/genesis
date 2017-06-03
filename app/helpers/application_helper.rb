@@ -289,9 +289,9 @@ module ApplicationHelper
 
   def url_for_bing_maps(parameters, formatted_address, label)
     if formatted_address.nil?
-      "<a href=\"http://bing.com/maps?q=#{parameters}\" target=\"_blank\">#{formatted_address}</a>"
+      "<a class=\"btn btn-link\" href=\"http://bing.com/maps?q=#{parameters}\" target=\"_blank\">#{formatted_address}</a>"
     else
-      "<a href=\"http://bing.com/maps?q=#{parameters}\" target=\"_blank\">#{label}</a>"
+      "<a class=\"btn btn-link\" href=\"http://bing.com/maps?q=#{parameters}\" target=\"_blank\">#{label}</a>"
     end
   end
 

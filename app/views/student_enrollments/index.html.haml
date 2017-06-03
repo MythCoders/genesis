@@ -17,7 +17,7 @@
         %tbody
           %tr
             %td
-              %a
+              %a.btn.btn-link
                 Edit
             %td= r.school_year_grade.school_year.short_name
             %td
@@ -25,6 +25,5 @@
               on
               = r.admission_date
             %td
-
 
     = link_to 'New enrolmment', new_student_enrollment_path(@student), :class => 'btn btn-primary'

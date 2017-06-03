@@ -6,20 +6,20 @@
   .col-sm-2.col-xs-12
     = render :partial => 'students/common/sidebar', :locals => {:student => @student}
   .col-sm-10.col-xs-12
-    - @student.student_addresses.each do |t|
+    - @student.student_addresses.order('is_residential DESC').each do |t|
       .panel.panel-dark
         .panel-heading
           %h3.panel-title
-            = format_address(t.address.street, nil, t.address.city, t.address.state, t.address.zip_code, nil, 2)
+            = "#{format_address(t.address.street, nil, t.address.city, t.address.state, t.address.zip_code, nil, 2)} - #{number_to_phone(t.address.phone_number, area_code: true)}"
             %br
             - if t.is_mailing
               %i.fa.fa-envelope
-              - if t.is_residential
-                %i.fa.fa-home
-              - if t.is_bus_pickup
-                %i.fa.fa-arrow-up
-              - if t.is_bus_drop_off
-                %i.fa.fa-arrow-down
+            - if t.is_residential
+              %i.fa.fa-home
+            - if t.is_bus_pickup
+              %i.fa.fa-arrow-up
+            - if t.is_bus_drop_off
+              %i.fa.fa-arrow-down
         .table-responsive
           %table.table.table-striped.table-bordered
             %thead
@@ -28,13 +28,12 @@
                 %th{:width => '10%'} Contact Order
                 %th Name
                 %th Relation
-                %th Phone number
-                %th Email
+                %th Contact information
             %tbody
               - t.student_relationships.each do |r|
                 %tr
                   %td
-                    %a
+                    %a.btn.btn-link
                       Edit
                   %td
                     = r.contact_order
@@ -45,7 +44,10 @@
                   %td= r.person.formatted_full_name(2)
                   %td= r.relation
                   %td
-                  %td= r.email_address
+                    - unless r.person.phone_numbers.blank?
+                      - r.person.phone_numbers.each do |p|
+                        = "#{number_to_phone(p.phone_number, area_code: true)}, #{p.number_type}#{(', primary' if p.id == r.person.primary_phone_number_id;)}"
+                        %br
         .panel-footer
           = link_to 'New contact', new_student_relationship_path(@student), :class => 'btn btn-primary'
           .pull-right

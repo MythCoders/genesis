@@ -1,9 +1,7 @@
 module StudentHelper
 
   def student_tabs
-    tabs = [{:name => 't1', :partial => 'students/info/info', :label => 'General Information'},
-            {:name => 't2', :partial => 'students/info/custom', :label => 'Tab'}
-    ]
+    tabs = [{:name => 't1', :partial => 'students/info/info', :label => 'General Information'}]
   end
 
   def path_to_student_photo

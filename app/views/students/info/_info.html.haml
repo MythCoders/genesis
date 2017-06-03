@@ -1,3 +1,12 @@
-= label_tag :name
-= @student.formatted_full_name
+.form-group
+  = label_tag :primary_address
+  = format_address(@student.primary_address.street, nil, @student.primary_address.city, @student.primary_address.state, @student.primary_address.zip_code, nil, 2)
+
+.form-group
+  = label_tag :date_of_birth
+  = display_date(@student.date_of_birth)
+
+.form-group
+  = label_tag :sex
+  = @student.sex
 

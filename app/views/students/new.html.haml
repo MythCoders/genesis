@@ -1,13 +1,15 @@
-- page_title "New #{@type.capitalize} Admission"
+- title = "New #{@type.capitalize} Admission"
+- page_title title
+
+%h3
+  = fa_icon 'users'
+  = title
 
 = form_for @student, url: students_path, :html => { :class => '' } do |f|
-  .card
-    .card-header
-      Student Admission
-    .card-block
-      .form-horizontal
-        = error_messages_for 'student'
-        = render :partial => "students/common/#{@type}admit", :locals => { :f => f }
-    .card-footer
-      = link_to 'Cancel', students_path, :class => 'btn btn-secondary'
-      = f.submit 'Create', :class => 'btn btn-primary'
+
+  = error_messages_for 'student'
+  = render :partial => "students/common/#{@type}admit", :locals => { :f => f }
+
+
+  = link_to 'Cancel', students_path, :class => 'btn btn-default'
+  = f.submit 'Process Admission', :class => 'btn btn-success'

@@ -1,25 +1,30 @@
-%h4 Basic Information
-
-.container
-  .form-group.row
-    = f.label :student_name, :class => 'col-sm-2 col-form-label'
-    .col-sm-3= f.text_field :first_name, :class => 'form-control', :placeholder => 'First'
-    .col-sm-2= f.text_field :middle_name, :class => 'form-control', :placeholder => 'Middle'
-    .col-sm-3= f.text_field :last_name, :class => 'form-control', :placeholder => 'Last'
-    .col-sm-2= f.text_field :suffix, :class => 'form-control', :placeholder => 'Suffix'
-  .form-group.row
-    = f.label :date_of_birth, :class => 'col-sm-2 col-form-label'
-    .col-sm-3= f.text_field :date_of_birth, :class => 'form-control', :placeholder => 'MM/DD/YYYY'
-    -#.col-sm-3= bs_text_field(f, :date_of_birth)
-
-%h4 Admission Information
-
-= f.fields_for :enrollments do |ff|
-  .container
+.panel.panel-primary
+  .panel-heading
+    %h3.panel-title Basic Information
+  .panel-body
     .form-group.row
-      = ff.label :grade, :class => 'col-sm-1 col-form-label'
-      .col-sm-3= ff.select :school_year_grade_id, options_from_collection_for_select(@grades, :id, :title), {include_blank: '- N/A -'}, {:class => 'form-control'}
-      = ff.label :start_date, :class => 'col-sm-1 col-form-label'
-      .col-sm-2= ff.text_field :admission_date, :class => 'form-control', :placeholder => 'MM/DD/YYYY'
-      = ff.label :reason, :class => 'col-sm-2 col-form-label'
-      .col-sm-3= ff.select :admission_code_id, options_from_collection_for_select(@admission_codes, :id, :title), {include_blank: '- Select -'}, {:class => 'form-control'}
+      = f.label :student_name, :class => 'col-sm-2 col-form-label'
+      .col-sm-3= f.text_field :first_name, :class => 'form-control', :placeholder => 'First'
+      .col-sm-2= f.text_field :middle_name, :class => 'form-control', :placeholder => 'Middle'
+      .col-sm-3= f.text_field :last_name, :class => 'form-control', :placeholder => 'Last'
+      .col-sm-2= f.text_field :suffix, :class => 'form-control', :placeholder => 'Suffix'
+    .form-group.row
+      = f.label :date_of_birth, :class => 'col-sm-2 col-form-label'
+      .col-sm-3= f.text_field :date_of_birth, :class => 'form-control', :placeholder => 'MM/DD/YYYY'
+      -#.col-sm-3= bs_text_field(f, :date_of_birth)
+
+.panel.panel-primary
+  .panel-heading
+    %h3.panel-title Admission Information
+  .panel-body
+    = f.fields_for :enrollments do |ff|
+      .form-group.row
+        = f.label :student_name, :class => 'col-sm-2 col-form-label'
+        .col-sm-3= f.text_field :first_name, :class => 'form-control', :placeholder => 'First'
+        .col-sm-2= f.text_field :middle_name, :class => 'form-control', :placeholder => 'Middle'
+        .col-sm-3= f.text_field :last_name, :class => 'form-control', :placeholder => 'Last'
+        .col-sm-2= f.text_field :suffix, :class => 'form-control', :placeholder => 'Suffix'
+      .form-group.row
+        = f.label :date_of_birth, :class => 'col-sm-2 col-form-label'
+        .col-sm-3= f.text_field :date_of_birth, :class => 'form-control', :placeholder => 'MM/DD/YYYY'
+        -#.col-sm-3= bs_text_field(f, :date_of_birth)
