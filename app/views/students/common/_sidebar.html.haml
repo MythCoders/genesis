@@ -1,13 +1,13 @@
 .list-group
-  %a.list-group-item.list-group-item-action{href: student_path(@student), :class => ('active' if controller?('students') && action?('show');)}
+  %a.list-group-item.list-group-item-action{href: student_path(@student), :class => ('active' if controller?('students');)}
     %i.fa.fa-wpforms
     Information
-  %a.list-group-item.list-group-item-action{href: student_addresses_path(@student), :class => ('active' if controller?('student_addresses') && action?('index');)}
+  %a.list-group-item.list-group-item-action{href: student_addresses_path(@student), :class => ('active' if controller?('student_addresses');)}
     %i.fa.fa-home
     Addresses and Contacts
-  %a.list-group-item.list-group-item-action{href: student_notes_path(@student), :class => ('active' if controller?('student_notes') && action?('index');)}
+  %a.list-group-item.list-group-item-action{href: student_notes_path(@student), :class => ('active' if controller?('student_notes');)}
     %i.fa.fa-sticky-note
     Notes
-  %a.list-group-item.list-group-item-action{href: student_path(@student)}
+  %a.list-group-item.list-group-item-action{href: student_enrollments_path(@student), :class => ('active' if controller?('student_enrollments');)}
     %i.fa.fa-graduation-cap
     Enrollment History

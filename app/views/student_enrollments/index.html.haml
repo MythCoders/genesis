@@ -1,0 +1,30 @@
+- page_title @student.formatted_full_name, 'Enrollments'
+
+= render :partial => 'students/common/header', :locals => {:student => @student }
+
+.row
+  .col-sm-2.col-xs-12
+    = render :partial => 'students/common/sidebar', :locals => {:student => @student}
+  .col-sm-10.col-xs-12
+    - @student.student_enrollments.each do |r|
+      %table.table.table-striped.table-bordered
+        %thead
+          %tr
+            %th.action-column
+            %th School Year
+            %th Admission
+            %th Withdraw
+        %tbody
+          %tr
+            %td
+              %a
+                Edit
+            %td= r.school_year_grade.school_year.short_name
+            %td
+              = r.admission_code.title
+              on
+              = r.admission_date
+            %td
+
+
+    = link_to 'New enrolmment', new_student_enrollment_path(@student), :class => 'btn btn-primary'

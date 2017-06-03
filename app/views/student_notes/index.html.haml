@@ -6,4 +6,22 @@
   .col-sm-2.col-xs-12
     = render :partial => 'students/common/sidebar', :locals => {:student => @student}
   .col-sm-10.col-xs-12
-    Content
+    - @student.student_notes.each do |r|
+      %table.table.table-striped.table-bordered
+        %thead
+          %tr
+            %th.action-column
+            %th Title
+            %th Body
+        %tbody
+          %tr
+            %td
+              %a
+                Edit
+            %td
+              - if r.is_flagged
+                %i.fa.fa-flag.text-warning
+              = r.title
+            %td= r.body
+
+    = link_to 'New Note', new_student_note_path(@student), :class => 'btn btn-primary'

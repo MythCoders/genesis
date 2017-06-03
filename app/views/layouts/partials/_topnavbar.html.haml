@@ -18,16 +18,18 @@
       %li
         %a{:href => '#'}
           Student:
-          Adkins, Justin
+          Adkins, Justin M.
           &nbsp;
           %em= fa_icon 'warning', :title => 'There is an alert for this student!', :class => 'text-yellow'
+          &nbsp;
+          %em= fa_icon 'flag', :title => 'There is an flagged note for this student!', :class => 'text-warning'
           &nbsp;
           %em= fa_icon 'heartbeat', :title => 'There is a medical alert for this student!', :class => 'text-danger'
     %ul.nav.navbar-nav.navbar-right
       %li
         %a{'data-no-persist' => 'true', 'data-toggle-state' => 'offsidebar-open', :href => '#', :title => 'Settings'}
           %em= fa_icon 'sliders'
-      %li
+      %li.hidden-xs
         = link_to destroy_user_session_path, :method=>'delete', :title => 'Sign out' do
           %em= fa_icon 'sign-out'
   %form.navbar-form{:action => 'search.html', :role => 'search'}

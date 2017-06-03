@@ -26,7 +26,7 @@ class Student < ApplicationRecord
 
   def current_grade(format = 'long')
     if self.student_enrollments.any?
-      current_enrollments = self.enrollments.where('admission_date <= ? and withdraw_date is null or withdraw_date >= ?', Date.today, Date.today)
+      current_enrollments = self.student_enrollments.where('admission_date <= ? and withdraw_date is null or withdraw_date >= ?', Date.today, Date.today)
       if current_enrollments.count == 1
         grade = current_enrollments.first.school_year_grade.grade
       else

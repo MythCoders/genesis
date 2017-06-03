@@ -166,15 +166,11 @@ module ApplicationHelper
     return_value
   end
 
-  def format_address_with_html_link(address_line_1, address_line_2, city, state, zip_code, zip_code_four = '', format = 1, label = nil)
+  def format_address_as_html_link(address_line_1, address_line_2, city, state, zip_code, zip_code_four = '', format = 1, label = nil)
     formatted_address = format_address(address_line_1, address_line_2, city, state, zip_code, zip_code_four, format)
     parameters = format == 2 ? formatted_address : format_address(address_line_1, address_line_2, city, state, zip_code, zip_code_four, 2)
 
-    if label.nil?
-      "<a href=\"http://bing.com/maps?q=#{parameters}\" target=\"_blank\">#{formatted_address}</a>"
-    else
-      "<a href=\"http://bing.com/maps?q=#{parameters}\" target=\"_blank\">#{label}</a>"
-    end
+    url_for_bing_maps(parameters, formatted_address, label)
   end
 
   def display_date(value, return_if_nil = '')
@@ -287,6 +283,16 @@ module ApplicationHelper
 
   def bs_text_field(form_helper, attribute, html_class = 'form-control')
     form_helper.text_field attribute, :class => html_class
+  end
+
+  private
+
+  def url_for_bing_maps(parameters, formatted_address, label)
+    if formatted_address.nil?
+      "<a href=\"http://bing.com/maps?q=#{parameters}\" target=\"_blank\">#{formatted_address}</a>"
+    else
+      "<a href=\"http://bing.com/maps?q=#{parameters}\" target=\"_blank\">#{label}</a>"
+    end
   end
 
 end

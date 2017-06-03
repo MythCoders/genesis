@@ -9,7 +9,9 @@ Rails.application.routes.draw do
   resources :districts
   resources :grades
   resources :roles
+  resources :users
   resources :settings
+  resources :staff_members
 
   resources :schools do
     resources :school_years
@@ -18,9 +20,9 @@ Rails.application.routes.draw do
   resources :students do
     resources :student_addresses, :path => 'addresses', :as => 'addresses'
     resources :student_notes, :path => 'notes', :as => 'notes'
+    resources :student_enrollments, :path => 'enrollments', :as => 'enrollments'
+    resources :student_relationships, :path => 'contacts', :as => 'relationships'
   end
 
-  resources :student_relationships
-  resources :users
 
 end
