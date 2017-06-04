@@ -4,7 +4,11 @@
 
 .form-group
   = f.label :short_name
-  = f.text_field :short_name, :class => 'form-control', :placeholder => 'Course Code'
+  = f.text_field :short_name, :class => 'form-control', :placeholder => 'School  Code'
+
+.form-group
+  = f.label :district_id
+  =f.select :district_id, options_from_collection_for_select(@districts, :id, :name, @school.district_id), {include_blank: '- Select -'}, {:class => 'form-control'}
 
 .form-group
   = f.label :address
@@ -27,5 +31,5 @@
   = f.text_field :phone_number, :class => 'form-control'
 
 .form-group
-  = f.label :superintendents_name
-  = f.text_field :superintendents_name, :class => 'form-control'
+  = f.label :principals_name
+  = f.text_field :principals_name, :class => 'form-control'

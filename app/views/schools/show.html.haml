@@ -1,19 +1,25 @@
-%h2= @school.name
-%span= format_address(@school.address, nil, @school.city, @school.state, @school.zip_code).html_safe
+%h3= @school.name
 
 .row
   .col-sm-4
-    %table.table.table-bordered
-      %tbody
-        %tr
-          %td Active Staff
-          %td 0
-        %tr
-          %td Enrolled Students
-          %td 0
+    .panel.panel-primary
+      .panel-heading
+        %h3.panel-title Information
+      %table.table.table-bordered.table-striped
+        %tbody
+          %tr
+            %td Address
+            %td= format_address(@school.address, nil, @school.city, @school.state, @school.zip_code).html_safe
+          %tr
+            %td Active Staff
+            %td 0
+          %tr
+            %td Enrolled Students
+            %td 0
   .col-sm-8
-    .card
-      .card-header School Years
+    .panel.panel-primary
+      .panel-heading
+        %h3.panel-title School Years
       - if @school.school_years.any?
         %table.table.table-bordered.table-striped
           %tbody
@@ -24,8 +30,8 @@
                 %td= display_thur_dates(sy.start_date, sy.end_date)
                 %td= display_thur_dates(sy.grade_start_date, sy.grade_end_date)
                 %td= display_thur_dates(sy.reg_start_date, sy.reg_end_date)
-        .card-footer
-          = link_to 'Add School Year', new_school_school_year_path(@school), :class => 'aui-button aui-button-subtle'
+        .panel-footer
+          = link_to 'Add School Year', new_school_school_year_path(@school), :class => 'btn btn-primary'
       - else
-        .card-block
+        .panel-body
           = link_to 'This school has not yet been in session. Create a new School Year now!', new_school_school_year_path(@school)

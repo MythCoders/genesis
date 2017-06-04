@@ -1,0 +1,30 @@
+%body
+  = stylesheet_link_tag 'application', media: 'all'
+  .page-type-indra.page-type-login
+    .aui-page-panel.indra-one-wide
+      %header.indra-header.aui-page-header
+        .aui-page-header-inner
+          .aui-pageheader-main
+            %h1
+              = Genesis::INFO.app_name
+              %small
+                New Password - v#{Genesis::INFO.version}
+      .aui-group.indra-login-method
+        .aui-item.indra-login-item.indra-login-crowd
+          = form_for(resource, as: resource_name, url: password_path(resource_name), :html => { :method => :put, :class => 'aui top-label'}) do |f|
+            = devise_error_messages!
+            = f.hidden_field :reset_password_token
+            .field-group
+              = f.label :password, 'New password'
+              = f.password_field :password, autofocus: true, autocomplete: 'off', :class => 'text full-width-field'
+              - if @minimum_password_length
+                .description
+                  = @minimum_password_length
+                  characters minimum
+            .field-group
+              = f.label :password_confirmation, 'Confirm new password'
+              = f.password_field :password_confirmation, autocomplete: 'off', :class => 'text full-width-field'
+            .buttons-container
+              .buttons
+                = f.submit 'Change my password', :class => 'aui-button aui-button-primary'
+            = render 'devise/shared/links'

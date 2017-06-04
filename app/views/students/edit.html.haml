@@ -1,11 +1,13 @@
-= form_for @student, url: student_path(@student), method: :patch, :html => {:class => ''} do |f|
-  .card
-    .card-header
-      Edit Student
-    .card-deck
-      .form-horizontal
-        = error_messages_for 'student'
+%h3= "Edit #{@student.formatted_full_name}"
+.row
+  .col-md-12
+    = form_for @student, url: student_path(@student), method: :patch, :html => {:class => ''} do |f|
+      .panel.panel-primary
+        .panel-heading
+          %h3.panel-title Information
+        .panel-body
+          = error_messages_for 'student'
 
-    .card-footer
-      = link_to 'Cancel', grades_path, :class => 'btn btn-secondary'
-      = f.submit 'Save Changes', :class => 'btn btn-primary'
+        .panel-footer
+          = link_to 'Cancel', student_path(@student), :class => 'btn btn-default'
+          = f.submit 'Save Changes', :class => 'btn btn-success'

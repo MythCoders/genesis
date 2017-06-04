@@ -1,0 +1,16 @@
+.generalAdminHeading.aui-page-header
+  .aui-page-header-inner
+    .aui-page-header-main
+      %ol.aui-nav.aui-nav-horizontal
+        %li
+          %h1
+            New School Year for #{@model.school.name}
+.aui-page-panel
+  .aui-page-panel-inner
+    .aui-page-panel-content
+      = form_for @model, url: school, :html => { :class => 'aui' } do |f|
+        = render :partial => 'schools/form', :locals => {:f => f}
+        .buttons-container
+          .buttons
+            = f.submit 'Create', :class => 'button submit'
+            = link_to 'Cancel', districts_path, :class => 'cancel'

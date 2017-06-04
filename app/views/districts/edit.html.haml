@@ -1,11 +1,13 @@
-= form_for @district, url: district_path(@district), method: :patch, :html => { :class => '' } do |f|
-  .card
-    .card-header
-      Edit School District
-    .card-deck
-      .form-horizontal
-        = error_messages_for 'district'
-        = render :partial => 'districts/form', :locals => { :f => f }
-    .card-footer
-      = link_to 'Cancel', courses_path, :class => 'btn btn-secondary'
-      = f.submit 'Save Changes', :class => 'btn btn-primary'
+%h3= "Edit #{@district.name}"
+.row
+  .col-md-12
+    = form_for @district, url: district_path(@district), method: :patch, :html => { :class => '' } do |f|
+      .panel.panel-primary
+        .panel-heading
+          %h3.panel-title Information
+        .panel-body
+          = error_messages_for 'district'
+          = render :partial => 'districts/form', :locals => {:f => f}
+        .panel-footer
+          = link_to 'Cancel', district_path(@district), :class => 'btn btn-default'
+          = f.submit 'Save Changes', :class => 'btn btn-success'

@@ -1,18 +1,22 @@
-.card
-  .card-header
+%h3 Districts
+
+.panel.panel-primary
+  .panel-heading
     %i.fa.fa-search
     District Search
   %table.table.table-bordered.table-striped.table-hover
     %thead
       %tr
+        %th.action-column
         %th District Code
         %th Name
         %th Address
     %tbody
       - @model.each do |d|
         %tr
-          %td= link_to d.short_name, district_path(d)
+          %td= link_to 'Select', district_path(d), :class => 'btn btn-link'
+          %td= d.short_name
           %td= d.name
           %td= format_address(d.address, nil, d.city, d.state, d.zip_code).html_safe
 
-= link_to 'New District', new_district_path, :class => 'btn btn-primary'
+= link_to 'New district', new_district_path, :class => 'btn btn-primary'

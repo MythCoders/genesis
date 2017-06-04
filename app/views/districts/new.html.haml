@@ -1,11 +1,13 @@
-= form_for :district, url: districts_path, :html => { :class => '' } do |f|
-  .card
-    .card-header
-      New School District
-    .card-deck
-      .form-horizontal
-        = error_messages_for 'district'
-        = render :partial => 'districts/form', :locals => {:f => f}
-    .card-footer
-      = link_to 'Cancel', districts_path, :class => 'btn btn-secondary'
-      = f.submit 'Create', :class => 'btn btn-primary'
+%h3 New District
+.row
+  .col-md-12
+    = form_for :district, url: districts_path, :html => { :class => '' } do |f|
+      .panel.panel-primary
+        .panel-heading
+          %h3.panel-title Information
+        .panel-body
+          = error_messages_for 'district'
+          = render :partial => 'districts/form', :locals => {:f => f}
+        .panel-footer
+          = link_to 'Cancel', districts_path, :class => 'btn btn-default'
+          = f.submit 'Create', :class => 'btn btn-success'

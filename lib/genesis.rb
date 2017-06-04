@@ -9,6 +9,7 @@ Genesis::MenuManager.map :sidebar do |menu|
   menu.push :help, { :controller => 'help', :action => 'index' }, :icon => 'info-circle'
 
   menu.push :administration, nil, :caption => 'Administration', :icon => 'cogs', :html => { 'data-toggle': 'collapse' }
+  menu.push :announcements, { :controller => 'announcements', :action => 'index' }, :parent => :administration, :caption => 'Announcements'
   menu.push :districts, { :controller => 'districts', :action => 'index' }, :parent => :administration, :caption => 'Districts'
   menu.push :schools, { :controller => 'schools', :action => 'index' }, :parent => :administration, :caption => 'Schools'
   menu.push :control_panel, { :controller => 'settings', :action => 'index' }, :parent => :administration, :caption => 'Control Panel'

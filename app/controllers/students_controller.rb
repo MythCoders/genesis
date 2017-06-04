@@ -11,6 +11,10 @@ class StudentsController < ApplicationController
     session[:student_id] = @student.id
   end
 
+  def edit
+    @student = Student.find(params[:id])
+  end
+
   def new
     unless can_new_student_be_admitted?
       flash[:error] = 'No students can be admitted for the currently selected school year.'

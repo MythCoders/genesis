@@ -1,0 +1,13 @@
+%h3= "Edit #{@school.name}"
+.row
+  .col-md-12
+    = form_for @school, url: schools_path, :html => { :class => '' } do |f|
+      .panel.panel-primary
+        .panel-heading
+          %h3.panel-title Information
+        .panel-body
+          = error_messages_for 'school'
+          = render :partial => 'schools/form', :locals => {:f => f}
+        .panel-footer
+          = link_to 'Cancel', school_path(@school), :class => 'btn btn-default'
+          = f.submit 'Save Changes', :class => 'btn btn-success'

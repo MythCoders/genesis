@@ -1,24 +1,24 @@
-.card
-  .card-header
+%h3 Schools
+
+.panel.panel-primary
+  .panel-heading
     %i.fa.fa-search
     School Search
   %table.table.table-bordered.table-striped
     %thead
       %tr
-        %th
+        %th.action-column
+        %th Name
         %th School Code
         %th District Code
-        %th Name
         %th Address
     %tbody
       - @schools.each do |s|
         %tr
-          %td= link_to s.short_name, school_path(s)
+          %td= link_to 'Select', school_path(s), :class => 'btn btn-link'
+          %td= s.name
           %td= s.short_name
           %td= s.district.short_name
-          %td= s.name
           %td= format_address(s.address, nil, s.city, s.state, s.zip_code).html_safe
 
-.btn-group
-  %a.btn.btn-secondary{ href: new_school_path}
-    New School
+= link_to 'New school', new_school_path, :class => 'btn btn-primary'
