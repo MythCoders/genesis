@@ -1,0 +1,3 @@
+class ControlPanelController < ApplicationController
+  
+end

@@ -1,4 +1,4 @@
-class SchoolsController < ApplicationController
+class SchoolsController < ControlPanelController
   def index
     @schools = School.includes(:district).all
   end

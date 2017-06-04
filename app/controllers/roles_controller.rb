@@ -1,4 +1,4 @@
-class RolesController < ApplicationController
+class RolesController < ControlPanelController
   def index
   end
 

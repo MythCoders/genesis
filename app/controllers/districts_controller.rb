@@ -1,10 +1,10 @@
-class DistrictsController < ApplicationController
+class DistrictsController < ControlPanelController
   def index
     @model = District.all
   end
 
   def show
-    @district = District.find(params[:id])
+    get
   end
 
   def new
@@ -22,11 +22,11 @@ class DistrictsController < ApplicationController
   end
 
   def edit
-    @district = District.find(params[:id])
+    get
   end
 
   def update
-    @district = District.find(params[:id])
+    get
 
     if @district.update(district_params)
       redirect_to @district
@@ -36,13 +36,16 @@ class DistrictsController < ApplicationController
   end
 
   def destroy
-    @district = District.find(params[:id])
+    get
     @district.destroy
-
-    redirect_to district_path
+    redirect_to districts_path
   end
 
   private
+
+  def get
+    @district = District.find(params[:id])
+  end
 
   def district_params
     params.require(:district).permit(:id, :name, :short_name, :address, :city, :state, :zip_code, :phone_number, :superintendents_name)

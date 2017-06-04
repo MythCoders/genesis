@@ -1,0 +1,19 @@
+.form-group
+  = f.label :title
+  = f.text_field :title, :class => 'form-control', :placeholder => 'Title', disabled: disabled
+
+.form-group
+  = f.label :body
+  = f.text_area :body, :class => 'form-control', :placeholder => 'Body', disabled: disabled
+
+.form-group
+  = f.label :start_date
+  = f.text_field :start_date, :class => 'form-control', :placeholder => 'Start date', disabled: disabled
+
+.form-group
+  = f.label :end_date
+  = f.text_field :end_date, :class => 'form-control', :placeholder => 'End date', disabled: disabled
+
+.form-group
+  = f.label :is_flagged
+  = f.text_field :is_flagged, :class => 'form-control', :placeholder => 'Is flagged', disabled: disabled

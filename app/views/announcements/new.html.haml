@@ -1,1 +1,13 @@
-%p Hello
+%h3 New Announcement
+.row
+  .col-md-12
+    = form_for :announcement, url: announcements_path, :html => { :class => '' } do |f|
+      .panel.panel-primary
+        .panel-heading
+          %h3.panel-title Information
+        .panel-body
+          = error_messages_for 'announcement'
+          = render :partial => 'announcements/form', :locals => {:f => f, :disabled => false}
+        .panel-footer
+          = link_to 'Cancel', announcements_path, :class => 'btn btn-default'
+          = f.submit 'Create', :class => 'btn btn-success'

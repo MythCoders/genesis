@@ -1,11 +1,12 @@
+%h3 New Grade Level
+
 = form_for @grade, url: grades_path, :html => { :class => '' } do |f|
-  .card
-    .card-header
-      New Grade Level
-    .card-deck
-      .form-horizontal
-        = error_messages_for 'grade'
-        = render :partial => 'grades/form', :locals => {:f => f}
-    .card-footer
-      = link_to 'Cancel', grades_path, :class => 'btn btn-secondary'
-      = f.submit 'Create', :class => 'btn btn-primary'
+  .panel.panel-primary
+    .panel-heading
+      Information
+    .panel-body
+      = error_messages_for 'grade'
+      = render :partial => 'grades/form', :locals => { :f => f }
+    .panel-footer
+      = link_to 'Cancel', grades_path, :class => 'btn btn-default'
+      = f.submit 'Create', :class => 'btn btn-success'

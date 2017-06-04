@@ -1,31 +1,27 @@
 %h3
-  Dashboard
-  %small welcome back Justin!
+  Welcome back Justin!
 
 .row
   .col-sm-4
-    .panel.panel-default
+    - if @announcements.any?
+      .panel.panel-primary
+        .panel-heading
+          = fa_icon 'bullhorn'
+          Announcements
+        %ul.list-group.list-group-flush
+          - @announcements.each do |announcement|
+            %li.list-group-item{:class => ('list-group-item-warning' if announcement.is_flagged)}
+              %h4.strong
+                = announcement.title
+              = announcement.body
+    .panel.panel-primary
       .panel-heading
-        %i.fa.fa-search
+        = fa_icon 'search'
         Student Quick Search
       .panel-body
         %form.form-inline
           .form-group
             %label Student ID
             %input.form-control
-    .panel.panel-default
-      .panel-heading
-        %i.fa.fa-bell-o
-        Alerts
-      %ul.list-group.list-group-flush
-        %li.list-group-item
-          %span.tag.tag-default.tag-pill.pull-xs-right 2 min
-          Alert #1
-        %li.list-group-item
-          %span.tag.tag-default.tag-pill.pull-xs-right 37 min
-          Alert #2
-        %li.list-group-item
-          %span.tag.tag-default.tag-pill.pull-xs-right 1 hour
-          Alert #3
   .col-sm-8
-    %p Additional content will go here.
+    %p More coming soon!

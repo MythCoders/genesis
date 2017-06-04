@@ -1,3 +1,3 @@
-class ApplicationSettingsController < ApplicationController
+class ApplicationSettingsController < ControlPanelController
 
 end

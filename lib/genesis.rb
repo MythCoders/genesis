@@ -5,6 +5,7 @@ require 'genesis/module'
 # Populate required application settings
 ApplicationSetting.populate('sis_core_name', 'dev', 'string', 'core')
 ApplicationSetting.populate('sis_core_is_enabled', 'true', 'boolean', 'core')
+ApplicationSetting.populate('sis_core_display_flagged_announcements_on_login', 'true', 'boolean', 'core')
 
 # Populate menus
 Genesis::MenuManager.map :sidebar do |menu|

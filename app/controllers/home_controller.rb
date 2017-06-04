@@ -1,6 +1,7 @@
 class HomeController < ApplicationController
   def index
     session[:first_time] ||= Time.now
+    @announcements = Announcement.active
   end
 
   def update_school

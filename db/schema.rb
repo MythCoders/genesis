@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170604025704) do
+ActiveRecord::Schema.define(version: 20170604175953) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,12 +23,23 @@ ActiveRecord::Schema.define(version: 20170604025704) do
     t.string "phone_number", limit: 10
   end
 
+  create_table "announcements", force: :cascade do |t|
+    t.string "title", null: false
+    t.string "body", null: false
+    t.datetime "start_date", null: false
+    t.datetime "end_date"
+    t.boolean "is_flagged", default: false, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "application_settings", force: :cascade do |t|
     t.string "key", null: false
     t.string "value"
-    t.string "type", null: false
+    t.string "value_type", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "module_name", limit: 25, null: false
   end
 
   create_table "custom_field_enumerations", id: :serial, force: :cascade do |t|

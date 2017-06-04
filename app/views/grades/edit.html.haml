@@ -1,11 +1,13 @@
-= form_for @grade, url: grade_path(@grade), method: :patch, :html => { :class => 'aui' } do |f|
-  .card
-    .card-header
-      Edit Grade Levels
-    .card-deck
+%h3 Edit Grade Level
+
+= form_for @grade, url: grade_path(@grade), method: :patch, :html => { :class => '' } do |f|
+  .panel.panel-primary
+    .panel-heading
+      Basic Information
+    .panel-body
       .form-horizontal
         = error_messages_for 'grade'
         = render :partial => 'grades/form', :locals => { :f => f }
-    .card-footer
-      = link_to 'Cancel', grades_path, :class => 'btn btn-secondary'
-      = f.submit 'Save Changes', :class => 'btn btn-primary'
+    .panel-footer
+      = link_to 'Cancel', grades_path, :class => 'btn btn-default'
+      = f.submit 'Save Changes', :class => 'btn btn-success'

@@ -1,4 +1,4 @@
-class SchoolYearsController < ApplicationController
+class SchoolYearsController < ControlPanelController
   def new
     @school_year = SchoolYear.new(:school_id => params[:school_id])
     populate_grades

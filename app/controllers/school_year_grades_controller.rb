@@ -1,4 +1,4 @@
-class SchoolYearGradesController < ApplicationController
+class SchoolYearGradesController < ControlPanelController
   def index
   end
 

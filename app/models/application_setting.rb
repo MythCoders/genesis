@@ -4,6 +4,10 @@ class ApplicationSetting < ApplicationRecord
 
   class << self
 
+    #todo: Get from redis
+    #todo: Flush redis when setting value
+    #todo: Remove ApplicationSetting
+
     def get_all
       ApplicationSetting.order('key')
     end
@@ -26,10 +30,6 @@ class ApplicationSetting < ApplicationRecord
       raise StandardError 'UNSET APPLICATION SETTING. PLEASE RESTART GENESIS!' if setting.nil?
       #TODO: validate against the setting type
       setting.update(value: value)
-    end
-
-    def remove(key)
-      #TODO: Remove ApplicationSetting
     end
 
     def populate(key, value, value_type, module_name)

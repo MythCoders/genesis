@@ -1,4 +1,4 @@
-class GradesController < ApplicationController
+class GradesController < ControlPanelController
   def index
     @model = Grade.order(:sort_order).all
   end
