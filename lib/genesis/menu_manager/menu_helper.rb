@@ -33,26 +33,24 @@ module Genesis
         if node.children.present? || !node.child_menus.nil?
           render_menu_node_with_children(node, project)
         else
-          caption, url, selected = extract_node_details(node, project)
-          content_tag('li', render_single_menu_node(node, caption, url, selected),
-                             :class => (is_active?(node)))
+          caption, url = extract_node_details(node, project)
+          content_tag('li', render_single_menu_node(node, caption, url), :class => (is_active?(node)))
         end
       end
 
       def is_active?(node)
         unless node.url.blank?
           'active' if controller?(node.url[:controller])
-          '' if action?(node.url[:action])
         end
       end
 
       def render_menu_node_with_children(node, project=nil)
-        caption, url, selected = extract_node_details(node, project)
+        caption, url = extract_node_details(node, project)
 
         html = [].tap do |html|
           html << '<li>'
           # Parent
-          html << render_single_menu_node(node, caption, url, selected)
+          html << render_single_menu_node(node, caption, url)
 
           # Standard children
           standard_children_list = ''.html_safe.tap do |child_html|
@@ -64,16 +62,16 @@ module Genesis
           html << content_tag(:ul, standard_children_list, :class => 'nav sidebar-subnav collapse', :id => "#{node.name}") unless standard_children_list.empty?
 
           # Unattached children
-          unattached_children_list = render_unattached_children_menu(node, project)
+          unattached_children_list = render_unattached_children(node, project)
           html << content_tag(:ul, unattached_children_list, :class => 'unattached') unless unattached_children_list.blank?
 
           html << '</li>'
         end
-        return html.join("\n").html_safe
+        html.join("\n").html_safe
       end
 
       # Returns a list of unattached children menu items
-      def render_unattached_children_menu(node, project)
+      def render_unattached_children(node, project)
         return nil unless node.child_menus
 
         ''.html_safe.tap do |child_html|
@@ -89,7 +87,7 @@ module Genesis
         end
       end
 
-      def render_single_menu_node(item, caption, url, selected)
+      def render_single_menu_node(item, caption, url)
         options = item.html_options
 
         # virtual nodes are only there for their children to be displayed in the menu
@@ -150,7 +148,7 @@ module Genesis
                   item.url
               end
         caption = item.caption(project)
-        [caption, url, (current_menu_item == item.name)]
+        [caption, url]
       end
 
       # See MenuItem#allowed?

@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   devise_for :users, :path_prefix => 'security'
 
   resources :announcements
-  #resources :calendars
+  resources :application_settings, :path => 'control_panel', :as => 'settings'
   resources :districts
   resources :grades
   resources :roles

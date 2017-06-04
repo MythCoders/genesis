@@ -1,5 +1,6 @@
 module Genesis #:nodoc:
 
+  class ModuleCompatibilityError < StandardError; end
   class ModuleNotFound < StandardError; end
   class ModuleRequirementError < StandardError; end
 

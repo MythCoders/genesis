@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170603183917) do
+ActiveRecord::Schema.define(version: 20170604025704) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,6 +21,14 @@ ActiveRecord::Schema.define(version: 20170603183917) do
     t.string "state", limit: 2
     t.string "zip_code", limit: 9, null: false
     t.string "phone_number", limit: 10
+  end
+
+  create_table "application_settings", force: :cascade do |t|
+    t.string "key", null: false
+    t.string "value"
+    t.string "type", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "custom_field_enumerations", id: :serial, force: :cascade do |t|
@@ -99,7 +107,7 @@ ActiveRecord::Schema.define(version: 20170603183917) do
   end
 
   create_table "people_phone_numbers", force: :cascade do |t|
-    t.integer "student_address_id"
+    t.integer "person_id"
     t.string "phone_number", null: false
     t.string "number_type", null: false
     t.datetime "created_at", null: false
@@ -228,14 +236,6 @@ ActiveRecord::Schema.define(version: 20170603183917) do
     t.integer "district_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "settings", id: :serial, force: :cascade do |t|
-    t.string "key", null: false
-    t.string "value", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["key"], name: "index_settings_on_key"
   end
 
   create_table "staff_member_employments", id: :serial, force: :cascade do |t|

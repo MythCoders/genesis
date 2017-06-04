@@ -2,6 +2,11 @@ require 'genesis/il8n'
 require 'genesis/menu_manager/base'
 require 'genesis/module'
 
+# Populate required application settings
+ApplicationSetting.populate('sis_core_name', 'dev', 'string', 'core')
+ApplicationSetting.populate('sis_core_is_enabled', 'true', 'boolean', 'core')
+
+# Populate menus
 Genesis::MenuManager.map :sidebar do |menu|
   menu.push :students, { :controller => 'students', :action => 'index' }, :icon => 'users'
   menu.push :staff, { :controller => 'staff_members', :action => 'index' }, :icon => 'building'
@@ -11,8 +16,9 @@ Genesis::MenuManager.map :sidebar do |menu|
   menu.push :administration, nil, :caption => 'Administration', :icon => 'cogs', :html => { 'data-toggle': 'collapse' }
   menu.push :announcements, { :controller => 'announcements', :action => 'index' }, :parent => :administration, :caption => 'Announcements'
   menu.push :districts, { :controller => 'districts', :action => 'index' }, :parent => :administration, :caption => 'Districts'
+  menu.push :grades, { :controller => 'grades', :action => 'index' }, :parent => :administration, :caption => 'Grade Levels'
   menu.push :schools, { :controller => 'schools', :action => 'index' }, :parent => :administration, :caption => 'Schools'
-  menu.push :control_panel, { :controller => 'settings', :action => 'index' }, :parent => :administration, :caption => 'Control Panel'
+  menu.push :control_panel, { :controller => 'application_settings', :action => 'index' }, :parent => :administration, :caption => 'Control Panel'
 
   # menu.push :attendance, { :controller => 'students', :action => 'index' }, :icon => 'calendar-check-o'
   # menu.push :grades, { :controller => 'students', :action => 'index' }, :icon => 'question-circle'

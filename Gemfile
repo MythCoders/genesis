@@ -15,6 +15,9 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'jquery-rails'
 gem 'font-awesome-rails'
 
+gem 'redis-rails', '~> 5.0.1' #cache
+gem 'redis', '~> 3.2'
+
 group :development, :test do
   gem 'byebug', platform: :mri
 end

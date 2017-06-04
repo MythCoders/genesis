@@ -1,5 +1,7 @@
 - page_title 'Control Panel', 'Administration'
 
+%h3 Control Panel
+
 .row
   .col-md-12
     .alert.alert-info
@@ -15,14 +17,14 @@
       .row
         .col-md-3
           .panel.b
-            .panel-heading.bg-gray-lighter.text-bold Control Panel
+            .panel-heading.bg-gray-lighter.text-bold Settings
             .list-group
-              %a.list-group-item{'data-toggle' => 'tab', :href => '#tabSetting1'} Item 1
+              %a.list-group-item{'data-toggle' => 'tab', :href => '#tabSetting1'} General
         .col-md-9
           .tab-content.p0.b0
             #tabSetting1.tab-pane.active
               .panel.b
-                .panel-heading.bg-gray-lighter.text-bold Profile
+                .panel-heading.bg-gray-lighter.text-bold General
                 .panel-body
                   %form{:action => ''}
                     .form-group

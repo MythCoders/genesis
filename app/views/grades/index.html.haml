@@ -1,18 +1,20 @@
-.card
-  .card-header
+%h3 Grade Levels
+
+.panel.panel-primary
+  .panel-heading
     %i.fa.fa-search
     Grade Level Search
   %table.table.table-bordered.table-striped.table-hover
     %thead
       %tr
-        %th
+        %th.action-column
         %th Sort Order
         %th Title
         %th Short Name
     %tbody
       - @model.each do |t|
         %tr
-          %td= link_to 'Edit', edit_grade_path(t)
+          %td= link_to 'Edit', edit_grade_path(t), :class => 'btn btn-link'
           %td= t.sort_order
           %td= t.title
           %td= t.short_name

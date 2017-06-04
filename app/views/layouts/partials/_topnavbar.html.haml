@@ -34,7 +34,7 @@
                 = fa_icon 'heartbeat', :class => 'text-danger'
     %ul.nav.navbar-nav.navbar-right
       %li
-        %a{'data-no-persist' => 'true', 'data-toggle-state' => 'offsidebar-open', :href => '#', :title => 'Settings'}
+        %a{'data-no-persist' => 'true', 'data-toggle-state' => 'offsidebar-open', :href => '#', :title => 'Preferences'}
           %em= fa_icon 'sliders'
       %li.hidden-xs
         = link_to destroy_user_session_path, :method=>'delete', :title => 'Sign out' do
