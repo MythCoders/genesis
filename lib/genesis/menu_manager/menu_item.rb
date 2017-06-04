@@ -20,7 +20,7 @@ module Genesis
         @html_options = options[:html] || {}
         @icon = options[:icon]
         # Adds a unique class to each menu item based on its name
-        @html_options[:class] = [@html_options[:class], @name.to_s.dasherize].compact.join(' ')
+        #@html_options[:class] = [@html_options[:class], @name.to_s.dasherize].compact.join(' ')
         @parent = options[:parent]
         @child_menus = options[:children]
         @last = options[:last] || false
@@ -41,14 +41,8 @@ module Genesis
         end
       end
 
-      def html_options(options={})
-        if options[:selected]
-          o = @html_options.dup
-          o[:class] += ' selected'
-          o
-        else
-          @html_options
-        end
+      def html_options
+        @html_options
       end
 
       # Checks if a user is allowed to access the menu item by:

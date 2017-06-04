@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
 
   root :to => 'home#index', :as => 'home'
+  get 'help' => 'help#index', :as => 'help'
+  get 'reports' => 'reports#index', :as => 'reports'
 
   devise_for :users, :path_prefix => 'security'
 

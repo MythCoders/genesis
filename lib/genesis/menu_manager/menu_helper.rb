@@ -50,7 +50,7 @@ module Genesis
         caption, url, selected = extract_node_details(node, project)
 
         html = [].tap do |html|
-          html << '<li class=\'dropdown\'>'
+          html << '<li>'
           # Parent
           html << render_single_menu_node(node, caption, url, selected)
 
@@ -61,11 +61,11 @@ module Genesis
             end
           end
 
-          html << content_tag(:ul, standard_children_list, :class => 'dropdown-menu', :id => "##{node.name}") unless standard_children_list.empty?
+          html << content_tag(:ul, standard_children_list, :class => 'nav sidebar-subnav collapse', :id => "#{node.name}") unless standard_children_list.empty?
 
           # Unattached children
           unattached_children_list = render_unattached_children_menu(node, project)
-          html << content_tag(:ul, unattached_children_list, :class => 'dropdown-menu unattached') unless unattached_children_list.blank?
+          html << content_tag(:ul, unattached_children_list, :class => 'unattached') unless unattached_children_list.blank?
 
           html << '</li>'
         end
@@ -90,17 +90,19 @@ module Genesis
       end
 
       def render_single_menu_node(item, caption, url, selected)
-        options = item.html_options(:selected => selected, )
+        options = item.html_options
 
         # virtual nodes are only there for their children to be displayed in the menu
         # and should not do anything on click, except if otherwise defined elsewhere
         if url.blank?
-          url = '#'
-          options.reverse_merge!('data-toggle' => 'dropdown')
+          url = '#' + item.caption.downcase
+          options.reverse_merge!('data-toggle' => 'collapse')
         end
 
         if item.icon.blank?
-          link_to(caption, url, options)
+          link_to(url, options) do
+            content_tag(:span, h(caption))
+          end
         else
           link_to(url, options) do
             rv = content_tag :em do
@@ -130,7 +132,7 @@ module Genesis
             end
           end
         end
-        return block_given? ? nil : items
+        block_given? ? nil : items
       end
 
       def extract_node_details(node, project=nil)
@@ -148,7 +150,7 @@ module Genesis
                   item.url
               end
         caption = item.caption(project)
-        return [caption, url, (current_menu_item == item.name)]
+        [caption, url, (current_menu_item == item.name)]
       end
 
       # See MenuItem#allowed?
