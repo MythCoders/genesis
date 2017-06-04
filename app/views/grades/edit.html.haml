@@ -5,9 +5,8 @@
     .panel-heading
       Basic Information
     .panel-body
-      .form-horizontal
-        = error_messages_for 'grade'
-        = render :partial => 'grades/form', :locals => { :f => f }
+      = error_messages_for 'grade'
+      = render :partial => 'grades/form', :locals => { :f => f }
     .panel-footer
       = link_to 'Cancel', grades_path, :class => 'btn btn-default'
       = f.submit 'Save Changes', :class => 'btn btn-success'

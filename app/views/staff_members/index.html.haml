@@ -29,7 +29,7 @@
         %tbody
           - @staff.each do |s|
             %tr
-              %td= link_to 'Select', staff_member_path(s)
+              %td= link_to 'Select', edit_staff_member_path(s)
               %td= s.staff_member_number
               %td= s.formatted_full_name
   .col-lg-3

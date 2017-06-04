@@ -3,8 +3,8 @@ module Genesis
 
     SIS_MAJOR = 0
     SIS_MINOR = 1
-    SIS_PATCH = 4
-    SIS_COMMIT = '45ef44dad9e111e1120b79661098d2666ccfe44c'
+    SIS_PATCH = 6
+    SIS_COMMIT = '8e7d24e3ea809630dc21dfcdc2c321fca16f4038'
     SIS_BUILD = SIS_COMMIT[0,8]
     SIS_RELEASE_BRANCH = 'master'
 
@@ -43,32 +43,10 @@ module Genesis
         s = "Installed Modules\n"
         plugins = Genesis::Module.all
         if plugins.any?
-          s << plugins.map {|mod| "  %-25s %s" % [mod.id.to_s, mod.version.to_s]}.join("\n")
+          s << plugins.map {|mod| '  %-25s %s' % [mod.id.to_s, mod.version.to_s]}.join("\n")
         else
           s << '  no modules installed'
         end
-        # s << [
-        #     [nil,nil],
-        #     ['Admissions', '0.0.0'],
-        #     ['Assessment', '0.0.0'],
-        #     ['Attendance', '0.0.0'],
-        #     ['Communications', '0.0.0'],
-        #     ['Courses', '0.0.0'],
-        #     ['Data Warehouse', '0.0.0'],
-        #     ['Discipline', '0.0.0'],
-        #     ['eLearning', '0.0.0'],
-        #     ['Finances', '0.0.0'],
-        #     ['Food Service', '0.0.0'],
-        #     ['Housing', '0.0.0'],
-        #     ['Library', '0.0.0'],
-        #     ['Medical', '0.0.0'],
-        #     ['Parent Portal', '0.0.0'],
-        #     ['Report Designer', '0.0.0'],
-        #     ['Sports', '0.0.0'],
-        #     ['State Reporting - OH', '0.0.0'],
-        #     ['Student Portal', '0.0.0'],
-        #     ['Transportation', '0.0.0'],
-        # ].map {|info| '  %-25s %s' % info}.join("\n") + "\n"
       end
     end
 

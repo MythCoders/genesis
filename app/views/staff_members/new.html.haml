@@ -1,0 +1,12 @@
+%h3 New Staff Member
+
+= form_for @staff, url: staff_members_path, :html => { :class => '' } do |f|
+  .panel.panel-primary
+    .panel-heading
+      Information
+    .panel-body
+      = error_messages_for 'staff_member'
+      = render :partial => 'staff_members/form', :locals => { :f => f }
+    .panel-footer
+      = link_to 'Cancel', staff_members_path, :class => 'btn btn-default'
+      = f.submit 'Create', :class => 'btn btn-success'

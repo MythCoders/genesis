@@ -1,0 +1,12 @@
+%h3 Edit Grade Level
+
+= form_for @staff, url: staff_member_path(@staff), method: :patch, :html => { :class => '' } do |f|
+  .panel.panel-primary
+    .panel-heading
+      Basic Information
+    .panel-body
+      = error_messages_for 'staff_member'
+      = render :partial => 'staff_members/form', :locals => { :f => f }
+    .panel-footer
+      = link_to 'Cancel', staff_members_path, :class => 'btn btn-default'
+      = f.submit 'Save Changes', :class => 'btn btn-success'
