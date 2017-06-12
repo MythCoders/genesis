@@ -27,8 +27,6 @@
           %li
             = link_to 'Address', new_student_address_path(@student)
           %li
-            %a{:href => '#'} Contact
-          %li
             = link_to 'Note', new_student_note_path(@student)
       = link_to 'Edit', edit_student_path(@student), :class => 'btn btn-default'
       .btn-group
@@ -43,6 +41,6 @@
             %a{:href => '#'} ?
           %li.divider{:role => 'separator'}
           %li
-            %a{:href => '#'}
+            %a{:href => student_delete_path(@student)}
               %span.text-danger Delete student
 %br

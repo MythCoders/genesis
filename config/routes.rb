@@ -6,20 +6,22 @@ Rails.application.routes.draw do
 
   devise_for :users, :path_prefix => 'security'
 
-  resources :announcements
-  resources :application_settings, :path => 'control_panel', :as => 'settings'
-  resources :districts
-  resources :grades
-  resources :roles
-  resources :users
-  resources :settings
-  resources :staff_members, :path => 'staff'
+  resources :announcements, :path => 'admin/announcements'
+  resources :districts, :path => 'admin/districts'
+  resources :grades, :path => 'admin/grades'
+  resources :roles, :path => 'admin/roles'
+  resources :users, :path => 'admin/users'
+  resources :application_settings, :path => 'admin/settings'
+  resources :staff_members, :path => 'admin/staff'
 
-  resources :schools do
-    resources :school_years
+  resources :schools, :path => 'admin/schools' do
+    resources :school_years, :path => 'years'
   end
 
+
   resources :students do
+    get 'delete'
+    post 'delete'
     resources :student_addresses, :path => 'addresses', :as => 'addresses'
     resources :student_notes, :path => 'notes', :as => 'notes'
     resources :student_enrollments, :path => 'enrollments', :as => 'enrollments'

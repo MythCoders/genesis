@@ -36,6 +36,32 @@
       %li
         %a{'data-no-persist' => 'true', 'data-toggle-state' => 'offsidebar-open', :href => '#', :title => 'Preferences'}
           %em= fa_icon 'sliders'
+      %li.dropdown.dropdown-list
+        %a{"aria-expanded" => "true", "data-toggle" => "dropdown", :href => "#"}
+          %em.icon-bell
+          .label.label-danger 11
+        %ul.dropdown-menu
+          %li
+            .list-group
+              %a.list-group-item{:href => "#"}
+                .media-box
+                  .pull-left
+                    %em.fa.fa-users.fa-2x.text-info
+                  .media-box-body.clearfix
+                    %p.m0 New Admissions
+                    %p.m0.text-muted
+                      %small 1 new admission
+              %a.list-group-item{:href => "#"}
+                .media-box
+                  .pull-left
+                    %em.fa.fa-tasks.fa-2x.text-success
+                  .media-box-body.clearfix
+                    %p.m0 Pending Tasks
+                    %p.m0.text-muted
+                      %small 11 pending task
+              %a.list-group-item{:href => "#"}
+                %small Older notifications
+                %span.label.label-info.pull-right 14W
       %li.hidden-xs
         = link_to destroy_user_session_path, :method=>'delete', :title => 'Sign out' do
           %em= fa_icon 'sign-out'

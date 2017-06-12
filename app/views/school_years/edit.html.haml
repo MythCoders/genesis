@@ -1,11 +1,12 @@
+%h3= @school_year.school.name
+
 = form_for @school_year, url: school_school_year_path(@school_year), method: :patch, :html => { :class => '' } do |f|
-  .card
-    .card-header
-      Edit school year for
-      = @school_year.school.name
-    .card-deck
+  .panel.panel-primary
+    .panel-heading
+      Basic Information
+    .panel-body
       = error_messages_for 'school_year'
       = render :partial =>  'school_years/form', :locals => {:f => f}
-    .card-footer
-      = link_to 'Cancel', school_path(@school_year.school), :class => 'btn btn-secondary'
-      = f.submit 'Save Changes', :class => 'btn btn-primary'
+    .panel-footer
+      = link_to 'Cancel', school_path(@school_year.school), :class => 'btn btn-default'
+      = f.submit 'Save Changes', :class => 'btn btn-success'

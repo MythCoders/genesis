@@ -12,7 +12,7 @@ class StudentsController < ApplicationController
   end
 
   def edit
-    @student = Student.find(params[:id])
+
   end
 
   def new
@@ -39,6 +39,16 @@ class StudentsController < ApplicationController
     else
       populate_select_lists
       render 'new', :type => @type
+    end
+  end
+
+  def delete
+    get
+
+    if request.post?
+       if params[:agreement] == '1'
+         @student.destory
+       end
     end
   end
 
@@ -74,8 +84,13 @@ class StudentsController < ApplicationController
     'slow'
   end
 
-  def find_student
-    @student = Student.find(params[:id])
+  def get
+    if params[:id]
+      @student = Student.find(params[:id])
+      else if params[:student_id]
+             @student = Student.find(params[:student_id])
+           end
+    end
   rescue
     render_404
   end

@@ -1,0 +1,43 @@
+- page_title @student.formatted_full_name, 'Delete'
+
+= render :partial => 'students/common/header', :locals => {:student => @student }
+
+.row
+  .col-sm-2.col-xs-12
+    = render :partial => 'students/common/sidebar', :locals => {:student => @student}
+  .col-sm-10.col-xs-12
+    = form_for '', url: student_delete_path(@student), :method => :post do |f|
+      .panel.panel-warning
+        .panel-heading
+          %h3.panel-title
+            = fa_icon 'warning'
+            Permanently Delete Student
+        .panel-body
+          %h4= "Are you sure you want to delete #{@student.first_name} completely from #{Genesis::INFO.app_name}?"
+          %br
+          Deleting a student will remove all information associated, including but not limited to*
+          %ul
+            %li Addresses
+            %li Enrollment history
+            %li Parents and emergency contacts
+            %li Notes
+            %li Course registrations, grading history, and transcripts
+            %li State reporting data
+          .form-horizontal
+            .checkbox
+              %label
+                = check_box_tag :agreement
+                By checking this box I'm confirming my knowledge that this operation is irreversible.
+        .panel-footer
+          = link_to 'Cancel', student_path(@student), :class => 'btn btn-default'
+          = f.submit 'PERMANENTLY DELETE STUDENT', :class => 'btn btn-square btn-danger pull-right', :disabled => 'disabled', :id => 'btn-delete-student'
+    .help-block
+      * Items that appear in the list may not apply if the corresponding module is not installed in your system
+
+- content_for :scripts do
+  :javascript
+    $(function() {
+      $("#agreement").click(function() {
+        $("#btn-delete-student").prop('disabled', !this.checked);
+      });
+    });

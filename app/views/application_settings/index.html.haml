@@ -1,14 +1,16 @@
-- page_title 'Control Panel', 'Administration'
+- page_title 'Settings', 'Administration'
 
-%h3 Control Panel
+%h3
+  = fa_icon 'cogs'
+  Settings
 
 .row
   .col-md-12
     .alert.alert-info
       = fa_icon 'wrench'
-      %strong System Updates Available
+      %strong System Updates Available!
       %br
-      Newer versions of the GeneSIS core system and/or modules are now available.
+      Newer versions of the GeneSIS core system and/or some of its modules are now available for download and installation.
       Updates can make GeneSIS add new features as well as resolve issues. They can also make GeneSIS more secure.
 
 .row
@@ -19,17 +21,17 @@
           .panel.b
             .panel-heading.bg-gray-lighter.text-bold Settings
             .list-group
-              %a.list-group-item{'data-toggle' => 'tab', :href => '#tabSetting1'} General
+              %a.list-group-item{'data-toggle' => 'tab', :href => '#generalTab'} General
+              %a.list-group-item{'data-toggle' => 'tab', :href => '#studentsTab'} Students
+              %a.list-group-item{'data-toggle' => 'tab', :href => '#staffTab'} Staff
+              %a.list-group-item{'data-toggle' => 'tab', :href => '#otherTab'} Other
         .col-md-9
           .tab-content.p0.b0
-            #tabSetting1.tab-pane.active
+            #generalTab.tab-pane.active
               .panel.b
                 .panel-heading.bg-gray-lighter.text-bold General
                 .panel-body
-                  %form{:action => ''}
-                    .form-group
-                      %label Picture
-                      %input.form-control.filestyle{'data-buttontext' => 'Upload new picture', 'data-classbutton' => 'btn btn-default', 'data-classinput' => 'form-control inline', 'data-iconname' => 'fa fa-upload mr', 'data-input' => 'false', :type => 'file'}
+                  %form
                     .form-group
                       %label Name
                       %input.form-control{:type => 'text'}

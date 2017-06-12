@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170604175953) do
+ActiveRecord::Schema.define(version: 20170608194545) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -103,6 +103,15 @@ ActiveRecord::Schema.define(version: 20170604175953) do
     t.integer "sort_order"
     t.integer "next_grade_id"
     t.integer "previous_grade_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "notifications", force: :cascade do |t|
+    t.string "title", null: false
+    t.string "body"
+    t.integer "user_id"
+    t.boolean "has_been_read"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -357,6 +366,7 @@ ActiveRecord::Schema.define(version: 20170604175953) do
 
   add_foreign_key "grades", "grades", column: "next_grade_id"
   add_foreign_key "grades", "grades", column: "previous_grade_id"
+  add_foreign_key "notifications", "users"
   add_foreign_key "people", "people_phone_numbers", column: "primary_phone_number_id"
   add_foreign_key "school_periods", "school_years"
   add_foreign_key "school_progress_periods", "school_quarters"

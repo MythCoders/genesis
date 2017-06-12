@@ -46,7 +46,7 @@ class StaffMembersController < ApplicationController
   end
 
   def staff_member_params
-    params.require(:staff).permit(:id)
+    params.require(:staff).permit(:id, :first_name, :middle_name, :last_name, :suffix, :sex, :date_of_birth)
   end
 
 end

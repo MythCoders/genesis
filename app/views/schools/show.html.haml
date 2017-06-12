@@ -1,3 +1,4 @@
+- page_title @school.name, 'Schools', 'Administration'
 %h3= @school.name
 
 .row
@@ -16,6 +17,7 @@
           %tr
             %td Enrolled Students
             %td 0
+    = link_to 'Back', schools_path, :class => 'btn btn-default'
   .col-sm-8
     .panel.panel-primary
       .panel-heading

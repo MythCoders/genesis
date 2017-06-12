@@ -50,7 +50,7 @@
         %button.btn.btn-default.btn-lg Apply
 
 .btn-group
-  %a.btn.btn-default{ href: new_student_path, class: ('disabled' unless can_new_student_be_admitted?)}
+  %a.btn.btn-primary{ href: new_student_path, class: ('disabled' unless can_new_student_be_admitted?)}
     New Admission
   .btn-group
     %button.btn.btn-default.dropdown-toggle{ 'data-toggle': 'dropdown', disabled: ('disabled' unless can_new_student_be_admitted?)}

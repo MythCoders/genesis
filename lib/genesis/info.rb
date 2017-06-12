@@ -3,8 +3,8 @@ module Genesis
 
     SIS_MAJOR = 0
     SIS_MINOR = 1
-    SIS_PATCH = 6
-    SIS_COMMIT = '8e7d24e3ea809630dc21dfcdc2c321fca16f4038'
+    SIS_PATCH = 7
+    SIS_COMMIT = '7fd548b87da92db5fbb1c7fae112808a6d9396ad'
     SIS_BUILD = SIS_COMMIT[0,8]
     SIS_RELEASE_BRANCH = 'master'
 
@@ -25,8 +25,7 @@ module Genesis
         s = "#{app_name} Instance Configuration\n"
         s << [
             [nil,nil],
-            ['Version', version],
-            ['Build', SIS_BUILD],
+            ['Version', build_string],
             ['Commit', SIS_COMMIT],
             ['Branch', "#{SIS_RELEASE_BRANCH}"],
             [nil,nil],
