@@ -22,10 +22,14 @@ Rails.application.routes.draw do
   resources :students do
     get 'delete'
     post 'delete'
-    resources :student_addresses, :path => 'addresses', :as => 'addresses'
+
+    resources :student_addresses, :path => 'addresses', :as => 'addresses' do
+      resources :student_relationships, :path => 'contacts', :as => 'contacts'
+    end
+
     resources :student_notes, :path => 'notes', :as => 'notes'
     resources :student_enrollments, :path => 'enrollments', :as => 'enrollments'
-    resources :student_relationships, :path => 'contacts', :as => 'relationships'
+
   end
 
 

@@ -1,0 +1,18 @@
+- page_title @relationship.student_address.student.formatted_full_name, 'New Contact'
+
+= render :partial => 'students/common/header', :locals => {:student => @relationship.student_address.student }
+
+.row
+  .col-sm-2.col-xs-12
+    = render :partial => 'students/common/sidebar', :locals => {:student => @relationship.student_address.student }
+  .col-sm-10.col-xs-12
+    = form_for @relationship, url: student_address_contacts_path(@relationship.student_address.student), :html => { :class => '' } do |f|
+      .panel.panel-primary
+        .panel-heading
+          %h3.panel-title New Relationship
+        .panel-body
+          = error_messages_for 'relationship'
+          = render :partial => 'student_relationships/form', :locals => { :f => f }
+        .panel-footer
+          = link_to 'Cancel', student_addresses_path(@relationship.student_address.student), :class => 'btn btn-default'
+          = f.submit 'Create', :class => 'btn btn-success'

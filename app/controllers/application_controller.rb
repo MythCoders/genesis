@@ -4,8 +4,8 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   before_action :authenticate_user!
-  before_action :check_params
-  before_action :populate_session_variables
+  #before_action :check_params
+  #before_action :populate_session_variables
 
   include Genesis::MenuManager::MenuController
   helper Genesis::MenuManager::MenuHelper
@@ -27,27 +27,27 @@ class ApplicationController < ActionController::Base
 
   def populate_session_variables
     if session['school_id'].nil? or session['school_id'] == 0
-      if School.any?
-        session['school_id'] = School.first.id
-      else
+      first_school = School.first
+      if first_school.nil?
         session['school_id'] = 0
+      else
+        session['school_id'] = first_school.id
       end
     end
 
     if session['school_id'] != 0
-      yrs = SchoolYear.order(:year).where(:school_id => session['school_id'])
-      if yrs.any?
-        session['school_year_id'] = yrs.first.id
-      else
+      first_year = SchoolYear.order(:year).where(:school_id => session['school_id']).first
+      if first_year.nil?
         session['school_year_id'] = 0
+      else
+        session['school_year_id'] = first_year.id
       end
     end
-
   end
 
   def render_404(options={})
     render_error({:message => :notice_file_not_found, :status => 404}.merge(options))
-    return false
+    false
   end
 
 end

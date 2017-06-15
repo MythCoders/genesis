@@ -21,7 +21,8 @@ module GeneSISApp
     # images
     config.assets.precompile << /\.(?:png|jpg)$/
     # precompile vendor assets
-    config.assets.precompile += %w( base.js )
+    # config.assets.precompile += %w( base.js )
+    # config.assets.precompile += %w( bootstrap.js )
     config.assets.precompile += %w( base.css )
     # precompile themes
     config.assets.precompile += ['angle/themes/theme-a.css',

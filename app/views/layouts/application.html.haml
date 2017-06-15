@@ -10,6 +10,4 @@
         .content-wrapper
           = yield
       %footer= render partial: 'layouts/partials/footer'
-    = javascript_include_tag 'base', 'data-turbolinks-track': 'reload'
-    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
     = yield :scripts

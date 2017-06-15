@@ -4,7 +4,7 @@ module Genesis
     SIS_MAJOR = 0
     SIS_MINOR = 1
     SIS_PATCH = 7
-    SIS_COMMIT = '7fd548b87da92db5fbb1c7fae112808a6d9396ad'
+    SIS_COMMIT = 'c7670332103c3af5c81edf8e0e0f7086f46657f6'
     SIS_BUILD = SIS_COMMIT[0,8]
     SIS_RELEASE_BRANCH = 'master'
 

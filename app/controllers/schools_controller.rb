@@ -24,12 +24,12 @@ class SchoolsController < ControlPanelController
   end
 
   def edit
-    @school = School.find(params[:id])
+    get
     populate_districts
   end
 
   def update
-    @school = School.find(params[:id])
+    get
 
     if @school.update(school_params)
       redirect_to @school
@@ -47,6 +47,10 @@ class SchoolsController < ControlPanelController
   end
 
   private
+
+  def get
+    @school = School.find(params[:id])
+  end
 
   def populate_districts
     @districts = District.order(:name).select('id, name, short_name')

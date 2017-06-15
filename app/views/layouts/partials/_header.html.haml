@@ -7,10 +7,11 @@
 %meta{'http-equiv': 'X-UA-Compatible', content: 'IE=edge'}
 %meta{name: 'viewport', content: 'width=device-width, initial-scale=1, maximum-scale=1'}
 %meta{name: 'description', content: "#{Genesis::INFO.versioned_name}"}
+= csrf_meta_tags
 = stylesheet_link_tag 'base', media: 'all'
 = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload', id: 'maincss'
 
 - unless theme.nil?
   = stylesheet_link_tag "angle/themes/theme-#{theme}", media: 'all'
 
-= csrf_meta_tags
+= javascript_include_tag 'application', 'data-turbolinks-track': 'reload'

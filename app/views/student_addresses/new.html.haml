@@ -1,0 +1,18 @@
+- page_title @address.student.formatted_full_name, 'New Address'
+
+= render :partial => 'students/common/header', :locals => {:student => @address.student }
+
+.row
+  .col-sm-2.col-xs-12
+    = render :partial => 'students/common/sidebar', :locals => {:student => @address.student }
+  .col-sm-10.col-xs-12
+    = form_for @address, url: student_addresses_path(@address.student), :html => { :class => '' } do |f|
+      .panel.panel-primary
+        .panel-heading
+          %h3.panel-title New Address
+        .panel-body
+          = error_messages_for 'address'
+          = render :partial => 'student_addresses/form', :locals => { :f => f }
+        .panel-footer
+          = link_to 'Cancel', student_addresses_path(@address.student), :class => 'btn btn-default'
+          = f.submit 'Create', :class => 'btn btn-success'

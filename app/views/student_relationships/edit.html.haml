@@ -1,0 +1,12 @@
+%h3 Edit Grade Level
+
+= form_for @relationship, url: student_address_contacts_path(@relationship), method: :patch, :html => { :class => '' } do |f|
+  .panel.panel-primary
+    .panel-heading
+      Basic Information
+    .panel-body
+      = error_messages_for 'relationship'
+      = render :partial => 'student_relationships/form', :locals => { :f => f }
+    .panel-footer
+      = link_to 'Cancel', grades_path, :class => 'btn btn-default'
+      = f.submit 'Save Changes', :class => 'btn btn-success'

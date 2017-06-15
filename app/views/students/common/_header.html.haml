@@ -1,20 +1,19 @@
 %h3
-  = "#{@student.formatted_full_name} (#{(@student.student_number)})"
+  = "#{student.formatted_full_name} (#{(student.student_number)})"
   %small
-    = @student.current_grade
-    - if @student.has_alert?
+    = student.current_grade
+    - if student.has_alert?
       &nbsp;
       %em{'data-toggle': 'tooltip', 'data-placement': 'bottom', title: 'There is an alert for this student!'}
         = fa_icon 'warning', :class => 'text-yellow'
-      - if @student.has_flagged_note?
+      - if student.has_flagged_note?
         &nbsp;
         %em{'data-toggle': 'tooltip', 'data-placement': 'bottom', title: 'There is a flagged note for this student!'}
           = fa_icon 'flag', :class => 'text-warning'
-      - if @student.has_medical_alert?
+      - if student.has_medical_alert?
         &nbsp;
         %em{'data-toggle': 'tooltip', 'data-placement': 'bottom', title: 'There is a medical alert for this student!'}
           = fa_icon 'heartbeat', :class => 'text-danger'
-
 .row
   .col-xs-12
     .btn-group
@@ -25,10 +24,12 @@
           %span.caret
         %ul.dropdown-menu
           %li
-            = link_to 'Address', new_student_address_path(@student)
+            = link_to 'Address', new_student_address_path(student)
           %li
-            = link_to 'Note', new_student_note_path(@student)
-      = link_to 'Edit', edit_student_path(@student), :class => 'btn btn-default'
+            = link_to 'Contact', new_student_address_contact_path(student, student.primary_address)
+          %li
+            = link_to 'Note', new_student_note_path(student)
+      = link_to 'Edit', edit_student_path(student), :class => 'btn btn-default'
       .btn-group
         %button.btn.btn-default.dropdown-toggle{'aria-expanded' => 'false', 'aria-haspopup' => 'true', 'data-toggle' => 'dropdown', :type => 'button'}
           = fa_icon 'cog'
@@ -36,11 +37,6 @@
           %span.caret
         %ul.dropdown-menu
           %li
-            %a{:href => '#'} Withdraw/Transfer
-          %li
-            %a{:href => '#'} ?
-          %li.divider{:role => 'separator'}
-          %li
-            %a{:href => student_delete_path(@student)}
+            %a{:href => student_delete_path(student)}
               %span.text-danger Delete student
 %br

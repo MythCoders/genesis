@@ -4,4 +4,6 @@ class Person < ApplicationRecord
   has_many :addresses, :through => :student_relationships, :class_name => 'StudentAddress'
   has_many :student_relationships
 
+  accepts_nested_attributes_for :phone_numbers
+
 end

@@ -33,8 +33,7 @@
               - t.student_relationships.each do |r|
                 %tr
                   %td
-                    %a.btn.btn-link
-                      Edit
+                    = link_to 'Edit', edit_student_address_contact_path(@student, t.address, r), :class => 'btn btn-link'
                   %td
                     = r.contact_order
                     - if r.has_custody
@@ -49,7 +48,8 @@
                         = "#{number_to_phone(p.phone_number, area_code: true)}, #{p.number_type}#{(', primary' if p.id == r.person.primary_phone_number_id;)}"
                         %br
         .panel-footer
-          = link_to 'New contact', new_student_relationship_path(@student), :class => 'btn btn-primary'
+          = link_to 'Edit', edit_student_address_path(@student, t.address), :class => 'btn btn-default'
+          = link_to 'New contact', new_student_address_contact_path(@student, t.address), :class => 'btn btn-primary'
           .pull-right
             = format_address_as_html_link(t.address.street, nil, t.address.city, t.address.state, t.address.zip_code, nil, nil, 'Map with Bing').html_safe
 

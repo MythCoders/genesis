@@ -10,9 +10,22 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require_tree ./angle/
-//= require jquery.cookie
+
+//= require jquery/dist/jquery
+//= require turbolinks-jquery
 //= require jquery_ujs
+//= require jquery.cookie
+//= require jQuery-Storage-API/jquery.storageapi
+//= require jquery.easing/js/jquery.easing
+//= require slimScroll/jquery.slimscroll.min
+
+//= require_tree ./angle/
+//= require modernizr/modernizr.custom
+//= require bootstrap/dist/js/bootstrap
+//= require animo.js/animo
+//= require screenfull/dist/screenfull
+//= require jquery-localize-i18n/dist/jquery.localize
+
 //= require turbolinks
 
 $('[data-change-theme]').on('click', function (e) {

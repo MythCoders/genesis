@@ -113,6 +113,7 @@ module ApplicationHelper
 
   end
 
+  # TODO: move custom format/display helpers into seperate classes and import them similar to Redmine, but check Gitlab
   def format_address(address_line_1, address_line_2, city, state, zip_code, zip_code_four = '', format = WITH_LINE_BREAKS)
     return_value = ''
     delimiter = format == 2 ? ', ' : '<br/>'
@@ -136,7 +137,7 @@ module ApplicationHelper
       unless city.blank?
         return_value += city
 
-        if !state.blank? && !zip_code.blank?
+        unless state.blank? && zip_code.blank?
           return_value += ', '
         end
       end
@@ -146,7 +147,7 @@ module ApplicationHelper
       end
 
       unless zip_code.blank?
-        if state != nil
+        unless state == nil
           return_value += ' '
         end
 
@@ -285,8 +286,9 @@ module ApplicationHelper
     url
   end
 
-  def bs_text_field(form_helper, attribute, html_class = 'form-control')
-    form_helper.text_field attribute, :class => html_class
+  # Returns the id of the current users active school year
+  def active_school_year_id
+    SchoolYear.first
   end
 
   private

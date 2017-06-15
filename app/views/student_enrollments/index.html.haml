@@ -17,8 +17,7 @@
         %tbody
           %tr
             %td
-              %a.btn.btn-link
-                Edit
+              = link_to 'Edit', edit_student_enrollment_path(@student, r), :class => 'btn btn-link'
             %td= r.school_year_grade.school_year.short_name
             %td
               = r.admission_code.title

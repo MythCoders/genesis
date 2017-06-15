@@ -12,7 +12,7 @@ module StudentHelper
   end
 
   def can_new_student_be_admitted?
-    unless SchoolYear.where(:id => session['school_year_id']).first.grades.any?
+    unless SchoolYear.where(:id => active_school_year_id).first.grades.any?
       false
     end
     unless EnrollmentCode.where(:is_admission => true).any?
