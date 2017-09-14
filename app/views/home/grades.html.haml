@@ -1,0 +1,62 @@
+.gradeBook
+  %table.table.table-bordered.table-striped
+    %thead
+      %tr
+        %th{style: 'width: 10%;'}
+          Student
+        %th{style: 'width: 5%;'}
+          Grade
+        %th.gradeBook-column-scroll
+          Homework #1
+          .pull-right
+            %button.btn.btn-default.btn-sm{'data-placement' => 'bottom', 'data-toggle' => 'tooltip', 'data-html' => 'true', :title => 'Homework #1 - 10 Points<br/><strong>Created:</strong> 9/1/17<br/><strong>Due:</strong> 9/13/17<br/>', :type => 'button'}
+              = fa_icon 'info-circle'
+            %button.btn.btn-default.btn-sm
+              = fa_icon 'edit'
+        %th Homework #2
+        %th Homework #3
+        %th Homework #4
+        %th Chapter Test #1
+        %th Notebook Check #1
+    %tbody
+      %tr
+        %td Adkins, Justin (12345678)
+        %td
+          .label.label-danger
+            D -
+          .score
+            (61.11)
+        %td
+          %span.points
+            10/10
+          %span.score
+            (100)
+        %td
+          .points
+            ?/10
+          .score
+            (?)
+        %td
+          .points
+            N/A
+          .score
+            (N/A)
+        %td
+          .points
+            8/10
+          .score
+            (80)
+        %td
+          .points
+            22/33
+          .score
+            (69.7)
+        %td
+          .points
+            4/5
+          .score
+            (80)
+    %tfoot
+      %tr
+        %td
+          %strong Class Averages

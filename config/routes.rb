@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
   root :to => 'home#index', :as => 'home'
+  get 'grades' => 'home#grades', :as => 'grades'
   get 'help' => 'help#index', :as => 'help'
   get 'reports' => 'reports#index', :as => 'reports'
 
@@ -18,7 +19,6 @@ Rails.application.routes.draw do
     resources :school_years, :path => 'years'
   end
 
-
   resources :students do
     get 'delete'
     post 'delete'
@@ -31,6 +31,5 @@ Rails.application.routes.draw do
     resources :student_enrollments, :path => 'enrollments', :as => 'enrollments'
 
   end
-
 
 end

@@ -11,7 +11,8 @@ ApplicationSetting.populate('sis_core_display_flagged_announcements_on_login', '
 Genesis::MenuManager.map :sidebar do |menu|
   menu.push :students, { :controller => 'students', :action => 'index' }, :icon => 'users'
   menu.push :staff, { :controller => 'staff_members', :action => 'index' }, :icon => 'building'
-  menu.push :reports, { :controller => 'reports', :action => 'index' }, :icon => 'file-excel-o'
+  menu.push :grades, { :controller => 'home', :action => 'grades' }, :icon => 'file-zip-o'
+  menu.push :reports, { :controller => 'reports', :action => 'index' }, :icon => 'bar-chart'
 
   menu.push :administration, nil, :caption => 'Administration', :icon => 'cog', :html => { 'data-toggle': 'collapse' }
   menu.push :announcements, { :controller => 'announcements', :action => 'index' }, :parent => :administration, :caption => 'Announcements'
