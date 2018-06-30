@@ -1,1 +1,1 @@
-We currently are not allowing contributions.
+Coming soon!
