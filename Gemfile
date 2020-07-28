@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 gem 'rails', '~> 5.1.1'
 gem 'pg', '~> 0.20' # database for Active Record
-gem 'puma', '~> 3.8.2' # app server
+gem 'puma', '~> 3.12.6' # app server
 gem 'uglifier', '>= 1.3.0'
 gem 'haml'
 gem 'coffee-rails', '~> 4.2'
